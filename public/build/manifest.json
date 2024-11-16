@@ -8,8 +8,8 @@
     "file": "assets/_commonjsHelpers-DSXiPLDm.js",
     "name": "_commonjsHelpers"
   },
-  "__routes-DbxjOn67.js": {
-    "file": "assets/_routes-DbxjOn67.js",
+  "__routes-DeXAPLvn.js": {
+    "file": "assets/_routes-DeXAPLvn.js",
     "name": "_routes",
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js"
@@ -31,12 +31,13 @@
       "resources/js/components/member/QuizTest.vue",
       "resources/js/components/member/ListGames.vue",
       "resources/js/components/member/GameMath.vue",
-      "resources/js/components/member/GameWordScramble.vue"
+      "resources/js/components/member/GameWordScramble.vue",
+      "resources/js/components/member/GameFlyingBird.vue"
     ]
   },
-  "_choices.min-!~{01h}~.js": {
+  "_choices.min-!~{01i}~.js": {
     "file": "assets/choices-BjfNYglD.css",
-    "src": "_choices.min-!~{01h}~.js"
+    "src": "_choices.min-!~{01i}~.js"
   },
   "_component-!~{00V}~.js": {
     "file": "assets/component-D37gQRDW.css",
@@ -60,6 +61,14 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ]
   },
+  "_loadBitmapFont-C0Sa2hzz.js": {
+    "file": "assets/loadBitmapFont-C0Sa2hzz.js",
+    "name": "loadBitmapFont",
+    "imports": [
+      "__commonjsHelpers-DSXiPLDm.js",
+      "___vite-browser-external-D7Ct-6yo.js"
+    ]
+  },
   "_quill-DIRzVCzf.js": {
     "file": "assets/quill-DIRzVCzf.js",
     "name": "quill",
@@ -71,9 +80,9 @@
     "file": "assets/quill-D3eoGaYv.css",
     "src": "_quill.snow-!~{00Z}~.js"
   },
-  "_scrollbar-!~{01j}~.js": {
+  "_scrollbar-!~{01k}~.js": {
     "file": "assets/scrollbar-BmfOlefE.css",
-    "src": "_scrollbar-!~{01j}~.js"
+    "src": "_scrollbar-!~{01k}~.js"
   },
   "_scrollbar-DVZstbJe.js": {
     "file": "assets/scrollbar-DVZstbJe.js",
@@ -1273,13 +1282,13 @@
     ]
   },
   "resources/js/appreader.js": {
-    "file": "assets/appreader-Cc9Dl1xU.js",
+    "file": "assets/appreader-CcGjqfRt.js",
     "name": "appreader",
     "src": "resources/js/appreader.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-DbxjOn67.js",
+      "__routes-DeXAPLvn.js",
       "resources/js/components/member/AppReader.vue",
       "__commonjsHelpers-DSXiPLDm.js",
       "_sweetalert2.all-BTEucekq.js"
@@ -1465,7 +1474,7 @@
     ]
   },
   "resources/js/components/member/AppReader.vue": {
-    "file": "assets/AppReader-DrCr776A.js",
+    "file": "assets/AppReader-Cx-RmIJi.js",
     "name": "AppReader",
     "src": "resources/js/components/member/AppReader.vue",
     "isDynamicEntry": true,
@@ -1481,7 +1490,7 @@
       "___vite-browser-external-D7Ct-6yo.js"
     ],
     "css": [
-      "assets/AppReader-DB7YHR08.css"
+      "assets/AppReader-CcaWuQLK.css"
     ],
     "assets": [
       "assets/pdf.worker-eDZEDl3N.mjs"
@@ -1533,23 +1542,40 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ]
   },
+  "resources/js/components/member/GameFlyingBird.vue": {
+    "file": "assets/GameFlyingBird-BXv6Roqz.js",
+    "name": "GameFlyingBird",
+    "src": "resources/js/components/member/GameFlyingBird.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_loadBitmapFont-C0Sa2hzz.js",
+      "_sweetalert2.all-BTEucekq.js",
+      "_sweetalert2.min-C72B2ZMm.js",
+      "__commonjsHelpers-DSXiPLDm.js",
+      "___vite-browser-external-D7Ct-6yo.js"
+    ],
+    "css": [
+      "assets/GameFlyingBird-BlJ7I6WH.css"
+    ]
+  },
   "resources/js/components/member/GameMath.vue": {
-    "file": "assets/GameMath-BZIClDMI.js",
+    "file": "assets/GameMath-DGlZW7ER.js",
     "name": "GameMath",
     "src": "resources/js/components/member/GameMath.vue",
     "isDynamicEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
       "_sweetalert2.all-BTEucekq.js",
+      "_loadBitmapFont-C0Sa2hzz.js",
       "__commonjsHelpers-DSXiPLDm.js",
       "___vite-browser-external-D7Ct-6yo.js"
     ],
     "css": [
-      "assets/GameMath-BBbvz6ws.css"
+      "assets/GameMath-CqqL3LD4.css"
     ]
   },
   "resources/js/components/member/GameWordScramble.vue": {
-    "file": "assets/GameWordScramble-CtURFn8J.js",
+    "file": "assets/GameWordScramble-CZPETU-5.js",
     "name": "GameWordScramble",
     "src": "resources/js/components/member/GameWordScramble.vue",
     "isDynamicEntry": true,
@@ -1559,7 +1585,7 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
-      "assets/GameWordScramble-ZMCfNDYV.css"
+      "assets/GameWordScramble-DCGc3m0T.css"
     ]
   },
   "resources/js/components/member/HomeMain.vue": {
@@ -1578,7 +1604,7 @@
     ]
   },
   "resources/js/components/member/ListGames.vue": {
-    "file": "assets/ListGames-B73SMS1C.js",
+    "file": "assets/ListGames-PwK1OB8v.js",
     "name": "ListGames",
     "src": "resources/js/components/member/ListGames.vue",
     "isDynamicEntry": true,
@@ -1954,13 +1980,13 @@
     ]
   },
   "resources/js/form.js": {
-    "file": "assets/form-Ds4sg1iP.js",
+    "file": "assets/form-BOt_apkF.js",
     "name": "form",
     "src": "resources/js/form.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-DbxjOn67.js",
+      "__routes-DeXAPLvn.js",
       "_vee-validate.esm-Nlz2O7Po.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ]
@@ -1976,20 +2002,20 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-DSf_tVih.js",
+    "file": "assets/main-MmeJGKZ5.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-DbxjOn67.js",
+      "__routes-DeXAPLvn.js",
       "_component-DpQEOCBu.js",
       "_v4-DvF23Exx.js",
       "__commonjsHelpers-DSXiPLDm.js",
       "_jquery-h873QoHk.js"
     ],
     "css": [
-      "assets/main-BJJo71qz.css",
+      "assets/main-DxnerE4p.css",
       "assets/quill-D3eoGaYv.css"
     ],
     "assets": [
