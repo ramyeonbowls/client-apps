@@ -8,8 +8,8 @@
     "file": "assets/_commonjsHelpers-DSXiPLDm.js",
     "name": "_commonjsHelpers"
   },
-  "__routes-BC-W1Nkm.js": {
-    "file": "assets/_routes-BC-W1Nkm.js",
+  "__routes-BvLrOQag.js": {
+    "file": "assets/_routes-BvLrOQag.js",
     "name": "_routes",
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js"
@@ -84,12 +84,11 @@
     "file": "assets/scrollbar-BmfOlefE.css",
     "src": "_scrollbar-!~{01l}~.js"
   },
-  "_scrollbar-DVZstbJe.js": {
-    "file": "assets/scrollbar-DVZstbJe.js",
+  "_scrollbar-ByqcctOX.js": {
+    "file": "assets/scrollbar-ByqcctOX.js",
     "name": "scrollbar",
     "imports": [
-      "_sweetalert2.min-C72B2ZMm.js",
-      "_update-swiper-BroUMUP5.js"
+      "_sweetalert2.min-C72B2ZMm.js"
     ],
     "css": [
       "assets/scrollbar-BmfOlefE.css"
@@ -115,10 +114,6 @@
     "css": [
       "assets/sweetalert2-CrFDNqdC.css"
     ]
-  },
-  "_update-swiper-BroUMUP5.js": {
-    "file": "assets/update-swiper-BroUMUP5.js",
-    "name": "update-swiper"
   },
   "_v4-DvF23Exx.js": {
     "file": "assets/v4-DvF23Exx.js",
@@ -1283,13 +1278,13 @@
     ]
   },
   "resources/js/appreader.js": {
-    "file": "assets/appreader-D_XedBk7.js",
+    "file": "assets/appreader-Buf1deCX.js",
     "name": "appreader",
     "src": "resources/js/appreader.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BC-W1Nkm.js",
+      "__routes-BvLrOQag.js",
       "resources/js/components/member/AppReader.vue",
       "__commonjsHelpers-DSXiPLDm.js",
       "_sweetalert2.all-BTEucekq.js"
@@ -1590,13 +1585,12 @@
     ]
   },
   "resources/js/components/member/HomeMain.vue": {
-    "file": "assets/HomeMain-DjsEtTBC.js",
+    "file": "assets/HomeMain-Cv0jmpg-.js",
     "name": "HomeMain",
     "src": "resources/js/components/member/HomeMain.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_scrollbar-DVZstbJe.js",
-      "_update-swiper-BroUMUP5.js",
+      "_scrollbar-ByqcctOX.js",
       "_sweetalert2.min-C72B2ZMm.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ],
@@ -1667,14 +1661,13 @@
     ]
   },
   "resources/js/components/member/ViewBook.vue": {
-    "file": "assets/ViewBook-BBhmak7S.js",
+    "file": "assets/ViewBook-pOoSI3XO.js",
     "name": "ViewBook",
     "src": "resources/js/components/member/ViewBook.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_scrollbar-DVZstbJe.js",
+      "_scrollbar-ByqcctOX.js",
       "_sweetalert2.min-C72B2ZMm.js",
-      "_update-swiper-BroUMUP5.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
@@ -1682,12 +1675,11 @@
     ]
   },
   "resources/js/components/member/formLogin.vue": {
-    "file": "assets/formLogin-CKFwjcdJ.js",
+    "file": "assets/formLogin-CD0wYEv4.js",
     "name": "formLogin",
     "src": "resources/js/components/member/formLogin.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_update-swiper-BroUMUP5.js",
       "_sweetalert2.min-C72B2ZMm.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ]
@@ -1995,13 +1987,13 @@
     ]
   },
   "resources/js/form.js": {
-    "file": "assets/form-OAX-3lWA.js",
+    "file": "assets/form-Be5hj9-s.js",
     "name": "form",
     "src": "resources/js/form.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BC-W1Nkm.js",
+      "__routes-BvLrOQag.js",
       "_vee-validate.esm-Nlz2O7Po.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ]
@@ -2017,20 +2009,20 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-D2apvZZZ.js",
+    "file": "assets/main-RjnN4TZU.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BC-W1Nkm.js",
+      "__routes-BvLrOQag.js",
       "_component-DpQEOCBu.js",
       "_v4-DvF23Exx.js",
       "__commonjsHelpers-DSXiPLDm.js",
       "_jquery-h873QoHk.js"
     ],
     "css": [
-      "assets/main-CNVhUdFZ.css",
+      "assets/main-xB9DmanN.css",
       "assets/quill-D3eoGaYv.css"
     ],
     "assets": [
