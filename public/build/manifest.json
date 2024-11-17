@@ -8,8 +8,8 @@
     "file": "assets/_commonjsHelpers-DSXiPLDm.js",
     "name": "_commonjsHelpers"
   },
-  "__routes-C32rO8jm.js": {
-    "file": "assets/_routes-C32rO8jm.js",
+  "__routes-BC-W1Nkm.js": {
+    "file": "assets/_routes-BC-W1Nkm.js",
     "name": "_routes",
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js"
@@ -1283,13 +1283,13 @@
     ]
   },
   "resources/js/appreader.js": {
-    "file": "assets/appreader-Dqm_IJhI.js",
+    "file": "assets/appreader-D_XedBk7.js",
     "name": "appreader",
     "src": "resources/js/appreader.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-C32rO8jm.js",
+      "__routes-BC-W1Nkm.js",
       "resources/js/components/member/AppReader.vue",
       "__commonjsHelpers-DSXiPLDm.js",
       "_sweetalert2.all-BTEucekq.js"
@@ -1667,7 +1667,7 @@
     ]
   },
   "resources/js/components/member/ViewBook.vue": {
-    "file": "assets/ViewBook-CJeJCX0T.js",
+    "file": "assets/ViewBook-BBhmak7S.js",
     "name": "ViewBook",
     "src": "resources/js/components/member/ViewBook.vue",
     "isDynamicEntry": true,
@@ -1678,7 +1678,7 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
-      "assets/ViewBook-B3Oi63Or.css"
+      "assets/ViewBook-BBKQVuyq.css"
     ]
   },
   "resources/js/components/member/formLogin.vue": {
@@ -1995,13 +1995,13 @@
     ]
   },
   "resources/js/form.js": {
-    "file": "assets/form-6d03BLzV.js",
+    "file": "assets/form-OAX-3lWA.js",
     "name": "form",
     "src": "resources/js/form.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-C32rO8jm.js",
+      "__routes-BC-W1Nkm.js",
       "_vee-validate.esm-Nlz2O7Po.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ]
@@ -2017,13 +2017,13 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-DxVQTBRP.js",
+    "file": "assets/main-D2apvZZZ.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-C32rO8jm.js",
+      "__routes-BC-W1Nkm.js",
       "_component-DpQEOCBu.js",
       "_v4-DvF23Exx.js",
       "__commonjsHelpers-DSXiPLDm.js",
