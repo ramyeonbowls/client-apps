@@ -1,43 +1,8 @@
 <?php
-
-namespace App\Repositories\Master;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class BookMasterRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($client_id): Collection
-    {
-        return DB::table('tmapping_book as a')
-			->select(
-				'a.book_id',
-				'b.cover',
-				'b.title',
-				'b.isbn',
-				'b.eisbn',
-				'b.year',
-				'b.writer',
-				'd.description as publisher',
-				'c.description as category',
-                'a.copy as qty'
-			)
-            ->join('tbook as b', function($join) {
-                $join->on('a.book_id', '=', 'b.book_id');
-            })
-            ->join('tbook_category as c', function($join) {
-                $join->on('b.category_id', '=', 'c.id');
-            })
-            ->leftjoin('tpublisher as d', function($join) {
-                $join->on('b.publisher_id', '=', 'd.id');
-            })
-            ->where('a.client_id', '=', $client_id)
-			->sharedLock()
-			->get();
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:20             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Master; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class BookMasterRepository { public function get($client_id) : Collection { return DB::table("\x74\155\x61\x70\160\x69\x6e\147\x5f\142\157\x6f\x6b\x20\x61\163\40\x61")->select("\141\56\142\x6f\x6f\x6b\137\151\x64", "\x62\56\x63\x6f\166\x65\162", "\142\56\164\x69\164\154\145", "\142\56\151\x73\142\x6e", "\x62\56\145\151\163\142\156", "\142\x2e\171\x65\x61\162", "\142\56\167\162\151\x74\x65\162", "\x64\x2e\x64\x65\163\x63\162\151\160\x74\151\157\156\40\x61\x73\40\x70\165\142\154\151\163\x68\x65\x72", "\143\x2e\x64\x65\x73\x63\162\151\160\x74\x69\x6f\x6e\40\141\163\40\x63\x61\164\x65\x67\x6f\x72\x79", "\141\x2e\143\x6f\x70\x79\x20\141\163\x20\161\x74\x79")->join("\164\142\157\x6f\x6b\x20\x61\x73\x20\142", function ($join) { $join->on("\x61\56\142\x6f\157\x6b\x5f\x69\x64", "\75", "\x62\56\142\x6f\x6f\x6b\137\x69\144"); })->join("\x74\142\157\157\153\137\143\141\x74\x65\147\x6f\x72\x79\40\141\163\40\x63", function ($join) { $join->on("\x62\56\143\x61\164\x65\x67\x6f\162\171\x5f\151\x64", "\x3d", "\x63\56\x69\x64"); })->leftjoin("\164\x70\x75\142\154\151\163\x68\145\x72\x20\141\x73\40\144", function ($join) { $join->on("\x62\x2e\x70\x75\142\154\151\x73\150\145\x72\137\151\144", "\x3d", "\144\x2e\x69\144"); })->where("\x61\x2e\x63\154\x69\145\156\x74\x5f\151\x64", "\75", $client_id)->sharedLock()->get(); } }

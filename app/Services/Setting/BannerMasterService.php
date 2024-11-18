@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\BannerMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class BannerMasterService 
-{
-	private BannerMasterRepository $banner_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->banner_repo = new BannerMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->banner_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->modified_by      = $username;
-        $data->create_date      = $datetime_now;
-        $data->modified_date    = $datetime_now;
-
-        return $this->banner_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-
-        return $this->banner_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->banner_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:21             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\BannerMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class BannerMasterService { private BannerMasterRepository $banner_repo; protected $client_id = ''; public function __construct() { $this->banner_repo = new BannerMasterRepository(); $this->client_id = config("\x61\x70\160\x2e\143\x6c\x69\x65\156\164\x5f\151\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->banner_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto pM7cN; KqbxM: $data->modified_by = $username; goto PuswZ; pM7cN: $datetime_now = Carbon::now("\101\163\x69\141\57\x4a\141\x6b\x61\x72\164\x61"); goto zxfTV; YX48n: $data->modified_date = $datetime_now; goto s7vo7; PuswZ: $data->create_date = $datetime_now; goto YX48n; s7vo7: return $this->banner_repo->store($data, $this->client_id); goto ZlY7g; MKVOf: $data->create_by = $username; goto KqbxM; zxfTV: $username = auth()->user()->email; goto MKVOf; ZlY7g: } public function update(object $data, string $id) : bool { goto hhjhL; feMOe: $data->modified_date = $datetime_now; goto mnfp7; hhjhL: $datetime_now = Carbon::now("\x41\163\151\141\57\112\x61\x6b\x61\162\x74\141"); goto JAfCy; t1vcx: $data->file = $data->file ?? $data->current_file; goto e2SKM; e2SKM: $data->modified_by = $username; goto feMOe; mnfp7: return $this->banner_repo->update($data, $id, $this->client_id); goto zOugW; JAfCy: $username = auth()->user()->email; goto t1vcx; zOugW: } public function delete(string $id) { return $this->banner_repo->delete($id, $this->client_id); } }

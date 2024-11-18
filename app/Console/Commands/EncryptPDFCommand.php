@@ -1,54 +1,8 @@
 <?php
-
-namespace App\Console\Commands;
-
-use File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Console\Command;
-
-class EncryptPDFCommand extends Command
-{
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'pdf:encrypt';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Encrypt a PDF file with AES-256';
-
-    /**
-     * Execute the console command.
-     */
-    public function handle()
-    {
-        $path = public_path('storage/pdf');
-
-        if (File::exists($path) && File::isDirectory($path)) {
-            $files = File::files($path);
-
-            foreach ($files as $file) {
-                $this->info($file);
-
-                // Get file content in memory
-                $fileContent = Storage::get('public/pdf/'.basename($file));
-
-                // Encrypt the File Content
-                $encryptedContent = encrypt($fileContent);
-
-                // Store the encrypted Content on Storage
-                $filename = explode('.', basename($file))[0];
-                Storage::put('private/pdf/'.$filename.'.gns', $encryptedContent);
-            }
-        } else {
-            $this->error("Folder tidak ditemukan atau bukan folder yang valid.");
-        }
-
-        return 0;
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:18             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Console\Commands; use File; use Illuminate\Support\Facades\Storage; use Illuminate\Console\Command; class EncryptPDFCommand extends Command { protected $signature = "\160\x64\146\72\145\156\143\162\171\160\x74"; protected $description = "\105\156\143\162\171\160\164\40\141\x20\120\104\106\x20\x66\151\154\145\x20\x77\151\164\150\40\x41\x45\x53\55\62\65\66"; public function handle() { goto LBYle; NCphc: goto lU00k; goto gDGmC; ey2Xq: foreach ($files as $file) { goto Wwpbw; D063J: Storage::put("\160\162\x69\166\141\164\x65\x2f\x70\x64\146\57" . $filename . "\56\x67\156\x73", $encryptedContent); goto dQtAa; EnYBo: $fileContent = Storage::get("\x70\x75\142\154\x69\143\x2f\x70\144\x66\x2f" . basename($file)); goto YNjCR; dQtAa: RMBHt: goto Xtmh6; Wwpbw: $this->info($file); goto EnYBo; FnE71: $filename = explode("\56", basename($file))[0]; goto D063J; YNjCR: $encryptedContent = encrypt($fileContent); goto FnE71; Xtmh6: } goto hejoj; XfkOR: return 0; goto Yw6YD; Yx5Jf: $files = File::files($path); goto ey2Xq; d56us: $this->error("\106\157\154\144\x65\x72\x20\164\151\144\141\153\x20\144\151\x74\x65\x6d\x75\x6b\x61\x6e\x20\141\x74\x61\165\40\x62\x75\x6b\x61\x6e\40\x66\157\154\144\145\x72\40\171\x61\156\147\x20\166\x61\x6c\151\x64\56"); goto NCphc; gDGmC: Y0i5c: goto Yx5Jf; p705f: lU00k: goto XfkOR; hejoj: JhrIA: goto p705f; LBYle: $path = public_path("\x73\164\x6f\162\141\x67\145\x2f\160\144\146"); goto I0UE6; I0UE6: if (File::exists($path) && File::isDirectory($path)) { goto Y0i5c; } goto d56us; Yw6YD: } }

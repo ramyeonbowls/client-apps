@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\ReviewBukuMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class ReviewBukuMasterService 
-{
-	private ReviewBukuMasterRepository $ReviewBuku_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->ReviewBuku_repo = new ReviewBukuMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->ReviewBuku_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->ReviewBuku_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->ReviewBuku_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->ReviewBuku_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:21             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\ReviewBukuMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class ReviewBukuMasterService { private ReviewBukuMasterRepository $ReviewBuku_repo; protected $client_id = ''; public function __construct() { $this->ReviewBuku_repo = new ReviewBukuMasterRepository(); $this->client_id = config("\141\160\x70\x2e\143\x6c\x69\x65\156\x74\137\x69\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->ReviewBuku_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto tJMEy; PcBMP: $data->create_date = $datetime_now; goto GRKdV; GRKdV: $data->flag_aktif = $data->flag_aktif == "\164\x72\165\x65" ? "\131" : "\x4e"; goto JWGBK; m_Y03: $data->create_by = $username; goto PcBMP; t0GN1: $username = auth()->user()->email; goto m_Y03; tJMEy: $datetime_now = Carbon::now("\101\163\x69\141\x2f\112\141\153\141\162\x74\x61"); goto t0GN1; JWGBK: return $this->ReviewBuku_repo->store($data, $this->client_id); goto vS3EY; vS3EY: } public function update(object $data, string $id) : bool { goto GPnjR; QCkAC: $data->modified_date = $datetime_now; goto Ir4AT; gRfv4: $data->modified_by = $username; goto QCkAC; f8MU3: $data->file = $data->file ?? $data->current_file; goto gRfv4; GPnjR: $datetime_now = Carbon::now("\101\x73\151\141\57\x4a\141\153\x61\162\164\x61"); goto obrUm; obrUm: $username = auth()->user()->email; goto f8MU3; hjsLK: return $this->ReviewBuku_repo->update($data, $id, $this->client_id); goto p2NQn; Ir4AT: $data->flag_aktif = $data->flag_aktif == "\x74\x72\165\x65" ? "\x59" : "\116"; goto hjsLK; p2NQn: } public function delete(string $id) { return $this->ReviewBuku_repo->delete($id, $this->client_id); } }

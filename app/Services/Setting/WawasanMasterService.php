@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\WawasanMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class WawasanMasterService 
-{
-	private WawasanMasterRepository $Wawasan_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->Wawasan_repo = new WawasanMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->Wawasan_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Wawasan_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Wawasan_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->Wawasan_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:21             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\WawasanMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class WawasanMasterService { private WawasanMasterRepository $Wawasan_repo; protected $client_id = ''; public function __construct() { $this->Wawasan_repo = new WawasanMasterRepository(); $this->client_id = config("\141\x70\160\x2e\143\x6c\x69\x65\156\164\137\151\x64", ''); } public function get(array $filter = []) : Collection { return new Collection($this->Wawasan_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto b_FMK; qlLL7: return $this->Wawasan_repo->store($data, $this->client_id); goto rtyJy; b_FMK: $datetime_now = Carbon::now("\x41\163\x69\x61\x2f\112\x61\153\x61\162\x74\141"); goto uJS4e; av5dw: $data->create_date = $datetime_now; goto bB580; tw0G3: $data->create_by = $username; goto av5dw; uJS4e: $username = auth()->user()->email; goto tw0G3; bB580: $data->flag_aktif = $data->flag_aktif == "\x74\162\x75\145" ? "\131" : "\x4e"; goto qlLL7; rtyJy: } public function update(object $data, string $id) : bool { goto Q4wh7; iaUrU: $data->modified_date = $datetime_now; goto sLTFS; Q4wh7: $datetime_now = Carbon::now("\101\x73\x69\141\57\112\141\153\141\162\164\141"); goto qBQqB; TWpfR: return $this->Wawasan_repo->update($data, $id, $this->client_id); goto sGNZF; juGSX: $data->modified_by = $username; goto iaUrU; qBQqB: $username = auth()->user()->email; goto ERO1P; sLTFS: $data->flag_aktif = $data->flag_aktif == "\x74\162\x75\x65" ? "\131" : "\x4e"; goto TWpfR; ERO1P: $data->file = $data->file ?? $data->current_file; goto juGSX; sGNZF: } public function delete(string $id) { return $this->Wawasan_repo->delete($id, $this->client_id); } }

@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\HumoriaMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class HumoriaMasterService 
-{
-	private HumoriaMasterRepository $Humoria_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->Humoria_repo = new HumoriaMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->Humoria_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Humoria_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Humoria_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->Humoria_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:21             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\HumoriaMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class HumoriaMasterService { private HumoriaMasterRepository $Humoria_repo; protected $client_id = ''; public function __construct() { $this->Humoria_repo = new HumoriaMasterRepository(); $this->client_id = config("\141\x70\160\x2e\x63\x6c\x69\x65\x6e\x74\137\x69\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->Humoria_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto WmrKP; WmrKP: $datetime_now = Carbon::now("\101\x73\151\x61\57\x4a\141\153\141\x72\164\141"); goto V8Mcc; zoGUz: $data->flag_aktif = $data->flag_aktif == "\x74\x72\x75\145" ? "\x59" : "\x4e"; goto Z06OS; o6P31: $data->create_date = $datetime_now; goto zoGUz; ahbis: $data->create_by = $username; goto o6P31; V8Mcc: $username = auth()->user()->email; goto ahbis; Z06OS: return $this->Humoria_repo->store($data, $this->client_id); goto DYqwH; DYqwH: } public function update(object $data, string $id) : bool { goto qznRF; RwgEa: $username = auth()->user()->email; goto eOBjQ; qznRF: $datetime_now = Carbon::now("\101\x73\x69\x61\57\x4a\x61\153\x61\162\x74\x61"); goto RwgEa; SKR7h: return $this->Humoria_repo->update($data, $id, $this->client_id); goto AyK5B; eOBjQ: $data->file = $data->file ?? $data->current_file; goto lu3no; I_11o: $data->flag_aktif = $data->flag_aktif == "\164\162\165\x65" ? "\x59" : "\116"; goto SKR7h; lu3no: $data->modified_by = $username; goto RQey8; RQey8: $data->modified_date = $datetime_now; goto I_11o; AyK5B: } public function delete(string $id) { return $this->Humoria_repo->delete($id, $this->client_id); } }

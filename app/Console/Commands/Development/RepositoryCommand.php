@@ -1,82 +1,8 @@
 <?php
-
-namespace App\Console\Commands\Development;
-
-use Illuminate\Support\Arr;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
-
-class RepositoryCommand extends Command
-{
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'make:repository {name}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new repository class for Development';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        $name       = $this->argument('name');
-        $name_array = explode("/", str_replace('\\', '/', $name));
-
-        $classname  = Arr::last($name_array);
-        $namespace  = '';
-        if(count($name_array) > 1) {
-            $namespace  = '\\';
-            for($i=0; $i < count($name_array); $i++) {
-                if($name_array[$i] != $classname) {
-                    $namespace .= $name_array[$i] .'\\';
-                }
-            }
-            $namespace = substr($namespace, 0, -1);
-        }
-
-        // $this->info($namespace);
-        // $this->info($classname);
-        // exit();
-    
-        try {
-            @mkdir(app_path('Repositories/'.$namespace), 0777, true);
-
-            $fileContents  = "<?php\n\nnamespace App\Repositories".$namespace.";";
-            $fileContents .= "\n\nclass ". $classname ." \n{\n\t//\n}";
-
-            $file_path = file_exists(app_path('Repositories/'. $name .'.php'));
-            if($file_path) {
-                $this->error("Repository already exists!");
-            } else {
-                file_put_contents(app_path('Repositories/'. $name .'.php'), $fileContents);
-                $this->info("Repository created successfully!");
-            }
-        } catch (\Throwable $th) {
-            $this->error($th->getMessage() ."\n");
-
-            if(config('app.env') != 'production') {
-                $this->error($th->getTraceAsString() ."\n");
-            }
-        }
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:18             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Console\Commands\Development; use Illuminate\Support\Arr; use Illuminate\Console\Command; use Illuminate\Support\Facades\Storage; class RepositoryCommand extends Command { protected $signature = "\155\141\x6b\x65\72\x72\x65\x70\157\163\151\164\x6f\162\171\x20\x7b\156\x61\x6d\145\x7d"; protected $description = "\103\x72\x65\x61\164\145\40\141\x20\x6e\x65\x77\x20\x72\x65\x70\157\x73\151\x74\x6f\162\x79\x20\143\x6c\x61\x73\x73\40\x66\157\x72\40\104\x65\166\x65\154\x6f\x70\x6d\x65\156\164"; public function __construct() { parent::__construct(); } public function handle() { goto v2YzT; qP59m: kowug: goto uPlKr; mKIEI: $classname = Arr::last($name_array); goto fFDRJ; S_Gp0: $name_array = explode("\57", str_replace("\134", "\57", $name)); goto mKIEI; fFDRJ: $namespace = ''; goto XDzRw; b_B2l: $namespace .= $name_array[$i] . "\134"; goto qP59m; ojgbX: try { goto TrvNt; V20Y0: $fileContents = "\74\x3f\160\150\x70\xa\xa\156\141\155\x65\x73\x70\x61\x63\x65\x20\101\x70\160\x5c\122\145\x70\x6f\x73\x69\164\x6f\162\151\145\x73" . $namespace . "\73"; goto BWiSy; fGwFM: goto exQn1; goto KwUP_; pNAfI: file_put_contents(app_path("\x52\x65\x70\157\x73\151\x74\157\162\151\145\x73\x2f" . $name . "\56\160\x68\x70"), $fileContents); goto bzj0H; Cyyl0: $file_path = file_exists(app_path("\x52\x65\160\157\x73\x69\x74\x6f\x72\x69\145\x73\x2f" . $name . "\56\160\150\x70")); goto AjEE3; ClASk: exQn1: goto kHktH; BWiSy: $fileContents .= "\xa\12\143\154\141\163\x73\x20" . $classname . "\40\12\x7b\xa\x9\x2f\57\xa\x7d"; goto Cyyl0; tH0JA: $this->error("\122\x65\160\157\x73\151\x74\x6f\162\x79\40\141\x6c\162\x65\x61\144\x79\40\145\170\x69\163\x74\163\41"); goto ClASk; TrvNt: @mkdir(app_path("\122\x65\x70\157\x73\x69\x74\x6f\x72\151\145\x73\x2f" . $namespace), 0777, true); goto V20Y0; AjEE3: if ($file_path) { goto yyR4y; } goto pNAfI; KwUP_: yyR4y: goto tH0JA; bzj0H: $this->info("\122\145\160\157\163\151\x74\x6f\162\171\40\143\x72\x65\141\x74\145\144\x20\x73\165\x63\x63\145\163\x73\146\x75\154\154\171\x21"); goto fGwFM; kHktH: } catch (\Throwable $th) { goto IH3Ca; papkH: if (!(config("\x61\x70\x70\x2e\145\x6e\166") != "\160\162\x6f\x64\165\x63\x74\151\157\x6e")) { goto gId7O; } goto qIOCC; IH3Ca: $this->error($th->getMessage() . "\12"); goto papkH; qIOCC: $this->error($th->getTraceAsString() . "\12"); goto jJrpL; jJrpL: gId7O: goto smXuf; smXuf: } goto LdQMi; FQRKR: if (!($i < count($name_array))) { goto kBPp_; } goto J_KVT; oF3ny: kBPp_: goto GjL1M; UTcQ4: t8gt4: goto ojgbX; ak6gB: $i = 0; goto ZJ7r3; oMTL6: $i++; goto HcPQd; ZJ7r3: RhdHj: goto FQRKR; XDzRw: if (!(count($name_array) > 1)) { goto t8gt4; } goto L3D8x; HcPQd: goto RhdHj; goto oF3ny; v2YzT: $name = $this->argument("\x6e\x61\x6d\x65"); goto S_Gp0; J_KVT: if (!($name_array[$i] != $classname)) { goto kowug; } goto b_B2l; GjL1M: $namespace = substr($namespace, 0, -1); goto UTcQ4; uPlKr: l72hG: goto oMTL6; L3D8x: $namespace = "\x5c"; goto ak6gB; LdQMi: } }

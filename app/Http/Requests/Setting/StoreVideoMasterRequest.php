@@ -1,65 +1,8 @@
 <?php
-
-namespace App\Http\Requests\Setting;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class StoreVideoMasterRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|unique:tvideo,id|max:50',
-            'title' => 'required|max:100',
-            'description' => 'required|max:500',
-            'flag_aktif' => 'required|max:5',
-            'file' => 'required'
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes(): array
-    {
-        return [
-            'id' => 'ID Video',
-            'title' => 'Judul Video',
-            'flag_aktif' => 'Aktif Video',
-            'description' => 'Konten Video',
-            'file' => 'File Video',
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        return [
-            'file.required' => 'The file is required.',
-            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
-            'file.max' => 'The file size cannot be larger than 1500 KB.'
-        ];
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:20             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class StoreVideoMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\x64" => "\x72\145\161\x75\x69\162\145\144\174\x75\156\x69\x71\165\145\72\164\166\151\x64\145\x6f\54\x69\x64\174\155\x61\x78\x3a\65\x30", "\164\x69\164\x6c\x65" => "\x72\145\161\x75\x69\x72\x65\144\x7c\155\x61\170\72\x31\60\x30", "\x64\145\163\x63\162\151\160\164\151\x6f\x6e" => "\x72\x65\161\165\151\162\x65\144\174\155\141\x78\x3a\65\60\x30", "\146\154\141\x67\x5f\141\x6b\x74\151\146" => "\x72\145\x71\165\x69\162\x65\144\x7c\155\x61\x78\72\x35", "\146\x69\x6c\145" => "\x72\x65\x71\165\x69\162\x65\x64"]; } public function attributes() : array { return ["\151\x64" => "\x49\104\x20\126\x69\x64\145\157", "\164\151\164\154\x65" => "\112\165\x64\165\154\40\126\x69\144\x65\157", "\146\x6c\x61\x67\137\141\x6b\164\x69\146" => "\x41\x6b\x74\151\146\40\x56\151\144\x65\157", "\x64\145\163\x63\x72\151\x70\x74\x69\x6f\x6e" => "\113\x6f\156\164\145\x6e\x20\x56\x69\x64\145\157", "\x66\151\154\x65" => "\x46\151\x6c\x65\x20\x56\151\x64\145\x6f"]; } public function messages() : array { return ["\x66\151\154\145\x2e\x72\145\161\165\151\162\145\x64" => "\x54\x68\x65\x20\146\151\154\145\x20\151\163\x20\x72\x65\161\x75\151\162\x65\144\56", "\146\x69\x6c\x65\56\x6d\x69\155\x65\x73" => "\x54\150\x65\x20\146\x69\154\x65\40\x6d\x75\163\x74\x20\142\145\x20\x61\x20\166\x61\154\x69\x64\40\x69\155\x61\x67\x65\x20\x74\171\x70\145\x20\50\152\x70\145\x67\54\40\x70\x6e\x67\54\40\152\x70\x67\x29\56", "\146\151\x6c\145\56\155\141\170" => "\124\150\145\x20\x66\x69\154\x65\40\163\x69\x7a\x65\40\143\141\156\156\157\164\x20\142\x65\40\154\141\162\147\145\x72\x20\164\x68\x61\156\40\x31\65\60\x30\40\x4b\102\56"]; } }

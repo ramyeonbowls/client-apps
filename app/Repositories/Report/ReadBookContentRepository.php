@@ -1,81 +1,8 @@
 <?php
-
-namespace App\Repositories\Report;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class ReadBookContentRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($filter): Collection
-    {
-        $client_id = $this->getClientID($filter);
-        extract($filter);
-
-        return DB::table('ttrx_read as a')
-            ->select(
-                'b.provinsi_id',
-                'c.provinsi_name',
-                'b.kabupaten_id',
-                'd.kabupaten_name',
-                'f.title',
-                DB::raw('COUNT(DISTINCT a.user_id) AS pembaca'),
-                DB::raw('SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read))) AS durasi'),
-                DB::raw("CONCAT(
-                    FLOOR(SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read)) / 3600), ' jam ',
-                    FLOOR((SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read)) % 3600) / 60), ' menit ',
-                    (SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read)) % 60), ' detik'
-                ) AS jam"),
-                'b.instansi_name as wl_name'
-            )
-            ->join('tclient as b', function ($join) {
-                $join->on('a.client_id', '=', 'b.client_id');
-            })
-            ->join('tprovinsi as c', function ($join) {
-                $join->on('b.provinsi_id', '=', 'c.provinsi_id');
-            })
-            ->join('tkabupaten as d', function ($join) {
-                $join->on('b.kabupaten_id', '=', 'd.kabupaten_id');
-            })
-            ->join('users as e', function ($join) {
-                $join->on('a.user_id', '=', 'e.id')
-                    ->on('a.client_id', '=', 'e.client_id');
-            })
-            ->join('tbook as f', function ($join) {
-                $join->on('a.book_id', '=', 'f.book_id');
-            })
-            ->where('a.client_id', '=', $client_id)
-            ->where('b.provinsi_id', '=', $PROVINSI)
-            ->where('b.kabupaten_id', '=', $KABUPATEN)
-            ->where('a.flag_end', '=', 'Y')
-            ->when(!empty($END_DATE), function ($query) use ($START_DATE, $END_DATE) {
-                return $query->whereBetween(DB::raw('DATE(a.created_at)'), [$START_DATE, $END_DATE]);
-            }, function ($query) use ($START_DATE) {
-                return $query->where(DB::raw('DATE(a.created_at)'), '=', $START_DATE);
-            })
-            ->groupBy('b.provinsi_id', 'c.provinsi_name', 'b.kabupaten_id', 'd.kabupaten_name', 'f.title', 'b.instansi_name')
-            ->sharedLock()
-            ->get();
-    }
-    
-    private function getClientID($filter)
-    {
-        extract($filter);
-
-        $query = DB::table('tclient as a')
-            ->select(
-                'a.client_id'
-            )
-            ->where('a.provinsi_id', '=', $PROVINSI)
-            ->where('a.kabupaten_id', '=', $KABUPATEN)
-            ->where('a.instansi_name', '=', $WL)
-            ->sharedLock()
-            ->get();
-        return $query[0]->client_id ?? '';
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:20             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class ReadBookContentRepository { public function get($filter) : Collection { goto SAomv; tMgd5: return DB::table("\164\x74\x72\x78\137\162\x65\141\x64\40\x61\163\40\x61")->select("\142\x2e\160\162\x6f\x76\x69\156\163\x69\137\x69\x64", "\x63\x2e\160\162\x6f\x76\x69\x6e\x73\151\137\x6e\141\155\145", "\142\x2e\x6b\141\142\165\x70\141\x74\145\x6e\137\x69\x64", "\144\x2e\153\141\142\165\x70\x61\164\145\156\137\x6e\141\155\x65", "\x66\x2e\x74\x69\164\154\145", DB::raw("\103\117\x55\x4e\x54\x28\x44\111\x53\x54\111\116\x43\x54\40\141\x2e\x75\163\x65\x72\137\151\x64\51\40\x41\x53\x20\160\145\x6d\x62\x61\143\x61"), DB::raw("\x53\105\103\137\x54\x4f\137\124\x49\115\105\50\x53\x55\115\50\124\x49\x4d\105\x53\124\x41\x4d\120\104\x49\x46\106\x28\x53\x45\x43\117\116\x44\54\x20\x61\56\x73\164\141\162\x74\x5f\x72\145\x61\144\54\x20\141\x2e\x65\x6e\x64\137\x72\x65\x61\144\x29\x29\x29\x20\101\x53\40\x64\165\162\x61\163\151"), DB::raw("\103\x4f\x4e\103\101\124\50\12\x20\x20\x20\x20\x20\40\x20\40\x20\40\40\x20\x20\x20\x20\40\x20\x20\x20\x20\106\114\117\x4f\x52\x28\123\x55\x4d\x28\x54\111\115\x45\x53\124\x41\x4d\x50\104\x49\x46\106\x28\x53\105\x43\x4f\116\x44\54\40\x61\56\163\x74\141\x72\164\x5f\x72\145\x61\144\x2c\x20\141\x2e\x65\156\x64\137\x72\145\x61\144\x29\x29\x20\x2f\x20\x33\66\x30\60\x29\54\x20\47\x20\x6a\x61\x6d\x20\x27\54\xa\x20\x20\x20\x20\40\40\40\40\x20\x20\40\x20\40\40\40\40\x20\40\x20\40\106\x4c\117\117\122\x28\50\x53\x55\x4d\x28\124\x49\115\x45\123\x54\x41\115\x50\104\x49\x46\106\50\x53\105\103\117\116\x44\x2c\x20\141\56\x73\164\x61\162\164\137\x72\145\141\144\54\x20\x61\56\x65\x6e\x64\137\162\x65\141\144\x29\51\x20\x25\40\x33\x36\60\x30\x29\x20\57\x20\66\x30\x29\x2c\x20\47\x20\x6d\x65\156\151\164\x20\x27\x2c\12\40\x20\40\x20\x20\40\40\40\x20\40\40\40\x20\40\40\x20\x20\40\40\x20\50\123\x55\x4d\x28\124\x49\x4d\105\123\x54\x41\x4d\120\x44\111\x46\106\x28\x53\105\x43\117\116\x44\54\x20\141\56\x73\x74\x61\x72\x74\137\162\x65\141\x64\54\40\x61\x2e\x65\x6e\144\x5f\162\x65\141\144\x29\51\x20\45\x20\66\60\51\x2c\x20\x27\40\x64\145\164\x69\x6b\x27\12\40\40\x20\x20\x20\x20\40\40\40\40\40\40\40\x20\40\x20\51\x20\101\x53\40\x6a\141\x6d"), "\142\56\x69\x6e\x73\x74\141\156\x73\x69\x5f\x6e\x61\x6d\x65\40\x61\x73\x20\x77\154\x5f\156\141\x6d\x65")->join("\164\x63\x6c\x69\145\156\164\x20\141\163\x20\x62", function ($join) { $join->on("\141\56\x63\154\x69\145\156\x74\x5f\151\x64", "\75", "\x62\56\143\x6c\x69\145\156\x74\x5f\151\144"); })->join("\x74\160\162\x6f\166\151\156\x73\x69\x20\x61\x73\x20\x63", function ($join) { $join->on("\142\56\x70\x72\x6f\x76\x69\156\163\x69\x5f\151\x64", "\x3d", "\x63\x2e\160\162\157\166\x69\156\x73\x69\137\151\144"); })->join("\164\x6b\x61\142\x75\160\x61\164\145\x6e\x20\x61\x73\40\x64", function ($join) { $join->on("\x62\56\153\x61\142\165\160\141\164\145\x6e\137\151\144", "\x3d", "\144\56\153\141\x62\165\x70\x61\x74\x65\156\137\x69\x64"); })->join("\x75\x73\x65\162\x73\40\141\x73\x20\145", function ($join) { $join->on("\x61\x2e\x75\x73\x65\162\137\x69\x64", "\x3d", "\145\x2e\x69\x64")->on("\141\56\143\154\x69\x65\156\x74\137\151\x64", "\75", "\145\56\x63\x6c\x69\x65\156\164\137\151\144"); })->join("\x74\x62\x6f\157\153\x20\141\163\x20\146", function ($join) { $join->on("\141\x2e\x62\x6f\x6f\x6b\x5f\151\144", "\75", "\146\x2e\x62\157\x6f\153\x5f\151\144"); })->where("\x61\56\143\x6c\x69\145\156\x74\x5f\x69\x64", "\75", $client_id)->where("\x62\x2e\160\162\157\166\x69\x6e\163\151\x5f\x69\144", "\75", $PROVINSI)->where("\142\56\x6b\141\x62\x75\x70\x61\164\145\156\137\151\x64", "\x3d", $KABUPATEN)->where("\141\56\146\154\x61\147\x5f\x65\156\x64", "\75", "\131")->when(!empty($END_DATE), function ($query) use($START_DATE, $END_DATE) { return $query->whereBetween(DB::raw("\104\101\124\105\x28\x61\56\143\162\145\141\164\145\144\137\x61\x74\x29"), [$START_DATE, $END_DATE]); }, function ($query) use($START_DATE) { return $query->where(DB::raw("\x44\x41\124\105\x28\x61\56\143\x72\145\141\x74\x65\x64\137\141\x74\51"), "\x3d", $START_DATE); })->groupBy("\x62\x2e\x70\x72\x6f\166\151\x6e\x73\x69\137\151\144", "\143\x2e\160\x72\x6f\x76\151\x6e\163\x69\x5f\x6e\141\155\145", "\x62\56\x6b\141\x62\165\x70\x61\x74\145\156\137\x69\x64", "\x64\x2e\153\141\142\165\x70\141\x74\x65\156\x5f\156\141\155\145", "\x66\x2e\164\151\x74\x6c\145", "\142\x2e\x69\156\163\x74\141\x6e\x73\x69\137\x6e\x61\155\x65")->sharedLock()->get(); goto a331D; SAomv: $client_id = $this->getClientID($filter); goto mSeiQ; mSeiQ: extract($filter); goto tMgd5; a331D: } private function getClientID($filter) { goto wyN7v; wyN7v: extract($filter); goto MY2yR; MY2yR: $query = DB::table("\x74\x63\x6c\151\145\156\x74\x20\141\x73\x20\x61")->select("\x61\x2e\x63\154\x69\145\x6e\164\x5f\x69\144")->where("\x61\x2e\160\162\x6f\x76\x69\156\x73\x69\137\151\144", "\75", $PROVINSI)->where("\141\x2e\153\141\142\165\x70\141\x74\145\156\137\x69\144", "\75", $KABUPATEN)->where("\x61\56\x69\x6e\x73\164\x61\156\163\151\137\156\x61\155\x65", "\75", $WL)->sharedLock()->get(); goto g28el; g28el: return $query[0]->client_id ?? ''; goto Si2hm; Si2hm: } }

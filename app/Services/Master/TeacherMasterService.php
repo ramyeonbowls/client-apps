@@ -1,79 +1,8 @@
 <?php
-
-namespace App\Services\Master;
-
-use App\Repositories\Master\TeacherMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class TeacherMasterService 
-{
-	private TeacherMasterRepository $Teacher_repo;
-
-    public function __construct()
-    {
-        $this->Teacher_repo = new TeacherMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(): Collection
-    {
-        return new Collection($this->Teacher_repo->get($this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-
-        $data->create_date      = $datetime_now;
-        $data->modified_date    = $datetime_now;
-
-        return $this->Teacher_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-
-        return $this->Teacher_repo->update($data, $id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->Teacher_repo->delete($id, $this->client_id);
-    }
-    
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function check(string $id)
-    {
-        return $this->Teacher_repo->check($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-18 10:11:21             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Master; use App\Repositories\Master\TeacherMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class TeacherMasterService { private TeacherMasterRepository $Teacher_repo; public function __construct() { $this->Teacher_repo = new TeacherMasterRepository(); $this->client_id = config("\x61\160\160\56\x63\x6c\x69\x65\x6e\164\x5f\151\x64", ''); } public function get() : Collection { return new Collection($this->Teacher_repo->get($this->client_id)); } public function store(object $data) : bool { goto RCaX_; lSO1p: $data->create_date = $datetime_now; goto JBK8J; RCaX_: $datetime_now = Carbon::now("\x41\x73\x69\x61\57\x4a\141\x6b\141\x72\x74\141"); goto lSO1p; y0Yyt: return $this->Teacher_repo->store($data, $this->client_id); goto yMuyo; JBK8J: $data->modified_date = $datetime_now; goto y0Yyt; yMuyo: } public function update(object $data, string $id) : bool { goto zoL5T; zoL5T: $datetime_now = Carbon::now("\x41\163\x69\141\57\x4a\x61\x6b\141\162\164\x61"); goto VUGNX; xvDws: $data->modified_by = $username; goto lWTnf; lWTnf: $data->modified_date = $datetime_now; goto zi0pT; zi0pT: return $this->Teacher_repo->update($data, $id); goto cvfoy; VUGNX: $username = auth()->user()->email; goto k5E8r; k5E8r: $data->file = $data->file ?? $data->current_file; goto xvDws; cvfoy: } public function delete(string $id) { return $this->Teacher_repo->delete($id, $this->client_id); } public function check(string $id) { return $this->Teacher_repo->check($id, $this->client_id); } }
