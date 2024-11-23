@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\TajukUtamaMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class TajukUtamaMasterService 
-{
-	private TajukUtamaMasterRepository $TajukUtama_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->TajukUtama_repo = new TajukUtamaMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->TajukUtama_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->TajukUtama_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->TajukUtama_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->TajukUtama_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:15             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\TajukUtamaMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class TajukUtamaMasterService { private TajukUtamaMasterRepository $TajukUtama_repo; protected $client_id = ''; public function __construct() { $this->TajukUtama_repo = new TajukUtamaMasterRepository(); $this->client_id = config("\x61\160\x70\56\x63\x6c\151\x65\156\164\x5f\x69\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->TajukUtama_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto pPnM4; pPnM4: $datetime_now = Carbon::now("\x41\163\x69\141\57\x4a\141\x6b\x61\162\x74\x61"); goto AguVZ; RJKFK: return $this->TajukUtama_repo->store($data, $this->client_id); goto hFfKG; e7dto: $data->flag_aktif = $data->flag_aktif == "\164\x72\165\x65" ? "\x59" : "\x4e"; goto RJKFK; SavkK: $data->create_date = $datetime_now; goto e7dto; r8iW8: $data->create_by = $username; goto SavkK; AguVZ: $username = auth()->user()->email; goto r8iW8; hFfKG: } public function update(object $data, string $id) : bool { goto G9c3U; oiM7r: $data->modified_by = $username; goto zXgAC; oCI3E: $data->flag_aktif = $data->flag_aktif == "\x74\162\165\x65" ? "\131" : "\116"; goto kot3S; PqyL3: $data->file = $data->file ?? $data->current_file; goto oiM7r; kot3S: return $this->TajukUtama_repo->update($data, $id, $this->client_id); goto PnRDC; G9c3U: $datetime_now = Carbon::now("\x41\x73\151\x61\57\112\141\153\141\x72\x74\141"); goto nSAoQ; zXgAC: $data->modified_date = $datetime_now; goto oCI3E; nSAoQ: $username = auth()->user()->email; goto PqyL3; PnRDC: } public function delete(string $id) { return $this->TajukUtama_repo->delete($id, $this->client_id); } }

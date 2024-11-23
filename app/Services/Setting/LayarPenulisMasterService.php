@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\LayarPenulisMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class LayarPenulisMasterService 
-{
-	private LayarPenulisMasterRepository $LayarPenulis_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->LayarPenulis_repo = new LayarPenulisMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->LayarPenulis_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->LayarPenulis_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->LayarPenulis_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->LayarPenulis_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:15             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\LayarPenulisMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class LayarPenulisMasterService { private LayarPenulisMasterRepository $LayarPenulis_repo; protected $client_id = ''; public function __construct() { $this->LayarPenulis_repo = new LayarPenulisMasterRepository(); $this->client_id = config("\141\x70\160\x2e\143\154\x69\145\x6e\x74\137\151\x64", ''); } public function get(array $filter = []) : Collection { return new Collection($this->LayarPenulis_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto FGDkM; hUsR6: $data->create_date = $datetime_now; goto En2xK; zO8i2: $username = auth()->user()->email; goto VWbRu; VWbRu: $data->create_by = $username; goto hUsR6; FGDkM: $datetime_now = Carbon::now("\x41\x73\x69\x61\57\x4a\141\x6b\x61\162\164\141"); goto zO8i2; En2xK: $data->flag_aktif = $data->flag_aktif == "\x74\x72\165\145" ? "\131" : "\116"; goto OpwtZ; OpwtZ: return $this->LayarPenulis_repo->store($data, $this->client_id); goto xmgBR; xmgBR: } public function update(object $data, string $id) : bool { goto FSzOU; Ch59z: $username = auth()->user()->email; goto eRUh0; FSzOU: $datetime_now = Carbon::now("\x41\163\x69\141\57\112\141\x6b\x61\x72\164\x61"); goto Ch59z; hCtZW: return $this->LayarPenulis_repo->update($data, $id, $this->client_id); goto iUPCa; eRUh0: $data->file = $data->file ?? $data->current_file; goto AGLTK; DEYIh: $data->flag_aktif = $data->flag_aktif == "\164\162\165\145" ? "\x59" : "\116"; goto hCtZW; eUT5B: $data->modified_date = $datetime_now; goto DEYIh; AGLTK: $data->modified_by = $username; goto eUT5B; iUPCa: } public function delete(string $id) { return $this->LayarPenulis_repo->delete($id, $this->client_id); } }

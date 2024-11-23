@@ -1,66 +1,8 @@
 <?php
-
-namespace App\Repositories\Report;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class OfflineVisitorsReportRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($filter): Collection
-    {
-        $client_id = $this->getClientID($filter);
-        extract($filter);
-
-        return DB::table('tvisitors_offline as a')
-            ->select(
-                'b.instansi_name as wl_name',
-                'b.provinsi_id',
-                'c.provinsi_name',
-                'b.kabupaten_id',
-                'd.kabupaten_name',
-                DB::raw("COUNT(a.id) as visitor")
-            )
-            ->join('tclient as b', function ($join) {
-                $join->on('a.client_id', '=', 'b.client_id');
-            })
-            ->join('tprovinsi as c', function ($join) {
-                $join->on('b.provinsi_id', '=', 'c.provinsi_id');
-            })
-            ->join('tkabupaten as d', function ($join) {
-                $join->on('b.kabupaten_id', '=', 'd.kabupaten_id');
-            })
-            ->where('a.client_id', '=', $client_id)
-            ->where('b.provinsi_id', '=', $PROVINSI)
-            ->where('b.kabupaten_id', '=', $KABUPATEN)
-            ->when(!empty($END_DATE), function ($query) use ($START_DATE, $END_DATE) {
-                return $query->whereBetween('a.date', [$START_DATE, $END_DATE]);
-            }, function ($query) use ($START_DATE) {
-                return $query->where('a.date', '=', $START_DATE);
-            })
-            ->groupBy('b.instansi_name', 'b.provinsi_id', 'c.provinsi_name', 'b.kabupaten_id', 'd.kabupaten_name')
-            ->sharedLock()
-            ->get();
-    }
-    
-    private function getClientID($filter)
-    {
-        extract($filter);
-
-        $query = DB::table('tclient as a')
-            ->select(
-                'a.client_id'
-            )
-            ->where('a.provinsi_id', '=', $PROVINSI)
-            ->where('a.kabupaten_id', '=', $KABUPATEN)
-            ->where('a.instansi_name', '=', $WL)
-            ->sharedLock()
-            ->get();
-        return $query[0]->client_id ?? '';
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class OfflineVisitorsReportRepository { public function get($filter) : Collection { goto Kgvcm; E77YQ: extract($filter); goto kTWjd; kTWjd: return DB::table("\x74\166\151\163\151\x74\x6f\x72\163\137\x6f\146\146\154\x69\156\145\x20\141\x73\x20\x61")->select("\x62\56\151\x6e\163\164\x61\156\163\151\x5f\x6e\141\155\145\40\x61\163\x20\167\x6c\137\156\141\155\x65", "\x62\x2e\x70\x72\157\x76\151\156\163\151\137\151\144", "\x63\x2e\160\x72\157\166\151\x6e\x73\151\x5f\x6e\141\x6d\145", "\142\x2e\153\x61\x62\x75\160\x61\x74\x65\156\137\x69\144", "\x64\56\153\x61\142\165\x70\141\164\145\x6e\137\156\141\x6d\145", DB::raw("\x43\x4f\125\x4e\x54\x28\141\56\x69\x64\51\40\x61\163\x20\166\151\x73\x69\x74\157\x72"))->join("\x74\143\x6c\x69\145\156\x74\40\141\x73\x20\142", function ($join) { $join->on("\x61\x2e\x63\154\x69\145\156\x74\137\x69\144", "\75", "\142\56\143\x6c\151\145\x6e\x74\x5f\151\144"); })->join("\x74\x70\162\157\166\x69\156\163\151\40\x61\x73\40\143", function ($join) { $join->on("\x62\x2e\160\x72\x6f\x76\151\156\163\151\137\151\144", "\x3d", "\x63\x2e\x70\x72\157\x76\151\x6e\163\151\137\151\144"); })->join("\x74\x6b\x61\x62\165\x70\x61\164\x65\x6e\x20\x61\x73\x20\144", function ($join) { $join->on("\142\x2e\153\x61\142\x75\x70\x61\164\x65\x6e\x5f\151\x64", "\x3d", "\x64\56\153\x61\142\165\160\x61\164\145\156\x5f\x69\x64"); })->where("\x61\x2e\143\x6c\151\x65\x6e\164\137\151\144", "\75", $client_id)->where("\142\56\x70\162\x6f\166\151\x6e\163\x69\x5f\x69\x64", "\75", $PROVINSI)->where("\142\56\153\x61\x62\165\x70\141\x74\x65\x6e\137\151\144", "\75", $KABUPATEN)->when(!empty($END_DATE), function ($query) use($START_DATE, $END_DATE) { return $query->whereBetween("\x61\x2e\x64\141\x74\145", [$START_DATE, $END_DATE]); }, function ($query) use($START_DATE) { return $query->where("\x61\56\144\141\164\145", "\75", $START_DATE); })->groupBy("\142\x2e\151\156\163\164\x61\x6e\x73\151\137\156\x61\155\145", "\x62\56\160\162\x6f\166\151\x6e\x73\151\x5f\151\x64", "\143\x2e\160\162\x6f\166\x69\x6e\163\151\x5f\156\141\x6d\x65", "\142\x2e\x6b\x61\x62\165\x70\x61\x74\x65\x6e\x5f\x69\144", "\x64\56\153\x61\142\165\x70\141\164\x65\x6e\x5f\156\x61\x6d\145")->sharedLock()->get(); goto igwcU; Kgvcm: $client_id = $this->getClientID($filter); goto E77YQ; igwcU: } private function getClientID($filter) { goto pMmgd; RDbM9: $query = DB::table("\x74\x63\x6c\x69\145\x6e\164\40\141\x73\40\141")->select("\141\56\143\154\x69\145\x6e\x74\137\x69\144")->where("\x61\56\160\x72\157\166\151\156\x73\x69\137\x69\x64", "\75", $PROVINSI)->where("\141\56\x6b\x61\142\165\x70\141\164\145\x6e\x5f\x69\x64", "\75", $KABUPATEN)->where("\x61\56\x69\x6e\x73\164\141\x6e\x73\151\x5f\156\x61\x6d\145", "\75", $WL)->sharedLock()->get(); goto e_hAS; pMmgd: extract($filter); goto RDbM9; e_hAS: return $query[0]->client_id ?? ''; goto jU9Nj; jU9Nj: } }

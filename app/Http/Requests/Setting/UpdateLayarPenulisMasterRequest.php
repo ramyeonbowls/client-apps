@@ -1,80 +1,8 @@
 <?php
-
-namespace App\Http\Requests\Setting;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class UpdateLayarPenulisMasterRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules(): array
-    {
-        return [
-            'id' => 'required',
-                'max:50',
-                Rule::exists('tfitur')->where(function ($query) {
-                    return $query->where('category', $this->category);
-                }),
-            'title' => 'required|max:255',
-            'author' => 'max:50',
-            'description' => 'required',
-            'flag_aktif' => 'required|max:5',
-            'file' => [
-                'required',
-                'mimes:jpeg,png,jpg',
-                'max:1500',
-                Rule::dimensions()->maxWidth(700)->maxHeight(350),
-            ],
-            'current_file' => 'nullable',
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes(): array
-    {
-        return [
-            'id' => 'ID Layar Penulis',
-            'title' => 'Judul Layar Penulis',
-            'flag_aktif' => 'Aktif Layar Penulis',
-            'description' => 'Konten Layar Penulis',
-            'file' => 'File Layar Penulis',
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        $dimensionMessage = 'The file dimensions are invalid.';
-        $dimensionMessage = 'The file dimensions can\'t be larger than 700 x 350 pixels.';
-
-        return [
-            'file.required' => 'The file is required.',
-            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
-            'file.max' => 'The file size cannot be larger than 1500 KB.',
-            'file.dimensions' => $dimensionMessage,
-        ];
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class UpdateLayarPenulisMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\144" => "\162\145\x71\x75\151\x72\145\144", "\155\x61\170\x3a\65\x30", Rule::exists("\164\x66\x69\164\x75\x72")->where(function ($query) { return $query->where("\x63\141\164\145\147\157\x72\171", $this->category); }), "\164\x69\164\154\145" => "\162\145\161\165\151\x72\x65\144\174\155\x61\x78\x3a\62\65\65", "\x61\x75\x74\x68\x6f\x72" => "\155\x61\170\x3a\x35\x30", "\144\x65\163\x63\x72\x69\160\x74\151\x6f\x6e" => "\x72\x65\161\x75\151\x72\145\144", "\146\x6c\141\x67\137\141\x6b\x74\151\146" => "\162\145\x71\x75\x69\x72\x65\x64\174\x6d\x61\170\x3a\65", "\146\151\154\145" => ["\x72\145\161\x75\151\x72\145\x64", "\x6d\x69\x6d\x65\163\x3a\152\x70\145\x67\x2c\x70\x6e\x67\54\x6a\x70\x67", "\x6d\141\170\72\x31\x35\60\x30", Rule::dimensions()->maxWidth(700)->maxHeight(350)], "\x63\x75\x72\x72\145\156\x74\x5f\146\x69\x6c\x65" => "\x6e\165\154\154\x61\142\x6c\145"]; } public function attributes() : array { return ["\x69\x64" => "\111\104\40\114\141\x79\141\162\x20\120\x65\156\165\x6c\x69\x73", "\164\151\164\x6c\145" => "\x4a\165\144\x75\154\x20\114\x61\x79\141\x72\40\x50\145\x6e\x75\x6c\151\x73", "\x66\154\141\147\x5f\141\153\164\151\146" => "\101\153\x74\151\x66\x20\114\141\x79\x61\x72\x20\120\x65\156\x75\154\151\163", "\144\x65\163\x63\x72\151\x70\x74\151\x6f\x6e" => "\113\157\x6e\x74\145\x6e\40\x4c\x61\171\x61\x72\x20\x50\145\x6e\x75\154\151\x73", "\x66\151\x6c\145" => "\106\151\x6c\145\x20\x4c\141\x79\x61\x72\40\x50\x65\156\x75\x6c\x69\163"]; } public function messages() : array { goto vT7yz; J955g: $dimensionMessage = "\124\x68\145\x20\x66\x69\154\145\40\144\151\x6d\x65\156\163\151\x6f\x6e\x73\40\x63\141\156\47\164\x20\x62\x65\40\154\141\162\147\x65\162\40\164\150\141\156\40\67\x30\x30\x20\x78\40\x33\65\60\40\x70\151\x78\145\154\x73\x2e"; goto CzETD; vT7yz: $dimensionMessage = "\124\x68\x65\x20\x66\x69\154\145\x20\144\x69\155\145\156\x73\x69\x6f\x6e\x73\x20\x61\162\145\x20\x69\156\166\x61\154\x69\x64\x2e"; goto J955g; CzETD: return ["\146\x69\154\x65\x2e\x72\145\161\x75\151\162\x65\144" => "\x54\150\145\x20\x66\151\154\145\40\151\x73\x20\162\x65\161\165\x69\162\145\x64\56", "\146\x69\154\x65\x2e\155\151\x6d\145\163" => "\124\150\145\x20\146\x69\x6c\x65\x20\x6d\165\163\164\40\x62\145\x20\x61\40\x76\141\x6c\x69\144\x20\x69\x6d\141\x67\145\40\164\171\x70\x65\x20\50\x6a\160\145\x67\54\x20\x70\156\x67\54\40\152\160\147\51\56", "\146\x69\x6c\145\x2e\x6d\x61\170" => "\x54\150\x65\x20\146\151\154\x65\x20\163\x69\172\x65\x20\143\x61\156\156\157\164\x20\142\x65\40\154\141\162\x67\x65\162\40\164\x68\141\x6e\x20\x31\x35\60\x30\40\113\x42\56", "\146\x69\x6c\145\x2e\x64\x69\155\x65\156\x73\x69\157\x6e\163" => $dimensionMessage]; goto PdCPr; PdCPr: } }

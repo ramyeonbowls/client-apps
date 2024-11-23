@@ -1,80 +1,8 @@
 <?php
-
-namespace App\Repositories\Master;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class LibraryOfficerMasterRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($client_id): Collection
-    {
-        return DB::table('tlibrary_officers as a')
-			->select(
-				'a.id',
-				'a.nip',
-				'a.name',
-				'a.position'
-			)
-            ->where('a.client_id', '=', $client_id)
-			->sharedLock()
-			->get();
-    }
-
-	/**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data, $client_id): bool
-    {
-        return DB::transaction(function () use ($data, $client_id) {
-            return DB::table('tlibrary_officers')->insert([
-				'client_id'		=> $client_id,
-                'nip'			=> $data->nip,
-				'name'			=> $data->name,
-				'position'		=> $data->position,
-				'created_by'	=> $data->created_by,
-				'created_at'	=> $data->created_at
-            ]);
-        });
-    }
-
-	/**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id, $client_id): bool
-    {
-        return DB::transaction(function () use ($data, $id, $client_id) {
-            return DB::table('tlibrary_officers')->where('id', $id)->where('client_id', '=', $client_id)
-                ->update([
-                    'nip'			=> $data->nip,
-                    'name'			=> $data->name,
-                    'position'		=> $data->position,
-                    'updated_at'	=> $data->modified_by,
-                    'updated_by'	=> $data->modified_date
-                ]);
-        });
-    }
-
-	/**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id, $client_id)
-    {
-        return DB::transaction(function () use ($id, $client_id) {
-            $officer = DB::table('tlibrary_officers')
-                ->where('client_id', '=', $client_id)
-                ->where('id', $id);
-
-            return $officer->delete();
-        });
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Master; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class LibraryOfficerMasterRepository { public function get($client_id) : Collection { return DB::table("\x74\154\151\x62\162\x61\162\x79\137\157\x66\146\x69\x63\x65\x72\x73\40\x61\163\40\x61")->select("\141\x2e\151\x64", "\141\x2e\x6e\x69\x70", "\141\x2e\156\x61\155\x65", "\x61\56\160\157\163\x69\x74\x69\157\x6e")->where("\x61\56\143\x6c\x69\x65\156\164\137\151\x64", "\x3d", $client_id)->sharedLock()->get(); } public function store(object $data, $client_id) : bool { return DB::transaction(function () use($data, $client_id) { return DB::table("\x74\x6c\151\142\x72\141\162\x79\137\x6f\146\146\151\143\145\162\163")->insert(["\143\154\x69\x65\156\164\x5f\x69\x64" => $client_id, "\156\x69\160" => $data->nip, "\x6e\141\x6d\145" => $data->name, "\x70\x6f\163\151\x74\151\157\x6e" => $data->position, "\x63\162\145\x61\x74\x65\144\137\142\x79" => $data->created_by, "\x63\162\x65\141\164\x65\x64\137\x61\164" => $data->created_at]); }); } public function update(object $data, string $id, $client_id) : bool { return DB::transaction(function () use($data, $id, $client_id) { return DB::table("\x74\154\x69\x62\162\x61\x72\171\x5f\157\x66\x66\151\x63\145\x72\163")->where("\151\x64", $id)->where("\143\154\151\x65\156\x74\137\x69\144", "\x3d", $client_id)->update(["\156\151\160" => $data->nip, "\x6e\x61\155\145" => $data->name, "\x70\157\x73\x69\x74\x69\x6f\x6e" => $data->position, "\x75\160\x64\x61\x74\145\x64\x5f\141\164" => $data->modified_by, "\x75\160\x64\x61\x74\x65\x64\137\x62\x79" => $data->modified_date]); }); } public function delete(string $id, $client_id) { return DB::transaction(function () use($id, $client_id) { $officer = DB::table("\164\x6c\x69\142\x72\141\x72\x79\x5f\157\146\x66\151\143\145\162\x73")->where("\143\x6c\151\145\156\164\137\x69\144", "\x3d", $client_id)->where("\x69\144", $id); return $officer->delete(); }); } }

@@ -1,37 +1,8 @@
 <?php
-
-namespace App;
-
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
-
-class Logs
-{
-	protected $fp;
-
-	public function __construct($filename)
-	{
-		$filename = $filename . '_' . Carbon::now()->toDateString() . '.log';
-
-		if (file_exists( storage_path('/logs/' . $filename))) {
-            $this->fp = fopen(storage_path('/logs/' . $filename), 'a');
-            if(!$this->fp) {
-                Log::error("Can't file " . storage_path('/logs/' . $filename) );
-            }
-        } else {
-            $this->fp = fopen( storage_path('/logs/' . $filename), 'w');
-            if(!$this->fp) {
-                Log::error("Can't file " . storage_path('/logs/' . $filename) );
-            }
-        }
-	}
-
-	public function write($section, $content)
-	{
-		fwrite($this->fp, str_pad(date("d.m.Y H:i:s"), 25, " ", STR_PAD_RIGHT).str_pad( strtoupper($section) , 25, " ", STR_PAD_RIGHT). $content ."\r\n");
-	}
-
-	public function __destruct() {
-		fclose($this->fp);
-	}
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App; use Carbon\Carbon; use Illuminate\Support\Facades\Log; class Logs { protected $fp; public function __construct($filename) { goto pkVG7; anikx: $this->fp = fopen(storage_path("\x2f\x6c\x6f\x67\163\x2f" . $filename), "\x77"); goto iyK30; JO2q2: Log::error("\103\x61\156\x27\x74\40\x66\151\154\145\x20" . storage_path("\57\154\157\147\163\x2f" . $filename)); goto EeaYK; pkVG7: $filename = $filename . "\x5f" . Carbon::now()->toDateString() . "\56\x6c\157\147"; goto DLNlU; DLNlU: if (file_exists(storage_path("\x2f\x6c\x6f\x67\x73\x2f" . $filename))) { goto rqzCq; } goto anikx; G7iuA: $this->fp = fopen(storage_path("\x2f\x6c\157\x67\163\x2f" . $filename), "\x61"); goto KaofI; KaofI: if ($this->fp) { goto vTzY5; } goto JO2q2; EeaYK: vTzY5: goto v18YD; BP6Ur: goto or621; goto dBH1b; ztacB: IgxDJ: goto BP6Ur; dBH1b: rqzCq: goto G7iuA; a2kLb: Log::error("\103\141\156\x27\164\x20\x66\151\154\145\x20" . storage_path("\x2f\x6c\157\x67\x73\x2f" . $filename)); goto ztacB; v18YD: or621: goto Ovqz1; iyK30: if ($this->fp) { goto IgxDJ; } goto a2kLb; Ovqz1: } public function write($section, $content) { fwrite($this->fp, str_pad(date("\x64\x2e\x6d\x2e\131\40\x48\x3a\151\72\x73"), 25, "\x20", STR_PAD_RIGHT) . str_pad(strtoupper($section), 25, "\x20", STR_PAD_RIGHT) . $content . "\15\xa"); } public function __destruct() { fclose($this->fp); } }

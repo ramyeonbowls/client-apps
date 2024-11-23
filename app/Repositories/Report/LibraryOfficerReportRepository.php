@@ -1,62 +1,8 @@
 <?php
-
-namespace App\Repositories\Report;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class LibraryOfficerReportRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($filter): Collection
-    {
-        $client_id = $this->getClientID($filter);
-        extract($filter);
-
-        return DB::table('tlibrary_officers as a')
-            ->select(
-                'b.instansi_name as wl_name',
-                'b.provinsi_id',
-                'c.provinsi_name',
-                'b.kabupaten_id',
-                'd.kabupaten_name',
-                'a.nip',
-                'a.name',
-                'a.position'
-            )
-            ->join('tclient as b', function ($join) {
-                $join->on('a.client_id', '=', 'b.client_id');
-            })
-            ->join('tprovinsi as c', function ($join) {
-                $join->on('b.provinsi_id', '=', 'c.provinsi_id');
-            })
-            ->join('tkabupaten as d', function ($join) {
-                $join->on('b.kabupaten_id', '=', 'd.kabupaten_id');
-            })
-            ->where('a.client_id', '=', $client_id)
-            ->where('b.provinsi_id', '=', $PROVINSI)
-            ->where('b.kabupaten_id', '=', $KABUPATEN)
-            ->sharedLock()
-            ->get();
-    }
-    
-    private function getClientID($filter)
-    {
-        extract($filter);
-
-        $query = DB::table('tclient as a')
-            ->select(
-                'a.client_id'
-            )
-            ->where('a.provinsi_id', '=', $PROVINSI)
-            ->where('a.kabupaten_id', '=', $KABUPATEN)
-            ->where('a.instansi_name', '=', $WL)
-            ->sharedLock()
-            ->get();
-        return $query[0]->client_id ?? '';
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class LibraryOfficerReportRepository { public function get($filter) : Collection { goto brFb5; niCZA: extract($filter); goto hf04c; hf04c: return DB::table("\x74\154\x69\x62\x72\141\x72\171\137\157\x66\146\151\143\x65\162\163\x20\141\163\x20\x61")->select("\x62\56\151\156\x73\164\x61\x6e\163\x69\x5f\x6e\x61\155\145\x20\141\163\40\167\x6c\x5f\156\141\x6d\x65", "\x62\56\x70\162\x6f\x76\x69\156\x73\151\x5f\x69\x64", "\x63\56\160\162\x6f\166\151\x6e\163\x69\x5f\156\x61\x6d\145", "\x62\x2e\x6b\x61\x62\165\x70\x61\164\145\x6e\x5f\151\x64", "\144\x2e\x6b\141\142\x75\x70\x61\164\x65\156\x5f\x6e\x61\x6d\x65", "\x61\x2e\x6e\x69\160", "\x61\56\156\141\x6d\x65", "\x61\x2e\160\x6f\163\x69\164\x69\x6f\156")->join("\x74\x63\154\151\x65\x6e\164\40\141\x73\x20\x62", function ($join) { $join->on("\x61\56\x63\x6c\x69\x65\156\x74\x5f\151\144", "\x3d", "\142\56\143\154\x69\145\x6e\x74\x5f\x69\x64"); })->join("\164\x70\x72\157\166\x69\x6e\163\151\40\141\163\x20\x63", function ($join) { $join->on("\142\56\160\x72\x6f\166\151\156\x73\x69\137\x69\x64", "\x3d", "\143\x2e\x70\162\x6f\166\x69\x6e\x73\x69\137\x69\144"); })->join("\164\153\141\142\165\160\141\x74\x65\x6e\x20\x61\x73\x20\x64", function ($join) { $join->on("\x62\56\153\141\142\165\x70\x61\164\x65\156\137\151\x64", "\x3d", "\x64\x2e\153\x61\x62\165\x70\x61\164\x65\x6e\x5f\x69\144"); })->where("\141\x2e\143\x6c\151\x65\156\164\137\x69\x64", "\x3d", $client_id)->where("\142\x2e\x70\x72\157\166\151\x6e\163\x69\x5f\151\144", "\x3d", $PROVINSI)->where("\x62\56\x6b\x61\x62\x75\160\x61\x74\x65\x6e\x5f\x69\144", "\75", $KABUPATEN)->sharedLock()->get(); goto H8SLx; brFb5: $client_id = $this->getClientID($filter); goto niCZA; H8SLx: } private function getClientID($filter) { goto F0YoG; jTco2: return $query[0]->client_id ?? ''; goto ZW4JI; F0YoG: extract($filter); goto sQ6aq; sQ6aq: $query = DB::table("\x74\143\x6c\151\x65\156\x74\x20\x61\x73\40\x61")->select("\x61\56\143\154\x69\x65\156\164\137\151\144")->where("\141\56\x70\x72\157\166\x69\156\163\151\x5f\151\x64", "\75", $PROVINSI)->where("\141\56\x6b\141\x62\x75\x70\141\x74\145\156\137\x69\144", "\x3d", $KABUPATEN)->where("\x61\x2e\x69\156\163\x74\141\156\163\x69\137\156\x61\155\145", "\x3d", $WL)->sharedLock()->get(); goto jTco2; ZW4JI: } }

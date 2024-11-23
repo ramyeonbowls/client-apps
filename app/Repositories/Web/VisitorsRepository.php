@@ -1,64 +1,8 @@
 <?php
-
-namespace App\Repositories\Web;
-
-use Carbon\Carbon;
-use App\Models\Web\Visitors;
-use Illuminate\Support\Facades\DB;
-use Browser;
-
-class VisitorsRepository 
-{
-	public function createVisitor($data)
-	{
-		Carbon::setLocale('id');
-		$date = Carbon::now('Asia/Jakarta')->format('Y-m-d');
-		$client_id = config('app.client_id', '');
-
-		try {
-			Visitors::updateOrCreate(
-				[
-					'id' => $data->id,
-					'client_id' => $client_id,
-					'date' => $date,
-					'visitor' => $data->getClientIp(),
-				],
-				[
-					'platform' => Browser::platformFamily(),
-					'device' => Browser::isDesktop() ? 'Desktop' : Browser::deviceFamily(),
-					'browser' => Browser::browserFamily(),
-					'browser_name' => Browser::browserName(),
-					'user_agent' => Browser::userAgent(),
-					'updated_at' => Carbon::now('Asia/Jakarta')
-				]
-			);
-
-			return true;
-		} catch (\Exception $e) {
-			\Log::error('Access member log failed => ' . $e->getMessage());
-        	return false;
-		}
-	}
-
-	public function ReadFitur($data)
-	{
-		Carbon::setLocale('id');
-		$date = Carbon::now('Asia/Jakarta')->format('Y-m-d');
-		$client_id = config('app.client_id', '');
-
-		try {
-			$rent	= DB::table('tread_fitur')
-				->insert([
-					'client_id'		=> $client_id,
-					'fitur'			=> $data->category,
-					'id_fitur'		=> $data->id,
-					'created_at'	=> Carbon::now('Asia/Jakarta')
-				]);
-
-			return true;
-		} catch (\Exception $e) {
-			\Log::error('Read Fitur log failed => ' . $e->getMessage());
-        	return false;
-		}
-	}
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Web; use Carbon\Carbon; use App\Models\Web\Visitors; use Illuminate\Support\Facades\DB; use Browser; class VisitorsRepository { public function createVisitor($data) { goto BKYpR; BKYpR: Carbon::setLocale("\x69\144"); goto SYCED; SYCED: $date = Carbon::now("\101\x73\x69\x61\57\112\x61\153\141\162\x74\x61")->format("\131\x2d\x6d\x2d\x64"); goto B3mZK; uGz3H: try { Visitors::updateOrCreate(["\x69\144" => $data->id, "\143\x6c\151\145\156\164\137\x69\x64" => $client_id, "\x64\x61\164\145" => $date, "\x76\x69\163\x69\x74\x6f\x72" => $data->getClientIp()], ["\160\154\141\x74\146\x6f\162\x6d" => Browser::platformFamily(), "\144\145\166\x69\143\145" => Browser::isDesktop() ? "\x44\x65\x73\153\164\157\x70" : Browser::deviceFamily(), "\142\162\x6f\167\163\x65\162" => Browser::browserFamily(), "\142\162\x6f\x77\163\x65\x72\x5f\156\141\x6d\x65" => Browser::browserName(), "\x75\163\145\x72\137\141\147\145\x6e\164" => Browser::userAgent(), "\165\x70\x64\141\164\145\x64\x5f\141\164" => Carbon::now("\101\x73\x69\141\x2f\x4a\141\x6b\x61\x72\164\141")]); return true; } catch (\Exception $e) { \Log::error("\x41\x63\143\145\163\x73\40\x6d\x65\155\x62\x65\162\x20\x6c\157\147\x20\146\x61\x69\154\145\x64\40\75\76\x20" . $e->getMessage()); return false; } goto AMTpq; B3mZK: $client_id = config("\x61\x70\x70\x2e\143\154\x69\x65\156\x74\137\x69\x64", ''); goto uGz3H; AMTpq: } public function ReadFitur($data) { goto b1R7J; BCjB9: $client_id = config("\x61\160\x70\56\143\154\151\145\156\164\137\151\x64", ''); goto zne1M; SbpTK: $date = Carbon::now("\101\163\151\x61\x2f\112\141\x6b\x61\x72\x74\x61")->format("\x59\55\x6d\x2d\x64"); goto BCjB9; b1R7J: Carbon::setLocale("\151\144"); goto SbpTK; zne1M: try { $rent = DB::table("\164\162\145\x61\144\137\146\x69\x74\165\162")->insert(["\x63\154\151\145\x6e\x74\137\151\144" => $client_id, "\146\x69\164\165\162" => $data->category, "\x69\144\x5f\x66\151\164\x75\x72" => $data->id, "\143\x72\x65\x61\x74\x65\x64\x5f\x61\x74" => Carbon::now("\x41\163\151\x61\x2f\x4a\x61\x6b\141\x72\x74\x61")]); return true; } catch (\Exception $e) { \Log::error("\122\x65\x61\144\40\106\x69\164\x75\x72\40\x6c\157\147\40\x66\x61\151\x6c\145\x64\x20\x3d\x3e\40" . $e->getMessage()); return false; } goto Zh19c; Zh19c: } }

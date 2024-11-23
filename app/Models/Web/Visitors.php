@@ -1,75 +1,8 @@
 <?php
-
-namespace App\Models\Web;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class Visitors extends Model
-{
-    use HasFactory;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'tvisitors';
-    protected $primaryKey = ['id', 'client_id', 'date', 'visitor'];
-    public $incrementing = false;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'id',
-        'client_id',
-        'date',
-        'visitor',
-        'platform',
-        'device',
-        'browser',
-        'browser_name',
-        'user_agent',
-        'created_at',
-        'updated_at'
-    ];
-
-    /**
-     * Set the keys for a save update query.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function setKeysForSaveQuery($query)
-    {
-        $keys = $this->getKeyName();
-        if (!is_array($keys)) {
-            return parent::setKeysForSaveQuery($query);
-        }
-
-        foreach ($keys as $keyName) {
-            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
-        }
-
-        return $query;
-    }
-
-    /**
-     * Get the primary key value for a save query.
-     *
-     * @param string|null $keyName
-     * @return mixed
-     */
-    protected function getKeyForSaveQuery($keyName = null)
-    {
-        if (is_null($keyName)) {
-            $keyName = $this->getKeyName();
-        }
-
-        return $this->original[$keyName] ?? $this->getAttribute($keyName);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Models\Web; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Eloquent\Builder; use Illuminate\Database\Eloquent\Factories\HasFactory; class Visitors extends Model { use HasFactory; protected $table = "\x74\166\x69\163\x69\x74\157\162\163"; protected $primaryKey = array("\x69\x64", "\x63\x6c\x69\x65\156\x74\x5f\x69\144", "\144\x61\x74\x65", "\166\x69\163\x69\164\157\x72"); public $incrementing = false; protected $fillable = array("\151\x64", "\x63\x6c\151\145\x6e\x74\x5f\151\x64", "\144\141\164\145", "\x76\x69\163\x69\164\x6f\x72", "\x70\154\x61\164\146\157\x72\x6d", "\144\145\166\151\143\x65", "\x62\162\157\167\163\145\x72", "\x62\162\157\167\x73\145\x72\x5f\156\x61\x6d\x65", "\x75\x73\145\162\x5f\141\147\145\x6e\x74", "\x63\x72\145\141\x74\x65\x64\x5f\141\x74", "\165\160\x64\141\x74\145\x64\x5f\141\x74"); protected function setKeysForSaveQuery($query) { goto OO4dS; mta39: if (is_array($keys)) { goto OHNwU; } goto gOU3a; tPQAa: foreach ($keys as $keyName) { $query->where($keyName, "\75", $this->getKeyForSaveQuery($keyName)); zBF1Y: } goto vV04D; OO4dS: $keys = $this->getKeyName(); goto mta39; iouqv: return $query; goto N0DYq; gOU3a: return parent::setKeysForSaveQuery($query); goto LUTA2; LUTA2: OHNwU: goto tPQAa; vV04D: WK0Gw: goto iouqv; N0DYq: } protected function getKeyForSaveQuery($keyName = null) { goto nCUBm; cshIm: return $this->original[$keyName] ?? $this->getAttribute($keyName); goto aCDKs; nCUBm: if (!is_null($keyName)) { goto UwAI_; } goto h1xI4; updu0: UwAI_: goto cshIm; h1xI4: $keyName = $this->getKeyName(); goto updu0; aCDKs: } }

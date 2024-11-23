@@ -1,69 +1,8 @@
 <?php
-
-namespace App\Services\Master;
-
-use App\Repositories\Master\LibraryOfficerMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class LibraryOfficerMasterService 
-{
-	private LibraryOfficerMasterRepository $LibraryOfficer_repo;
-    protected $client_id = '';
-
-    public function __construct()
-    {
-        $this->LibraryOfficer_repo = new LibraryOfficerMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get()
-    {
-        return new Collection($this->LibraryOfficer_repo->get($this->client_id));
-    }
-
-	/**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->created_by	= $username;
-        $data->created_at	= $datetime_now;
-
-        return $this->LibraryOfficer_repo->store($data, $this->client_id);
-    }
-
-	/**
-     * @param object $data
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->modified_date	= $username;
-        $data->modified_by		= $datetime_now;
-
-        return $this->LibraryOfficer_repo->update($data, $id, $this->client_id);
-    }
-
-	/**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->LibraryOfficer_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Master; use App\Repositories\Master\LibraryOfficerMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class LibraryOfficerMasterService { private LibraryOfficerMasterRepository $LibraryOfficer_repo; protected $client_id = ''; public function __construct() { $this->LibraryOfficer_repo = new LibraryOfficerMasterRepository(); $this->client_id = config("\141\x70\160\x2e\x63\x6c\151\x65\156\x74\137\151\x64", ''); } public function get() { return new Collection($this->LibraryOfficer_repo->get($this->client_id)); } public function store(object $data) : bool { goto b4KzY; gR0lW: $username = auth()->user()->email; goto h2nWQ; h2nWQ: $data->created_by = $username; goto Uwvff; b4KzY: $datetime_now = Carbon::now("\101\163\x69\x61\57\x4a\x61\153\141\x72\164\141"); goto gR0lW; yw4RY: return $this->LibraryOfficer_repo->store($data, $this->client_id); goto MoT0s; Uwvff: $data->created_at = $datetime_now; goto yw4RY; MoT0s: } public function update(object $data, string $id) : bool { goto xUWCF; hfch0: $data->modified_by = $datetime_now; goto NvFZ7; NvFZ7: return $this->LibraryOfficer_repo->update($data, $id, $this->client_id); goto B5iER; zHPsu: $data->modified_date = $username; goto hfch0; xUWCF: $datetime_now = Carbon::now("\101\163\x69\x61\x2f\112\x61\153\141\x72\164\x61"); goto eOXDk; eOXDk: $username = auth()->user()->email; goto zHPsu; B5iER: } public function delete(string $id) { return $this->LibraryOfficer_repo->delete($id, $this->client_id); } }

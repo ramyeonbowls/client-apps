@@ -1,76 +1,8 @@
 <?php
-
-namespace App\Http\Requests\Setting;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class StoreHumoriaMasterRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|unique:tfitur,id,category|max:50',
-            'title' => 'required|max:255',
-            'author' => 'max:50',
-            'description' => 'required',
-            'flag_aktif' => 'required|max:5',
-            'file' => [
-                'required',
-                'mimes:jpeg,png,jpg',
-                'max:1500',
-                Rule::dimensions()->maxWidth(700)->maxHeight(350),
-            ],
-            'current_file' => 'nullable',
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes(): array
-    {
-        return [
-            'id' => 'ID Humoria',
-            'title' => 'Judul Humoria',
-            'flag_aktif' => 'Aktif Humoria',
-            'description' => 'Konten Humoria',
-            'file' => 'File Humoria',
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        $dimensionMessage = 'The file dimensions are invalid.';
-        $dimensionMessage = 'The file dimensions can\'t be larger than 700 x 350 pixels.';
-
-        return [
-            'file.required' => 'The file is required.',
-            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
-            'file.max' => 'The file size cannot be larger than 1500 KB.',
-            'file.dimensions' => $dimensionMessage,
-        ];
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class StoreHumoriaMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\144" => "\162\x65\161\x75\151\162\145\144\x7c\x75\156\x69\x71\165\145\72\x74\146\x69\x74\x75\x72\x2c\151\144\x2c\143\x61\x74\x65\147\x6f\162\x79\174\x6d\x61\x78\72\x35\60", "\164\x69\x74\x6c\145" => "\x72\145\x71\165\x69\x72\x65\x64\x7c\x6d\x61\170\72\62\x35\x35", "\141\165\x74\x68\x6f\x72" => "\x6d\x61\x78\x3a\x35\x30", "\144\x65\x73\143\162\151\x70\164\x69\x6f\156" => "\162\145\x71\165\151\162\x65\144", "\146\x6c\141\147\x5f\x61\x6b\x74\x69\146" => "\x72\145\161\x75\151\162\145\x64\174\x6d\x61\x78\72\x35", "\x66\x69\154\145" => ["\162\x65\x71\x75\x69\x72\145\x64", "\155\x69\x6d\145\x73\x3a\x6a\160\x65\x67\x2c\160\x6e\147\54\x6a\x70\147", "\x6d\141\170\72\x31\65\60\60", Rule::dimensions()->maxWidth(700)->maxHeight(350)], "\143\x75\162\162\x65\156\164\137\146\151\x6c\145" => "\156\x75\154\154\141\x62\154\145"]; } public function attributes() : array { return ["\151\144" => "\x49\104\40\110\x75\155\157\x72\x69\x61", "\164\x69\x74\x6c\145" => "\x4a\x75\144\165\x6c\40\110\x75\155\x6f\x72\x69\x61", "\x66\x6c\141\147\137\141\x6b\x74\x69\x66" => "\101\153\164\x69\146\40\x48\x75\x6d\157\162\151\x61", "\x64\145\x73\x63\162\151\160\x74\x69\157\x6e" => "\x4b\157\156\164\145\156\40\110\x75\x6d\157\x72\x69\141", "\146\x69\154\145" => "\106\x69\154\x65\40\110\x75\x6d\157\162\x69\141"]; } public function messages() : array { goto ZC9Sn; q0YDy: $dimensionMessage = "\124\x68\145\x20\146\151\154\x65\x20\144\151\x6d\145\156\x73\x69\x6f\156\163\x20\x63\141\156\47\x74\40\x62\145\x20\x6c\x61\x72\x67\145\162\40\164\150\141\x6e\40\x37\60\60\40\170\x20\63\65\60\x20\x70\151\170\145\154\x73\56"; goto V3cSC; V3cSC: return ["\x66\151\154\145\x2e\x72\x65\161\x75\151\162\145\x64" => "\x54\x68\x65\x20\146\151\x6c\x65\x20\151\x73\x20\x72\x65\161\x75\x69\162\x65\144\x2e", "\146\x69\154\145\x2e\155\x69\155\x65\163" => "\x54\150\145\40\x66\x69\154\x65\x20\155\165\163\x74\x20\x62\x65\x20\x61\x20\x76\x61\154\x69\144\x20\x69\155\141\x67\145\x20\x74\171\x70\145\x20\x28\152\x70\145\x67\x2c\40\160\x6e\x67\54\40\x6a\x70\147\x29\56", "\x66\x69\154\145\x2e\x6d\141\x78" => "\x54\x68\x65\x20\x66\x69\x6c\145\40\x73\151\x7a\145\40\x63\141\156\156\157\x74\40\142\145\x20\x6c\x61\x72\x67\145\162\x20\x74\150\x61\x6e\40\61\x35\60\60\x20\x4b\x42\56", "\146\151\x6c\145\56\x64\x69\x6d\x65\x6e\x73\151\x6f\156\163" => $dimensionMessage]; goto uk9XU; ZC9Sn: $dimensionMessage = "\124\x68\x65\x20\146\x69\x6c\145\x20\144\151\x6d\x65\x6e\163\x69\157\156\163\x20\141\x72\x65\40\x69\156\166\141\154\x69\x64\56"; goto q0YDy; uk9XU: } }

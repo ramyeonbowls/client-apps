@@ -1,79 +1,8 @@
 <?php
-
-namespace App\Repositories\Report;
-
-use App\Models\IconMenu\IconMenu;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
-
-class LoansReportRepository 
-{
-	/**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get($filter): Collection
-    {
-        $client_id = $this->getClientID($filter);
-        extract($filter);
-
-        return DB::table('trent_book as a')
-            ->select(
-                'b.instansi_name as wl_name',
-                'b.provinsi_id',
-                'c.provinsi_name',
-                'b.kabupaten_id',
-                'd.kabupaten_name',
-                'e.name',
-                'a.start_date',
-                'a.end_date',
-                'f.title',
-                'a.flag_end',
-            )
-            ->join('tclient as b', function ($join) {
-                $join->on('a.client_id', '=', 'b.client_id');
-            })
-            ->join('tprovinsi as c', function ($join) {
-                $join->on('b.provinsi_id', '=', 'c.provinsi_id');
-            })
-            ->join('tkabupaten as d', function ($join) {
-                $join->on('b.kabupaten_id', '=', 'd.kabupaten_id');
-            })
-            ->join('users as e', function ($join) {
-                $join->on('a.user_id', '=', 'e.id')
-                    ->on('a.client_id', '=', 'e.client_id');
-            })
-            ->join('tbook as f', function ($join) {
-                $join->on('a.book_id', '=', 'f.book_id');
-            })
-            ->where('a.client_id', '=', $client_id)
-            ->where('b.provinsi_id', '=', $PROVINSI)
-            ->where('b.kabupaten_id', '=', $KABUPATEN)
-            ->when(!empty($END_DATE), function ($query) use ($START_DATE, $END_DATE) {
-                return $query->whereBetween(DB::raw('DATE(a.created_at)'), [$START_DATE, $END_DATE]);
-            }, function ($query) use ($START_DATE) {
-                return $query->where(DB::raw('DATE(a.created_at)'), '=', $START_DATE);
-            })
-            ->when(!empty($STATUS), function ($query) use ($STATUS) {
-                return $query->where('a.flag_end', $STATUS);
-            })
-            ->sharedLock()
-            ->get();
-    }
-    
-    private function getClientID($filter)
-    {
-        extract($filter);
-
-        $query = DB::table('tclient as a')
-            ->select(
-                'a.client_id'
-            )
-            ->where('a.provinsi_id', '=', $PROVINSI)
-            ->where('a.kabupaten_id', '=', $KABUPATEN)
-            ->where('a.instansi_name', '=', $WL)
-            ->sharedLock()
-            ->get();
-        return $query[0]->client_id ?? '';
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class LoansReportRepository { public function get($filter) : Collection { goto TLta1; TLta1: $client_id = $this->getClientID($filter); goto JWY3m; AsuNf: return DB::table("\164\x72\x65\x6e\x74\x5f\142\x6f\x6f\153\40\x61\163\40\x61")->select("\x62\56\x69\x6e\x73\x74\x61\156\x73\x69\x5f\156\x61\155\x65\40\x61\163\40\167\x6c\x5f\156\x61\155\145", "\142\x2e\x70\162\x6f\166\151\x6e\x73\x69\x5f\x69\x64", "\143\56\160\x72\x6f\166\x69\x6e\x73\x69\137\x6e\141\x6d\x65", "\142\56\153\x61\142\165\160\x61\164\145\156\137\x69\x64", "\x64\x2e\x6b\141\x62\x75\x70\x61\x74\145\x6e\137\x6e\x61\155\x65", "\x65\56\x6e\x61\155\x65", "\141\56\163\164\141\162\x74\137\x64\x61\x74\x65", "\141\56\145\x6e\x64\x5f\144\x61\164\x65", "\x66\x2e\x74\x69\x74\x6c\145", "\x61\x2e\146\x6c\x61\147\x5f\145\x6e\144")->join("\x74\143\154\x69\x65\156\x74\40\x61\x73\x20\142", function ($join) { $join->on("\141\x2e\143\154\x69\145\156\164\x5f\151\144", "\75", "\142\56\143\x6c\x69\145\156\164\x5f\x69\x64"); })->join("\164\160\162\157\166\151\x6e\163\x69\x20\141\x73\x20\x63", function ($join) { $join->on("\142\x2e\160\x72\x6f\x76\x69\x6e\x73\x69\137\151\144", "\75", "\x63\x2e\x70\x72\157\x76\151\156\163\151\x5f\151\144"); })->join("\x74\x6b\141\x62\x75\160\x61\x74\145\156\40\141\x73\40\144", function ($join) { $join->on("\x62\56\153\141\x62\x75\160\141\164\145\x6e\x5f\x69\x64", "\x3d", "\x64\x2e\x6b\x61\x62\x75\x70\x61\164\x65\156\137\x69\x64"); })->join("\165\163\x65\x72\163\40\x61\163\40\x65", function ($join) { $join->on("\x61\56\165\163\145\162\137\x69\144", "\x3d", "\x65\56\151\x64")->on("\x61\56\143\154\x69\145\156\x74\x5f\151\x64", "\75", "\145\56\143\x6c\x69\145\156\x74\137\x69\144"); })->join("\164\x62\157\157\153\40\141\163\x20\146", function ($join) { $join->on("\141\x2e\142\157\157\153\x5f\x69\144", "\75", "\146\x2e\x62\157\157\153\x5f\151\x64"); })->where("\141\56\143\x6c\x69\145\156\164\137\151\x64", "\75", $client_id)->where("\142\56\x70\x72\x6f\166\x69\156\163\x69\x5f\151\x64", "\x3d", $PROVINSI)->where("\142\56\x6b\141\142\165\160\x61\164\x65\x6e\137\x69\144", "\x3d", $KABUPATEN)->when(!empty($END_DATE), function ($query) use($START_DATE, $END_DATE) { return $query->whereBetween(DB::raw("\104\x41\x54\105\50\x61\56\143\x72\x65\141\x74\145\x64\137\141\x74\x29"), [$START_DATE, $END_DATE]); }, function ($query) use($START_DATE) { return $query->where(DB::raw("\x44\x41\x54\x45\x28\x61\x2e\x63\162\x65\x61\164\x65\144\x5f\x61\164\x29"), "\x3d", $START_DATE); })->when(!empty($STATUS), function ($query) use($STATUS) { return $query->where("\x61\x2e\146\x6c\141\147\x5f\145\156\144", $STATUS); })->sharedLock()->get(); goto ZGbmu; JWY3m: extract($filter); goto AsuNf; ZGbmu: } private function getClientID($filter) { goto yYOlY; vgJaA: $query = DB::table("\164\143\154\x69\145\156\x74\40\141\x73\x20\141")->select("\141\56\x63\154\151\145\x6e\164\137\x69\144")->where("\x61\56\160\162\157\166\151\156\x73\151\x5f\x69\x64", "\75", $PROVINSI)->where("\141\56\153\x61\142\165\x70\141\164\x65\x6e\x5f\x69\x64", "\75", $KABUPATEN)->where("\x61\56\x69\x6e\163\x74\x61\156\163\151\x5f\156\141\155\x65", "\75", $WL)->sharedLock()->get(); goto Rc1hu; yYOlY: extract($filter); goto vgJaA; Rc1hu: return $query[0]->client_id ?? ''; goto lNEn6; lNEn6: } }

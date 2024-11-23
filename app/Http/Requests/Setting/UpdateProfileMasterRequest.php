@@ -1,81 +1,8 @@
 <?php
-
-namespace App\Http\Requests\Setting;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-
-class UpdateProfileMasterRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        return [
-            'application_name' => 'required|string|max:150',
-            'address' => 'required|string|max:200',
-            'provinsi_id' => 'required|string|max:25',
-            'kabupaten_id' => 'required|string|max:25',
-            'kecamatan_id' => 'required|string|max:25',
-            'kelurahan_id' => 'required|string|max:25',
-            'npwp' => 'string|max:50',
-            'pers_responsible' => 'required|string|max:50',
-            'pos_pers_responsible' => 'required|string|max:50',
-            'mou_sign_name' => 'required|string|max:50',
-            'pos_sign_name' => 'required|string|max:50',
-            'administrator_name' => 'required|string|max:50',
-            'administrator_phone' => 'required|string|max:20',
-            'updated_at' => 'nullable',
-            'country_id' => 'string|max:25'
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes(): array
-    {
-        return [
-            'application_name' => 'Nama Aplikasi',
-            'address' => 'Alamat',
-            'provinsi_id' => 'Provinsi',
-            'kabupaten_id' => 'Kabupaten',
-            'kecamatan_id' => 'Kecamatan',
-            'kelurahan_id' => 'Kelurahan',
-            'npwp' => 'NPWP',
-            'pers_responsible' => 'Nama Penanggung Jawab',
-            'pos_pers_responsible' => 'Jabatan Penanggung Jawab',
-            'mou_sign_name' => 'Nama Penandatangan MOU',
-            'pos_sign_name' => 'Jabatan Penandatangan MOU',
-            'administrator_name' => 'Nama Pengelola (Admin)',
-            'administrator_phone' => 'Nomor HP Pengelola (Admin)',
-            'country_id' => 'Negara'
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        return [
-            'file.dimensions' => 'The :attribute dimensions cant be larger than 1530 x 510 pixels.',
-        ];
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Support\Facades\Validator; use Illuminate\Validation\Rule; class UpdateProfileMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x61\x70\160\154\x69\x63\141\x74\x69\x6f\156\137\x6e\141\x6d\x65" => "\162\x65\161\x75\151\162\145\144\174\x73\164\162\x69\156\x67\x7c\x6d\x61\170\72\x31\65\x30", "\141\144\x64\x72\x65\x73\x73" => "\x72\145\161\165\x69\x72\x65\144\174\x73\x74\x72\151\x6e\x67\174\x6d\141\x78\72\62\x30\x30", "\x70\x72\x6f\x76\x69\156\x73\x69\137\151\144" => "\x72\145\x71\165\151\162\145\144\174\163\x74\x72\x69\x6e\x67\174\155\x61\170\72\62\65", "\x6b\141\x62\x75\x70\x61\164\x65\156\x5f\x69\144" => "\x72\145\x71\x75\151\162\x65\144\174\x73\164\162\x69\156\147\174\155\x61\170\x3a\x32\x35", "\153\x65\x63\x61\155\x61\x74\x61\156\137\x69\x64" => "\x72\145\x71\x75\x69\162\x65\x64\x7c\x73\x74\162\151\156\x67\x7c\155\141\170\x3a\62\x35", "\x6b\x65\x6c\165\162\x61\150\141\x6e\137\151\144" => "\162\x65\x71\165\x69\x72\145\144\174\x73\164\162\x69\x6e\x67\x7c\x6d\141\x78\72\x32\65", "\156\160\x77\160" => "\x73\164\x72\151\156\x67\174\155\x61\170\x3a\x35\x30", "\160\145\x72\x73\137\162\x65\x73\160\x6f\x6e\x73\151\142\154\x65" => "\x72\145\161\x75\x69\162\x65\144\174\x73\x74\162\x69\156\x67\174\155\141\x78\72\65\x30", "\160\x6f\163\137\160\x65\162\x73\137\x72\145\163\x70\157\156\163\x69\x62\x6c\x65" => "\x72\x65\x71\165\x69\x72\x65\x64\174\163\164\x72\151\x6e\147\174\155\141\170\x3a\65\60", "\155\157\165\x5f\x73\x69\147\x6e\137\156\141\x6d\x65" => "\162\x65\x71\x75\x69\x72\x65\144\x7c\x73\x74\x72\151\156\x67\x7c\155\x61\170\72\65\x30", "\160\x6f\163\137\x73\151\147\x6e\x5f\x6e\141\155\145" => "\162\145\x71\x75\151\x72\x65\144\174\163\164\x72\x69\x6e\147\174\x6d\x61\170\x3a\65\x30", "\141\144\155\151\156\151\x73\164\x72\141\164\x6f\x72\x5f\156\x61\x6d\x65" => "\x72\x65\x71\165\x69\162\145\144\174\163\x74\162\x69\x6e\147\x7c\x6d\x61\x78\72\x35\x30", "\x61\x64\155\151\x6e\151\163\x74\x72\x61\164\x6f\162\x5f\160\150\157\156\x65" => "\x72\145\161\165\151\162\x65\x64\174\x73\164\162\151\x6e\147\174\x6d\x61\x78\72\62\60", "\165\x70\144\141\164\145\144\137\141\164" => "\x6e\165\154\154\x61\142\x6c\x65", "\x63\157\x75\x6e\x74\x72\171\x5f\151\x64" => "\x73\164\x72\x69\156\x67\174\155\141\170\72\x32\x35"]; } public function attributes() : array { return ["\x61\x70\160\154\x69\143\141\164\151\x6f\156\x5f\x6e\141\x6d\145" => "\116\x61\155\141\x20\101\160\154\x69\153\x61\163\151", "\141\144\144\162\x65\163\x73" => "\101\154\x61\155\141\x74", "\160\x72\157\166\151\156\163\151\137\x69\x64" => "\120\x72\x6f\166\x69\156\x73\151", "\x6b\x61\x62\165\160\x61\x74\x65\156\137\151\144" => "\x4b\x61\x62\165\160\141\x74\x65\x6e", "\x6b\145\143\x61\155\141\164\x61\156\x5f\x69\x64" => "\x4b\145\x63\x61\155\x61\x74\x61\156", "\153\x65\x6c\x75\x72\x61\150\141\156\137\x69\144" => "\x4b\x65\154\x75\162\x61\150\x61\x6e", "\156\160\167\160" => "\x4e\x50\127\x50", "\x70\x65\x72\163\x5f\x72\145\163\x70\157\156\x73\x69\142\x6c\x65" => "\x4e\x61\155\x61\x20\120\145\156\141\x6e\x67\x67\x75\x6e\x67\40\112\x61\x77\141\x62", "\160\x6f\x73\x5f\160\145\x72\x73\137\162\x65\x73\x70\157\156\x73\x69\142\x6c\x65" => "\x4a\x61\142\141\164\141\156\x20\120\x65\156\141\156\x67\147\x75\x6e\x67\40\x4a\141\167\141\x62", "\155\x6f\x75\x5f\x73\x69\147\x6e\137\156\141\155\x65" => "\x4e\141\x6d\x61\x20\120\145\156\141\156\x64\x61\x74\x61\156\147\x61\156\40\x4d\x4f\125", "\x70\157\163\x5f\163\151\x67\156\137\156\x61\155\x65" => "\112\141\142\x61\164\x61\x6e\x20\120\x65\156\x61\156\144\x61\164\141\156\x67\141\156\40\115\117\x55", "\x61\144\x6d\151\156\x69\163\164\x72\x61\164\157\162\137\x6e\x61\155\x65" => "\116\141\155\141\x20\x50\145\156\147\x65\x6c\x6f\x6c\141\40\50\x41\x64\x6d\x69\x6e\51", "\141\144\x6d\151\x6e\x69\163\x74\x72\x61\164\157\x72\137\160\x68\157\x6e\145" => "\116\157\x6d\x6f\162\x20\110\x50\40\x50\145\156\147\145\x6c\x6f\x6c\141\x20\x28\x41\144\x6d\x69\156\x29", "\x63\157\165\156\x74\x72\171\x5f\x69\x64" => "\x4e\x65\x67\141\x72\x61"]; } public function messages() : array { return ["\x66\x69\154\x65\56\x64\x69\155\145\x6e\163\151\x6f\x6e\163" => "\124\150\x65\40\x3a\141\164\164\162\x69\x62\165\164\145\40\144\x69\155\145\156\x73\x69\x6f\x6e\163\x20\143\x61\156\164\40\142\145\40\154\x61\x72\x67\x65\x72\40\x74\150\x61\156\40\x31\65\x33\x30\x20\170\x20\x35\61\60\40\x70\x69\170\145\x6c\x73\x2e"]; } }

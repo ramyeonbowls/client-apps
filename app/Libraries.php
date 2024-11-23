@@ -1,47 +1,8 @@
 <?php
-
-namespace App;
-
-use App;
-use Config;
-use Artisan;
-use Illuminate\Support\Facades\DB;
-
-class Libraries 
-{
-	public static function isDinas()
-	{
-		$result['status']		= false;
-		$result['category']		= '';
-		$result['level']		= '';
-		$result['country']		= '';
-		$result['provinsi']		= '';
-		$result['kabupaten']	= '';
-		$client_id			= config('app.client_id', '');
-		try {
-			$parameter = DB::table('tclient as a')
-				->select(
-					'a.client_category',
-					'a.client_level',
-					'a.country_id',
-					'a.provinsi_id',
-					'a.kabupaten_id'
-				)
-				->where('a.client_id', $client_id)
-				->first();
-
-			if($parameter) {
-				$result['status']		= ($parameter->client_category == '1006') ? true : false;
-				$result['category']		= $parameter->client_category;
-				$result['level']		= $parameter->client_level;
-				$result['country']		= $parameter->country_id;
-				$result['provinsi']		= $parameter->provinsi_id;
-				$result['kabupaten']	= $parameter->kabupaten_id;
-
-				return $result;
-			}
-		} catch (\PDOException $e) {
-			return $result;
-		}
-	}
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App; use App; use Config; use Artisan; use Illuminate\Support\Facades\DB; class Libraries { public static function isDinas() { goto nV3C7; XndCs: $result["\160\x72\157\x76\151\x6e\163\x69"] = ''; goto cpao2; vNzj8: $client_id = config("\x61\x70\160\x2e\x63\154\151\145\x6e\x74\x5f\151\x64", ''); goto j_eEW; nzlGn: $result["\154\x65\x76\x65\x6c"] = ''; goto xITNq; j_eEW: try { goto fPvk3; fxZTk: $result["\154\x65\166\145\x6c"] = $parameter->client_level; goto iMLux; dBfNC: $result["\143\x61\x74\145\x67\x6f\162\x79"] = $parameter->client_category; goto fxZTk; fPvk3: $parameter = DB::table("\x74\x63\154\x69\145\x6e\x74\40\x61\x73\x20\141")->select("\141\x2e\143\154\151\x65\156\x74\137\143\x61\x74\145\x67\157\x72\171", "\141\x2e\143\154\x69\x65\x6e\164\x5f\154\x65\166\145\x6c", "\x61\56\x63\x6f\x75\156\164\x72\171\x5f\151\144", "\x61\x2e\160\162\x6f\x76\x69\x6e\x73\151\137\x69\144", "\x61\x2e\x6b\141\x62\165\160\141\x74\145\156\137\x69\144")->where("\x61\56\143\154\x69\145\156\164\137\x69\x64", $client_id)->first(); goto SNfP_; SNfP_: if (!$parameter) { goto XCpi7; } goto gG14u; Sbrr8: $result["\160\x72\157\166\x69\156\163\151"] = $parameter->provinsi_id; goto FSnjS; gG14u: $result["\163\164\141\164\165\x73"] = $parameter->client_category == "\x31\60\x30\x36" ? true : false; goto dBfNC; FSnjS: $result["\x6b\141\x62\165\160\141\164\145\x6e"] = $parameter->kabupaten_id; goto z9xSo; FfWWj: XCpi7: goto aRGLr; iMLux: $result["\143\157\x75\156\x74\x72\x79"] = $parameter->country_id; goto Sbrr8; z9xSo: return $result; goto FfWWj; aRGLr: } catch (\PDOException $e) { return $result; } goto x9FFq; nV3C7: $result["\x73\164\141\164\x75\163"] = false; goto tEGtb; xITNq: $result["\143\x6f\165\156\164\x72\x79"] = ''; goto XndCs; tEGtb: $result["\143\x61\164\145\x67\x6f\162\x79"] = ''; goto nzlGn; cpao2: $result["\x6b\x61\x62\165\160\x61\164\x65\156"] = ''; goto vNzj8; x9FFq: } }

@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\FrasaMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class FrasaMasterService 
-{
-	private FrasaMasterRepository $Frasa_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->Frasa_repo = new FrasaMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->Frasa_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Frasa_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Frasa_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->Frasa_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:15             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\FrasaMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class FrasaMasterService { private FrasaMasterRepository $Frasa_repo; protected $client_id = ''; public function __construct() { $this->Frasa_repo = new FrasaMasterRepository(); $this->client_id = config("\141\160\160\56\143\154\x69\x65\156\x74\137\151\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->Frasa_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto Fo_9Y; r4LCG: $data->create_date = $datetime_now; goto OR41d; rxqy4: return $this->Frasa_repo->store($data, $this->client_id); goto TMkDE; Fo_9Y: $datetime_now = Carbon::now("\x41\x73\151\x61\57\112\x61\x6b\x61\162\x74\141"); goto Mby_Q; OR41d: $data->flag_aktif = $data->flag_aktif == "\164\162\165\145" ? "\x59" : "\116"; goto rxqy4; Wtbaz: $data->create_by = $username; goto r4LCG; Mby_Q: $username = auth()->user()->email; goto Wtbaz; TMkDE: } public function update(object $data, string $id) : bool { goto ETmxw; N3kyH: $data->flag_aktif = $data->flag_aktif == "\x74\x72\165\x65" ? "\131" : "\116"; goto raJ0s; LQfSx: $data->modified_by = $username; goto LRXw8; d5Vfy: $username = auth()->user()->email; goto wMNsx; LRXw8: $data->modified_date = $datetime_now; goto N3kyH; raJ0s: return $this->Frasa_repo->update($data, $id, $this->client_id); goto FMrSD; wMNsx: $data->file = $data->file ?? $data->current_file; goto LQfSx; ETmxw: $datetime_now = Carbon::now("\x41\163\x69\141\x2f\112\141\153\x61\162\x74\141"); goto d5Vfy; FMrSD: } public function delete(string $id) { return $this->Frasa_repo->delete($id, $this->client_id); } }

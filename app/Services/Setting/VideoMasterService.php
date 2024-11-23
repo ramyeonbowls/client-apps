@@ -1,74 +1,8 @@
 <?php
-
-namespace App\Services\Setting;
-
-use App\Repositories\Setting\VideoMasterRepository;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Collection;
-
-class VideoMasterService 
-{
-	private VideoMasterRepository $Video_repo;
-
-    protected $client_id = '';
-    public function __construct()
-    {
-        $this->Video_repo = new VideoMasterRepository();
-        $this->client_id = config('app.client_id', '');
-    }
-
-    /**
-     * @param array $filter
-     * @return Collection
-     */
-    public function get(array $filter = []): Collection
-    {
-        return new Collection($this->Video_repo->get($filter, $this->client_id));
-    }
-
-    /**
-     * @param object $data
-     * @return bool
-     */
-    public function store(object $data): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->create_by        = $username;
-        $data->create_date      = $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Video_repo->store($data, $this->client_id);
-    }
-
-     /**
-     * @param object $data
-     * @param string $id
-     * @return bool
-     */
-    public function update(object $data, string $id): bool
-    {
-        $datetime_now = Carbon::now("Asia/Jakarta");
-        $username = auth()->user()->email;
-
-        $data->file = $data->file ?? $data->current_file;
-
-        $data->modified_by 		= $username;
-        $data->modified_date 	= $datetime_now;
-        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
-
-        return $this->Video_repo->update($data, $id, $this->client_id);
-    }
-
-    /**
-     * @param string $id
-     * @return mixed
-     */
-    public function delete(string $id)
-    {
-        return $this->Video_repo->delete($id, $this->client_id);
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:15             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Services\Setting; use App\Repositories\Setting\VideoMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class VideoMasterService { private VideoMasterRepository $Video_repo; protected $client_id = ''; public function __construct() { $this->Video_repo = new VideoMasterRepository(); $this->client_id = config("\141\x70\x70\x2e\143\154\151\145\156\164\137\x69\x64", ''); } public function get(array $filter = []) : Collection { return new Collection($this->Video_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto bziPL; hx7kF: $data->create_date = $datetime_now; goto QcVpG; Cw2Gh: return $this->Video_repo->store($data, $this->client_id); goto YUExo; bziPL: $datetime_now = Carbon::now("\101\163\x69\x61\x2f\x4a\x61\x6b\x61\x72\x74\141"); goto Ywujm; CMWic: $data->create_by = $username; goto hx7kF; QcVpG: $data->flag_aktif = $data->flag_aktif == "\x74\x72\x75\145" ? "\x59" : "\x4e"; goto Cw2Gh; Ywujm: $username = auth()->user()->email; goto CMWic; YUExo: } public function update(object $data, string $id) : bool { goto aoHKk; Mw5nT: $data->modified_by = $username; goto EGOb6; aoHKk: $datetime_now = Carbon::now("\x41\x73\151\141\x2f\x4a\141\x6b\x61\x72\164\141"); goto jMsAG; jMsAG: $username = auth()->user()->email; goto sGSty; AIJZn: return $this->Video_repo->update($data, $id, $this->client_id); goto qgmQe; j50aK: $data->flag_aktif = $data->flag_aktif == "\x74\x72\x75\145" ? "\x59" : "\x4e"; goto AIJZn; EGOb6: $data->modified_date = $datetime_now; goto j50aK; sGSty: $data->file = $data->file ?? $data->current_file; goto Mw5nT; qgmQe: } public function delete(string $id) { return $this->Video_repo->delete($id, $this->client_id); } }

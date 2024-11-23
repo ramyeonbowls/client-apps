@@ -1,51 +1,8 @@
 <?php
-
-namespace App\Models\Web;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class UserOnline extends Model
-{
-    use HasFactory;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'user_onlines';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'username',
-        'online',
-        'status',
-        'last_online'
-    ];
-
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'username';
-
-    /**
-     * Indicates if the model's ID is auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
-     * The data type of the auto-incrementing ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Models\Web; use Illuminate\Database\Eloquent\Factories\HasFactory; use Illuminate\Database\Eloquent\Model; class UserOnline extends Model { use HasFactory; protected $table = "\x75\x73\x65\162\x5f\x6f\156\x6c\151\x6e\x65\x73"; protected $fillable = array("\165\x73\145\162\156\x61\155\145", "\157\x6e\x6c\x69\x6e\x65", "\x73\x74\x61\x74\165\x73", "\154\141\x73\x74\x5f\x6f\156\154\151\x6e\x65"); protected $primaryKey = "\165\x73\145\x72\x6e\x61\x6d\x65"; public $incrementing = false; protected $keyType = "\x73\x74\x72\x69\156\147"; }

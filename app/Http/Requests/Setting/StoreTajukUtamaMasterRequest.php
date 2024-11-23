@@ -1,76 +1,8 @@
 <?php
-
-namespace App\Http\Requests\Setting;
-
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class StoreTajukUtamaMasterRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|unique:tfitur,id,category|max:50',
-            'title' => 'required|max:255',
-            'author' => 'max:50',
-            'description' => 'required',
-            'flag_aktif' => 'required|max:5',
-            'file' => [
-                'required',
-                'mimes:jpeg,png,jpg',
-                'max:1500',
-                Rule::dimensions()->maxWidth(700)->maxHeight(350),
-            ],
-            'current_file' => 'nullable',
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes(): array
-    {
-        return [
-            'id' => 'ID Tajuk Utama',
-            'title' => 'Judul Tajuk Utama',
-            'flag_aktif' => 'Aktif Tajuk Utama',
-            'description' => 'Konten Tajuk Utama',
-            'file' => 'File Tajuk Utama',
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages(): array
-    {
-        $dimensionMessage = 'The file dimensions are invalid.';
-        $dimensionMessage = 'The file dimensions can\'t be larger than 700 x 350 pixels.';
-
-        return [
-            'file.required' => 'The file is required.',
-            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
-            'file.max' => 'The file size cannot be larger than 1500 KB.',
-            'file.dimensions' => $dimensionMessage,
-        ];
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class StoreTajukUtamaMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\144" => "\x72\145\161\165\151\162\145\x64\x7c\165\156\x69\161\x75\145\72\164\146\x69\x74\165\162\x2c\151\144\x2c\143\141\164\145\x67\x6f\162\171\x7c\x6d\141\x78\x3a\65\x30", "\164\x69\164\x6c\x65" => "\162\x65\x71\x75\151\x72\145\144\x7c\x6d\x61\170\72\x32\x35\65", "\141\165\x74\x68\x6f\162" => "\155\141\170\72\x35\x30", "\144\x65\x73\143\x72\151\x70\x74\151\157\x6e" => "\x72\145\161\165\151\x72\145\144", "\x66\x6c\141\147\137\141\153\x74\x69\146" => "\x72\145\161\165\x69\162\x65\x64\174\x6d\x61\x78\72\65", "\x66\151\154\x65" => ["\x72\x65\x71\x75\151\162\x65\144", "\x6d\151\155\x65\x73\x3a\152\x70\x65\147\x2c\160\x6e\x67\x2c\x6a\x70\147", "\155\141\x78\72\x31\x35\x30\60", Rule::dimensions()->maxWidth(700)->maxHeight(350)], "\143\x75\x72\162\x65\x6e\164\137\146\x69\x6c\145" => "\156\x75\154\x6c\141\x62\154\x65"]; } public function attributes() : array { return ["\151\144" => "\x49\104\40\124\x61\x6a\165\x6b\x20\x55\x74\x61\155\141", "\x74\151\164\x6c\145" => "\112\165\x64\165\x6c\x20\124\141\152\x75\x6b\x20\125\x74\x61\x6d\141", "\x66\x6c\x61\x67\x5f\141\153\x74\x69\x66" => "\101\x6b\164\151\146\x20\x54\141\152\x75\153\x20\x55\x74\x61\x6d\x61", "\x64\x65\163\x63\162\151\x70\164\151\157\156" => "\113\x6f\156\x74\145\x6e\x20\124\x61\152\x75\153\40\125\x74\141\x6d\141", "\146\x69\154\145" => "\106\x69\x6c\x65\x20\124\x61\152\165\153\x20\125\x74\x61\x6d\141"]; } public function messages() : array { goto KUUuj; viikE: $dimensionMessage = "\x54\x68\145\40\x66\x69\x6c\145\40\x64\x69\155\x65\156\163\151\157\156\x73\40\143\x61\x6e\x27\164\40\x62\145\x20\154\x61\162\147\145\162\40\x74\x68\x61\156\x20\67\60\x30\x20\x78\40\63\x35\x30\x20\x70\x69\170\x65\x6c\x73\56"; goto I_T4c; I_T4c: return ["\x66\x69\x6c\x65\56\x72\145\161\x75\x69\162\x65\x64" => "\x54\x68\145\x20\146\x69\154\145\x20\x69\163\x20\x72\x65\x71\165\151\162\145\x64\x2e", "\146\151\x6c\x65\x2e\x6d\x69\x6d\145\163" => "\x54\150\145\40\146\x69\154\145\x20\x6d\x75\x73\164\40\x62\145\40\x61\40\166\141\x6c\151\x64\x20\x69\155\141\147\145\40\x74\171\160\145\40\50\152\x70\x65\x67\54\40\x70\x6e\147\54\x20\x6a\160\147\51\56", "\146\151\x6c\145\x2e\x6d\x61\170" => "\x54\150\145\x20\x66\x69\x6c\x65\x20\x73\151\172\x65\x20\143\x61\x6e\x6e\157\x74\40\x62\x65\x20\154\141\162\147\145\162\x20\164\150\x61\156\40\x31\x35\60\x30\40\x4b\x42\x2e", "\146\151\x6c\145\x2e\144\x69\x6d\145\x6e\163\x69\x6f\156\x73" => $dimensionMessage]; goto YiFZB; KUUuj: $dimensionMessage = "\124\x68\x65\x20\x66\151\154\145\40\144\x69\x6d\x65\156\x73\151\x6f\x6e\163\x20\x61\162\145\40\151\x6e\x76\x61\154\x69\x64\56"; goto viikE; YiFZB: } }

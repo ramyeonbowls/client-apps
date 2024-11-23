@@ -1,65 +1,8 @@
 <?php
-
-namespace App\Repositories\Web;
-
-use App\Models\Web\WebMenu;
-use App\Models\Web\WebMenuAcl;
-
-class WebMenuRepository 
-{
-	public function getAll()
-	{
-		return WebMenu::sharedLock()->get();
-	}
-
-	public function getVisibleOnly()
-	{
-		return WebMenu::sharedLock()
-			->where('menu_visible', 1)
-			->get();
-	}
-
-	public function getAccessControlList($username, $parent = 0)
-	{
-		return WebMenu::select(
-				'id',
-				'previd',
-				'menu_fn',
-				'menu_link',
-				'menu_label',
-				'menu_desc',
-				'menu_seq',
-				'menu_icon'
-			)
-			->sharedLock()
-			->where('menu_visible', 1)
-			->where('previd', $parent)
-			->whereIn('id', 
-				WebMenuAcl::sharedLock()
-					->select('menu_id')
-					->where('username', $username)
-			)
-			->orderBy('menu_seq', 'ASC')
-			->get();
-	}
-
-	public function findWebMenuByParentId($parentId)
-    {
-        return WebMenu::select(
-                'id',
-                'previd',
-                'menu_fn',
-                'menu_link',
-                'menu_label',
-                'menu_desc',
-                'menu_seq',
-                'permission',
-                'menu_icon'
-            )
-            ->sharedLock()
-            ->where('menu_visible', 1)
-            ->where('previd', $parentId)
-            ->orderBy('menu_seq', 'ASC')
-            ->get();
-    }
-}
+/*   __________________________________________________
+    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
+    |              on 2024-11-23 17:36:14             |
+    |                                                 |
+    |_________________________________________________|
+*/
+ namespace App\Repositories\Web; use App\Models\Web\WebMenu; use App\Models\Web\WebMenuAcl; class WebMenuRepository { public function getAll() { return WebMenu::sharedLock()->get(); } public function getVisibleOnly() { return WebMenu::sharedLock()->where("\155\x65\x6e\165\137\166\151\163\151\142\154\145", 1)->get(); } public function getAccessControlList($username, $parent = 0) { return WebMenu::select("\151\x64", "\x70\x72\x65\x76\151\144", "\x6d\x65\x6e\x75\x5f\x66\x6e", "\155\x65\x6e\165\x5f\x6c\x69\156\x6b", "\x6d\145\x6e\x75\x5f\x6c\x61\142\x65\x6c", "\155\145\156\x75\x5f\x64\x65\x73\x63", "\155\145\156\165\x5f\163\145\161", "\x6d\145\x6e\165\x5f\151\x63\157\x6e")->sharedLock()->where("\x6d\145\156\x75\x5f\x76\x69\163\151\x62\x6c\145", 1)->where("\x70\x72\145\166\x69\x64", $parent)->whereIn("\151\x64", WebMenuAcl::sharedLock()->select("\x6d\145\x6e\x75\x5f\151\x64")->where("\x75\163\x65\162\156\141\155\145", $username))->orderBy("\155\145\156\165\137\x73\x65\x71", "\101\123\103")->get(); } public function findWebMenuByParentId($parentId) { return WebMenu::select("\x69\144", "\x70\162\145\166\151\x64", "\x6d\145\156\165\x5f\x66\156", "\155\x65\156\165\x5f\x6c\x69\x6e\x6b", "\x6d\145\156\165\137\154\141\142\145\154", "\155\x65\156\165\x5f\x64\145\163\143", "\x6d\145\x6e\165\137\x73\145\161", "\160\145\x72\155\x69\x73\163\151\157\x6e", "\155\145\x6e\165\137\151\x63\x6f\x6e")->sharedLock()->where("\x6d\145\x6e\165\x5f\166\151\163\x69\x62\154\x65", 1)->where("\160\x72\145\x76\x69\x64", $parentId)->orderBy("\155\145\156\165\137\163\145\x71", "\x41\x53\103")->get(); } }
