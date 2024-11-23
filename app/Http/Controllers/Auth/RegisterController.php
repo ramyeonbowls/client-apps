@@ -1,8 +1,162 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Auth; use App\Logs; use Carbon\Carbon; use App\Models\User; use App\NetworkHelper; use App\Models\Parameter; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Illuminate\Support\Facades\Hash; use Illuminate\Auth\Events\Registered; use Illuminate\Support\Facades\Validator; use Illuminate\Foundation\Auth\RegistersUsers; class RegisterController extends Controller { use RegistersUsers; protected $redirectTo = "\x2f"; protected $client_id = ''; public function __construct() { $this->middleware("\x67\165\x65\x73\164"); $this->client_id = config("\141\160\x70\x2e\x63\154\151\145\156\164\x5f\x69\144", ''); } protected function validator(array $data) { return Validator::make($data, ["\156\141\x6d\145" => ["\162\145\161\x75\x69\162\145\144", "\x73\164\162\x69\156\x67", "\155\x61\170\x3a\x32\x35\65"], "\x65\x6d\141\x69\154" => ["\162\x65\x71\x75\151\162\145\144", "\163\x74\162\151\x6e\147", "\x65\x6d\141\x69\154", "\155\x61\x78\72\x32\x35\x35", "\165\x6e\x69\x71\165\145\x3a\165\x73\145\x72\163"], "\160\141\163\x73\x77\157\162\144" => ["\162\145\161\165\151\162\x65\144", "\x73\x74\x72\x69\x6e\x67", "\x6d\151\156\72\x38", "\x63\157\156\146\x69\162\x6d\x65\144"]]); } protected function create(array $data) { return User::create(["\x6e\141\155\x65" => $data["\x6e\x61\x6d\x65"], "\x65\155\141\151\154" => $data["\x65\x6d\x61\151\x6c"], "\x70\x61\x73\163\x77\x6f\162\144" => Hash::make($data["\x70\141\x73\x73\x77\x6f\x72\144"]), "\162\157\x6c\x65" => $data["\162\157\x6c\x65"], "\x66\154\x61\147\x5f\141\x70\x70\162\x6f\166\145" => $data["\146\154\x61\147\x5f\141\160\160\x72\x6f\x76\x65"], "\x63\x6c\x69\x65\156\x74\137\151\144" => $this->client_id]); } public function mregist(Request $request) { goto sKaeG; RTwju: $registrasi = Parameter::where("\x63\154\151\x65\156\x74\137\151\x64", $this->client_id)->where("\156\141\x6d\145", "\162\x65\147\x5f\155\x65\155\142\x65\x72")->first(); goto lwVbx; gVBoH: QamUx: goto PTUVl; sKaeG: $this->validator($request->all())->validate(); goto oMK62; PTUVl: try { goto mg85V; SWBEO: $statusCode = 201; goto UpNJ0; M_ipz: bkUwk: goto PLgGe; F01gu: goto R1ifl; goto jlON1; MZqax: $request["\146\x6c\141\147\x5f\x61\x70\x70\x72\157\166\145"] = "\131"; goto F01gu; tpBg3: $request["\146\154\x61\147\137\141\160\160\x72\x6f\166\145"] = "\x4e"; goto SKh1n; ZS6gp: if ($flag_approve->value) { goto AA6ak; } goto MZqax; jlON1: AA6ak: goto tpBg3; ruEXg: goto vBEBs; goto M_ipz; PLgGe: event(new Registered($user)); goto cqdnZ; UpNJ0: vBEBs: goto gnMhs; EZFSr: Log::warning("\x45\155\141\151\x6c\40\x76\x65\162\x69\x66\151\143\x61\x74\151\157\156\x20\x63\x6f\x75\x6c\x64\x20\156\x6f\x74\40\x62\145\x20\x73\x65\x6e\164\x20\x66\x6f\162\40\x75\x73\145\162\40" . $user->email . "\x20\x62\145\143\x61\x75\x73\x65\40\x74\150\x65\x72\145\40\151\x73\40\156\x6f\x20\151\156\164\x65\x72\x6e\145\164\x20\143\157\x6e\x6e\145\x63\x74\151\157\156\56"); goto xxGYX; xxGYX: $message = "\x50\145\x6e\x64\141\x66\164\141\x72\x61\x6e\40\142\145\162\x68\141\163\x69\154\x21\56"; goto kom4l; Gj365: $request["\x66\x6c\x61\x67\x5f\x61\x70\x70\162\157\166\145"] = "\x59"; goto ZS6gp; mg85V: $flag_approve = Parameter::where("\143\x6c\x69\x65\156\164\137\x69\x64", $this->client_id)->where("\x6e\x61\x6d\x65", "\141\160\x70\137\x72\x65\x67\x5f\x6d\145\155\142\145\162")->first(); goto Gj365; h8ypo: $message = "\120\145\156\x64\x61\x66\x74\x61\x72\141\156\x20\142\145\x72\150\141\163\151\x6c\x21\40\123\151\x6c\x61\150\153\141\x6e\40\x6b\157\x6e\x66\x69\x72\155\141\163\x69\40\145\155\x61\x69\154\x20\x61\x6e\x64\141\56"; goto SWBEO; SKh1n: R1ifl: goto dcgZs; U10cl: $attr = DB::table("\x74\141\x74\164\x72\x5f\155\145\x6d\142\x65\x72")->insert(["\x69\144" => $user->id, "\x63\154\151\x65\x6e\x74\137\151\144" => $this->client_id, "\156\151\153" => $request->nik, "\x70\150\x6f\x6e\145" => $request->phone, "\x62\x69\162\164\150\x64\141\171" => $request->birthday, "\147\145\156\x64\x65\162" => $request->gender, "\143\162\145\141\x74\145\x64\137\141\164" => Carbon::now("\x41\x73\151\141\x2f\x4a\141\x6b\x61\x72\164\x61")]); goto rT1SS; cqdnZ: $user->sendEmailVerificationNotification(); goto h8ypo; rT1SS: \DB::commit(); goto pl7Ez; dcgZs: $user = $this->create($request->all()); goto U10cl; gnMhs: return response()->json($message, $statusCode); goto XUArL; pl7Ez: if (NetworkHelper::hasInternetConnection()) { goto bkUwk; } goto EZFSr; kom4l: $statusCode = 201; goto ruEXg; XUArL: } catch (\Exception $e) { \DB::rollBack(); return response()->json("\120\x65\x6e\x64\x61\146\x74\141\162\141\x6e\x20\x67\x61\x67\x61\x6c\41\40\123\151\154\x61\x68\153\x61\x6e\40\x63\157\x62\x61\x20\x6c\141\147\x69\56", 500); } goto j1FJM; lwVbx: if ($registrasi->value) { goto QamUx; } goto hbVGp; hbVGp: return response()->json("\x50\x65\156\x64\141\x66\x74\141\x72\x61\156\40\144\x69\164\165\164\x75\160\54\40\x73\151\154\141\x68\153\141\x6e\x20\x68\x75\x62\165\156\x67\151\40\x70\x65\x74\x75\147\x61\163\x20\160\x65\x72\160\165\x73\x74\141\x6b\141\141\156\56", 500); goto gVBoH; oMK62: \DB::beginTransaction(); goto RTwju; j1FJM: } }
+
+namespace App\Http\Controllers\Auth;
+
+use App\Logs;
+use Carbon\Carbon;
+use App\Models\User;
+use App\NetworkHelper;
+use App\Models\Parameter;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
+class RegisterController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+    protected $client_id = '';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'flag_approve' => $data['flag_approve'],
+            'client_id' => $this->client_id
+        ]);
+    }
+
+    public function mregist(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        // Begin transaction
+        \DB::beginTransaction();
+        // $logs = new Logs( Arr::last(explode("\\", get_class())) );
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $registrasi = Parameter::where('client_id', $this->client_id)
+            ->where('name', 'reg_member')
+            ->first();
+
+        if(!$registrasi->value){
+            return response()->json('Pendaftaran ditutup, silahkan hubungi petugas perpustakaan.', 500);
+        }
+
+        try {
+            $flag_approve = Parameter::where('client_id', $this->client_id)
+            ->where('name', 'app_reg_member')
+            ->first();
+
+            $request['flag_approve'] = 'Y';
+            if($flag_approve->value){
+                $request['flag_approve'] = 'N';
+            }else{
+                $request['flag_approve'] = 'Y';
+            }
+
+            $user = $this->create($request->all());
+
+            $attr = DB::table('tattr_member')
+                    ->insert([
+                        'id'            => $user->id,
+                        'client_id'     => $this->client_id,
+                        'nik'           => $request->nik,
+                        'phone'         => $request->phone,
+                        'birthday'      => $request->birthday,
+                        'gender'        => $request->gender,
+                        'created_at'     => Carbon::now("Asia/Jakarta")
+                    ]);
+
+            // $queries = DB::getQueryLog();
+            // for($q = 0; $q < count($queries); $q++) {
+            //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            //     $logs->write('SQL', $sql);
+            // }
+
+            // $logs->write(__FUNCTION__, "STOP\r\n");
+            \DB::commit();
+
+            if (NetworkHelper::hasInternetConnection()) {
+				event(new Registered($user));
+
+            	$user->sendEmailVerificationNotification();
+				$message = 'Pendaftaran berhasil! Silahkan konfirmasi email anda.';
+				$statusCode = 201;
+			} else {
+				Log::warning('Email verification could not be sent for user ' . $user->email . ' because there is no internet connection.');
+				$message = 'Pendaftaran berhasil!.';
+				$statusCode = 201;
+			}
+
+            return response()->json($message, $statusCode);
+        } catch (\Exception $e) {
+            // $logs->write('error', $e);
+            // $logs->write(__FUNCTION__, "STOP\r\n");
+            \DB::rollBack();
+
+            return response()->json('Pendaftaran gagal! Silahkan coba lagi.', 500);
+        }
+    }
+}

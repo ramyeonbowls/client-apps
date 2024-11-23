@@ -1,8 +1,126 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Exports\Report; use Maatwebsite\Excel\Sheet; use Maatwebsite\Excel\Events\AfterSheet; use Maatwebsite\Excel\Concerns\WithTitle; use Maatwebsite\Excel\Concerns\WithEvents; use Maatwebsite\Excel\Events\BeforeExport; use Maatwebsite\Excel\Concerns\WithHeadings; use Maatwebsite\Excel\Concerns\ShouldAutoSize; use Maatwebsite\Excel\Concerns\WithCustomStartCell; class VisitorsReportExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize { private $data; public function __construct($data = array()) { goto HdsdV; xarje: Sheet::macro("\163\164\x79\x6c\145\103\145\154\154\163", function (Sheet $sheet, string $cellRange, array $style) { $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style); }); goto uJq7D; v5Bsu: Sheet::macro("\x73\145\164\117\x72\x69\145\x6e\164\x61\164\151\x6f\156", function (Sheet $sheet, $orientation) { $sheet->getDelegate()->getPageSetup()->setOrientation($orientation); }); goto xarje; HdsdV: $this->data = $data; goto v5Bsu; uJq7D: } public function startCell() : string { $starCell = "\101\x31"; return $starCell; } public function title() : string { return "\114\x61\x70\157\x72\x61\x6e\40\x50\x65\156\147\165\x6e\152\x75\156\147"; } public function headings() : array { return ["\x4e\x61\x6d\141\x20\127\x4c", "\120\x72\157\x76\x69\156\163\151", "\113\141\x62\x2f\x4b\x6f\164\x61", "\x4a\x75\x6d\x6c\x61\x68\40\x50\x65\156\147\165\x6e\152\165\156\147"]; } public function registerEvents() : array { return [BeforeExport::class => function (BeforeExport $event) { $event->writer->getProperties()->setTitle("\114\141\160\x6f\x72\141\x6e\40\120\145\x6e\147\x75\156\152\165\x6e\147"); $event->writer->getProperties()->setCreator(config("\x61\160\160\x2e\x6e\x61\155\x65")); }, AfterSheet::class => function (AfterSheet $event) { goto t1qhM; oRPu8: FfXcT: goto TbK3P; BJNVO: $event->sheet->styleCells("\101\62\x3a\x44" . ($row - 1), ["\142\x6f\162\144\145\x72\x73" => ["\x61\x6c\x6c\x42\x6f\162\144\x65\x72\x73" => ["\142\157\x72\x64\x65\162\123\164\x79\x6c\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\x63\157\x6c\x6f\162" => ["\x72\147\x62" => "\70\60\70\60\x38\60"]]]]); goto i1wUC; ohcq7: $event->sheet->styleCells("\x41\61\x3a\104\x31", ["\142\157\162\x64\145\162\163" => ["\141\x6c\154\102\x6f\162\144\145\162\x73" => ["\142\x6f\162\144\x65\x72\123\164\171\x6c\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\x6f\154\x6f\162" => ["\x72\x67\x62" => "\x38\60\70\60\70\x30"]]]]); goto UuDzv; z9Urz: $event->sheet->styleCells("\101\61\72\x44\61", ["\x66\157\x6e\x74" => ["\x62\x6f\154\144" => true], "\x61\154\151\147\156\155\x65\x6e\164" => ["\150\x6f\x72\x69\172\157\x6e\x74\141\154" => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, "\166\145\162\164\x69\143\141\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER], "\146\x69\x6c\154" => ["\146\151\x6c\x6c\x54\171\x70\x65" => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, "\143\x6f\x6c\x6f\162" => ["\x61\162\147\142" => "\146\x66\142\x34\x63\66\x65\67"]]]); goto ohcq7; UuDzv: $row = 2; goto pezpI; TbK3P: if (!(count($this->data) > 0)) { goto Hmdlx; } goto BJNVO; i1wUC: Hmdlx: goto Jhyb3; pezpI: foreach ($this->data as $val) { goto WfdTt; rAJ3N: $event->sheet->setCellValue("\102" . $row, $val["\x70\x72\157\166\151\x6e\x73\151\x5f\x6e\x61\155\x65"]); goto CLoV3; WfdTt: $event->sheet->setCellValue("\101" . $row, $val["\x77\x6c\x5f\156\141\155\x65"]); goto rAJ3N; kx30B: $event->sheet->setCellValue("\104" . $row, $val["\x76\151\x73\x69\164\x6f\162"]); goto R5NXG; LNqkR: B5Tww: goto SbO3F; R5NXG: $row++; goto LNqkR; CLoV3: $event->sheet->setCellValue("\103" . $row, $val["\x6b\141\x62\x75\160\141\164\145\x6e\137\156\141\155\145"]); goto kx30B; SbO3F: } goto oRPu8; t1qhM: $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE); goto z9Urz; Jhyb3: }]; } }
+
+namespace App\Exports\Report;
+
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+
+class VisitorsReportExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize
+{
+    private $data;
+
+    public function __construct($data = [])
+    {
+        $this->data         = $data;
+
+        Sheet::macro('setOrientation', function (Sheet $sheet, $orientation) {
+            $sheet->getDelegate()->getPageSetup()->setOrientation($orientation);
+        });
+
+        Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
+            $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
+        });
+    }
+    
+    /**
+     * @return string
+     */
+    public function startCell(): string
+    {
+        $starCell = 'A1';
+
+        return $starCell;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Laporan Pengunjung';
+    }
+
+    /**
+     * @return array
+     */
+    public function headings(): array
+    {
+        return [
+            'Nama WL',
+            'Provinsi',
+            'Kab/Kota',
+            'Jumlah Pengunjung'
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setTitle( 'Laporan Pengunjung' );
+                $event->writer->getProperties()->setCreator( config('app.name') );
+            },
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
+                $event->sheet
+                    ->styleCells('A1:D1', [
+                        'font' => [
+                           'bold' => true
+                        ],
+                        'alignment' => [
+                           'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                           'vertical'     => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                        ],
+                        'fill' => [
+                           'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                           'color' => ['argb' => 'ffb4c6e7']
+                        ]
+                    ]);
+
+                $event->sheet
+                    ->styleCells('A1:D1', [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['rgb' => '808080'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $row = 2;
+                foreach ($this->data as $val) {
+                    $event->sheet->setCellValue('A'.$row, $val['wl_name']);
+                    $event->sheet->setCellValue('B'.$row, $val['provinsi_name']);
+                    $event->sheet->setCellValue('C'.$row, $val['kabupaten_name']);
+                    $event->sheet->setCellValue('D'.$row, $val['visitor']);
+
+                    $row++;
+                }
+
+                if(count($this->data) > 0){
+                    $event->sheet
+                        ->styleCells('A2:D'.($row-1), [
+                            'borders' => [
+                                'allBorders' => [
+                                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                    'color' => ['rgb' => '808080'],
+                                ],
+                            ],
+                        ]
+                    );
+                }
+            }
+        ];
+    }
+}

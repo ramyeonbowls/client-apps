@@ -1,8 +1,453 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers; use App\Logs; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Crypt; use Illuminate\Support\Facades\Storage; use Yajra\DataTables\Facades\DataTables; class BookController extends Controller { protected $client_id = ''; public function __construct() { $this->middleware("\x61\165\164\150"); $this->client_id = config("\141\160\160\56\x63\x6c\x69\x65\x6e\164\x5f\151\x64", ''); } public function index(Request $request) { return view("\x72\145\x61\144\142\157\x6f\153"); } public function getBook(Request $request) { goto zVsWc; VYYcc: $encryptedContents = Storage::get($filePath); goto VrM4S; e9EMw: $filename = explode("\56", basename($filePath))[0]; goto VYYcc; aj_vd: return response()->make($decryptedContents, 200, ["\x43\157\x6e\x74\145\156\164\x2d\124\171\x70\x65" => "\141\x70\x70\154\x69\x63\x61\x74\x69\157\x6e\x2f\x70\144\146", "\103\x6f\156\164\x65\x6e\x74\x2d\x44\151\163\x70\157\163\151\x74\151\157\x6e" => "\x69\156\x6c\151\x6e\x65\73\x20\x66\151\x6c\x65\x6e\141\155\x65\x3d\42" . $filename . "\x2e\x70\x64\146\x22"]); goto LSpCs; VrM4S: $decryptedContents = Crypt::decrypt($encryptedContents); goto aj_vd; zVsWc: $book = DB::table("\164\155\141\x70\160\151\156\x67\137\x62\x6f\x6f\153\40\141\x73\x20\141")->select(["\x62\56\146\151\154\145\156\141\155\145"])->join("\164\142\157\x6f\153\40\141\163\x20\142", "\141\56\142\x6f\157\x6b\x5f\x69\x64", "\75", "\142\56\142\157\157\153\x5f\x69\144")->where("\x61\56\x63\154\x69\145\156\x74\x5f\x69\x64", $this->client_id)->where("\141\x2e\142\157\x6f\x6b\137\151\144", $request->token)->get(); goto mm4y8; mm4y8: $file = $book[0]->filename; goto VTbjW; VTbjW: $filePath = "\x70\x72\151\166\x61\164\145\57\x62\x6f\157\153\x73\57" . $file; goto e9EMw; LSpCs: } public function ReadCheck(Request $request) { goto xsUPx; YmeUp: $user = auth()->user(); goto Hb0cL; splMF: M97od: goto ypz2K; tpuUM: Yghw5: goto T4wYp; TaDLh: if ($cek_stock->remaining > 0) { goto Yghw5; } goto jGKUl; Yyk4v: MIV2u: goto cYTSG; ypz2K: $cek_stock = DB::table("\x74\x6d\141\x70\160\151\x6e\x67\137\142\157\x6f\x6b\x20\x61\163\x20\x61")->select([DB::raw("\141\56\143\x6f\x70\x79\40\55\40\x49\106\x4e\125\114\114\x28\x64\56\164\157\x74\x61\x6c\54\40\x30\x29\40\141\x73\x20\162\145\155\141\x69\156\151\156\x67")])->leftJoin(DB::raw("\x28\xa\x20\40\x20\40\x20\40\x20\40\x20\40\x20\x20\x20\40\40\x20\40\x20\x20\x20\123\x45\114\105\x43\124\12\40\x20\40\x20\x20\x20\40\40\x20\x20\x20\x20\x20\x20\40\x20\x20\x20\40\40\x20\x20\x20\40\x73\162\143\x2e\x62\x6f\x6f\x6b\137\151\x64\x2c\12\40\x20\40\x20\40\40\40\40\x20\x20\40\x20\x20\40\40\x20\40\x20\x20\x20\40\x20\x20\40\x53\125\x4d\x28\x43\101\x53\x45\x20\x57\x48\105\x4e\x20\163\162\143\56\164\x6f\x74\x61\154\x20\x3e\40\61\x20\x54\110\x45\x4e\40\61\40\x45\114\x53\x45\40\163\x72\143\x2e\164\x6f\x74\141\154\x20\105\116\x44\x29\x20\101\x53\40\164\x6f\x74\x61\x6c\xa\x20\x20\x20\x20\x20\40\x20\x20\x20\40\40\x20\x20\40\40\x20\40\x20\40\x20\106\122\117\115\x20\50\12\40\40\x20\x20\40\x20\40\x20\x20\40\40\x20\x20\x20\x20\x20\x20\40\x20\x20\x20\40\40\40\123\105\x4c\x45\103\x54\x20\x73\162\x2e\x62\157\x6f\x6b\137\x69\x64\54\x20\103\x4f\125\116\x54\x28\x73\162\x2e\142\157\157\153\137\x69\x64\51\40\x41\123\x20\164\x6f\x74\141\154\x2c\x20\x73\x72\56\165\x73\145\162\x5f\x69\x64\xa\x20\40\x20\x20\x20\40\40\x20\40\40\40\x20\x20\x20\40\x20\40\x20\x20\40\x20\x20\40\40\106\122\x4f\115\x20\50\xa\40\40\40\x20\40\40\40\40\40\40\40\40\40\x20\40\x20\x20\40\40\40\40\x20\x20\x20\40\40\x20\x20\x53\x45\114\x45\x43\x54\40\x62\x6f\x6f\153\x5f\151\144\x2c\x20\165\x73\x65\x72\x5f\x69\x64\12\x20\x20\40\40\x20\x20\40\40\x20\x20\x20\40\x20\x20\40\x20\x20\40\40\40\40\x20\40\x20\x20\x20\40\40\106\122\x4f\115\x20\164\x74\x72\x78\137\x72\x65\x61\x64\12\40\40\x20\40\x20\40\x20\40\40\x20\40\x20\40\40\x20\40\x20\x20\40\x20\x20\40\40\x20\40\x20\x20\40\127\110\x45\x52\105\12\40\x20\40\x20\x20\x20\40\x20\40\40\40\x20\x20\40\x20\40\x20\x20\40\40\40\40\x20\x20\40\40\40\x20\40\40\40\x20\x63\x6c\x69\x65\156\x74\137\151\x64\x20\75\40\47" . $this->client_id . "\47\12\x20\x20\x20\40\40\40\40\40\x20\40\40\x20\x20\x20\40\40\40\x20\x20\40\40\x20\40\40\x20\40\40\x20\40\40\x20\x20\101\x4e\x44\x20\146\154\x61\x67\x5f\x65\x6e\x64\40\41\75\x20\x27\x59\x27\12\x20\40\40\40\40\x20\40\40\40\40\x20\40\x20\40\x20\40\40\40\40\40\40\x20\x20\40\x20\x20\x20\x20\12\40\40\x20\x20\40\x20\x20\40\x20\40\x20\40\40\x20\x20\x20\x20\x20\x20\x20\40\40\40\40\40\40\x20\40\x55\x4e\111\x4f\x4e\x20\101\114\x4c\12\40\x20\40\40\40\40\x20\40\40\40\40\40\40\x20\x20\40\40\40\40\40\x20\40\x20\x20\40\x20\40\x20\xa\x20\40\x20\x20\40\x20\40\40\x20\40\40\40\x20\40\40\x20\x20\40\x20\40\x20\x20\40\x20\x20\x20\40\x20\123\105\x4c\x45\103\x54\x20\x62\x6f\x6f\153\137\x69\144\54\x20\165\x73\x65\162\137\x69\144\12\x20\x20\x20\40\x20\40\40\x20\x20\40\x20\40\x20\40\40\x20\x20\x20\40\x20\x20\x20\40\40\40\x20\x20\x20\x46\122\117\115\x20\x74\x72\x65\x6e\x74\x5f\x62\x6f\157\153\xa\x20\x20\x20\40\40\x20\40\x20\x20\40\x20\x20\x20\x20\x20\x20\x20\x20\x20\40\x20\40\x20\40\x20\x20\40\x20\x57\x48\x45\x52\x45\xa\x20\x20\40\40\40\x20\40\x20\x20\x20\40\x20\40\x20\x20\40\40\40\x20\40\40\40\40\x20\40\40\40\40\40\40\40\40\143\x6c\151\145\x6e\164\137\x69\x64\40\75\40\47" . $this->client_id . "\x27\xa\40\40\40\40\40\x20\40\40\x20\40\x20\40\40\40\40\40\40\x20\x20\40\x20\x20\x20\x20\40\40\40\40\x20\40\x20\40\x41\116\104\40\146\x6c\141\x67\137\145\x6e\144\x20\41\x3d\x20\47\131\47\xa\x20\x20\40\40\40\x20\40\x20\40\40\40\40\x20\x20\x20\40\x20\40\40\x20\40\40\40\40\x20\40\x20\x20\40\x20\40\40\101\116\x44\40\165\x73\145\x72\137\x69\x64\x20\41\75\40\x27" . $user->id . "\x27\xa\x20\x20\x20\x20\40\x20\40\40\x20\x20\x20\x20\40\40\40\x20\40\40\x20\x20\x20\x20\x20\40\51\x20\x73\x72\xa\40\40\40\x20\x20\40\x20\40\40\x20\x20\x20\40\x20\40\40\40\40\40\x20\40\x20\x20\x20\147\x72\157\165\160\40\142\x79\40\163\x72\x2e\x62\157\157\153\137\x69\144\x2c\x20\163\x72\x2e\x75\x73\145\162\x5f\x69\x64\xa\x20\x20\40\40\x20\x20\40\40\x20\40\40\x20\x20\40\40\40\40\40\x20\40\x29\x20\163\x72\143\12\40\x20\x20\x20\40\x20\40\40\x20\x20\x20\x20\40\40\x20\40\40\x20\x20\40\x47\x52\117\125\x50\40\102\x59\40\163\162\x63\56\142\x6f\x6f\x6b\137\x69\x64\x29\40\141\x73\40\x64"), function ($join) { $join->on("\141\x2e\x62\x6f\x6f\x6b\137\x69\144", "\x3d", "\x64\56\x62\157\157\x6b\137\151\144"); })->where("\x61\56\x63\154\151\145\156\164\137\151\x64", "\75", $this->client_id)->where("\141\56\142\157\157\153\x5f\x69\x64", "\75", $request->pdfToken)->first(); goto TaDLh; T4wYp: return response()->json(["\143\x6f\x64\x65" => "\61", "\155\145\x73\163\x61\x67\145" => "\x4f\x6b"], 200); goto Yyk4v; v4T8G: goto MIV2u; goto tpuUM; cYTSG: return response()->json(["\x63\157\144\145" => "\x30", "\x6d\145\163\163\141\x67\x65" => "\x54\145\x72\x6a\141\144\151\x20\153\x65\x73\x61\x6c\x61\x68\x61\156\40\x73\151\154\x61\150\x6b\141\x6e\40\144\x69\143\157\142\141\x20\153\x65\x6d\142\x61\x6c\x69\41"], 200); goto LHgWt; wzxlE: return response()->json($age, 200); goto splMF; xsUPx: Carbon::setLocale("\151\x64"); goto YmeUp; Wg87K: $age = json_decode($check_age->getContent(), true); goto AHdUQ; AHdUQ: if (!($age["\x63\x6f\144\145"] == "\x32")) { goto M97od; } goto wzxlE; jGKUl: return response()->json(["\143\x6f\x64\145" => "\x32", "\155\x65\x73\163\x61\x67\145" => "\123\x74\x6f\153\40\x62\x75\153\x75\40\x73\x75\x64\x61\x68\x20\150\141\x62\x69\x73\54\x20\x73\x69\x6c\141\150\x6b\141\x6e\x20\x74\x75\156\147\x67\165\41"], 200); goto v4T8G; Hb0cL: $check_age = $this->AgeCheck($request); goto Wg87K; LHgWt: } public function AgeCheck(Request $request) { goto hVzq7; hVzq7: Carbon::setLocale("\x69\x64"); goto du4d2; N9NZM: $attr = DB::table("\164\141\164\x74\162\x5f\155\145\155\142\145\162\x20\141\163\40\141")->select(["\141\x2e\142\x69\162\x74\x68\144\141\171"])->where("\x61\56\x63\x6c\151\145\156\x74\137\x69\144", $this->client_id)->where("\x61\56\151\x64", $user->id)->get(); goto onM2j; MqnhO: NfaBx: goto Titg2; FJ2qT: if (!($age >= $request->age)) { goto NfaBx; } goto MLloe; onM2j: $birthday = $attr[0]->birthday ?? Carbon::now("\x41\x73\151\141\57\x4a\141\153\x61\162\164\141"); goto M8B71; MLloe: return response()->json(["\x63\x6f\x64\x65" => "\x31", "\155\x65\x73\x73\x61\147\x65" => "\117\x6b"], 200); goto MqnhO; MDtZF: $age = $birthdayC->diffInYears(Carbon::now("\101\x73\151\x61\57\x4a\x61\x6b\141\x72\x74\x61")); goto FJ2qT; du4d2: $user = auth()->user(); goto N9NZM; Titg2: return response()->json(["\x63\x6f\x64\x65" => "\x32", "\155\145\163\163\x61\x67\145" => "\x41\x6e\144\x61\x20\102\145\x6c\165\155\x20\x43\165\153\165\x70\x20\x55\x73\151\x61\40\125\156\x74\x75\153\40\x6d\145\155\142\x61\143\141\x20\x42\165\x6b\x75\40\x49\x6e\x69\x21"], 200); goto rxKzr; M8B71: $birthdayC = Carbon::parse($birthday); goto MDtZF; rxKzr: } public function LastRead(Request $request) { goto GYzZ4; PNELN: goto cmqdw; goto sUlGS; cYGoW: if ($ttrx) { goto YuCCt; } goto xJU1S; X5iZx: IhO7Q: goto bgFjQ; FHl5L: $existingRecord = DB::table("\164\164\162\170\137\162\145\141\144")->where("\142\157\157\x6b\x5f\151\144", $request->token)->where("\165\163\145\162\137\151\x64", $user->id)->where("\x73\x74\141\x72\164\137\x72\145\141\x64", $request->start)->where("\143\x6c\x69\x65\x6e\x74\x5f\x69\x64", $this->client_id)->first(); goto fJcSw; xJU1S: return response()->json(["\143\157\144\x65" => "\x30", "\x6d\145\163\x73\x61\147\x65" => "\106\x61\x69\x6c\x65\144\x21"], 200); goto EyXt5; YnGP2: $user = auth()->user(); goto FHl5L; GYzZ4: Carbon::setLocale("\151\x64"); goto YnGP2; RNxUB: YuCCt: goto qoXxx; fJcSw: if ($existingRecord) { goto hYEhx; } goto Cz2xK; Cz2xK: $ttrx = DB::table("\164\x74\x72\170\x5f\162\x65\141\x64")->insert(["\142\157\x6f\x6b\x5f\x69\x64" => $request->token, "\163\x74\141\x72\x74\x5f\x72\145\141\x64" => $request->start, "\165\x73\145\x72\x5f\151\144" => $user->id, "\143\x6c\151\145\156\164\x5f\151\x64" => $this->client_id, "\x66\154\x61\147\137\x65\156\144" => $request->active, "\x65\156\x64\x5f\x72\x65\141\144" => Carbon::now("\101\x73\151\x61\x2f\112\141\153\141\x72\x74\141"), "\143\162\145\x61\164\x65\x64\x5f\x61\x74" => Carbon::now("\101\163\x69\141\x2f\x4a\141\x6b\x61\162\x74\141")]); goto PNELN; sUlGS: hYEhx: goto An5wI; An5wI: $ttrx = DB::table("\x74\x74\162\170\x5f\x72\x65\x61\x64")->where("\142\157\x6f\153\x5f\x69\x64", $request->token)->where("\x75\x73\145\162\x5f\x69\x64", $user->id)->where("\163\x74\x61\162\164\x5f\162\145\141\144", $request->start)->where("\x63\x6c\x69\x65\x6e\164\x5f\151\x64", $this->client_id)->update(["\x65\x6e\144\137\x72\145\141\x64" => Carbon::now("\x41\163\151\x61\57\x4a\x61\153\141\x72\x74\141"), "\146\154\x61\x67\137\145\x6e\x64" => $request->active, "\x75\x70\144\141\164\145\144\x5f\141\164" => Carbon::now("\101\x73\x69\141\x2f\x4a\141\x6b\x61\162\x74\141")]); goto TYBT3; qoXxx: return response()->json(["\x63\157\144\145" => "\61", "\x6d\145\163\x73\x61\x67\145" => "\117\x6b\x21"], 200); goto X5iZx; EyXt5: goto IhO7Q; goto RNxUB; TYBT3: cmqdw: goto cYGoW; bgFjQ: } public function RentBook(Request $request) { goto qIni0; qIni0: Carbon::setLocale("\x69\x64"); goto hsotB; xuxmc: $check_book = $this->RentCheck(); goto NvfBf; sHstN: $date = Carbon::now("\x41\163\151\x61\57\x4a\x61\x6b\x61\162\164\141"); goto Mni02; k2wj5: $check_age = $this->AgeCheck($request); goto ZLwO2; SdI4p: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\x6e\144\151\156\147\163"], str_replace("\77", "\x27\77\47", $queries[$q]["\161\x75\145\162\x79"])); goto ZRG0q; wb8pN: return response()->json($book, 200); goto koxVh; ibrMM: if (!$rent) { goto EKWr6; } goto LajSS; pZMkm: return response()->json(["\143\157\x64\x65" => "\60", "\155\x65\x73\163\x61\x67\x65" => "\107\141\147\141\154\x20\x42\151\163\141\x20\120\x69\x6e\x6a\141\x6d\x20\x42\x75\x6b\x75\x21"], 200); goto q4MFt; ZRG0q: $logs->write("\x42\111\116\104\x49\116\x47", "\133" . implode("\x2c\40", $queries[$q]["\142\151\x6e\144\151\x6e\x67\x73"]) . "\x5d"); goto rTfQa; OXpA2: $cek_rent = DB::table("\164\x72\145\x6e\x74\137\142\157\x6f\x6b\x20\x61\163\x20\141")->select(["\141\56\x62\157\x6f\153\137\x69\144"])->where("\x61\56\143\154\x69\x65\x6e\x74\137\151\144", $this->client_id)->where("\141\x2e\165\x73\x65\162\x5f\151\x64", $user->id)->where("\141\56\142\x6f\x6f\153\x5f\x69\x64", $request->pdfToken)->where("\x61\56\x66\x6c\x61\147\x5f\145\156\144", "\116")->get(); goto zyeJ_; yYypD: EKWr6: goto pZMkm; TSTLa: $queries = DB::getQueryLog(); goto Yyr8s; zyeJ_: $cek = $cek_rent[0]->book_id ?? ''; goto skIOQ; utP17: $rent_day = 3; goto B4dPD; Ieg_S: s8b4q: goto Nokyb; V6R60: return response()->json($age, 200); goto NpgPu; I39B2: $q++; goto UODkf; UODkf: goto s8b4q; goto bMXkt; yrJS4: return response()->json(["\x63\157\144\145" => "\62", "\x6d\145\163\163\141\x67\145" => "\x41\x6e\x64\x61\40\x53\x75\144\141\150\40\115\145\x6d\x69\x6e\152\x61\155\40\x42\x75\x6b\165\40\111\156\151\x21"], 200); goto VBxNN; Mni02: $end_date = $date->copy()->addDays(3); goto U9RPG; hsotB: $user = auth()->user(); goto BVGas; HPs7L: DB::enableQueryLog(); goto utP17; NpgPu: Lviyz: goto xuxmc; BVGas: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto Yg1fX; B4dPD: try { $rent_days = DB::select("\x53\x45\x4c\x45\x43\124\40\140\x76\141\154\165\x65\x60\40\x46\x52\117\x4d\x20\x74\x70\x61\x72\x61\155\x65\x74\145\x72\40\x57\110\x45\x52\105\x20\x60\x6e\141\155\145\x60\x3d\47\162\x65\x6e\164\x5f\x62\x6f\x6f\153\x27\73"); $rent_day = $rent_days ? (int) $rent_days[0]->value : 3; } catch (\PDOException $e) { $logs->write("\105\x52\122\x4f\122\40\120\x41\122\101\115\105\124\x45\122\75\x27\x72\145\x6e\164\137\142\x6f\157\x6b\x27", $e->getMessage() . "\xa"); } goto k2wj5; LajSS: return response()->json(["\143\157\x64\145" => "\x31", "\x6d\x65\163\x73\x61\x67\x65" => "\102\145\x72\x68\141\x73\x69\x6c\40\x50\151\x6e\x6a\141\x6d\x20\x42\x75\153\165\41"], 200); goto yYypD; VBxNN: Hlu6j: goto sHstN; ZLwO2: $age = json_decode($check_age->getContent(), true); goto eYP5d; koxVh: CYzW8: goto OXpA2; Yyr8s: $q = 0; goto Ieg_S; NvfBf: $book = json_decode($check_book->getContent(), true); goto IHWib; qylkQ: $logs->write(__FUNCTION__, "\x53\124\117\x50\xd\xa"); goto ibrMM; bMXkt: FAZE5: goto qylkQ; rTfQa: $logs->write("\x53\121\x4c", $sql); goto xdjSi; Yg1fX: $logs->write(__FUNCTION__, "\123\x54\x41\122\x54"); goto HPs7L; xdjSi: r6gqN: goto I39B2; IHWib: if (!($book["\143\x6f\x64\145"] == "\x32")) { goto CYzW8; } goto wb8pN; U9RPG: $rent = DB::table("\164\x72\145\x6e\164\x5f\142\x6f\x6f\x6b")->insert(["\143\x6c\151\x65\x6e\x74\x5f\151\x64" => $this->client_id, "\165\163\x65\x72\x5f\x69\x64" => $user->id, "\x62\157\x6f\153\137\151\144" => $request->pdfToken, "\163\x74\141\x72\164\x5f\x64\x61\x74\145" => $date, "\x65\156\x64\137\144\x61\164\145" => $end_date, "\x66\x6c\x61\147\x5f\145\x6e\144" => "\x4e", "\143\x72\145\141\164\x65\x64\x5f\x61\x74" => Carbon::now("\x41\x73\151\x61\57\112\141\153\x61\162\164\141")]); goto TSTLa; Nokyb: if (!($q < count($queries))) { goto FAZE5; } goto SdI4p; eYP5d: if (!($age["\143\157\144\145"] == "\x32")) { goto Lviyz; } goto V6R60; skIOQ: if (!($cek != '')) { goto Hlu6j; } goto yrJS4; q4MFt: } public function RentCheck() { goto w3EW8; TpfA4: $user = auth()->user(); goto o8Z8X; j0OSh: $query_book = DB::table("\164\x72\x65\156\x74\137\x62\157\x6f\x6b\40\141\163\40\x61")->select([DB::raw("\x43\117\125\116\x54\50\x44\x49\x53\x54\x49\x4e\103\x54\40\142\157\157\153\137\151\x64\51\40\101\x53\40\164\x6f\x74\x61\x6c")])->where("\141\56\x63\x6c\x69\145\156\164\x5f\151\x64", $this->client_id)->where("\141\x2e\165\x73\145\x72\x5f\151\x64", $user->id)->where("\141\x2e\x66\x6c\141\x67\x5f\145\156\144", "\x4e")->get(); goto f93NN; OlFkz: if (!($book < $rent_book)) { goto DPOxH; } goto gKcX3; GbyTw: $end_date = $now->addDays($rent_book); goto j0OSh; IyAxY: DPOxH: goto D9urQ; M9Tcb: $now = Carbon::now("\x41\163\151\141\x2f\x4a\141\x6b\141\162\164\141"); goto zZREk; gKcX3: return response()->json(["\143\x6f\x64\x65" => "\x31", "\x6d\x65\x73\163\141\147\145" => "\117\153"], 200); goto IyAxY; zZREk: $date = $now->format("\x59\x2d\155\55\x64"); goto GbyTw; w3EW8: Carbon::setLocale("\x69\144"); goto TpfA4; D9urQ: return response()->json(["\x63\157\144\x65" => "\x32", "\x6d\145\163\163\141\147\x65" => "\x4b\x75\157\x74\141\x20\120\x69\x6e\x6a\141\155\x61\x6e\40\102\x75\153\165\x20\101\x6e\144\141\40\123\x75\144\141\150\40\110\x61\142\151\163\41"], 200); goto hnLC4; o8Z8X: $rent_book = 3; goto J6A0r; f93NN: $book = $query_book[0]->total ?? $rent_book; goto OlFkz; J6A0r: try { $rent_books = DB::select("\123\105\x4c\105\x43\124\40\x60\166\141\x6c\165\145\x60\40\x46\122\x4f\115\x20\164\x70\x61\162\x61\155\145\x74\145\162\40\x57\x48\105\122\x45\x20\140\x6e\141\x6d\x65\140\75\x27\155\141\x6b\x73\x5f\x72\145\x6e\164\137\142\x6f\157\153\x27\73"); $rent_book = $rent_books ? (int) $rent_books[0]->value : 3; } catch (\PDOException $e) { $logs->write("\105\x52\122\x4f\x52\x20\120\101\122\x41\x4d\105\x54\105\122\x3d\x27\155\141\x6b\163\x5f\162\x65\x6e\x74\x5f\x62\x6f\157\153\47", $e->getMessage() . "\xa"); } goto M9Tcb; hnLC4: } public function ReturnBook(Request $request) { goto e0Cny; H4Jqw: X0Vf4: goto PKjQ3; TQubw: if (!$return) { goto fzHM_; } goto SK95v; FUcuK: $logs->write(__FUNCTION__, "\123\x54\x41\122\124"); goto aXvcA; SK95v: return response()->json(["\x63\157\x64\x65" => "\x31", "\155\x65\163\x73\x61\147\145" => "\x42\145\162\x68\141\x73\151\x6c\40\x4b\145\155\x62\x61\154\151\153\141\x6e\40\x42\165\153\165\41"], 200); goto yZiA9; gch9u: glwIp: goto poZXA; QID52: return response()->json(["\143\x6f\x64\x65" => "\60", "\x6d\145\x73\163\x61\147\x65" => "\x47\x61\147\x61\154\40\113\145\155\142\x61\x6c\x69\x6b\x61\x6e\x20\102\165\x6b\165\x21"], 200); goto mXQlH; LW8_r: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\x6f\147"); goto FUcuK; PczZz: $logs->write("\x42\x49\x4e\104\111\116\x47", "\133" . implode("\54\40", $queries[$q]["\142\x69\156\x64\151\x6e\x67\x73"]) . "\x5d"); goto zi9iI; yZiA9: fzHM_: goto QID52; fvQ6q: $sql = Str::replaceArray("\77", $queries[$q]["\142\x69\x6e\x64\151\156\x67\163"], str_replace("\77", "\47\77\x27", $queries[$q]["\161\x75\x65\162\x79"])); goto PczZz; e0Cny: Carbon::setLocale("\151\144"); goto DmGK0; c1rkE: $now = Carbon::now("\101\x73\x69\x61\57\112\141\153\141\x72\164\141"); goto vobwv; PKjQ3: $q++; goto DhCY9; DhCY9: goto XsJf9; goto gch9u; aXvcA: DB::enableQueryLog(); goto c1rkE; vobwv: $date = $now->format("\x59\x2d\155\55\x64"); goto cs3B8; eTXtL: $q = 0; goto jl5Jz; poZXA: $logs->write(__FUNCTION__, "\x53\x54\x4f\120\15\xa"); goto TQubw; DmGK0: $user = auth()->user(); goto LW8_r; ypLON: if (!($q < count($queries))) { goto glwIp; } goto fvQ6q; QVO_H: $queries = DB::getQueryLog(); goto eTXtL; jl5Jz: XsJf9: goto ypLON; zi9iI: $logs->write("\x53\121\114", $sql); goto H4Jqw; cs3B8: $return = DB::table("\164\162\145\x6e\164\137\142\x6f\x6f\153")->where("\165\x73\x65\162\x5f\x69\x64", $user->id)->where("\143\x6c\151\x65\x6e\164\137\151\144", $this->client_id)->where("\142\x6f\x6f\153\x5f\x69\x64", $request->pdfToken)->update(["\146\x6c\x61\147\x5f\x65\x6e\144" => "\131", "\x75\160\x64\x61\164\x65\x64\x5f\141\x74" => $now]); goto QVO_H; mXQlH: } public function RentHistory() { goto aVFMQ; TKLWq: return DataTables::of($results)->escapeColumns()->editColumn("\163\x74\141\x72\x74\137\144\141\x74\145", function ($value) { return Carbon::parse($value->start_date)->toDateTimeString(); })->editColumn("\145\156\144\x5f\144\141\x74\x65", function ($value) { return Carbon::parse($value->end_date)->toDateTimeString(); })->addIndexColumn()->toJson(); goto KR1nV; O6Jar: try { DB::enableQueryLog(); $results = DB::table("\x74\x72\x65\x6e\164\x5f\142\x6f\x6f\x6b\40\x61\163\40\x61")->select(["\x61\x2e\x62\157\x6f\153\x5f\151\144", "\x62\56\x74\151\164\154\x65", "\141\x2e\x73\164\141\x72\x74\137\x64\141\x74\145", "\141\56\x65\x6e\x64\x5f\x64\141\164\145", "\141\x2e\146\154\x61\x67\137\145\x6e\144", "\x62\x2e\143\157\x76\x65\x72"])->join("\x74\x62\157\157\153\40\x61\163\x20\x62", "\141\x2e\142\x6f\157\x6b\x5f\151\144", "\x3d", "\x62\x2e\142\x6f\157\x6b\137\151\x64")->where("\141\56\143\x6c\x69\145\x6e\x74\x5f\151\144", $this->client_id)->where("\x61\56\165\163\145\162\137\151\x64", $user->id)->orderBy("\x61\x2e\x73\164\x61\162\164\137\144\141\164\x65", "\x41\123\103")->get(); } catch (Throwable $th) { } goto TKLWq; qFNbv: $results = []; goto O6Jar; aVFMQ: $user = auth()->user(); goto qFNbv; KR1nV: } }
+
+namespace App\Http\Controllers;
+
+use App\Logs;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
+
+class BookController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id = '';
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index(Request $request)
+    {
+        return view('readbook');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getBook(Request $request)
+    {
+        $book = DB::table('tmapping_book as a')
+            ->select([
+                'b.filename'
+            ])
+            ->join('tbook as b', 'a.book_id', '=', 'b.book_id')
+            ->where('a.client_id', $this->client_id)
+            ->where('a.book_id', $request->token)
+            ->get();
+        $file = $book[0]->filename;
+
+        $filePath = 'private/books/'.$file;
+        $filename = explode('.', basename($filePath))[0];
+
+        $encryptedContents = Storage::get($filePath);
+        $decryptedContents = Crypt::decrypt($encryptedContents);
+        return response()->make($decryptedContents, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'. $filename .'.pdf"'
+        ]);
+    }
+
+    public function ReadCheck(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $check_age  = $this->AgeCheck($request);
+        $age        = json_decode($check_age->getContent(), true);
+
+        if($age['code'] == '2'){
+            return response()->json($age, 200);
+        }
+
+        $cek_stock = DB::table('tmapping_book as a')
+            ->select([
+                DB::raw("a.copy - IFNULL(d.total, 0) as remaining")
+            ])
+            ->leftJoin(DB::raw("(
+                    SELECT
+                        src.book_id,
+                        SUM(CASE WHEN src.total > 1 THEN 1 ELSE src.total END) AS total
+                    FROM (
+                        SELECT sr.book_id, COUNT(sr.book_id) AS total, sr.user_id
+                        FROM (
+                            SELECT book_id, user_id
+                            FROM ttrx_read
+                            WHERE
+                                client_id = '".$this->client_id."'
+                                AND flag_end != 'Y'
+                            
+                            UNION ALL
+                            
+                            SELECT book_id, user_id
+                            FROM trent_book
+                            WHERE
+                                client_id = '".$this->client_id."'
+                                AND flag_end != 'Y'
+                                AND user_id != '".$user->id."'
+                        ) sr
+                        group by sr.book_id, sr.user_id
+                    ) src
+                    GROUP BY src.book_id) as d"), function($join) {
+                $join->on('a.book_id', '=', 'd.book_id');
+            })
+            ->where('a.client_id', '=', $this->client_id)
+            ->where('a.book_id', '=', $request->pdfToken)
+            ->first();
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+        // $logs->write(__FUNCTION__, "STOP\r\n");    
+
+        if($cek_stock->remaining > 0){
+            return response()->json([
+                'code' => '1',
+                'message' => 'Ok',
+            ], 200);
+        }else{
+            return response()->json([
+                'code' => '2',
+                'message' => 'Stok buku sudah habis, silahkan tunggu!',
+            ], 200);
+        }
+
+        return response()->json([
+            'code' => '0',
+            'message' => 'Terjadi kesalahan silahkan dicoba kembali!',
+        ], 200);
+    }
+    
+    public function AgeCheck(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+
+        $attr = DB::table('tattr_member as a')
+            ->select([
+                'a.birthday',
+            ])
+            ->where('a.client_id', $this->client_id)
+            ->where('a.id', $user->id)
+            ->get();
+        
+            $birthday   = $attr[0]->birthday ?? Carbon::now('Asia/Jakarta');
+            $birthdayC  = Carbon::parse($birthday);
+            $age        = $birthdayC->diffInYears(Carbon::now('Asia/Jakarta'));
+
+        if($age >= $request->age){
+            return response()->json([
+               'code' => '1',
+               'message' => 'Ok',
+            ], 200);
+        }
+
+        return response()->json([
+            'code' => '2',
+            'message' => 'Anda Belum Cukup Usia Untuk membaca Buku Ini!',
+        ], 200);
+    }
+    
+    public function LastRead(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $existingRecord = DB::table('ttrx_read')
+            ->where('book_id', $request->token)
+            ->where('user_id', $user->id)
+            ->where('start_read', $request->start)
+            ->where('client_id', $this->client_id)
+            ->first();
+
+        if ($existingRecord) {
+            $ttrx = DB::table('ttrx_read')
+                ->where('book_id', $request->token)
+                ->where('user_id', $user->id)
+                ->where('start_read', $request->start)
+                ->where('client_id', $this->client_id)
+                ->update([
+                    'end_read'      => Carbon::now('Asia/Jakarta'),
+                    'flag_end'      => $request->active,
+                    'updated_at'    => Carbon::now('Asia/Jakarta')
+                ]);
+        } else {
+            $ttrx = DB::table('ttrx_read')
+                ->insert([
+                    'book_id'       => $request->token,
+                    'start_read'    => $request->start,
+                    'user_id'       => $user->id,
+                    'client_id'     => $this->client_id,
+                    'flag_end'      => $request->active,
+                    'end_read'      => Carbon::now('Asia/Jakarta'),
+                    'created_at'    => Carbon::now('Asia/Jakarta')
+                ]);
+        }
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        if($ttrx){
+            return response()->json([
+                'code' => '1',
+                'message' => 'Ok!',
+            ], 200);
+        }else{
+            return response()->json([
+                'code' => '0',
+                'message' => 'Failed!',
+            ], 200);
+        }
+    }
+
+    public function RentBook(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, "START");
+        DB::enableQueryLog();
+
+        $rent_day = 3;
+        try {
+            $rent_days  = DB::select("SELECT `value` FROM tparameter WHERE `name`='rent_book';");
+            $rent_day   = $rent_days ? (int) $rent_days[0]->value : 3;
+        } catch (\PDOException $e) {
+            $logs->write("ERROR PARAMETER='rent_book'", $e->getMessage() ."\n");
+        }
+
+        $check_age  = $this->AgeCheck($request);
+        $age        = json_decode($check_age->getContent(), true);
+
+        if($age['code'] == '2'){
+            return response()->json($age, 200);
+        }
+        
+        $check_book = $this->RentCheck();
+        $book       = json_decode($check_book->getContent(), true);
+
+        if($book['code'] == '2'){
+            return response()->json($book, 200);
+        }
+
+        $cek_rent = DB::table('trent_book as a')
+            ->select([
+                'a.book_id',
+            ])
+            ->where('a.client_id', $this->client_id)
+            ->where('a.user_id', $user->id)
+            ->where('a.book_id', $request->pdfToken)
+            ->where('a.flag_end', 'N')
+            ->get();
+        
+        $cek    = $cek_rent[0]->book_id ?? '';
+
+        if($cek != ''){
+            return response()->json([
+                'code' => '2',
+                'message' => 'Anda Sudah Meminjam Buku Ini!',
+             ], 200);
+        }
+
+        $date       = Carbon::now('Asia/Jakarta');
+        $end_date   = $date->copy()->addDays(3);
+        $rent       = DB::table('trent_book')
+                    ->insert([
+                        'client_id'     => $this->client_id,
+                        'user_id'       => $user->id,
+                        'book_id'       => $request->pdfToken,
+                        'start_date'    => $date,
+                        'end_date'      => $end_date,
+                        'flag_end'      => 'N',
+                        'created_at'    => Carbon::now('Asia/Jakarta')
+                    ]);
+
+        $queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        if($rent){
+            return response()->json([
+               'code' => '1',
+               'message' => 'Berhasil Pinjam Buku!',
+            ], 200);
+        }
+
+        return response()->json([
+            'code' => '0',
+            'message' => 'Gagal Bisa Pinjam Buku!',
+        ], 200);
+    }
+
+    public function RentCheck()
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $rent_book = 3;
+        try {
+            $rent_books  = DB::select("SELECT `value` FROM tparameter WHERE `name`='maks_rent_book';");
+            $rent_book   = $rent_books ? (int) $rent_books[0]->value : 3;
+        } catch (\PDOException $e) {
+            $logs->write("ERROR PARAMETER='maks_rent_book'", $e->getMessage() ."\n");
+        }
+
+        $now        = Carbon::now('Asia/Jakarta');
+        $date       = $now->format('Y-m-d');
+        $end_date   = $now->addDays($rent_book);
+        $query_book = DB::table('trent_book as a')
+            ->select([
+                DB::raw("COUNT(DISTINCT book_id) AS total")
+            ])
+            ->where('a.client_id', $this->client_id)
+            ->where('a.user_id', $user->id)
+            ->where('a.flag_end', 'N')
+            ->get();
+        
+        $book   = $query_book[0]->total ?? $rent_book;
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        if($book < $rent_book){
+            return response()->json([
+               'code' => '1',
+               'message' => 'Ok',
+            ], 200);
+        }
+
+        return response()->json([
+            'code' => '2',
+            'message' => 'Kuota Pinjaman Buku Anda Sudah Habis!',
+        ], 200);
+    }
+
+    public function ReturnBook(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, "START");
+        DB::enableQueryLog();
+
+        $now        = Carbon::now('Asia/Jakarta');
+        $date       = $now->format('Y-m-d');
+        $return     = DB::table('trent_book')
+                    ->where('user_id', $user->id)
+                    ->where('client_id', $this->client_id)
+                    ->where('book_id', $request->pdfToken)
+                    ->update([
+                        'flag_end'  => 'Y',
+                        'updated_at' => $now
+                    ]);
+
+        $queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        if($return){
+            return response()->json([
+               'code' => '1',
+               'message' => 'Berhasil Kembalikan Buku!',
+            ], 200);
+        }
+
+        return response()->json([
+            'code' => '0',
+            'message' => 'Gagal Kembalikan Buku!',
+        ], 200);
+    }
+
+    public function RentHistory()
+    {
+        $user = auth()->user();
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = DB::table('trent_book as a')
+                ->select([
+                    'a.book_id',
+                    'b.title',
+                    'a.start_date',
+                    'a.end_date',
+                    'a.flag_end',
+                    'b.cover'
+                ])
+                ->join('tbook as b', 'a.book_id', '=', 'b.book_id')
+                ->where('a.client_id', $this->client_id)
+                ->where('a.user_id', $user->id)
+                ->orderBy('a.start_date', 'ASC')
+                ->get();
+
+            // $queries = DB::getQueryLog();
+            // for ($q = 0; $q < count($queries); $q++) {
+            //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            //     $logs->write('SQL', $queries[$q]['query']);
+            // }
+        } catch (Throwable $th) {
+            // $logs->write("ERROR", $th->getMessage());
+        }
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('start_date', function ($value) {
+                return Carbon::parse($value->start_date)->toDateTimeString();
+            })
+            ->editColumn('end_date', function ($value) {
+                return Carbon::parse($value->end_date)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+}

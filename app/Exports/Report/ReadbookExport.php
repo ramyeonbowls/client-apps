@@ -1,8 +1,128 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Exports\Report; use Maatwebsite\Excel\Sheet; use Maatwebsite\Excel\Events\AfterSheet; use Maatwebsite\Excel\Concerns\WithTitle; use Maatwebsite\Excel\Concerns\WithEvents; use Maatwebsite\Excel\Events\BeforeExport; use Maatwebsite\Excel\Concerns\WithHeadings; use Maatwebsite\Excel\Concerns\ShouldAutoSize; use Maatwebsite\Excel\Concerns\WithCustomStartCell; class ReadbookExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize { private $data; public function __construct($data = array()) { goto Fq3C0; Ll0XB: Sheet::macro("\x73\x74\x79\154\145\x43\145\154\x6c\x73", function (Sheet $sheet, string $cellRange, array $style) { $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style); }); goto SBLvT; dCxda: Sheet::macro("\x73\145\164\117\162\151\145\156\164\141\164\x69\x6f\x6e", function (Sheet $sheet, $orientation) { $sheet->getDelegate()->getPageSetup()->setOrientation($orientation); }); goto Ll0XB; Fq3C0: $this->data = $data; goto dCxda; SBLvT: } public function startCell() : string { $starCell = "\x41\61"; return $starCell; } public function title() : string { return "\114\141\160\x6f\162\141\x6e\x20\102\141\143\x61\x20\x42\x75\153\x75"; } public function headings() : array { return ["\116\x61\155\x61\x20\x57\114", "\120\162\x6f\x76\151\x6e\163\151", "\x4b\x61\142\57\113\157\164\141", "\112\165\155\x6c\141\x68\40\x50\145\155\142\x61\x63\141", "\x54\157\164\x61\154\x20\112\141\155"]; } public function registerEvents() : array { return [BeforeExport::class => function (BeforeExport $event) { $event->writer->getProperties()->setTitle("\x4c\x61\x70\x6f\162\141\156\40\x42\x61\x63\x61\40\102\165\153\x75"); $event->writer->getProperties()->setCreator(config("\x61\x70\x70\x2e\x6e\x61\x6d\x65")); }, AfterSheet::class => function (AfterSheet $event) { goto c_GG9; AOnCy: $event->sheet->styleCells("\101\x31\x3a\105\61", ["\x66\x6f\x6e\164" => ["\x62\x6f\154\x64" => true], "\141\x6c\x69\x67\x6e\x6d\145\x6e\x74" => ["\x68\157\162\151\x7a\x6f\x6e\x74\141\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, "\x76\145\162\x74\x69\143\x61\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER], "\x66\151\x6c\154" => ["\146\x69\x6c\x6c\124\x79\x70\145" => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, "\143\x6f\154\x6f\x72" => ["\x61\x72\147\x62" => "\x66\146\x62\64\x63\x36\x65\x37"]]]); goto JOrGb; UImzk: if (!(count($this->data) > 0)) { goto DV_sb; } goto R_z9i; R_z9i: $event->sheet->styleCells("\x41\x32\x3a\x45" . ($row - 1), ["\x62\157\162\x64\x65\x72\x73" => ["\141\154\154\x42\x6f\162\x64\x65\x72\163" => ["\142\x6f\x72\144\145\162\x53\x74\x79\154\145" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\157\154\x6f\162" => ["\x72\x67\x62" => "\x38\x30\x38\60\x38\x30"]]]]); goto lzLUp; c_GG9: $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE); goto AOnCy; lzLUp: DV_sb: goto jBEMt; AoacZ: foreach ($this->data as $val) { goto W4Poy; mXpZa: $event->sheet->setCellValue("\104" . $row, $val["\160\x65\x6d\142\x61\x63\x61"]); goto gmIXV; F0PMo: $event->sheet->setCellValue("\x42" . $row, $val["\160\162\x6f\x76\151\156\x73\x69\x5f\156\x61\155\x65"]); goto TshCe; Ub6BA: $row++; goto Pl4C5; TshCe: $event->sheet->setCellValue("\x43" . $row, $val["\x6b\x61\x62\165\160\141\x74\x65\x6e\137\156\141\155\145"]); goto mXpZa; gmIXV: $event->sheet->setCellValue("\x45" . $row, $val["\x64\x75\162\x61\163\151"])->getStyle("\105" . $row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); goto Ub6BA; W4Poy: $event->sheet->setCellValue("\x41" . $row, $val["\167\154\137\156\141\x6d\x65"]); goto F0PMo; Pl4C5: ufubI: goto fNGHh; fNGHh: } goto SaaFq; FIVUp: $row = 2; goto AoacZ; JOrGb: $event->sheet->styleCells("\101\x31\x3a\105\x31", ["\x62\157\x72\x64\145\x72\x73" => ["\141\154\154\102\x6f\x72\x64\145\x72\x73" => ["\142\157\x72\x64\145\162\x53\164\171\154\145" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\x6f\x6c\157\162" => ["\x72\147\x62" => "\x38\60\70\x30\70\60"]]]]); goto FIVUp; SaaFq: u6dHy: goto UImzk; jBEMt: }]; } }
+
+namespace App\Exports\Report;
+
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+
+class ReadbookExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize
+{
+    private $data;
+
+    public function __construct($data = [])
+    {
+        $this->data         = $data;
+
+        Sheet::macro('setOrientation', function (Sheet $sheet, $orientation) {
+            $sheet->getDelegate()->getPageSetup()->setOrientation($orientation);
+        });
+
+        Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
+            $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
+        });
+    }
+    
+    /**
+     * @return string
+     */
+    public function startCell(): string
+    {
+        $starCell = 'A1';
+
+        return $starCell;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Laporan Baca Buku';
+    }
+
+    /**
+     * @return array
+     */
+    public function headings(): array
+    {
+        return [
+            'Nama WL',
+            'Provinsi',
+            'Kab/Kota',
+            'Jumlah Pembaca',
+            'Total Jam'
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setTitle( 'Laporan Baca Buku' );
+                $event->writer->getProperties()->setCreator( config('app.name') );
+            },
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
+                $event->sheet
+                    ->styleCells('A1:E1', [
+                        'font' => [
+                           'bold' => true
+                        ],
+                        'alignment' => [
+                           'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                           'vertical'     => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                        ],
+                        'fill' => [
+                           'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                           'color' => ['argb' => 'ffb4c6e7']
+                        ]
+                    ]);
+
+                $event->sheet
+                    ->styleCells('A1:E1', [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['rgb' => '808080'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $row = 2;
+                foreach ($this->data as $val) {
+                    $event->sheet->setCellValue('A'.$row, $val['wl_name']);
+                    $event->sheet->setCellValue('B'.$row, $val['provinsi_name']);
+                    $event->sheet->setCellValue('C'.$row, $val['kabupaten_name']);
+                    $event->sheet->setCellValue('D'.$row, $val['pembaca']);
+                    $event->sheet->setCellValue('E'.$row, $val['durasi'])->getStyle('E'.$row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+
+                    $row++;
+                }
+
+                if(count($this->data) > 0){
+                    $event->sheet
+                        ->styleCells('A2:E'.($row-1), [
+                            'borders' => [
+                                'allBorders' => [
+                                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                    'color' => ['rgb' => '808080'],
+                                ],
+                            ],
+                        ]
+                    );
+                }
+            }
+        ];
+    }
+}

@@ -1,8 +1,95 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers; use App\Logs; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; use App\Services\Web\WebMenuService; class HomeController extends Controller { protected $client_id = ''; public function __construct() { $this->middleware("\x61\165\x74\x68"); $this->client_id = config("\x61\x70\160\56\x63\x6c\x69\145\156\164\137\x69\x64", ''); } public function index() { return view("\x68\157\155\x65"); } public function forbidden() { goto F9wqR; JChVg: return view("\x65\x72\162\157\162\x73\56\x34\x30\63"); goto YDNNT; wdl2Z: return redirect(\App\Providers\RouteServiceProvider::HOME); goto qrc1a; F9wqR: if (!auth()->user()->activated) { goto o1nsa; } goto wdl2Z; qrc1a: o1nsa: goto JChVg; YDNNT: } public function userInfo() { goto IUWsF; jy8mt: if (!$user) { goto fH7xW; } goto cYjIk; IUWsF: $user = auth()->user(); goto a_y36; LFoKF: $appname = $results->application_name; goto rRePR; rRePR: fH7xW: goto N_52Z; N_52Z: return response()->json(["\151\x64" => $user->id, "\x6e\x61\155\x65" => $user->name, "\x65\155\x61\x69\154" => $user->email, "\162\x6f\154\145" => $user->role, "\x61\x70\160\x6e\141\x6d\145" => $appname], 200); goto Fpdyz; cYjIk: $results = DB::table("\164\143\x6c\x69\145\156\x74\x20\141\163\40\x61")->select(["\141\x2e\141\160\160\x6c\151\x63\x61\x74\x69\x6f\156\137\x6e\141\155\145"])->where("\x61\56\143\x6c\151\145\x6e\164\137\151\144", "\75", $this->client_id)->first(); goto LFoKF; a_y36: $appname = ''; goto jy8mt; Fpdyz: } public function webMenuAcl() { goto EJpUZ; EJpUZ: $logs = new Logs(auth()->user()->email . "\x5f" . Arr::last(explode("\x5c", get_class()))); goto VUzNL; VUzNL: $logs->write(__FUNCTION__, "\x53\124\101\x52\x54"); goto guQ23; NK03Y: try { $webMenuService = new WebMenuService(new \App\Repositories\Web\WebMenuRepository()); $my_webmenus = $webMenuService->getAccessControlList(auth()->user()->email); } catch (\Throwable $th) { $logs->write("\x45\x52\122\x4f\x52", $th->getMessage()); } goto EmNT_; guQ23: $my_webmenus = []; goto NK03Y; ToIcR: return response()->json($my_webmenus, 200); goto RW_vB; EmNT_: $logs->write(__FUNCTION__, "\x53\x54\x4f\x50\xd\12"); goto ToIcR; RW_vB: } public function main() { return view("\x6d\141\151\x6e"); } }
+
+namespace App\Http\Controllers;
+
+use App\Logs;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Services\Web\WebMenuService;
+
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id = '';
+    public function __construct()
+    {
+        $this->middleware('auth');
+		$this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
+    /**
+     * Show forbidden page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function forbidden()
+    {
+        if(auth()->user()->activated) {
+            return redirect(\App\Providers\RouteServiceProvider::HOME);
+        }
+
+        return view('errors.403');
+    }
+
+    public function userInfo()
+    {
+        $user = auth()->user();
+
+		$appname = '';
+		if($user){
+			$results = DB::table('tclient as a')
+				->select([
+					'a.application_name',
+				])
+				->where('a.client_id', '=' , $this->client_id)
+				->first();
+			
+			$appname = $results->application_name;
+		}
+
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role,
+            'appname' => $appname
+        ], 200);
+    }
+
+    public function webMenuAcl()
+    {
+        $logs = new Logs( auth()->user()->email .'_'. Arr::last(explode("\\", get_class())) );
+        $logs->write(__FUNCTION__, "START");
+
+        $my_webmenus = [];
+        try {
+            $webMenuService = new WebMenuService(new \App\Repositories\Web\WebMenuRepository());
+            $my_webmenus = $webMenuService->getAccessControlList(auth()->user()->email);
+        } catch (\Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($my_webmenus, 200);
+    }
+
+    public function main()
+    {
+        return view('main');
+    }
+}

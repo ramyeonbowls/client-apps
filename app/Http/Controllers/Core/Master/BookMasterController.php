@@ -1,8 +1,103 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Master; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Master\BookMasterService; class BookMasterController extends Controller { private BookMasterService $book_service; public function __construct() { $this->middleware("\141\165\164\x68"); $this->book_service = new BookMasterService(); } public function index(Request $request) : JsonResponse { goto c3995; chC5S: return DataTables::of($results)->escapeColumns()->addIndexColumn()->toJson(); goto g7UcD; H6bVf: try { goto Z41yl; RXyDR: $logs->write("\x53\x51\x4c", $queries[$q]["\161\165\145\x72\x79"]); goto XMii5; cOfRY: $q = 0; goto HIJzB; bqNeR: if (!($q < count($queries))) { goto K7b0_; } goto G6Pd_; buJFI: $q++; goto W79yb; HIJzB: xiLik: goto bqNeR; Z41yl: DB::enableQueryLog(); goto jXVWv; p05J7: $queries = DB::getQueryLog(); goto cOfRY; G6Pd_: $logs->write("\102\111\x4e\x44\111\116\107", "\x5b" . implode("\x2c\x20", $queries[$q]["\142\151\156\x64\151\x6e\x67\x73"]) . "\x5d"); goto RXyDR; d2Ylf: K7b0_: goto IY4Pg; XMii5: wPE1i: goto buJFI; jXVWv: $results = $this->book_service->get(); goto p05J7; W79yb: goto xiLik; goto d2Ylf; IY4Pg: } catch (Throwable $th) { $logs->write("\105\x52\122\x4f\122", $th->getMessage()); } goto m203J; sJeFL: $results = []; goto H6bVf; qV_m7: $logs->write(__FUNCTION__, "\x53\124\x41\x52\x54"); goto sJeFL; m203J: $logs->write(__FUNCTION__, "\x53\x54\x4f\x50\15\12"); goto chC5S; c3995: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\x6f\147"); goto qV_m7; g7UcD: } public function store() { } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update() { } public function destroy(string $id) : JsonResponse { } }
+
+namespace App\Http\Controllers\Core\Master;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Master\BookMasterService;
+
+class BookMasterController extends Controller
+{
+    private BookMasterService $book_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->book_service = new BookMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->book_service->get();
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update()
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        //
+    }
+}

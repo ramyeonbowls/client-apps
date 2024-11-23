@@ -1,8 +1,168 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Master; use App\Models\User; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Collection; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Hash; class TeacherMasterRepository { public function get($client_id) : Collection { return DB::table("\165\163\x65\162\x73\40\141\x73\40\x61")->select("\x61\56\x69\144", "\x62\x2e\156\x69\153", "\142\x2e\x70\x68\x6f\x74\x6f", "\141\x2e\156\141\x6d\x65", "\x61\56\x65\x6d\141\x69\154", "\x62\56\160\x68\157\156\145", "\142\x2e\x62\x69\162\x74\150\x64\x61\x79", "\x61\56\x65\x6d\141\x69\x6c\x5f\x76\x65\162\x69\146\151\x65\144\137\141\164", "\141\56\x63\x72\145\141\x74\145\144\x5f\141\164")->join("\164\141\164\x74\x72\x5f\155\145\x6d\x62\145\162\40\x61\x73\40\x62", function ($join) { $join->on("\141\x2e\x69\144", "\75", "\x62\x2e\151\144"); })->where("\x61\x2e\x63\x6c\151\x65\156\164\x5f\151\x64", "\75", $client_id)->where("\x61\x2e\x72\157\154\145", "\x3d", "\x74\145\141\x63\150\x65\162")->get(); } public function store(object $data, $client_id) : bool { try { goto VreWX; Dch2k: $i++; goto FD9F2; J6kYd: $inserted[] = ["\x75\163\145\162\x6e\x61\155\145" => $user->email, "\x6d\145\x6e\165\x5f\151\144" => $webmenus[$i], "\143\x72\145\141\164\145\x5f\160\145\162\155\x69\163\x73\151\x6f\156" => 1, "\162\145\x61\x64\x5f\160\x65\x72\x6d\151\x73\163\x69\x6f\156" => 1, "\165\160\144\x61\x74\145\137\160\x65\162\155\151\x73\163\x69\x6f\x6e" => 1, "\x64\x65\154\145\164\145\137\160\145\162\x6d\151\163\163\x69\x6f\x6e" => 1, "\x70\x72\151\x6e\x74\x5f\160\x65\x72\155\151\x73\163\151\157\156" => 1, "\x61\x70\x70\162\157\166\x65\137\x70\x65\162\155\x69\x73\163\151\x6f\x6e" => 1, "\143\x72\x65\141\x74\145\x64\x5f\141\x74" => $data->create_date]; goto Zw51y; VreWX: $user = $this->createUser($data, $client_id); goto X3cwE; Ft3uN: sFQCG: goto lDed6; Zw51y: O6NiZ: goto Dch2k; P3UEO: return true; goto lFdQV; HB3iN: $webmenus = [1, 4, 18, 27, 29]; goto a20g6; lDed6: if (!($i < count($webmenus))) { goto DZOqz; } goto J6kYd; ZRw46: DZOqz: goto ITr_2; a20g6: $i = 0; goto Ft3uN; X3cwE: $attr = DB::table("\x74\x61\x74\164\162\137\155\145\155\x62\x65\162")->insert(["\x69\x64" => $user->id, "\x63\154\151\145\156\164\x5f\151\144" => $client_id, "\x6e\x69\x6b" => $data->nik, "\x70\x68\157\156\x65" => $data->phone, "\142\x69\162\164\x68\x64\141\x79" => $data->birthday, "\147\145\x6e\144\145\162" => $data->gender, "\143\162\145\x61\164\x65\144\x5f\x61\164" => $data->create_date]); goto HB3iN; FD9F2: goto sFQCG; goto ZRw46; ITr_2: $acl = DB::table("\167\x65\142\x5f\155\x65\156\165\x5f\x61\143\154\x73")->insert($inserted); goto P3UEO; lFdQV: } catch (\Exception $e) { \Log::error("\103\162\145\141\x74\x65\x20\x74\145\x61\x63\x68\x65\162\x20\x66\141\x69\154\x65\144\x20\x3d\x3e\40" . $e->getMessage()); return false; } } protected function createUser(object $data, $client_id) { return User::create(["\156\141\155\145" => $data->name, "\145\x6d\x61\151\154" => $data->email, "\x70\x61\x73\x73\167\x6f\x72\144" => Hash::make($data->password), "\162\157\x6c\145" => "\x74\x65\141\143\x68\x65\x72", "\x66\154\x61\147\137\x61\x70\160\162\157\x76\145" => "\131", "\145\155\141\x69\x6c\137\x76\x65\162\151\146\x69\145\144\137\141\164" => $data->create_date, "\143\x72\145\x61\x74\145\x64\137\141\x74" => $data->create_date, "\143\x6c\151\145\x6e\164\x5f\151\x64" => $client_id]); } public function update(object $data, string $id) : bool { return DB::transaction(function () use($data, $id) { return DB::table("\x75\163\145\162\x73")->where("\151\144", $id)->where("\x72\x6f\154\145", "\75", "\164\145\x61\143\150\145\x72")->update(["\144\x65\163\x63\x72\x69\x70\x74\151\x6f\156" => $data->desc, "\x66\151\x6c\145" => $data->file, "\x64\151\163\160\x5f\164\x79\160\x65" => $data->type, "\x63\x6c\x69\x65\156\x74\x5f\x69\144" => '', "\165\160\144\141\x74\x65\144\x5f\141\x74" => $data->modified_date, "\x75\160\x64\141\164\145\144\137\142\x79" => $data->modified_by]); }); } public function delete(string $id, $client_id) { return DB::transaction(function () use($id, $client_id) { goto kNyzs; Eshsk: return $teacher->delete(); goto oUF8t; Sevdv: if (!$teacher) { goto ULvYl; } goto fGY_o; fGY_o: DB::table("\x77\x65\x62\137\155\x65\156\165\137\x61\143\154\x73")->where("\x75\163\x65\x72\156\x61\155\x65", $teacher->email)->delete(); goto YnV2k; RIOxb: return false; goto DLNNO; YnV2k: $teacher = DB::table("\x75\163\x65\162\163")->where("\151\x64", $id)->where("\x63\154\151\x65\156\164\137\151\x64", $client_id)->where("\162\157\x6c\145", "\164\145\141\x63\150\145\162"); goto Eshsk; kNyzs: $attr = DB::table("\x74\141\164\164\x72\x5f\155\145\155\142\145\162")->where("\143\x6c\x69\145\x6e\x74\137\151\144", $client_id)->where("\151\144", $id); goto rUKZL; GX5NH: DB::table("\164\141\164\x74\x72\137\x6d\145\x6d\142\145\162")->where("\x69\x64", $id)->where("\x63\154\151\145\x6e\164\x5f\x69\144", $client_id)->delete(); goto k5xHG; eF9gJ: @unlink(storage_path("\141\x70\160\57\x70\165\x62\154\x69\143\x2f\x69\155\x61\x67\x65\163\x2f\x70\x72\x6f\146\x69\x6c\145\x2f" . $attr_file->photo)); goto lqahY; rUKZL: $attr_file = $attr->first(); goto vPxeG; oUF8t: ULvYl: goto RIOxb; lqahY: wkqom: goto GX5NH; k5xHG: $teacher = DB::table("\165\163\145\162\163")->where("\x69\x64", $id)->where("\x63\154\x69\x65\156\164\x5f\151\144", $client_id)->where("\162\x6f\154\x65", "\x74\145\141\x63\150\145\x72")->first(); goto Sevdv; vPxeG: if (!($attr_file->photo != '')) { goto wkqom; } goto eF9gJ; DLNNO: }); } public function check(string $id, $client_id) { return DB::table("\164\164\x72\x78\137\162\145\x61\144\40\141\163\x20\141")->select([DB::raw("\103\117\125\x4e\124\50\x44\111\123\124\x49\116\x43\124\40\141\x2e\142\157\157\153\x5f\151\x64\x29\x20\101\123\x20\164\157\164\x61\x6c")])->where("\141\56\x63\x6c\x69\145\156\164\137\x69\x64", $client_id)->where("\x61\56\x75\x73\145\162\x5f\151\144", $id)->get(); } }
+
+namespace App\Repositories\Master;
+
+use App\Models\User;
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class TeacherMasterRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($client_id): Collection
+    {
+        return DB::table('users as a')
+			->select(
+				'a.id',
+				'b.nik',
+				'b.photo',
+				'a.name',
+				'a.email',
+				'b.phone',
+				'b.birthday',
+				'a.email_verified_at',
+				'a.created_at'
+			)
+            ->join('tattr_member as b', function($join) {
+                $join->on('a.id', '=', 'b.id');
+            })
+            ->where('a.client_id', '=', $client_id)
+            ->where('a.role', '=', 'teacher')
+			->get();
+    }
+
+	/**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data, $client_id): bool
+    {
+		try{
+			$user = $this->createUser($data, $client_id);
+
+			$attr = DB::table('tattr_member')
+				->insert([
+					'id'            => $user->id,
+					'client_id'     => $client_id,
+					'nik'           => $data->nik,
+					'phone'         => $data->phone,
+					'birthday'      => $data->birthday,
+					'gender'        => $data->gender,
+					'created_at'    => $data->create_date
+				]);
+
+			$webmenus = [1, 4, 18, 27, 29];
+			for($i=0; $i<count($webmenus); $i++){
+				$inserted[] = [
+						'username'			=> $user->email,
+						'menu_id'			=> $webmenus[$i],
+						'create_permission'	=> 1,
+						'read_permission'	=> 1,
+						'update_permission'	=> 1,
+						'delete_permission'	=> 1,
+						'print_permission'	=> 1,
+						'approve_permission'=> 1,
+						'created_at'		=> $data->create_date
+				];
+			}
+
+			$acl = DB::table('web_menu_acls')
+				->insert($inserted);
+
+			return true;
+		} catch (\Exception $e) {
+			\Log::error('Create teacher failed => ' . $e->getMessage());
+            return false;
+        }
+    }
+
+	protected function createUser(object $data, $client_id)
+    {
+        return User::create([
+            'name' => $data->name,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'role' => 'teacher',
+            'flag_approve' => 'Y',
+            'email_verified_at' => $data->create_date,
+            'created_at' => $data->create_date,
+            'client_id' => $client_id
+        ]);
+    }
+	
+	/**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id): bool
+    {
+        return DB::transaction(function () use ($data, $id) {
+            return DB::table('users')->where('id', $id)->where('role', '=', 'teacher')
+                ->update([
+                    'description' => $data->desc,
+                    'file' => $data->file,
+                    'disp_type' => $data->type,
+                    'client_id' => '',
+                    'updated_at' => $data->modified_date,
+                    'updated_by' => $data->modified_by
+                ]);
+        });
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id, $client_id)
+    {
+        return DB::transaction(function () use ($id, $client_id) {
+            $attr = DB::table('tattr_member')
+                ->where('client_id', $client_id)
+                ->where('id', $id);
+            $attr_file = $attr->first();
+
+            if($attr_file->photo!=''){
+                @unlink(storage_path('app/public/images/profile/'.$attr_file->photo));
+            }
+
+            DB::table('tattr_member')->where('id', $id)->where('client_id', $client_id)->delete();
+
+			$teacher = DB::table('users')
+				->where('id', $id)
+				->where('client_id', $client_id)
+				->where('role', 'teacher')
+				->first();
+
+			if ($teacher) {
+				DB::table('web_menu_acls')->where('username', $teacher->email)->delete();
+
+				$teacher = DB::table('users')->where('id', $id)->where('client_id', $client_id)->where('role', 'teacher');
+
+				return $teacher->delete();
+			}
+
+			return false;
+        });
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function check(string $id, $client_id)
+    {
+        return DB::table('ttrx_read as a')
+                ->select([
+                    DB::raw('COUNT(DISTINCT a.book_id) AS total')
+                ])
+                ->where('a.client_id', $client_id)
+                ->where('a.user_id', $id)
+                ->get();
+    }
+}

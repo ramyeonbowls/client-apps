@@ -1,8 +1,214 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Report; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use App\Http\Controllers\Controller; use Maatwebsite\Excel\Facades\Excel; use App\Exports\Report\QuizReportExport; use App\Services\Report\QuizReportService; use Yajra\DataTables\Facades\DataTables; class QuizReportController extends Controller { private QuizReportService $loans_service; public function __construct() { $this->middleware("\x61\165\x74\x68"); $this->loans_service = new QuizReportService(); } public function index(Request $request) : JsonResponse { goto KkxfH; ZQ6t9: $logs->write(__FUNCTION__, "\123\124\x4f\x50\15\xa"); goto G8Tpa; zrmed: $logs->write(__FUNCTION__, "\123\x54\x41\x52\124"); goto lkeVa; pTaiA: try { goto qnKAN; Bji7c: $logs->write("\123\121\x4c", $sql); goto waWkM; e3Dst: Xo6am: goto CAsXc; v_Nje: $q++; goto hYKC4; TVfli: $queries = DB::getQueryLog(); goto vhxqC; omoGe: $filter["\143\162\x65\141\164\x65\x64\x5f\x62\x79"] = $user->email; goto Clm6S; jIy_o: $filter["\105\116\104\137\x44\x41\124\105"] = $request->END_DATE ?? ''; goto omoGe; CAsXc: if (!($q < count($queries))) { goto ycuXR; } goto LkGe6; z0M5S: $filter["\127\x4c"] = $request->WL ?? ''; goto ZSbra; h55q3: $logs->write("\102\111\x4e\x44\111\116\x47", "\x5b" . implode("\x2c\x20", $queries[$q]["\142\151\156\144\151\x6e\147\x73"]) . "\135"); goto Bji7c; Q1T7H: $filter["\120\122\x4f\126\x49\x4e\123\x49"] = $request->PROVINSI ?? ''; goto RQH2v; hYKC4: goto Xo6am; goto poScE; RQH2v: $filter["\x4b\101\102\x55\120\101\x54\105\x4e"] = $request->KABUPATEN ?? ''; goto z0M5S; vhxqC: $q = 0; goto e3Dst; ZSbra: $filter["\x53\124\x41\122\x54\x5f\x44\101\124\x45"] = $request->START_DATE ?? ''; goto jIy_o; Clm6S: $results = $this->loans_service->get($filter); goto TVfli; waWkM: vqrqc: goto v_Nje; poScE: ycuXR: goto C1med; LkGe6: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\151\156\x64\151\x6e\x67\163"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\161\x75\x65\x72\171"])); goto h55q3; qnKAN: DB::enableQueryLog(); goto Q1T7H; C1med: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\122", $th->getMessage()); } goto ZQ6t9; KkxfH: if (!$request->has("\156\157\144\x61\164\141")) { goto bkDxG; } goto vxZWL; lkeVa: $user = auth()->user(); goto LOi6A; S5m3U: bkDxG: goto Cexkh; Cexkh: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto zrmed; G8Tpa: return DataTables::of($results)->escapeColumns()->addIndexColumn()->toJson(); goto v9Lmt; vxZWL: return DataTables::of([])->toJson(); goto S5m3U; LOi6A: $results = []; goto pTaiA; v9Lmt: } public function store() { } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update() { } public function destroy(string $id) : JsonResponse { } public function ExportXLS(Request $request) { goto f_mHg; KLyMb: $logs->write(__FUNCTION__, "\123\124\x4f\120\xd\12"); goto bQ685; Bw9E5: $q++; goto SMRtM; WO8Jy: $queries = DB::getQueryLog(); goto cXSZr; eKOy4: Hd65w: goto KLyMb; oTd4_: try { goto Kp3B1; VrCEa: $filter["\105\116\104\137\x44\101\x54\x45"] = $request->END_DATE ?? ''; goto m78jT; UA0Ef: $filter["\123\x54\101\122\124\137\x44\101\124\105"] = $request->START_DATE ?? ''; goto VrCEa; js7hn: $filter["\x50\x52\117\126\x49\x4e\123\x49"] = $request->PROVINSI ?? ''; goto JPDxN; f2WMk: $filter["\x57\114"] = $request->WL ?? ''; goto UA0Ef; JPDxN: $filter["\113\101\x42\125\x50\101\x54\105\x4e"] = $request->KABUPATEN ?? ''; goto f2WMk; m78jT: $this->loans_service->get($filter)->map(function ($value, $i) use(&$results) { goto Ig9O_; MxbYP: $results[$i]["\156\x61\155\x65"] = $value->name; goto prPJ7; J27Q6: $results[$i]["\164\147\154"] = $value->tgl; goto GsmSx; y4lWg: $results[$i]["\x6b\x61\x62\x75\160\141\164\145\156\x5f\156\x61\155\x65"] = $value->kabupaten_name; goto MxbYP; Ig9O_: $results[$i]["\167\154\x5f\156\141\x6d\x65"] = $value->wl_name; goto JS38J; prPJ7: $results[$i]["\x74\x69\x74\154\x65"] = $value->title; goto w9xny; JS38J: $results[$i]["\160\162\157\x76\151\x6e\x73\x69\x5f\156\x61\155\145"] = $value->provinsi_name; goto y4lWg; w9xny: $results[$i]["\160\x6f\151\156\164"] = $value->point; goto J27Q6; GsmSx: }); goto MZ_RB; Kp3B1: DB::enableQueryLog(); goto js7hn; MZ_RB: } catch (\Exception $e) { $logs->write("\105\x52\x52\x4f\x52", $e->getMessage()); } goto WO8Jy; SMRtM: goto C5UJU; goto eKOy4; R3dE5: C5UJU: goto eEmRO; W84Ej: $logs->write("\102\111\x4e\104\111\x4e\x47", "\133" . implode("\x2c\x20", $queries[$q]["\142\x69\156\x64\151\156\x67\x73"]) . "\135"); goto elBWT; JA8re: $sql = Str::replaceArray("\77", $queries[$q]["\x62\x69\x6e\x64\151\156\147\x73"], str_replace("\77", "\x27\77\47", $queries[$q]["\x71\x75\145\162\171"])); goto W84Ej; eEmRO: if (!($q < count($queries))) { goto Hd65w; } goto JA8re; VCfJ0: qjHCQ: goto Bw9E5; bQ685: return Excel::download(new QuizReportExport($results), "\114\x61\160\x6f\x72\141\156\x5f\x42\141\143\x61\137\102\x75\153\165\56\x78\154\x73\x78"); goto xFXeh; cXSZr: $q = 0; goto R3dE5; f_mHg: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\x67"); goto retDg; retDg: $logs->write(__FUNCTION__, "\123\x54\x41\x52\x54"); goto SgW2G; SgW2G: $results = []; goto oTd4_; elBWT: $logs->write("\123\121\x4c", $sql); goto VCfJ0; xFXeh: } public function detail(Request $request) : JsonResponse { goto AL35I; AL35I: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\147"); goto EzVo3; EzVo3: $logs->write(__FUNCTION__, "\x53\x54\x41\122\124"); goto qYvw7; qYvw7: $results = []; goto M2tGI; M2tGI: try { goto bc4Mc; LAS4C: iru51: goto h4lae; gMxEZ: $filter["\151\144"] = $request->id ?? ''; goto da5sL; d6lgW: $q++; goto LT4Vi; HeZkg: $q = 0; goto LAS4C; S5kcn: $queries = DB::getQueryLog(); goto HeZkg; lQtHE: Z2xdC: goto S5kcn; SNTg_: foreach ($quizq as $i => $question) { goto BYfYc; w31rT: $results["\x71\165\145\163\164\x69\x6f\156\163"][$i]["\x70\x6f\x69\x6e\164"] = $question->point; goto N14oE; mWbhu: foreach ($rst as $iii => $answer) { goto b_e1A; b_e1A: $results["\x71\165\145\163\x74\151\157\156\163"][$i]["\141\156\x73\x77\145\x72"][$iii]["\151\x64"] = $answer->answer_id; goto jKCKb; spbpS: wWKS8: goto FaQ4S; jKCKb: $results["\161\x75\x65\x73\x74\x69\157\x6e\x73"][$i]["\x61\x6e\163\x77\145\x72"][$iii]["\x64\145\163\143\x72\x69\160\x74\x69\x6f\156"] = $answer->description; goto i8WWf; i8WWf: $results["\x71\x75\x65\x73\x74\151\157\156\163"][$i]["\141\156\163\x77\145\162"][$iii]["\160\157\x69\x6e\164"] = $answer->point; goto spbpS; FaQ4S: } goto kkIiB; WnjRa: $results["\161\x75\145\163\164\x69\157\156\163"][$i]["\144\145\x73\x63\x72\151\x70\x74\151\x6f\156"] = $question->description; goto fuf10; kkIiB: NsX6h: goto LoVE5; LoVE5: NW6rl: goto E9yMA; ZUgMi: $rst = $this->loans_service->getAnswer($filter, $question->id); goto mWbhu; N14oE: $results["\x71\x75\145\163\x74\151\x6f\156\163"][$i]["\x61\156\x73\167\x65\x72"] = []; goto ZUgMi; K2XM3: $results["\x71\165\145\x73\x74\151\157\x6e\163"][$i]["\x72\145\161\x75\x69\x72\x65\x64"] = (bool) $question->required; goto XYB3Y; XYB3Y: $results["\161\x75\145\x73\x74\x69\x6f\156\x73"][$i]["\x74\x79\160\x65"] = $question->type; goto w31rT; BYfYc: $results["\x71\165\145\x73\x74\x69\x6f\x6e\x73"][$i]["\x69\144"] = $question->id; goto WnjRa; fuf10: $results["\x71\165\145\163\164\151\x6f\x6e\x73"][$i]["\x74\145\155\160\154\141\x74\x65\x5f\163\145\161\165\145\156\143\x65"] = $question->seq; goto K2XM3; E9yMA: } goto lQtHE; vB7h_: $results["\x71\165\x65\x73\x74\x69\157\x6e\163"] = []; goto mO11m; Kh0Mb: $filter["\127\114"] = $request->WL ?? ''; goto gMxEZ; mO11m: $quizq = $this->loans_service->getQuestion($filter); goto SNTg_; vhma3: $logs->write("\102\111\116\104\111\x4e\x47", "\x5b" . implode("\54\x20", $queries[$q]["\x62\x69\x6e\144\151\x6e\147\163"]) . "\135"); goto lm3jG; h4lae: if (!($q < count($queries))) { goto MV0qn; } goto AgLjL; li1zF: $filter["\163\165\x72\166\145\x79\137\x69\x64"] = $request->survey_id ?? ''; goto vB7h_; Y0eMs: $filter["\120\x52\x4f\x56\111\116\x53\111"] = $request->PROVINSI ?? ''; goto x5pHa; bc4Mc: DB::enableQueryLog(); goto Y0eMs; da5sL: $filter["\144\x61\164\145"] = $request->date ?? ''; goto li1zF; x5pHa: $filter["\113\x41\102\x55\x50\x41\124\105\x4e"] = $request->KABUPATEN ?? ''; goto Kh0Mb; uBZmH: ZflUx: goto d6lgW; LT4Vi: goto iru51; goto DulGs; AgLjL: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\156\x64\x69\x6e\147\x73"], str_replace("\x3f", "\47\77\x27", $queries[$q]["\161\x75\x65\x72\x79"])); goto vhma3; DulGs: MV0qn: goto VM97b; lm3jG: $logs->write("\123\121\x4c", $sql); goto uBZmH; VM97b: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\122", $th->getMessage()); } goto Y6V_A; Y6V_A: $logs->write(__FUNCTION__, "\x53\124\x4f\x50\15\12"); goto qOyVv; qOyVv: return response()->json($results, 200); goto K_Z_C; K_Z_C: } }
+
+namespace App\Http\Controllers\Core\Report;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Report\QuizReportExport;
+use App\Services\Report\QuizReportService;
+use Yajra\DataTables\Facades\DataTables;
+
+class QuizReportController extends Controller
+{
+    private QuizReportService $loans_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->loans_service = new QuizReportService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        if($request->has('nodata')) {
+            return DataTables::of([])->toJson();
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+		$user = auth()->user();
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+            $filter['START_DATE']   = $request->START_DATE ?? '';
+            $filter['END_DATE']     = $request->END_DATE ?? '';
+            $filter['created_by']	= $user->email;
+
+            $results = $this->loans_service->get($filter);
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update()
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        //
+    }
+
+    public function ExportXLS(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+            $filter['START_DATE']   = $request->START_DATE ?? '';
+            $filter['END_DATE']     = $request->END_DATE ?? '';
+
+            $this->loans_service->get($filter)->map(function($value, $i) use (&$results) {
+                $results[$i]['wl_name']			= $value->wl_name;
+                $results[$i]['provinsi_name']	= $value->provinsi_name;
+                $results[$i]['kabupaten_name']	= $value->kabupaten_name;
+    			$results[$i]['name']			= $value->name;
+    			$results[$i]['title']			= $value->title;
+    			$results[$i]['point']			= $value->point;
+    			$results[$i]['tgl']				= $value->tgl;
+            });
+        } catch (\Exception $e) {
+            $logs->write("ERROR", $e->getMessage());
+        }
+
+        $queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return Excel::download(new QuizReportExport($results), 'Laporan_Baca_Buku.xlsx');
+    }
+
+	/**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function detail(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+			$filter['id']			= $request->id ?? '';
+            $filter['date']			= $request->date ?? '';
+            $filter['survey_id']	= $request->survey_id ?? '';
+
+			$results['questions']	= [];
+            $quizq					= $this->loans_service->getQuestion($filter);
+
+			foreach ($quizq as $i => $question) {
+				$results['questions'][$i]['id']           		= $question->id;
+				$results['questions'][$i]['description']  		= $question->description;
+				$results['questions'][$i]['template_sequence']  = $question->seq;
+				$results['questions'][$i]['required']     		= (boolean) $question->required;
+				$results['questions'][$i]['type']         		= $question->type;
+				$results['questions'][$i]['point']        		= $question->point;
+				$results['questions'][$i]['answer']       		= [];
+	
+				$rst	= $this->loans_service->getAnswer($filter, $question->id);
+
+				foreach ($rst as $iii => $answer) {
+					$results['questions'][$i]['answer'][$iii]['id']            = $answer->answer_id;
+					$results['questions'][$i]['answer'][$iii]['description']   = $answer->description;
+					$results['questions'][$i]['answer'][$iii]['point']         = $answer->point;
+				}
+			}
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+}

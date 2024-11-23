@@ -1,8 +1,270 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Setting\QuizMasterService; use App\Http\Requests\Setting\StoreQuizMasterRequest; use App\Http\Requests\Setting\UpdateQuizMasterRequest; class QuizMasterController extends Controller { private QuizMasterService $Quiz_service; public function __construct() { $this->middleware("\141\x75\164\x68"); $this->Quiz_service = new QuizMasterService(); } public function index(Request $request) : JsonResponse { goto ifmk1; rASAb: $user = auth()->user(); goto z15Ly; TMk0Z: try { goto WubUP; YTl1I: $logs->write("\x42\111\x4e\x44\111\x4e\107", "\x5b" . implode("\x2c\x20", $queries[$q]["\142\x69\x6e\x64\151\156\147\x73"]) . "\135"); goto tubRt; wcCus: goto uS98n; goto Sy7JN; nTSvZ: $q++; goto wcCus; IoDP8: $queries = DB::getQueryLog(); goto gDcbr; zOB6p: if (!($q < count($queries))) { goto XZaUy; } goto rtXJB; WubUP: DB::enableQueryLog(); goto aIS_W; aIS_W: $results = $this->Quiz_service->get($user->email); goto IoDP8; vqdNb: uS98n: goto zOB6p; dktC4: AaCzM: goto nTSvZ; gDcbr: $q = 0; goto vqdNb; Sy7JN: XZaUy: goto oV0AA; tubRt: $logs->write("\x53\x51\x4c", $sql); goto dktC4; rtXJB: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\156\144\151\x6e\147\163"], str_replace("\77", "\x27\x3f\47", $queries[$q]["\161\165\x65\x72\171"])); goto YTl1I; oV0AA: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\122", $th->getMessage()); } goto aTll5; QbGFU: $logs->write(__FUNCTION__, "\x53\124\101\122\124"); goto rASAb; z15Ly: $results = []; goto TMk0Z; ifmk1: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\157\147"); goto QbGFU; aTll5: $logs->write(__FUNCTION__, "\123\x54\x4f\120\xd\12"); goto rIkHg; rIkHg: return DataTables::of($results)->escapeColumns()->editColumn("\143\162\145\x61\164\x65\x64\137\x61\x74", function ($value) { return Carbon::parse($value->created_at)->toDateTimeString(); })->editColumn("\165\x70\144\x61\164\x65\x64\137\x61\164", function ($value) { return Carbon::parse($value->updated_at)->toDateTimeString(); })->addIndexColumn()->toJson(); goto W3Ay_; W3Ay_: } public function store(Request $request) { goto iSs1c; pE4dx: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\x6f\147"); goto Gn2aO; iSs1c: $request->validate(["\x69\x64" => "\x72\145\161\x75\x69\162\145\144\x7c\x6d\x61\x78\x3a\65\60", "\x74\151\x74\x6c\145" => "\x72\145\161\x75\151\x72\145\x64", "\144\145\163\143\x72\151\160\164\x69\157\x6e" => "\162\145\161\165\x69\x72\145\x64\174\155\141\x78\72\x32\x35\x35", "\x73\x74\x61\162\164\x5f\x64\141\164\x65" => "\162\x65\x71\165\x69\162\145\x64\174\155\x61\170\x3a\61\71", "\x65\156\144\137\x64\141\x74\145" => "\162\145\x71\165\151\x72\145\x64\174\155\x61\170\x3a\x31\71", "\161\x75\x65\x73\164\151\x6f\156\163\56\52\56\151\144" => "\x72\x65\161\165\151\x72\145\144\x7c\x6d\141\x78\x3a\x32\x30", "\x71\x75\x65\163\164\151\x6f\156\x73\x2e\x2a\x2e\144\x65\163\143\162\x69\160\164\x69\157\156" => "\x72\x65\161\165\x69\x72\145\x64", "\161\165\x65\163\164\151\x6f\156\163\x2e\x2a\56\x74\171\160\x65" => "\x72\x65\161\x75\151\x72\145\x64", "\161\x75\145\x73\x74\151\x6f\156\x73\x2e\52\x2e\x61\x6e\163\167\x65\x72\x2e\x2a\56\x64\145\x73\x63\x72\151\160\164\151\157\156" => "\x72\x65\x71\x75\151\x72\x65\x64\x5f\x69\x66\72\161\x75\145\163\164\x69\x6f\x6e\163\x2e\52\56\x74\171\160\145\54\155\165\x6c\x74\x69\160\x6c\x65\x2c\x63\150\x65\x63\x6b\x6c\151\163\x74"], ["\x71\165\145\163\164\151\x6f\x6e\163\x2e\x2a\56\151\144\56\162\145\x71\x75\151\x72\145\x64" => "\x54\150\x65\40\x69\144\40\x66\151\x65\154\144\40\x69\163\x20\x72\145\161\165\151\x72\x65\144\x2e", "\x71\165\x65\163\x74\151\157\156\x73\x2e\52\x2e\151\144\x2e\x6d\x61\170" => "\124\150\x65\x20\151\x64\40\x66\x69\145\154\144\x20\155\141\170\56\40\x32\x30\x20\143\x68\x61\162\x61\x63\164\145\x72\x73\56", "\161\x75\145\x73\x74\x69\x6f\x6e\x73\x2e\x2a\56\144\x65\x73\143\162\x69\x70\164\x69\157\156\x2e\162\145\x71\165\151\x72\x65\x64" => "\124\150\145\x20\x71\165\145\x73\164\151\157\156\40\x66\151\x65\x6c\x64\x20\151\163\40\x72\x65\x71\165\x69\162\x65\144\56", "\161\x75\x65\x73\x74\x69\157\156\163\56\52\56\x74\171\x70\x65\56\x72\145\x71\165\x69\x72\x65\x64" => "\124\x68\145\40\x74\x79\x70\145\x20\146\x69\145\x6c\x64\40\151\x73\40\x72\145\x71\x75\151\162\145\x64\56", "\x71\165\145\163\x74\x69\x6f\x6e\163\56\x2a\56\x61\x6e\x73\x77\145\162\x2e\52\x2e\144\145\163\x63\x72\x69\x70\x74\151\x6f\x6e\56\x72\x65\161\x75\x69\x72\145\x64\137\151\x66" => "\x54\x68\x65\x20\x61\156\x73\x77\x65\x72\x20\146\151\x65\x6c\144\x20\151\x73\40\x72\x65\161\x75\151\x72\145\144"]); goto pE4dx; D_XSt: $result["\x6d\145\x73\x73\141\147\x65"] = ''; goto jq1iX; oANIR: $result["\x73\164\x61\164\165\163"] = 200; goto D_XSt; Gn2aO: $logs->write(__FUNCTION__, "\123\x54\x41\122\124"); goto oANIR; m9IIe: return response()->json($result["\x6d\x65\163\163\141\147\x65"], $result["\x73\164\141\164\165\163"]); goto Hoynn; jq1iX: try { goto oESxS; oESxS: DB::enableQueryLog(); goto zJooZ; bPuiJ: $result["\163\164\141\x74\x75\x73"] = 201; goto XuxbS; zJooZ: $created = $this->Quiz_service->store((object) $request); goto G445g; FNTBf: $logs->write("\x42\111\x4e\x44\x49\x4e\107", "\x5b" . implode("\x2c\x20", $queries[$q]["\142\x69\156\144\151\156\147\163"]) . "\135"); goto ExW3_; RMmKv: $q++; goto gsADA; UPTeZ: $sql = Str::replaceArray("\77", $queries[$q]["\x62\151\x6e\144\151\156\x67\x73"], str_replace("\x3f", "\47\77\47", $queries[$q]["\161\x75\x65\162\171"])); goto FNTBf; gsADA: goto SGAH2; goto XAeqq; ExW3_: $logs->write("\x53\121\114", $sql); goto MLlsj; MLlsj: uzjhO: goto RMmKv; nkrXc: $q = 0; goto oKanE; XuxbS: $result["\155\x65\163\163\x61\x67\145"] = "\x44\x61\x74\141\40\142\x65\x72\x68\141\x73\151\154\x20\144\151\x62\x75\x61\x74\56"; goto NrxHf; NrxHf: BrYiv: goto paAJw; G445g: if (!$created) { goto BrYiv; } goto QD_DI; oKanE: SGAH2: goto gWhMV; paAJw: $queries = DB::getQueryLog(); goto nkrXc; QD_DI: $logs->write("\111\116\x46\x4f", "\x53\x75\143\x63\x65\x73\x73\146\165\x6c\154\171\40\x63\x72\145\x61\164\x65\144"); goto bPuiJ; gWhMV: if (!($q < count($queries))) { goto Lmd4b; } goto UPTeZ; XAeqq: Lmd4b: goto L38ki; L38ki: } catch (Throwable $th) { goto twv4b; USqjV: $result["\x6d\145\163\163\141\147\145"] = "\x44\141\x74\141\x20\147\x61\x67\141\154\x20\x64\151\x62\165\141\x74\56\x3c\142\x72\x3e" . $errMessage; goto hl9i4; AfDgD: $errMessage = $th->errorInfo[2]; goto S4rnW; S4rnW: $logs->write("\x45\122\x52\117\122", $th->getMessage()); goto USqjV; twv4b: $sqlState = $th->errorInfo[0]; goto lpf8y; lpf8y: $errCode = $th->errorInfo[1]; goto AfDgD; hl9i4: } goto XpTIh; XpTIh: $logs->write(__FUNCTION__, "\x53\x54\x4f\x50\xd\12"); goto m9IIe; Hoynn: } public function show($id) { goto Uf1bG; ZnKZ_: $logs->write(__FUNCTION__, "\123\x54\101\x52\124"); goto xIvkp; xzEz9: Ah8er: goto SNvUy; akY3M: $queries = DB::getQueryLog(); goto O__7l; yxGxw: $logs->write("\x53\x51\x4c", $sql); goto xzEz9; V2fxr: return response()->json($results, 200); goto bfhrw; QTgoz: $logs->write(__FUNCTION__, "\123\124\x4f\x50\xd\xa"); goto V2fxr; T03yK: if (!($q < count($queries))) { goto NqLXw; } goto Chr17; cLJvl: $quiz_q = $this->Quiz_service->getQuestion($id); goto CvWL0; CvWL0: $results["\161\x75\145\163\164\x69\x6f\x6e\x73"] = []; goto uilZJ; z0mvd: rx7R6: goto akY3M; gJP8g: LxBnV: goto T03yK; r1fDC: goto LxBnV; goto VGv9G; SNvUy: $q++; goto r1fDC; Chr17: $sql = Str::replaceArray("\77", $queries[$q]["\x62\151\x6e\144\x69\x6e\147\163"], str_replace("\x3f", "\x27\77\47", $queries[$q]["\x71\x75\x65\162\x79"])); goto Lr9cX; uilZJ: foreach ($quiz_q as $i => $question) { goto L4NTV; UWuWY: $results["\x71\x75\x65\163\164\151\x6f\156\163"][$i]["\162\x65\161\165\151\x72\x65\144"] = (bool) $question->required; goto a6xXa; t9zC_: $quiz_a = $this->Quiz_service->getAnswer($id, $question->id); goto a7DFJ; L4NTV: $results["\161\165\145\x73\x74\151\x6f\156\x73"][$i]["\145\144\x69\164\x61\x62\154\145"] = false; goto RzJ2s; H2lwL: $results["\161\165\145\163\164\x69\157\x6e\163"][$i]["\166\x69\x73\151\x62\x6c\145"] = true; goto wk4D9; a7DFJ: foreach ($quiz_a as $ii => $answer) { goto QiAzP; h8oG7: $results["\x71\165\145\163\164\x69\157\x6e\x73"][$i]["\x61\x6e\163\x77\x65\x72"][$ii]["\x64\145\163\x63\162\151\160\164\x69\x6f\156"] = $answer->description; goto VaFYz; C2FRH: $results["\161\x75\x65\163\164\151\157\x6e\x73"][$i]["\141\156\x73\167\145\x72"][$ii]["\x66\x6c\141\x67\x5f\156\x65\167"] = $ii == 0 ? true : false; goto JFbEo; QiAzP: $results["\x71\x75\145\x73\164\x69\157\156\163"][$i]["\141\156\163\167\145\x72"][$ii]["\151\144"] = $answer->id; goto h8oG7; VaFYz: $results["\x71\165\x65\x73\164\151\157\156\163"][$i]["\x61\156\x73\x77\145\x72"][$ii]["\160\157\151\156\164"] = $answer->point; goto C2FRH; JFbEo: uhjvO: goto o22L5; o22L5: } goto RzDef; bWJk8: Wld0V: goto p1Bfg; veqKH: $results["\161\x75\x65\x73\x74\151\157\x6e\x73"][$i]["\144\145\163\x63\x72\151\160\164\151\x6f\156"] = $question->description; goto A5jim; Y4wLp: $results["\161\165\145\163\x74\x69\x6f\156\x73"][$i]["\x70\x6f\151\156\x74"] = $question->point; goto LzbWb; RzDef: UnLqc: goto bWJk8; LzbWb: $results["\x71\x75\145\163\164\151\157\156\x73"][$i]["\x66\x6c\x61\x67\x5f\x6e\145\x77"] = $i == $quiz_q->count() - 1 ? true : false; goto H2lwL; A5jim: $results["\161\x75\x65\x73\x74\151\x6f\x6e\x73"][$i]["\x74\x65\x6d\160\x6c\x61\x74\x65\x5f\x73\145\161\x75\145\156\x63\x65"] = $question->seq; goto UWuWY; wk4D9: $results["\161\x75\145\x73\x74\151\157\156\163"][$i]["\x61\156\x73\x77\145\x72"] = []; goto t9zC_; RzJ2s: $results["\x71\165\x65\163\164\x69\157\156\x73"][$i]["\151\144"] = $question->id; goto veqKH; a6xXa: $results["\161\x75\145\163\164\x69\157\x6e\163"][$i]["\164\x79\x70\145"] = $question->type; goto Y4wLp; p1Bfg: } goto z0mvd; xIvkp: DB::enableQueryLog(); goto cLJvl; Uf1bG: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\147"); goto ZnKZ_; Lr9cX: $logs->write("\102\x49\116\x44\x49\116\x47", "\x5b" . implode("\x2c\40", $queries[$q]["\142\151\x6e\x64\151\x6e\x67\163"]) . "\135"); goto yxGxw; VGv9G: NqLXw: goto QTgoz; O__7l: $q = 0; goto gJP8g; bfhrw: } public function update(Request $request, string $id) { goto nzryn; B308x: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\157\147"); goto HThqK; chOOs: $result["\x73\x74\141\x74\165\163"] = 200; goto VYywX; nzryn: $request->validate(["\x69\x64" => "\x72\145\x71\165\x69\162\x65\144\174\155\x61\170\72\65\x30", "\164\x69\x74\154\x65" => "\162\145\161\165\x69\x72\145\x64", "\144\145\163\143\162\151\160\x74\x69\x6f\156" => "\x72\145\x71\x75\151\162\x65\x64\x7c\x6d\x61\x78\72\x32\65\x35", "\163\164\x61\x72\164\137\x64\x61\164\x65" => "\x72\x65\161\165\151\x72\145\144\174\x6d\141\x78\72\61\x39", "\x65\x6e\144\x5f\x64\x61\x74\145" => "\162\145\x71\x75\x69\162\145\144\x7c\x6d\141\x78\72\61\x39", "\161\x75\x65\x73\164\151\x6f\x6e\163\x2e\x2a\x2e\151\x64" => "\162\145\x71\165\151\x72\x65\x64\174\x6d\141\170\x3a\x32\x30", "\161\165\145\x73\164\151\157\156\163\x2e\52\x2e\x64\x65\163\x63\162\x69\x70\x74\x69\x6f\156" => "\162\145\x71\x75\151\x72\x65\144", "\161\x75\145\163\164\151\157\156\163\x2e\52\56\164\171\x70\145" => "\162\x65\161\165\x69\162\145\144", "\161\165\x65\163\x74\x69\x6f\x6e\x73\x2e\52\x2e\x61\x6e\x73\x77\145\162\56\x2a\56\144\x65\163\143\x72\x69\x70\x74\151\157\156" => "\162\x65\161\x75\151\x72\145\x64\x5f\x69\146\72\x71\165\x65\163\x74\x69\x6f\x6e\x73\56\52\x2e\164\171\160\x65\54\155\x75\154\164\151\160\154\145\x2c\143\150\x65\x63\x6b\x6c\x69\x73\x74"], ["\x71\x75\x65\163\x74\x69\157\x6e\x73\x2e\52\56\151\144\x2e\162\145\x71\165\x69\162\x65\x64" => "\124\150\x65\x20\x69\x64\40\146\x69\x65\x6c\144\x20\x69\x73\x20\162\x65\161\x75\151\162\145\144\x2e", "\161\x75\x65\163\164\151\157\156\163\56\x2a\x2e\151\144\x2e\155\x61\x78" => "\124\150\145\x20\151\x64\x20\146\x69\x65\x6c\x64\40\155\x61\x78\56\x20\62\60\40\x63\150\141\x72\141\143\x74\x65\162\x73\56", "\161\165\x65\163\164\151\x6f\x6e\163\56\52\56\144\x65\163\143\162\x69\x70\x74\x69\x6f\x6e\56\x72\145\161\165\x69\x72\x65\x64" => "\x54\x68\x65\40\x71\x75\x65\x73\x74\151\x6f\x6e\x20\x66\x69\145\x6c\x64\x20\151\x73\40\x72\x65\161\165\x69\x72\145\x64\x2e", "\161\x75\x65\x73\x74\x69\157\156\x73\x2e\x2a\56\x74\x79\x70\x65\x2e\x72\x65\161\x75\151\x72\x65\144" => "\x54\150\x65\40\x74\171\x70\x65\40\146\151\x65\x6c\x64\40\x69\163\40\162\145\161\165\x69\162\x65\x64\56", "\x71\x75\145\x73\x74\151\157\156\163\56\x2a\56\x61\x6e\x73\167\145\162\56\x2a\56\x64\x65\x73\x63\x72\151\160\164\x69\157\156\56\162\x65\x71\165\151\162\145\x64\x5f\151\x66" => "\124\150\145\x20\141\x6e\x73\167\x65\162\x20\x66\151\x65\x6c\144\40\x69\x73\40\x72\145\161\x75\x69\162\145\x64"]); goto B308x; ZIWTs: return response()->json($result["\155\145\163\163\141\147\x65"], $result["\x73\164\141\164\x75\163"]); goto SNGGB; CEIze: try { goto Ox2dt; nZVbl: if (!$updated) { goto QgNQ7; } goto Hros9; cXJRM: QgNQ7: goto gZCoL; tRsh5: $q++; goto yCTna; RaDMp: $logs->write("\x53\121\114", $sql); goto grm6w; kVlZP: $logs->write("\x42\x49\x4e\x44\111\116\107", "\x5b" . implode("\54\x20", $queries[$q]["\142\x69\x6e\144\x69\156\147\163"]) . "\x5d"); goto RaDMp; Hros9: $logs->write("\111\116\x46\117", "\123\x75\143\143\145\x73\163\x66\165\x6c\154\171\x20\x75\x70\x64\141\x74\x65\x64"); goto bmei7; USeGZ: $sql = Str::replaceArray("\77", $queries[$q]["\142\x69\156\144\151\156\x67\x73"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\x71\165\145\x72\171"])); goto kVlZP; EEMZI: $updated = $this->Quiz_service->update((object) $request, $id); goto nZVbl; yCTna: goto Ny3S5; goto HUz4Y; D1SV9: if (!($q < count($queries))) { goto P_hHa; } goto USeGZ; bmei7: $result["\x73\x74\141\x74\165\x73"] = 201; goto AfU2V; gZCoL: $queries = DB::getQueryLog(); goto nsdrs; grm6w: mchQp: goto tRsh5; Ox2dt: DB::enableQueryLog(); goto EEMZI; HUz4Y: P_hHa: goto fymsn; nsdrs: $q = 0; goto LNsm7; LNsm7: Ny3S5: goto D1SV9; AfU2V: $result["\155\145\163\163\141\147\145"] = "\x44\x61\x74\141\x20\142\145\x72\x68\141\x73\151\154\40\x64\x69\x70\145\162\142\x61\162\x75\151\x2e"; goto cXJRM; fymsn: } catch (Throwable $th) { $logs->write("\x45\122\122\117\122", $th->getMessage()); $result["\155\x65\163\163\x61\147\145"] = "\x44\x61\x74\141\40\x67\141\x67\141\x6c\40\x64\151\x70\145\x72\x62\141\x72\x75\151\56\x3c\x62\x72\76" . $th->getMessage(); } goto ZIWTs; HThqK: $logs->write(__FUNCTION__, "\123\124\x41\122\124"); goto chOOs; VYywX: $result["\155\145\163\x73\141\147\x65"] = ''; goto CEIze; SNGGB: } public function destroy(string $id) : JsonResponse { goto EzfEq; S0Yda: $result["\155\x65\163\163\x61\x67\x65"] = ''; goto vDzS5; mPy5U: $logs->write(__FUNCTION__, "\x53\124\x41\122\124"); goto rtY8C; dq9Xb: $logs->write(__FUNCTION__, "\x53\124\117\120\15\12"); goto a5K93; a5K93: return response()->json($result["\x6d\x65\x73\163\x61\147\145"], $result["\163\164\x61\x74\165\163"]); goto ChD1K; EzfEq: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\147"); goto mPy5U; vDzS5: try { goto Vjb7T; E0x3j: if (!($q < count($queries))) { goto cEqgj; } goto fSMmG; CDLeS: goto M2Jjy; goto LB7zV; B1sVu: $q++; goto CDLeS; xP5em: $result["\x6d\x65\163\163\x61\x67\145"] = "\x44\x61\x74\x61\40\142\145\162\150\x61\163\151\154\x20\x64\x69\150\141\160\165\163"; goto MK40v; yDF_z: $queries = DB::getQueryLog(); goto kGvq5; LB7zV: cEqgj: goto KeE9H; kGvq5: $q = 0; goto PXLD8; O5R0e: $logs->write("\x42\111\x4e\x44\x49\x4e\107", "\133" . implode("\x2c\x20", $queries[$q]["\x62\x69\156\x64\x69\x6e\147\163"]) . "\x5d"); goto Eadaw; MK40v: dhBLt: goto P9hEh; Vjb7T: DB::enableQueryLog(); goto Oz3Xc; PXLD8: M2Jjy: goto E0x3j; Oz3Xc: $deleted = $this->Quiz_service->delete($id); goto yDF_z; Eadaw: $logs->write("\x53\121\114", $sql); goto Hr1lg; Hr1lg: vn9mZ: goto B1sVu; fSMmG: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\151\156\144\151\156\x67\163"], str_replace("\x3f", "\47\77\47", $queries[$q]["\161\x75\x65\162\x79"])); goto O5R0e; KeE9H: if (!$deleted) { goto dhBLt; } goto xP5em; P9hEh: } catch (Throwable $th) { goto sOOwz; sOOwz: $sqlState = $th->errorInfo[0]; goto nsacp; jFgbS: $result["\x6d\145\x73\x73\141\x67\x65"] = "\x44\141\x74\141\40\147\141\x67\x61\154\x20\x64\x69\x68\x61\160\x75\163\56\74\x62\162\76" . $errMessage; goto nXq_e; KBCz0: $errMessage = $th->errorInfo[2]; goto tJjfr; nsacp: $errCode = $th->errorInfo[1]; goto KBCz0; tJjfr: $logs->write("\x45\122\122\117\122", $th->getMessage()); goto jFgbS; nXq_e: } goto dq9Xb; rtY8C: $result["\163\164\x61\x74\165\163"] = 200; goto S0Yda; ChD1K: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Setting\QuizMasterService;
+use App\Http\Requests\Setting\StoreQuizMasterRequest;
+use App\Http\Requests\Setting\UpdateQuizMasterRequest;
+
+class QuizMasterController extends Controller
+{
+    private QuizMasterService $Quiz_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->Quiz_service = new QuizMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+		$user = auth()->user();
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->Quiz_service->get($user->email);
+
+            $queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('created_at', function ($value) {
+                return Carbon::parse($value->created_at)->toDateTimeString();
+            })
+            ->editColumn('updated_at', function ($value) {
+                return Carbon::parse($value->updated_at)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    public function store(Request $request)
+    {
+		$request->validate([
+            'id' => 'required|max:50',
+            'title' => 'required',
+            'description' => 'required|max:255',
+            'start_date' => 'required|max:19',
+            'end_date' => 'required|max:19',
+            'questions.*.id' => 'required|max:20',
+            'questions.*.description' => 'required',
+            'questions.*.type' => 'required',
+            'questions.*.answer.*.description' => 'required_if:questions.*.type,multiple,checklist'
+        ],[
+            'questions.*.id.required' => 'The id field is required.',
+            'questions.*.id.max' => 'The id field max. 20 characters.',
+            'questions.*.description.required' => 'The question field is required.',
+            'questions.*.type.required' => 'The type field is required.',
+            'questions.*.answer.*.description.required_if' => 'The answer field is required'
+        ]);
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+
+        try {
+            DB::enableQueryLog();
+
+            $created = $this->Quiz_service->store((object)$request);
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil dibuat.";
+            }
+
+            $queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+        } catch (Throwable $th) {
+			$sqlState   = $th->errorInfo[0];
+			$errCode    = $th->errorInfo[1];
+			$errMessage = $th->errorInfo[2];
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal dibuat.<br>" . $errMessage;
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show($id)
+    {
+		$logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+		DB::enableQueryLog();
+
+		$quiz_q = $this->Quiz_service->getQuestion($id);
+		$results['questions'] = [];
+		foreach ($quiz_q as $i => $question) {
+			$results['questions'][$i]['editable']     		= false;
+            $results['questions'][$i]['id']           		= $question->id;
+            $results['questions'][$i]['description']  		= $question->description;
+            $results['questions'][$i]['template_sequence']  = $question->seq;
+            $results['questions'][$i]['required']     		= (boolean) $question->required;
+            $results['questions'][$i]['type']         		= $question->type;
+            $results['questions'][$i]['point']        		= $question->point;
+            $results['questions'][$i]['flag_new']     		= ($i==($quiz_q->count() - 1)) ? true : false;
+            $results['questions'][$i]['visible']      		= true;
+            $results['questions'][$i]['answer']       		= [];
+
+			$quiz_a = $this->Quiz_service->getAnswer($id, $question->id);
+			foreach ($quiz_a as $ii => $answer) {
+        		$results['questions'][$i]['answer'][$ii]['id']            = $answer->id;
+        		$results['questions'][$i]['answer'][$ii]['description']   = $answer->description;
+				$results['questions'][$i]['answer'][$ii]['point']         = $answer->point;
+				$results['questions'][$i]['answer'][$ii]['flag_new']      = ($ii==0) ? true : false;
+        	}
+		}
+
+		$queries = DB::getQueryLog();
+		for($q = 0; $q < count($queries); $q++) {
+			$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+			$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+			$logs->write('SQL', $sql);
+		}
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'id' => 'required|max:50',
+            'title' => 'required',
+            'description' => 'required|max:255',
+            'start_date' => 'required|max:19',
+            'end_date' => 'required|max:19',
+            'questions.*.id' => 'required|max:20',
+            'questions.*.description' => 'required',
+            'questions.*.type' => 'required',
+            'questions.*.answer.*.description' => 'required_if:questions.*.type,multiple,checklist'
+        ],[
+            'questions.*.id.required' => 'The id field is required.',
+            'questions.*.id.max' => 'The id field max. 20 characters.',
+            'questions.*.description.required' => 'The question field is required.',
+            'questions.*.type.required' => 'The type field is required.',
+            'questions.*.answer.*.description.required_if' => 'The answer field is required'
+        ]);
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $updated = $this->Quiz_service->update((object)$request, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $deleted = $this->Quiz_service->delete($id);
+
+            $queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+			$sqlState   = $th->errorInfo[0];
+			$errCode    = $th->errorInfo[1];
+			$errMessage = $th->errorInfo[2];
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $errMessage;
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

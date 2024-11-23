@@ -1,8 +1,229 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Setting\BannerMasterService; use App\Http\Requests\Setting\StoreBannerMasterRequest; use App\Http\Requests\Setting\UpdateBannerMasterRequest; class BannerMasterController extends Controller { private BannerMasterService $banner_service; public function __construct() { $this->middleware("\x61\165\x74\x68"); $this->banner_service = new BannerMasterService(); } public function index(Request $request) : JsonResponse { goto cg7td; HkFcQ: $results = []; goto NSaY9; cbQLC: $logs->write(__FUNCTION__, "\123\x54\101\122\124"); goto HkFcQ; hKxjQ: return DataTables::of($results)->escapeColumns()->editColumn("\143\162\x65\141\x74\145\x64\x5f\141\164", function ($value) { return Carbon::parse($value->created_at)->toDateTimeString(); })->editColumn("\165\x70\144\x61\x74\145\x64\x5f\x61\164", function ($value) { return Carbon::parse($value->updated_at)->toDateTimeString(); })->addIndexColumn()->toJson(); goto nrZ8g; cg7td: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\x6f\147"); goto cbQLC; nBbuS: $logs->write(__FUNCTION__, "\123\124\117\x50\xd\xa"); goto hKxjQ; NSaY9: try { goto WvEep; ikfW8: $q = 0; goto u8VCn; orsMy: $logs->write("\x53\x51\114", $queries[$q]["\161\165\x65\x72\171"]); goto GizS3; y3CzL: if (!($q < count($queries))) { goto H4qFk; } goto gygq4; u8VCn: Znldc: goto y3CzL; GizS3: IQSr3: goto xaSyj; JObDR: goto Znldc; goto AOj24; xaSyj: $q++; goto JObDR; aqm4t: $results = $this->banner_service->get(); goto V3sEA; WvEep: DB::enableQueryLog(); goto aqm4t; AOj24: H4qFk: goto OVn0L; gygq4: $logs->write("\102\111\x4e\x44\111\116\107", "\133" . implode("\x2c\40", $queries[$q]["\142\151\156\144\151\x6e\x67\x73"]) . "\x5d"); goto orsMy; V3sEA: $queries = DB::getQueryLog(); goto ikfW8; OVn0L: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\x52", $th->getMessage()); } goto nBbuS; nrZ8g: } public function store(StoreBannerMasterRequest $request) : JsonResponse { goto NiAeD; y_w1E: try { goto b_3Cd; b_3Cd: DB::enableQueryLog(); goto YOc5Y; nc5cn: if (!($q < count($queries))) { goto hp922; } goto NfCUG; roQHY: $created = $this->banner_service->store((object) $validated); goto x1zAp; kO6jR: try { goto k2o38; b9WC6: $banner_name = explode("\56", str_replace("\40", '', $banner_file))[0] . "\55" . now("\101\163\x69\141\x2f\112\x61\x6b\x61\162\x74\x61")->format("\x59\x6d\144\110\x69\163") . "\55" . rand(100000, 999999) . "\56" . $extension; goto drB_S; k2o38: $banner_file = $request->file("\x66\x69\154\145")->getClientOriginalName(); goto l21dU; k36_S: $validated["\146\151\154\145"] = $banner_name; goto e6_ZU; drB_S: $request->file("\146\151\x6c\145")->storeAs("\x2f\x70\165\142\154\x69\143\57\151\x6d\x61\147\145\163\x2f\142\x61\x6e\x6e\x65\x72", $banner_name); goto k36_S; l21dU: $extension = $request->file("\146\x69\x6c\145")->getClientOriginalExtension(); goto b9WC6; e6_ZU: } catch (Throwable $th) { $logs->write("\105\x52\x52\x4f\x52", $th->getMessage()); } goto vGHDN; MJnYF: $logs->write("\x53\x51\114", $queries[$q]["\161\165\145\x72\x79"]); goto TM3hn; x1zAp: if (!$created) { goto DATcR; } goto NNXk2; KFFwq: $queries = DB::getQueryLog(); goto sOjQy; vOEeR: C2cGs: goto nc5cn; g8r4i: DATcR: goto KFFwq; vGHDN: QV6Qr: goto roQHY; TM3hn: evzXU: goto YBlQ2; uuX7U: hp922: goto jyVWa; NfCUG: $logs->write("\x42\111\x4e\x44\x49\x4e\107", "\x5b" . implode("\x2c\40", $queries[$q]["\x62\151\x6e\144\x69\156\x67\x73"]) . "\135"); goto MJnYF; sOjQy: $q = 0; goto vOEeR; CToeZ: $result["\155\x65\163\x73\141\x67\145"] = "\104\x61\x74\141\x20\142\145\162\x68\141\x73\x69\154\40\x64\151\x62\x75\141\164\x2e"; goto g8r4i; Lk5He: goto C2cGs; goto uuX7U; YOc5Y: if (!$request->hasFile("\x66\151\154\145")) { goto QV6Qr; } goto kO6jR; Pttbl: $result["\x73\x74\x61\164\x75\x73"] = 201; goto CToeZ; YBlQ2: $q++; goto Lk5He; NNXk2: $logs->write("\x49\116\x46\117", "\x53\x75\143\143\145\x73\163\146\165\154\x6c\x79\x20\x63\x72\145\x61\164\145\144"); goto Pttbl; jyVWa: } catch (Throwable $th) { $logs->write("\x45\122\x52\117\x52", $th->getMessage()); $result["\155\145\163\x73\x61\147\145"] = "\104\141\164\141\x20\x67\x61\x67\x61\154\40\x64\151\x62\x75\x61\164\x2e\x3c\142\162\76" . $th->getMessage(); } goto XcNYf; rg5OP: $result["\163\164\x61\164\x75\163"] = 200; goto zb91l; X2h7n: $logs->write(__FUNCTION__, "\x53\x54\x41\122\x54"); goto rg5OP; pWmw9: return response()->json($result["\155\145\x73\x73\x61\x67\x65"], $result["\163\x74\x61\164\x75\163"]); goto hrtOY; BBKTU: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\147"); goto X2h7n; NiAeD: $validated = $request->validated(); goto BBKTU; zb91l: $result["\155\x65\x73\x73\x61\147\x65"] = ''; goto y_w1E; XcNYf: $logs->write(__FUNCTION__, "\x53\x54\117\x50\xd\xa"); goto pWmw9; hrtOY: } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update(UpdateBannerMasterRequest $request, string $id) : JsonResponse { goto MqSpQ; MqSpQ: $validated = $request->validated(); goto MT1Zk; pPWcc: $result["\163\164\141\164\165\x73"] = 200; goto PRjiq; MT1Zk: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\157\x67"); goto mQhDS; MlDmD: return response()->json($result["\x6d\x65\x73\163\x61\147\145"], $result["\x73\164\x61\164\x75\x73"]); goto wnHDW; ByMee: try { goto Sw6l9; L1Y4v: $updated = $this->banner_service->update((object) $validated, $id); goto bFTtA; BU6p_: if (!($q < count($queries))) { goto bhee0; } goto CJDiS; duGG0: $result["\x73\164\x61\164\x75\x73"] = 201; goto nT53Q; DJWZM: $logs->write("\x53\121\x4c", $queries[$q]["\161\x75\x65\162\171"]); goto Ha_7C; bFTtA: if (!$updated) { goto ML3Dx; } goto TbFWN; CJDiS: $logs->write("\102\111\x4e\x44\111\116\107", "\x5b" . implode("\54\x20", $queries[$q]["\x62\151\156\144\151\x6e\x67\x73"]) . "\x5d"); goto DJWZM; w4gRu: $q++; goto NnKkV; LqtKt: $queries = DB::getQueryLog(); goto UnQLs; Ha_7C: W3kmi: goto w4gRu; Sw6l9: DB::enableQueryLog(); goto yZE7V; TbFWN: $logs->write("\x49\x4e\106\x4f", "\123\165\x63\x63\x65\163\x73\146\165\154\154\171\x20\165\160\144\141\x74\145\144"); goto duGG0; aCpVX: If19Y: goto L1Y4v; LE0Z0: egFi1: goto BU6p_; mEXym: bhee0: goto AJ3hs; nT53Q: $result["\155\x65\163\x73\141\147\x65"] = "\x44\141\x74\141\40\x62\x65\162\150\141\x73\151\x6c\x20\x64\151\160\x65\x72\x62\141\x72\x75\151\x2e"; goto QAO0h; NnKkV: goto egFi1; goto mEXym; yZE7V: if (!$request->hasFile("\146\x69\x6c\145")) { goto If19Y; } goto GKVm_; UnQLs: $q = 0; goto LE0Z0; GKVm_: try { goto wT4Qk; lticd: $request->file("\146\151\154\x65")->storeAs("\x2f\160\165\142\154\151\x63\x2f\151\155\141\147\145\x73\57\142\141\x6e\156\145\x72", $banner_name); goto A2SvN; A2SvN: $validated["\146\x69\154\145"] = $banner_name; goto hsOeF; wT4Qk: $banner_file = $request->file("\x66\151\154\x65")->getClientOriginalName(); goto m1KQT; m1KQT: $extension = $request->file("\x66\x69\154\x65")->getClientOriginalExtension(); goto qh2b6; qh2b6: $banner_name = explode("\x2e", str_replace("\40", '', $banner_file))[0] . "\x2d" . now("\x41\163\x69\141\x2f\112\x61\153\141\162\164\141")->format("\131\x6d\x64\x48\x69\x73") . "\55" . rand(100000, 999999) . "\56" . $extension; goto lticd; hsOeF: } catch (Throwable $th) { $logs->write("\105\122\122\x4f\122", $th->getMessage()); } goto aCpVX; QAO0h: ML3Dx: goto LqtKt; AJ3hs: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\x52", $th->getMessage()); $result["\x6d\x65\163\x73\141\147\x65"] = "\104\x61\x74\x61\x20\147\141\x67\141\x6c\x20\144\151\160\x65\x72\142\141\162\165\151\56\74\142\x72\76" . $th->getMessage(); } goto MlDmD; mQhDS: $logs->write(__FUNCTION__, "\123\124\x41\122\124"); goto pPWcc; PRjiq: $result["\x6d\145\x73\x73\141\147\145"] = ''; goto ByMee; wnHDW: } public function destroy(string $id) : JsonResponse { goto q02Oe; q02Oe: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto WEe1Z; JbQXn: return response()->json($result["\x6d\145\163\x73\x61\147\x65"], $result["\x73\x74\x61\x74\x75\x73"]); goto DpFUg; zHrdq: $result["\x6d\145\163\x73\141\x67\x65"] = ''; goto qNTar; Qyt5E: $logs->write(__FUNCTION__, "\123\124\x4f\120\xd\12"); goto JbQXn; qNTar: try { goto s1c3o; UuqQB: wkUuS: goto Cla4U; m8imi: UWi1O: goto BQtKD; SwyfS: Es01n: goto gOU0q; jwGWr: if (!($q < count($queries))) { goto wkUuS; } goto lUdPI; qDbVa: $result["\155\x65\163\x73\x61\147\x65"] = "\104\141\164\x61\x20\142\x65\x72\150\x61\x73\x69\154\40\x64\151\150\141\x70\x75\x73"; goto SwyfS; BQtKD: $q++; goto f2SEq; f2SEq: goto eMuWl; goto UuqQB; Cla4U: if (!$deleted) { goto Es01n; } goto qDbVa; s1c3o: DB::enableQueryLog(); goto V02I9; lUdPI: $logs->write("\x42\x49\116\104\111\116\x47", "\133" . implode("\x2c\x20", $queries[$q]["\x62\x69\156\144\x69\156\x67\x73"]) . "\135"); goto Xxppd; V02I9: $deleted = $this->banner_service->delete($id); goto k7rFb; kx28D: eMuWl: goto jwGWr; gr1NV: $q = 0; goto kx28D; k7rFb: $queries = DB::getQueryLog(); goto gr1NV; Xxppd: $logs->write("\123\121\114", $queries[$q]["\161\x75\x65\x72\x79"]); goto m8imi; gOU0q: } catch (Throwable $th) { $logs->write("\105\x52\122\x4f\122", $th->getMessage()); $result["\x6d\145\x73\x73\x61\x67\x65"] = "\x44\x61\164\x61\40\147\141\147\141\154\40\144\151\x68\141\x70\165\x73\x2e\x3c\x62\162\76" . $th->getMessage(); } goto Qyt5E; WEe1Z: $logs->write(__FUNCTION__, "\x53\124\x41\x52\x54"); goto f63uv; f63uv: $result["\x73\164\141\x74\x75\x73"] = 200; goto zHrdq; DpFUg: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Setting\BannerMasterService;
+use App\Http\Requests\Setting\StoreBannerMasterRequest;
+use App\Http\Requests\Setting\UpdateBannerMasterRequest;
+
+class BannerMasterController extends Controller
+{
+    private BannerMasterService $banner_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->banner_service = new BannerMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->banner_service->get();
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('created_at', function ($value) {
+                return Carbon::parse($value->created_at)->toDateTimeString();
+            })
+            ->editColumn('updated_at', function ($value) {
+                return Carbon::parse($value->updated_at)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  IconMenuDeviceRequestStore  $request
+     * @return JsonResponse
+     */
+    public function store(StoreBannerMasterRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('file')) {
+                try {
+                    $banner_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $banner_name = explode('.', str_replace(' ', '', $banner_file))[0] . '-' . now('Asia/Jakarta')->format('YmdHis') . '-' . rand(100000, 999999) . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/banner', $banner_name);
+
+                    $validated['file'] = $banner_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $created = $this->banner_service->store((object)$validated);
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil dibuat.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal dibuat.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateBannerMasterRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(UpdateBannerMasterRequest $request, string $id): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            if ($request->hasFile('file')) {
+                try {
+                    $banner_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $banner_name = explode('.', str_replace(' ', '', $banner_file))[0] . '-' . now('Asia/Jakarta')->format('YmdHis') . '-' . rand(100000, 999999) . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/banner', $banner_name);
+
+                    $validated['file'] = $banner_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updated = $this->banner_service->update((object)$validated, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $deleted = $this->banner_service->delete($id);
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

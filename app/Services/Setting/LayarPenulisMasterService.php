@@ -1,8 +1,74 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Services\Setting; use App\Repositories\Setting\LayarPenulisMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class LayarPenulisMasterService { private LayarPenulisMasterRepository $LayarPenulis_repo; protected $client_id = ''; public function __construct() { $this->LayarPenulis_repo = new LayarPenulisMasterRepository(); $this->client_id = config("\141\x70\x70\x2e\143\154\x69\x65\x6e\x74\x5f\x69\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->LayarPenulis_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto Cs4BE; PxUhV: $data->create_by = $username; goto mIhZq; mIhZq: $data->create_date = $datetime_now; goto wj6sr; wj6sr: $data->flag_aktif = $data->flag_aktif == "\164\x72\165\x65" ? "\131" : "\116"; goto pBL3t; pBL3t: return $this->LayarPenulis_repo->store($data, $this->client_id); goto VDGkA; etzgL: $username = auth()->user()->email; goto PxUhV; Cs4BE: $datetime_now = Carbon::now("\x41\x73\151\141\57\x4a\141\x6b\141\162\164\141"); goto etzgL; VDGkA: } public function update(object $data, string $id) : bool { goto tW2Be; BXyG_: return $this->LayarPenulis_repo->update($data, $id, $this->client_id); goto VD0LA; piSoA: $username = auth()->user()->email; goto ZjpCn; e2CAS: $data->modified_by = $username; goto A13ia; nc8Qa: $data->flag_aktif = $data->flag_aktif == "\x74\x72\165\x65" ? "\x59" : "\x4e"; goto BXyG_; ZjpCn: $data->file = $data->file ?? $data->current_file; goto e2CAS; tW2Be: $datetime_now = Carbon::now("\x41\x73\151\x61\57\112\x61\153\x61\162\x74\x61"); goto piSoA; A13ia: $data->modified_date = $datetime_now; goto nc8Qa; VD0LA: } public function delete(string $id) { return $this->LayarPenulis_repo->delete($id, $this->client_id); } }
+
+namespace App\Services\Setting;
+
+use App\Repositories\Setting\LayarPenulisMasterRepository;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
+
+class LayarPenulisMasterService 
+{
+	private LayarPenulisMasterRepository $LayarPenulis_repo;
+
+    protected $client_id = '';
+    public function __construct()
+    {
+        $this->LayarPenulis_repo = new LayarPenulisMasterRepository();
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get(array $filter = []): Collection
+    {
+        return new Collection($this->LayarPenulis_repo->get($filter, $this->client_id));
+    }
+
+    /**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+        $username = auth()->user()->email;
+
+        $data->create_by        = $username;
+        $data->create_date      = $datetime_now;
+        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
+
+        return $this->LayarPenulis_repo->store($data, $this->client_id);
+    }
+
+     /**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+        $username = auth()->user()->email;
+
+        $data->file = $data->file ?? $data->current_file;
+
+        $data->modified_by 		= $username;
+        $data->modified_date 	= $datetime_now;
+        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
+
+        return $this->LayarPenulis_repo->update($data, $id, $this->client_id);
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id)
+    {
+        return $this->LayarPenulis_repo->delete($id, $this->client_id);
+    }
+}

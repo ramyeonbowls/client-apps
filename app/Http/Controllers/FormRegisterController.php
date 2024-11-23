@@ -1,8 +1,429 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Crypt; use Illuminate\Support\Facades\Log; use Illuminate\Support\Facades\Storage; use App\Http\Controllers\Controller; use App\Http\Requests\Register\StoreFormRegisterRequest; class FormRegisterController extends Controller { public function __construct() { $this->middleware("\x67\x75\x65\163\x74"); } public function index(Request $request) { goto Y1l04; xkdit: $encryptedContents = Storage::get($filePath); goto Zpkyu; Y1l04: $filePath = "\x70\165\142\x6c\x69\x63\57\x6c\157\147\157\57\x65\156\x63\162\171\160\x74\56\x67\x6e\x73"; goto xkdit; Zpkyu: $decryptedContents = Crypt::decrypt($encryptedContents); goto mPcF7; mPcF7: return response()->make($decryptedContents, 200, ["\103\157\156\164\145\x6e\164\x2d\x54\171\160\x65" => "\141\160\x70\154\x69\143\x61\x74\151\x6f\156\57\x70\144\x66", "\x43\157\156\x74\145\156\164\55\104\x69\x73\x70\x6f\x73\x69\x74\151\x6f\x6e" => "\x69\x6e\x6c\x69\x6e\145\x3b\x20\146\x69\154\x65\156\x61\155\x65\x3d\x22\144\x65\x63\162\x79\x70\164\145\144\x2d\146\x69\154\145\x2e\160\144\x66\x22"]); goto MYyum; MYyum: } public function store(StoreFormRegisterRequest $request) : JsonResponse { goto WDzGA; swf5i: return response()->json($result["\x6d\145\163\163\141\147\x65"], $result["\163\x74\141\x74\x75\x73"]); goto mZFm0; w3Zuk: $logs->write(__FUNCTION__, "\123\124\117\x50\xd\xa"); goto swf5i; hzS4S: try { goto gyMIx; pgZ6L: $data_kuasa = json_decode($data->kuasa); goto kQxxU; ndROk: $queries = DB::getQueryLog(); goto p7X0s; JA74K: RrHFS: goto ndROk; CcgAA: $logs->write("\123\121\x4c", $queries[$q]["\x71\165\145\x72\x79"]); goto qDNkU; y0grW: $data->type = (bool) $data->supplier && (bool) $data->distributor ? 3 : ((bool) $data->distributor ? 2 : 1); goto P5GvX; I3Hza: $result["\163\x74\141\x74\165\x73"] = 201; goto vh9CW; EJpHT: AByYy: goto ezb_D; ezb_D: $data = (object) $validated; goto y0grW; R5xbz: foreach ($data_rekening as $i => $value) { $kuasa = DB::table("\164\162\x65\x6b\x65\156\x69\156\x67\x5f\142\141\x6e\x6b")->updateOrInsert(["\163\151\x64" => $header_id, "\x69\x64" => Str::uuid()], ["\156\x70\167\x70" => $value->npwp ?? '', "\x6e\157\162\x65\153" => $value->norek ?? '', "\142\x61\x6e\x6b" => $value->bank ?? '', "\x6e\x61\x6d\x61" => $value->nama ?? '', "\153\157\x74\x61" => $value->kota ?? '', "\143\162\145\141\164\x65\144\x5f\141\x74" => Carbon::now("\x41\x73\x69\x61\57\112\141\153\141\x72\x74\141"), "\x63\x72\x65\141\164\145\144\137\142\171" => $data->email_perusahaan, "\x75\160\x64\x61\x74\x65\x64\x5f\x61\x74" => Carbon::now("\101\x73\151\x61\57\x4a\141\x6b\141\x72\164\141"), "\x75\x70\144\x61\164\x65\x64\x5f\x62\x79" => $data->email_perusahaan]); QtLk2: } goto Vp3qo; qICHp: ew81q: goto zyGOy; PEdhZ: $data_imprint = json_decode($data->imprint); goto t3wef; PuxQl: foreach ($data_kategori as $i => $value) { $kategori = DB::table("\x74\163\x75\x70\x70\x6c\151\145\162\137\x62\157\157\153\137\x63\x61\164\145\x67\157\x72\171")->updateOrInsert(["\163\151\x64" => $header_id, "\x63\x61\x74\145\x67\157\x72\x79" => $value->id], ["\143\x72\145\141\x74\145\x64\137\x61\x74" => Carbon::now("\101\163\151\x61\57\112\x61\x6b\x61\162\x74\x61"), "\x63\162\145\x61\x74\x65\x64\137\x62\171" => $data->email_perusahaan, "\165\x70\144\141\164\x65\144\137\x61\164" => Carbon::now("\x41\x73\x69\x61\x2f\x4a\x61\153\141\162\164\141"), "\165\x70\144\x61\164\x65\144\137\x62\x79" => $data->email_perusahaan]); jRhcc: } goto qICHp; tH7DY: if (!($q < count($queries))) { goto x13T1; } goto rqjVC; glHwv: if (!$created) { goto RrHFS; } goto t9B2u; Pim0f: $created = DB::table("\x74\x73\165\160\x70\154\x69\x65\162\137\x64\x69\x73\x74\162\x69\x62\x75\x74\x6f\x72")->updateOrInsert(["\151\144" => $header_id], ["\164\x79\x70\x65" => $data->type ?? '', "\x6e\141\155\x61\x5f\160\145\x72\x75\163\141\150\141\x61\x6e" => $data->nama_perusahaan ?? '', "\x65\x6d\x61\151\x6c\x5f\160\145\162\165\x73\x61\x68\141\141\156" => $data->email_perusahaan ?? '', "\160\x61\163\163\x77\x6f\x72\x64" => $data->password ?? '', "\160\141\x73\x73\x77\157\162\144\x5f\x63\x6f\156\x66\x69\x72\x6d\x61\x74\151\157\x6e" => $data->password_confirmation ?? '', "\x6e\145\x67\141\x72\x61" => $data->negara ?? '', "\160\162\x6f\166\151\x6e\x73\151" => $data->provinsi ?? '', "\x6b\141\142\x75\160\x61\164\x65\156" => $data->kabupaten ?? '', "\x6b\x65\143\x61\155\141\x74\141\156" => $data->kecamatan ?? '', "\153\x65\x6c\x75\141\162\x61\150\x61\156" => $data->keluarahan ?? '', "\153\157\144\x65\137\160\x6f\163" => $data->kode_pos ?? '', "\x61\154\x61\155\141\164" => $data->alamat ?? '', "\x74\x65\x6c\x65\160\157\156" => $data->telepon ?? '', "\150\x61\156\144\160\150\x6f\156\x65" => $data->handphone ?? '', "\160\x69\155\160\x69\156\x61\x6e" => $data->pimpinan ?? '', "\x6a\x61\142\141\164\141\x6e" => $data->jabatan ?? '', "\150\160\x69\x6d\160\151\156\x61\156" => $data->hpimpinan ?? '', "\x70\151\143" => $data->pic ?? '', "\x68\160\x69\143" => $data->hpic ?? '', "\146\151\x6c\145" => $data->file ?? '', "\x63\x72\145\141\x74\145\x64\x5f\x61\x74" => Carbon::now("\101\x73\x69\x61\57\112\141\153\141\x72\x74\x61"), "\x63\x72\145\x61\x74\x65\x64\137\x62\x79" => $data->email_perusahaan ?? '', "\x75\x70\144\141\x74\x65\144\x5f\x61\164" => Carbon::now("\x41\163\x69\141\x2f\x4a\141\153\x61\162\164\x61"), "\165\160\x64\x61\164\145\x64\x5f\142\171" => $data->email_perusahaan ?? '']); goto PEdhZ; kQxxU: foreach ($data_kuasa as $i => $value) { $kuasa = DB::table("\164\x73\165\160\160\x6c\151\145\x72\x5f\153\x75\141\x73\141")->updateOrInsert(["\163\151\144" => $header_id, "\x69\144" => Str::uuid()], ["\156\141\x6d\145" => $value->nama, "\x63\162\145\x61\164\145\144\x5f\x61\x74" => Carbon::now("\101\163\x69\141\x2f\x4a\141\153\x61\x72\164\x61"), "\x63\x72\145\141\164\145\144\137\142\171" => $data->email_perusahaan, "\x75\160\x64\x61\x74\x65\144\137\x61\164" => Carbon::now("\101\163\151\x61\x2f\112\141\153\141\x72\164\x61"), "\165\160\144\141\x74\x65\x64\137\x62\171" => $data->email_perusahaan]); NfZrE: } goto rj6ja; Vp3qo: bGxFH: goto glHwv; rj6ja: IgiaJ: goto jP2nO; jP2nO: $data_kategori = json_decode($data->kategori); goto PuxQl; AL2f9: goto WPB2u; goto O0vTY; zyGOy: $data_rekening = json_decode($data->rekening); goto R5xbz; p7X0s: $q = 0; goto a6d6p; a6d6p: WPB2u: goto tH7DY; t3wef: foreach ($data_imprint as $i => $value) { $imprint = DB::table("\x74\x73\x75\160\x70\154\151\x65\x72\x5f\151\x6d\x70\162\151\x6e\164")->updateOrInsert(["\163\151\x64" => $header_id, "\x69\x64" => Str::uuid()], ["\x6e\141\155\x65" => $value->nama, "\x63\x72\x65\141\164\x65\144\137\141\164" => Carbon::now("\x41\163\x69\141\57\112\x61\153\x61\162\164\141"), "\x63\162\x65\141\164\x65\144\x5f\142\171" => $data->email_perusahaan, "\x75\160\x64\141\x74\x65\144\137\141\x74" => Carbon::now("\x41\163\x69\x61\57\112\x61\x6b\141\x72\x74\x61"), "\x75\x70\144\141\164\x65\144\137\142\x79" => $data->email_perusahaan]); Esjir: } goto A0cCM; Ag9Go: $q++; goto AL2f9; vh9CW: $result["\155\x65\163\163\141\x67\145"] = "\x53\165\143\143\x65\x73\163\146\165\x6c\154\171\40\x63\162\x65\x61\x74\x65\x64\x2e"; goto JA74K; O0vTY: x13T1: goto EGMI_; A0cCM: eBl5y: goto pgZ6L; rqjVC: $logs->write("\x42\x49\116\104\x49\116\107", "\133" . implode("\x2c\x20", $queries[$q]["\x62\x69\x6e\144\151\x6e\147\163"]) . "\x5d"); goto CcgAA; qDNkU: FnTyM: goto Ag9Go; kIEZ3: try { goto uXm6t; e1W72: $request->file("\146\x69\x6c\x65")->storeAs("\x2f\160\x75\x62\154\151\143\x2f\154\x6f\147\157", $banner_name); goto Ls_0B; wDw5c: $banner_name = now("\101\163\151\x61\x2f\112\141\153\141\x72\x74\x61")->format("\131\155\x64\110\151\x73") . "\55" . rand(100000, 999999) . "\55" . $banner_file; goto e1W72; yzACl: $extension = $request->file("\146\151\154\145")->getClientOriginalExtension(); goto wDw5c; Ls_0B: $validated["\146\151\x6c\x65"] = "\57\x73\164\157\162\x61\x67\145\57\x6c\157\147\x6f\57" . $banner_name; goto KipW1; uXm6t: $banner_file = $request->file("\x66\x69\x6c\x65")->getClientOriginalName(); goto yzACl; KipW1: } catch (Throwable $th) { $logs->write("\x45\122\122\x4f\x52", $th->getMessage()); } goto EJpHT; qFOum: if (!$request->hasFile("\146\151\x6c\145")) { goto AByYy; } goto kIEZ3; gyMIx: DB::enableQueryLog(); goto qFOum; P5GvX: $header_id = Str::uuid(); goto Pim0f; t9B2u: $logs->write("\x49\116\106\x4f", "\123\165\x63\143\x65\163\163\146\165\154\x6c\171\40\143\162\145\141\164\x65\x64"); goto I3Hza; EGMI_: } catch (Throwable $th) { $logs->write("\x45\122\x52\117\x52", $th->getMessage()); $result["\155\145\x73\163\141\147\x65"] = "\x46\x61\x69\x6c\145\144\x20\x63\x72\145\141\x74\145\144\56\74\x62\162\x3e" . $th->getMessage(); } goto w3Zuk; l1siz: $result["\x73\164\x61\164\x75\x73"] = 200; goto V8Dw5; WDzGA: $validated = $request->validated(); goto YiZbt; jGD9P: $logs->write(__FUNCTION__, "\123\124\101\x52\124"); goto l1siz; V8Dw5: $result["\155\145\163\163\141\147\x65"] = ''; goto hzS4S; YiZbt: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\157\x67"); goto jGD9P; mZFm0: } public function show(string $id) : JsonResponse { goto mEZNo; yqA03: RcUmF: goto i71SE; MeRxo: switch (request()->param) { case "\x70\x72\x6f\166\x69\x6e\163\151\x2d\155\x73\164": goto nyHGS; MFsl5: if (!$provinsi) { goto Uupjz; } goto dOVr3; sgq81: X0L25: goto psKIs; RSqNu: $provinsi = DB::table("\x74\x70\x72\x6f\x76\x69\156\163\151\40\x61\x73\40\x61")->sharedLock()->select("\x61\56\x70\x72\x6f\166\x69\x6e\163\151\x5f\x69\144\x20\141\163\40\x69\144", "\141\56\x70\162\157\x76\x69\156\x73\x69\x5f\x6e\x61\x6d\x65\x20\x61\x73\40\156\x61\155\x65")->get(); goto Iy4oz; t8Kv2: ig7os: goto rs2mV; Ks24d: goto XD73J; goto t8Kv2; JPKMn: goto kpzdY; goto A03Tw; psKIs: $q++; goto Ks24d; KrhwM: Uupjz: goto cLWOd; Xe1Fm: $logs->write("\123\x51\114", $sql); goto sgq81; lF81d: $q = 0; goto Je1E4; cLWOd: return response()->json($results, 200); goto JPKMn; rs2mV: $results = []; goto MFsl5; jUYPj: $logs->write("\x42\x49\116\x44\111\116\107", "\x5b" . implode("\54\40", $queries[$q]["\x62\151\x6e\x64\151\x6e\147\x73"]) . "\135"); goto Xe1Fm; Wwcz8: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\156\144\151\x6e\x67\x73"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\x71\165\x65\x72\171"])); goto jUYPj; Je1E4: XD73J: goto G3P4x; dOVr3: $results = $provinsi->map(function ($value, $key) { return ["\151\144" => $value->id, "\156\141\155\x65" => $value->name]; }); goto KrhwM; Iy4oz: $queries = DB::getQueryLog(); goto lF81d; G3P4x: if (!($q < count($queries))) { goto ig7os; } goto Wwcz8; nyHGS: DB::enableQueryLog(); goto RSqNu; A03Tw: case "\x6b\x61\142\x75\160\x61\164\x65\x6e\x2d\155\x73\164": goto OScBP; aOOZX: $q++; goto wxFmU; Tqoxr: $queries = DB::getQueryLog(); goto e4_yf; pWxzL: $results = $kabupaten->map(function ($value, $key) { return ["\x69\x64" => $value->id, "\x6e\141\155\145" => $value->name]; }); goto jvHg2; ye4OB: if (!$kabupaten) { goto zWhaa; } goto pWxzL; aNXGK: $logs->write("\x53\121\114", $sql); goto me2wy; OScBP: DB::enableQueryLog(); goto fxmVp; e4_yf: $q = 0; goto Zh136; yLy4H: $results = []; goto ye4OB; rytEV: $logs->write("\x42\x49\x4e\x44\x49\x4e\x47", "\133" . implode("\x2c\40", $queries[$q]["\142\x69\156\x64\151\156\147\163"]) . "\x5d"); goto aNXGK; jvHg2: zWhaa: goto sHp0L; vth2p: goto kpzdY; goto lD3d3; wxFmU: goto LBcAz; goto h3KkK; xM4t_: $sql = Str::replaceArray("\77", $queries[$q]["\142\151\x6e\144\x69\x6e\x67\163"], str_replace("\x3f", "\x27\77\x27", $queries[$q]["\x71\165\x65\x72\x79"])); goto rytEV; me2wy: ee4vn: goto aOOZX; XFwjb: $kabupaten = DB::table("\x74\x6b\141\142\165\160\141\x74\x65\156\x20\x61\x73\x20\x61")->sharedLock()->select("\141\56\153\x61\142\x75\x70\141\164\145\156\x5f\x69\144\x20\141\163\40\x69\144", "\141\56\153\x61\142\x75\x70\x61\x74\145\156\137\156\141\x6d\145\40\141\x73\40\x6e\x61\155\x65")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\x61\x2e\x70\x72\157\166\x69\x6e\163\x69\x5f\151\144", $provinsi); })->get(); goto Tqoxr; fxmVp: $provinsi = request()->provinsi ?? ''; goto XFwjb; sHp0L: return response()->json($results, 200); goto vth2p; RScx8: if (!($q < count($queries))) { goto CO4Db; } goto xM4t_; Zh136: LBcAz: goto RScx8; h3KkK: CO4Db: goto yLy4H; lD3d3: case "\153\x65\143\x61\155\x61\x74\141\x6e\x2d\x6d\163\x74": goto dO4Pf; doiGe: $q++; goto FCNtR; FCNtR: goto c8XNg; goto eeh5K; zInbD: $logs->write("\x53\x51\114", $sql); goto Xv3C8; q1cX1: $logs->write("\x42\111\x4e\x44\x49\116\107", "\133" . implode("\x2c\40", $queries[$q]["\x62\151\156\x64\x69\156\x67\163"]) . "\135"); goto zInbD; aC9cY: c8XNg: goto Aqfsp; oSKU9: $kabupaten = request()->kabupaten ?? ''; goto jb0Uy; Telj9: goto kpzdY; goto kMfHn; eeh5K: ftc07: goto o3Mmk; dO4Pf: DB::enableQueryLog(); goto euBky; yW3G4: $queries = DB::getQueryLog(); goto bcEJe; Aqfsp: if (!($q < count($queries))) { goto ftc07; } goto MQY7D; Xv3C8: NL1S5: goto doiGe; bcEJe: $q = 0; goto aC9cY; yMyKe: return response()->json($results, 200); goto Telj9; o3Mmk: $results = []; goto jq7GJ; jb0Uy: $kecamatan = DB::table("\164\153\x65\x63\x61\155\x61\x74\x61\x6e\40\x61\163\x20\x61")->sharedLock()->select("\141\56\x6b\x65\x63\141\x6d\141\x74\141\x6e\x5f\x69\x64\40\141\x73\40\151\144", "\x61\x2e\x6b\x65\x63\141\x6d\141\164\141\x6e\x5f\156\x61\155\145\40\x61\x73\x20\x6e\141\155\145")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\x61\x2e\160\x72\x6f\x76\x69\156\x73\151\x5f\x69\144", $provinsi); })->when(isset($kabupaten) && $kabupaten != '', function ($query) use($kabupaten) { $query->where("\141\56\x6b\x61\x62\x75\160\141\x74\x65\156\x5f\151\144", $kabupaten); })->get(); goto yW3G4; oh4v1: AFWNx: goto yMyKe; euBky: $provinsi = request()->provinsi ?? ''; goto oSKU9; dqfsG: $results = $kecamatan->map(function ($value, $key) { return ["\x69\144" => $value->id, "\x6e\x61\x6d\145" => $value->name]; }); goto oh4v1; MQY7D: $sql = Str::replaceArray("\77", $queries[$q]["\142\151\156\x64\x69\156\147\x73"], str_replace("\77", "\47\77\x27", $queries[$q]["\161\x75\145\x72\171"])); goto q1cX1; jq7GJ: if (!$kecamatan) { goto AFWNx; } goto dqfsG; kMfHn: case "\x6b\x65\x6c\x75\162\141\x68\x61\x6e\x2d\155\x73\164": goto Y7V8C; pUVdj: $logs->write("\102\111\x4e\x44\111\116\x47", "\133" . implode("\x2c\x20", $queries[$q]["\x62\151\156\144\x69\156\x67\x73"]) . "\135"); goto O1Oww; kJo0N: G0eVH: goto oc3Hi; Y7V8C: DB::enableQueryLog(); goto npAeB; hPn_y: goto G0eVH; goto FAAdG; gaN63: $kelurahan = DB::table("\164\x6b\x65\154\x75\x72\141\x68\141\156\x20\141\163\40\x61")->sharedLock()->select("\x61\x2e\x6b\x65\x6c\165\x72\141\150\x61\x6e\x5f\x69\144\40\x61\x73\x20\x69\x64", "\x61\56\153\145\154\165\x72\x61\150\x61\156\x5f\x6e\141\155\x65\40\x61\163\40\x6e\141\x6d\145")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\141\56\x70\x72\x6f\x76\x69\156\x73\151\137\x69\144", $provinsi); })->when(isset($kabupaten) && $kabupaten != '', function ($query) use($kabupaten) { $query->where("\x61\56\x6b\x61\142\165\160\x61\164\x65\156\137\151\x64", $kabupaten); })->when(isset($kecamatan) && $kecamatan != '', function ($query) use($kecamatan) { $query->where("\141\x2e\x6b\145\x63\141\x6d\141\x74\x61\156\137\x69\x64", $kecamatan); })->get(); goto VSEem; FAAdG: XM48u: goto BV7i2; gTuOX: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\x6e\144\151\x6e\x67\163"], str_replace("\77", "\47\x3f\47", $queries[$q]["\x71\165\145\x72\x79"])); goto pUVdj; Epb7k: if (!$kelurahan) { goto bkfbA; } goto Id0i6; F5beT: goto kpzdY; goto uvIIc; BV7i2: $results = []; goto Epb7k; O1Oww: $logs->write("\x53\x51\x4c", $sql); goto Ko_xh; Ko_xh: M5utS: goto r9VXr; VSEem: $queries = DB::getQueryLog(); goto TNJTw; Jq8G6: $kabupaten = request()->kabupaten ?? ''; goto VJhnx; oc3Hi: if (!($q < count($queries))) { goto XM48u; } goto gTuOX; VJhnx: $kecamatan = request()->kecamatan ?? ''; goto gaN63; r9VXr: $q++; goto hPn_y; npAeB: $provinsi = request()->provinsi ?? ''; goto Jq8G6; Id0i6: $results = $kelurahan->map(function ($value, $key) { return ["\151\x64" => $value->id, "\x6e\x61\155\145" => $value->name]; }); goto mtBEt; mtBEt: bkfbA: goto obOfb; TNJTw: $q = 0; goto kJo0N; obOfb: return response()->json($results, 200); goto F5beT; uvIIc: case "\153\x61\x74\x65\x67\157\162\x69\x2d\x6d\163\x74": goto FYWP8; t7t7A: $logs->write("\102\111\116\104\x49\x4e\107", "\133" . implode("\x2c\x20", $queries[$q]["\142\151\156\144\151\x6e\147\163"]) . "\135"); goto DXeG7; zShtN: if (!($q < count($queries))) { goto UANcr; } goto cmVkB; FwabJ: $queries = DB::getQueryLog(); goto HUS7i; cmVkB: $sql = Str::replaceArray("\77", $queries[$q]["\142\x69\x6e\x64\151\x6e\147\x73"], str_replace("\77", "\x27\77\47", $queries[$q]["\161\x75\x65\x72\171"])); goto t7t7A; CWlGn: gxTco: goto iDIbU; V1sh0: if (!$ketegori) { goto HxOpE; } goto FkEKr; sFR6e: return response()->json($results, 200); goto X2ncB; iDIbU: $q++; goto j6gBF; ReYru: HxOpE: goto sFR6e; M2ovT: $ketegori = DB::table("\x74\x62\x6f\x6f\x6b\x5f\143\141\164\x65\147\x6f\162\171\40\141\163\40\x61")->sharedLock()->select("\141\x2e\x69\144\x20\141\x73\40\151\144", "\x61\56\144\145\x73\143\162\151\x70\164\151\157\156\x20\x61\163\x20\156\x61\x6d\x65")->get(); goto FwabJ; j1FVK: UANcr: goto fcq3V; hRGA6: qoOBq: goto zShtN; j6gBF: goto qoOBq; goto j1FVK; fcq3V: $results = []; goto V1sh0; X2ncB: goto kpzdY; goto U4NsX; HUS7i: $q = 0; goto hRGA6; FYWP8: DB::enableQueryLog(); goto M2ovT; FkEKr: $results = $ketegori->map(function ($value, $key) { return ["\x69\144" => $value->id, "\156\141\155\x65" => $value->name]; }); goto ReYru; DXeG7: $logs->write("\x53\x51\114", $sql); goto CWlGn; U4NsX: default: return response()->json(request()->param, 200); goto kpzdY; } goto wbwyh; wbwyh: yatof: goto kJRdZ; vhNF6: if (!(request()->has("\160\x61\162\x61\155") && request()->param != '')) { goto RcUmF; } goto MeRxo; kJRdZ: kpzdY: goto yqA03; mEZNo: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\147"); goto vhNF6; i71SE: } public function update(Request $request, string $id) : JsonResponse { return response()->json($request, 200); } public function destroy(string $id) : JsonResponse { return response()->json($id, 200); } public function exportPDF(Request $request) { goto E7p0C; A7Xyb: $logs->write(__FUNCTION__, "\123\124\117\120\15\xa"); goto ur5Ok; q9wCP: $logs->write(__FUNCTION__, "\123\x54\x41\122\x54"); goto IPEok; IPEok: return view("\x70\144\x66\56\141\x67\x72\145\145\x6d\x65\156\x74\x5f\x6c\x65\164\164\x65\x72"); goto A7Xyb; E7p0C: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto q9wCP; ur5Ok: } }
+
+namespace App\Http\Controllers;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Register\StoreFormRegisterRequest;
+
+class FormRegisterController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request)
+    {
+        $filePath = 'public/logo/encrypt.gns';
+
+        $encryptedContents = Storage::get($filePath);
+        $decryptedContents = Crypt::decrypt($encryptedContents);
+        return response()->make($decryptedContents, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="decrypted-file.pdf"'
+        ]);
+
+        /* return response()->make($decryptedContent, 200, [
+            'Cache-Control'         => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-Type'          => Storage::mimeType($filePath),
+            'Content-Length'        => Storage::size($filePath),
+            'Content-Disposition'   => 'attachment; filename="' . basename($filePath) . '"',
+            'Pragma'                => 'public',
+        ]); */
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  StoreFormRegisterRequest  $request
+     * @return JsonResponse
+     */
+    public function store(StoreFormRegisterRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('file')) {
+                try {
+                    $banner_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $banner_name = now('Asia/Jakarta')->format('YmdHis') . '-' . rand(100000, 999999) . '-' . $banner_file;
+
+                    $request->file('file')->storeAs('/public/logo', $banner_name);
+
+                    $validated['file'] = '/storage/logo/'. $banner_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $data = (object)$validated;
+            $data->type = (bool)$data->supplier && (bool)$data->distributor ? 3 : ( (bool)$data->distributor ? 2 : 1 );
+
+            $header_id = Str::uuid();
+
+            $created = DB::table('tsupplier_distributor')
+                ->updateOrInsert([
+                    'id' => $header_id,
+                ], [
+                    'type' => $data->type ?? '',
+                    'nama_perusahaan' => $data->nama_perusahaan ?? '',
+                    'email_perusahaan' => $data->email_perusahaan ?? '',
+                    'password' => $data->password ?? '',
+                    'password_confirmation' => $data->password_confirmation ?? '',
+                    'negara' => $data->negara ?? '',
+                    'provinsi' => $data->provinsi ?? '',
+                    'kabupaten' => $data->kabupaten ?? '',
+                    'kecamatan' => $data->kecamatan ?? '',
+                    'keluarahan' => $data->keluarahan ?? '',
+                    'kode_pos' => $data->kode_pos ?? '',
+                    'alamat' => $data->alamat ?? '',
+                    'telepon' => $data->telepon ?? '',
+                    'handphone' => $data->handphone ?? '',
+                    'pimpinan' => $data->pimpinan ?? '',
+                    'jabatan' => $data->jabatan ?? '',
+                    'hpimpinan' => $data->hpimpinan ?? '',
+                    'pic' => $data->pic ?? '',
+                    'hpic' => $data->hpic ?? '',
+                    'file' => $data->file ?? '',
+                    'created_at' => Carbon::now("Asia/Jakarta"),
+                    'created_by' => $data->email_perusahaan ?? '',
+                    'updated_at' => Carbon::now("Asia/Jakarta"),
+                    'updated_by' => $data->email_perusahaan ?? '',
+                ]);
+
+            $data_imprint = json_decode($data->imprint);
+            foreach ($data_imprint as $i => $value) {
+                $imprint = DB::table('tsupplier_imprint')
+                    ->updateOrInsert([
+                        'sid' => $header_id,
+                        'id' => Str::uuid(),
+                    ], [
+                        'name' => $value->nama,
+                        'created_at' => Carbon::now("Asia/Jakarta"),
+                        'created_by' => $data->email_perusahaan,
+                        'updated_at' => Carbon::now("Asia/Jakarta"),
+                        'updated_by' => $data->email_perusahaan,
+                    ]);
+            }
+
+            $data_kuasa = json_decode($data->kuasa);
+            foreach ($data_kuasa as $i => $value) {
+                $kuasa = DB::table('tsupplier_kuasa')
+                    ->updateOrInsert([
+                        'sid' => $header_id,
+                        'id' => Str::uuid(),
+                    ], [
+                        'name' => $value->nama,
+                        'created_at' => Carbon::now("Asia/Jakarta"),
+                        'created_by' => $data->email_perusahaan,
+                        'updated_at' => Carbon::now("Asia/Jakarta"),
+                        'updated_by' => $data->email_perusahaan,
+                    ]);
+            }
+
+            $data_kategori = json_decode($data->kategori);
+            foreach ($data_kategori as $i => $value) {
+                $kategori = DB::table('tsupplier_book_category')
+                    ->updateOrInsert([
+                        'sid' => $header_id,
+                        'category' => $value->id,
+                    ], [
+                        'created_at' => Carbon::now("Asia/Jakarta"),
+                        'created_by' => $data->email_perusahaan,
+                        'updated_at' => Carbon::now("Asia/Jakarta"),
+                        'updated_by' => $data->email_perusahaan,
+                    ]);
+            }
+
+            $data_rekening = json_decode($data->rekening);
+            foreach ($data_rekening as $i => $value) {
+                $kuasa = DB::table('trekening_bank')
+                    ->updateOrInsert([
+                        'sid' => $header_id,
+                        'id' => Str::uuid(),
+                    ], [
+                        'npwp' => $value->npwp ?? '',
+                        'norek' => $value->norek ?? '',
+                        'bank' => $value->bank ?? '',
+                        'nama' => $value->nama ?? '',
+                        'kota' => $value->kota ?? '',
+                        'created_at' => Carbon::now("Asia/Jakarta"),
+                        'created_by' => $data->email_perusahaan,
+                        'updated_at' => Carbon::now("Asia/Jakarta"),
+                        'updated_by' => $data->email_perusahaan,
+                    ]);
+            }
+                
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Successfully created.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Failed created.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function show(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+
+        if (request()->has('param') && request()->param != '') {
+            switch (request()->param) {
+                case 'provinsi-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = DB::table('tprovinsi as a')->sharedLock()
+                        ->select(
+                            'a.provinsi_id as id',
+                            'a.provinsi_name as name'
+                        )
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($provinsi) {
+                        $results = $provinsi->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kabupaten-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = DB::table('tkabupaten as a')->sharedLock()
+                        ->select(
+                            'a.kabupaten_id as id',
+                            'a.kabupaten_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kabupaten) {
+                        $results = $kabupaten->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kecamatan-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = request()->kabupaten ?? '';
+                    $kecamatan = DB::table('tkecamatan as a')->sharedLock()
+                        ->select(
+                            'a.kecamatan_id as id',
+                            'a.kecamatan_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->when(isset($kabupaten) && $kabupaten != '', function($query) use ($kabupaten) {
+                            $query->where('a.kabupaten_id', $kabupaten);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kecamatan) {
+                        $results = $kecamatan->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kelurahan-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = request()->kabupaten ?? '';
+                    $kecamatan = request()->kecamatan ?? '';
+                    $kelurahan = DB::table('tkelurahan as a')->sharedLock()
+                        ->select(
+                            'a.kelurahan_id as id',
+                            'a.kelurahan_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->when(isset($kabupaten) && $kabupaten != '', function($query) use ($kabupaten) {
+                            $query->where('a.kabupaten_id', $kabupaten);
+                        })
+                        ->when(isset($kecamatan) && $kecamatan != '', function($query) use ($kecamatan) {
+                            $query->where('a.kecamatan_id', $kecamatan);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kelurahan) {
+                        $results = $kelurahan->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kategori-mst':
+                    DB::enableQueryLog();
+
+                    $ketegori = DB::table('tbook_category as a')->sharedLock()
+                        ->select(
+                            'a.id as id',
+                            'a.description as name'
+                        )
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($ketegori) {
+                        $results = $ketegori->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                default:
+                    return response()->json(request()->param, 200);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id): JsonResponse
+    {
+        return response()->json($request, 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    public function exportPDF(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        return view('pdf.agreement_letter');
+
+        $logs->write(__FUNCTION__, "STOP\r\n");
+    }
+}

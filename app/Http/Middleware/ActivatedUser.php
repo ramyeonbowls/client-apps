@@ -1,8 +1,60 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Middleware; use Browser; use Closure; use App\Logs; use App\Models\Web\UserOnline; use App\Models\Web\BrowserSessionLog; use Carbon\Carbon; use Illuminate\Http\Request; class ActivatedUser { public function handle(Request $request, Closure $next) { goto sg9Tw; gqBtr: return $next($request); goto I4TxA; sg9Tw: $user = auth()->user(); goto ltzLU; BzI0i: try { UserOnline::updateOrCreate(["\165\x73\145\162\156\x61\155\145" => $user->name], ["\x6f\x6e\x6c\x69\156\x65" => true, "\x73\164\x61\164\x75\163" => "\117\156\154\151\x6e\145", "\165\160\x64\141\x74\x65\144\x5f\x61\164" => Carbon::now()]); } catch (\Throwable $th) { goto syt_l; wtyb0: $logs->write("\x45\122\122\x4f\x52", $th->getMessage() . "\15\12"); goto XLjaT; syt_l: $logs = new Logs("\x55\x73\x65\x72\x4f\x6e\154\151\156\x65"); goto YbFoQ; YbFoQ: $logs->write("\125\x53\105\x52\111\x44", $user->name); goto wtyb0; XLjaT: } goto gqBtr; ltzLU: try { BrowserSessionLog::updateOrCreate(["\165\x73\x65\162\x6e\x61\x6d\145" => $user->name, "\166\x69\163\x69\x74\x6f\x72" => request()->getClientIp(), "\x70\154\141\x74\146\x6f\162\155" => Browser::platformFamily(), "\x64\145\x76\x69\143\x65" => Browser::isDesktop() ? "\x44\x65\x73\x6b\x74\157\x70" : Browser::deviceFamily(), "\142\x72\x6f\167\163\145\x72" => Browser::browserFamily()], ["\x62\162\157\x77\x73\145\162\137\x6e\141\x6d\x65" => Browser::browserName(), "\x75\x73\145\x72\x5f\x61\147\145\156\x74" => Browser::userAgent(), "\165\160\x64\141\164\145\144\137\141\x74" => Carbon::now()]); } catch (\Throwable $th) { goto KAYd3; KAYd3: $logs = new Logs("\102\x72\x6f\167\163\x65\162\123\145\163\163\151\157\x6e"); goto TKXc4; TKXc4: $logs->write("\x55\x53\x45\122\111\104", $user->name); goto irpYT; irpYT: $logs->write("\105\122\122\x4f\122", $th->getMessage() . "\xd\xa"); goto qQxqa; qQxqa: } goto BzI0i; I4TxA: } }
+
+namespace App\Http\Middleware;
+
+use Browser;
+use Closure;
+use App\Logs;
+use App\Models\Web\UserOnline;
+use App\Models\Web\BrowserSessionLog;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+
+class ActivatedUser
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        $user = auth()->user();
+
+        try {
+            BrowserSessionLog::updateOrCreate([
+                'username' => $user->name,
+                'visitor' => request()->getClientIp(),
+                'platform' => Browser::platformFamily(),
+                'device' => Browser::isDesktop() ? 'Desktop' : Browser::deviceFamily(),
+                'browser' => Browser::browserFamily()
+            ],[
+                'browser_name' => Browser::browserName(),
+                'user_agent' => Browser::userAgent(),
+                'updated_at' => Carbon::now()
+            ]);
+        } catch (\Throwable $th) {
+            $logs = new Logs('BrowserSession');
+            $logs->write("USERID", $user->name);
+            $logs->write("ERROR", $th->getMessage() ."\r\n");
+        }
+
+        try {
+            UserOnline::updateOrCreate([
+                'username' => $user->name
+            ],[
+                'online' => true,
+                'status' => 'Online',
+                'updated_at' => Carbon::now()
+            ]);
+        } catch (\Throwable $th) {
+            $logs = new Logs('UserOnline');
+            $logs->write("USERID", $user->name);
+            $logs->write("ERROR", $th->getMessage() ."\r\n");
+        }
+
+        return $next($request);
+    }
+}

@@ -1,8 +1,69 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class UpdateVideoMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\151\x64" => "\162\x65\161\x75\x69\x72\x65\144", "\x6d\141\170\x3a\x35\x30", Rule::exists("\x74\146\151\164\165\x72")->where(function ($query) { return $query->where("\143\141\164\145\147\157\162\171", $this->category); }), "\x74\x69\164\154\x65" => "\x72\145\161\x75\151\x72\x65\144\x7c\x6d\x61\x78\72\x31\60\x30", "\144\145\163\x63\x72\151\x70\164\x69\x6f\x6e" => "\162\145\x71\x75\x69\x72\x65\x64\174\155\x61\170\72\65\x30\60", "\x66\154\x61\x67\137\141\x6b\x74\151\x66" => "\x72\145\x71\x75\151\x72\x65\x64\174\155\x61\170\x3a\x35", "\146\151\x6c\x65" => "\162\145\161\x75\151\162\145\144"]; } public function attributes() : array { return ["\x69\x64" => "\x49\x44\x20\126\x69\144\145\157", "\164\x69\x74\154\x65" => "\x4a\165\144\165\x6c\40\x56\x69\144\x65\157", "\x66\154\141\x67\137\141\153\164\x69\146" => "\x41\x6b\x74\x69\146\x20\126\151\x64\x65\x6f", "\144\145\163\x63\x72\151\160\x74\151\x6f\156" => "\x4b\x6f\x6e\164\x65\156\40\x56\x69\144\x65\x6f", "\x66\151\154\x65" => "\106\x69\x6c\x65\40\x56\151\x64\145\x6f"]; } public function messages() : array { return ["\146\x69\154\145\56\x72\145\161\x75\151\x72\x65\x64" => "\124\x68\x65\x20\146\x69\x6c\x65\40\x69\x73\40\162\x65\x71\165\x69\x72\x65\144\56", "\146\x69\x6c\x65\x2e\x6d\x69\x6d\145\x73" => "\x54\x68\x65\40\146\x69\x6c\145\x20\155\x75\163\164\40\x62\145\x20\x61\40\166\141\154\151\144\x20\x69\155\141\x67\145\x20\164\x79\160\x65\40\x28\152\x70\x65\x67\x2c\x20\160\x6e\147\x2c\x20\x6a\160\x67\x29\56", "\x66\151\154\145\x2e\x6d\141\170" => "\124\150\145\x20\x66\x69\x6c\145\40\163\151\172\145\x20\143\141\156\156\157\x74\40\142\x65\40\x6c\x61\162\147\145\162\40\164\x68\x61\x6e\40\61\x35\60\60\40\x4b\102\56"]; } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UpdateVideoMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required',
+                'max:50',
+                Rule::exists('tfitur')->where(function ($query) {
+                    return $query->where('category', $this->category);
+                }),
+            'title' => 'required|max:100',
+            'description' => 'required|max:500',
+            'flag_aktif' => 'required|max:5',
+            'file' => 'required'
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'id' => 'ID Video',
+            'title' => 'Judul Video',
+            'flag_aktif' => 'Aktif Video',
+            'description' => 'Konten Video',
+            'file' => 'File Video',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
+            'file.max' => 'The file size cannot be larger than 1500 KB.'
+        ];
+    }
+}

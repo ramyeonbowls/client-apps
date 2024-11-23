@@ -1,8 +1,103 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Setting; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class TitikFokusMasterRepository { public function get($filter, $client_id) : Collection { return DB::table("\164\x66\x69\x74\x75\x72\x20\141\x73\40\141")->select("\x61\x2e\x69\144", "\141\x2e\164\x69\164\x6c\x65", "\141\56\144\145\x73\x63\162\151\x70\x74\151\157\156", "\x61\56\141\x75\164\150\x6f\x72", "\141\x2e\x66\x69\154\145", "\x61\x2e\143\x61\x74\145\147\157\162\171", "\141\56\146\154\141\x67\x5f\x61\153\x74\151\146", "\x61\x2e\146\154\x61\147\x5f\160\x6c\141\x74\x66\x6f\x72\x6d", "\x61\56\x63\x6c\x69\x65\156\164\x5f\x69\x64", "\141\56\x63\x72\x65\141\164\x65\x64\137\x61\x74", "\141\56\143\x72\145\x61\x74\145\144\137\x62\171", "\x61\x2e\x75\x70\144\x61\164\x65\x64\x5f\x61\x74", "\141\x2e\x75\x70\144\141\x74\x65\137\142\171")->where("\141\x2e\x63\154\x69\145\156\164\137\x69\x64", "\75", $client_id)->where("\141\56\x63\x61\164\145\x67\x6f\162\x79", "\75", "\x54\x46")->sharedLock()->get(); } public function store(object $data, $client_id) : bool { return DB::transaction(function () use($data, $client_id) { return DB::table("\x74\146\151\164\x75\162")->insert(["\151\144" => $data->id, "\164\x69\x74\154\145" => $data->title, "\144\145\163\x63\x72\151\160\x74\x69\157\x6e" => $data->description, "\x61\x75\x74\x68\157\162" => $data->author, "\x66\151\154\x65" => $data->file, "\x63\141\x74\x65\147\x6f\x72\x79" => "\x54\106", "\146\154\141\147\x5f\x61\x6b\164\x69\146" => $data->flag_aktif, "\146\x6c\x61\147\137\160\154\141\164\x66\157\x72\155" => "\116", "\x63\x6c\x69\145\x6e\x74\x5f\151\144" => $client_id, "\x63\x72\x65\141\164\x65\x64\137\x61\x74" => $data->create_date, "\x63\x72\x65\141\164\145\x64\x5f\x62\171" => $data->create_by]); }); } public function update(object $data, string $id, $client_id) : bool { return DB::transaction(function () use($data, $id, $client_id) { return DB::table("\164\x66\x69\164\x75\x72")->where("\x69\x64", $id)->where("\143\154\x69\145\x6e\164\x5f\x69\144", "\x3d", $client_id)->where("\x63\x61\164\145\x67\x6f\162\x79", "\75", "\x54\106")->update(["\x74\x69\164\154\x65" => $data->title, "\x64\x65\163\143\162\x69\x70\164\x69\x6f\156" => $data->description, "\141\x75\164\x68\157\162" => $data->author, "\x66\151\154\x65" => $data->file, "\146\x6c\141\147\x5f\x61\153\164\x69\146" => $data->flag_aktif, "\146\x6c\141\147\x5f\160\x6c\141\164\x66\x6f\x72\x6d" => "\116", "\x75\160\x64\141\x74\x65\144\137\x61\x74" => $data->modified_date, "\165\x70\x64\x61\164\145\x5f\x62\x79" => $data->modified_by]); }); } public function delete(string $id, $client_id) { return DB::transaction(function () use($id, $client_id) { goto BxVs2; IdNsC: return $TitikFokus->delete(); goto l3ykB; wJlpq: $TitikFokus_file = $TitikFokus->first(); goto mLKsR; BxVs2: $TitikFokus = DB::table("\x74\146\151\164\x75\x72")->where("\143\154\x69\x65\156\x74\137\151\x64", "\75", $client_id)->where("\x63\141\164\x65\x67\x6f\162\171", "\x3d", "\124\106")->where("\151\x64", $id); goto wJlpq; mLKsR: @unlink(storage_path("\x61\x70\x70\x2f\x70\x75\142\x6c\151\143\57\x69\x6d\141\147\x65\163\57\156\145\167\163\57" . $TitikFokus_file->file)); goto IdNsC; l3ykB: }); } }
+
+namespace App\Repositories\Setting;
+
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+class TitikFokusMasterRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($filter, $client_id): Collection
+    {
+        return DB::table('tfitur as a')
+			->select(
+				'a.id',
+				'a.title',
+				'a.description',
+				'a.author',
+				'a.file',
+				'a.category',
+				'a.flag_aktif',
+				'a.flag_platform',
+				'a.client_id',
+				'a.created_at',
+				'a.created_by',
+				'a.updated_at',
+				'a.update_by',
+			)
+            ->where('a.client_id', '=', $client_id)
+            ->where('a.category', '=', 'TF')
+			->sharedLock()
+			->get();
+    }
+
+	/**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data, $client_id): bool
+    {
+        return DB::transaction(function () use ($data, $client_id) {
+            return DB::table('tfitur')->insert([
+                'id'            => $data->id,
+				'title'         => $data->title,
+				'description'   => $data->description,
+				'author'        => $data->author,
+				'file'          => $data->file,
+				'category'      => 'TF',
+				'flag_aktif'    => $data->flag_aktif,
+				'flag_platform' => 'N',
+				'client_id'     => $client_id,
+				'created_at'    => $data->create_date,
+				'created_by'    => $data->create_by
+            ]);
+        });
+    }
+	
+	/**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id, $client_id): bool
+    {
+        return DB::transaction(function () use ($data, $id, $client_id) {
+            return DB::table('tfitur')->where('id', $id)->where('client_id', '=', $client_id)->where('category', '=', 'TF')
+
+                ->update([
+                    'title'         => $data->title,
+                    'description'   => $data->description,
+                    'author'        => $data->author,
+                    'file'          => $data->file,
+                    'flag_aktif'    => $data->flag_aktif,
+                    'flag_platform' => 'N',
+                    'updated_at'    => $data->modified_date,
+                    'update_by'     => $data->modified_by
+                ]);
+        });
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id, $client_id)
+    {
+        return DB::transaction(function () use ($id, $client_id) {
+            $TitikFokus = DB::table('tfitur')
+                ->where('client_id', '=', $client_id)
+                ->where('category', '=', 'TF')
+                ->where('id', $id);
+
+            $TitikFokus_file = $TitikFokus->first();
+            @unlink(storage_path('app/public/images/news/'.$TitikFokus_file->file));
+
+            return $TitikFokus->delete();
+        });
+    }
+}

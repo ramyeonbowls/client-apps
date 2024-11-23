@@ -1,8 +1,813 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers; use App\Logs; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; class MainController extends Controller { protected $client_id = ''; public function __construct() { $this->client_id = config("\x61\160\160\56\143\154\151\145\156\x74\x5f\151\144", ''); } public function index() { return view("\x6d\141\x69\156"); } public function getInfo() { goto GRW9f; FUPYs: return response()->json(["\156\x61\x6d\145" => $user->name, "\141\x76\141\x74\x61\x72" => isset($attr[0]->avatar) && file_exists(public_path("\x2f\x73\164\x6f\162\x61\147\145\x2f\151\x6d\141\x67\145\x73\57\160\162\157\x66\151\x6c\x65\x2f" . $attr[0]->avatar)) ? "\57\163\x74\157\162\141\x67\145\57\x69\x6d\141\x67\145\163\57\160\162\x6f\146\x69\154\x65\57" . $attr[0]->avatar : "\x2f\x73\x74\x6f\x72\141\147\145\57\x69\155\x61\147\x65\x73\x2f\x70\x72\157\146\151\154\145\57\x64\145\146\141\x75\x6c\164\56\152\160\147"], 200); goto za04v; za04v: WQKgd: goto GIFhm; wPZsf: $attr = DB::table("\164\x61\164\x74\x72\137\155\x65\155\142\145\162\40\141\x73\x20\141")->select(["\x61\x2e\x70\150\x6f\x74\x6f\x20\x61\x73\40\141\166\141\164\141\x72"])->where("\x61\56\143\154\x69\145\156\x74\x5f\151\x64", $this->client_id)->where("\141\56\151\144", $user->id)->get(); goto FUPYs; GRW9f: $user = auth()->user(); goto BLCqZ; GIFhm: return response()->json(["\156\x61\x6d\145" => '', "\x61\166\x61\x74\141\x72" => ''], 200); goto pg9y2; BLCqZ: if (!($user && $user->role == "\155\x65\x6d\142\x65\162")) { goto WQKgd; } goto wPZsf; pg9y2: } public function getBukuPopuler() { goto PvmeJ; fu0Rn: return response()->json($finalResults, 200); goto IsfoX; PvmeJ: $dibacaBooksQuery = DB::table("\164\x74\162\x78\137\x72\x65\x61\144\40\141\x73\40\x61")->select(["\142\56\142\x6f\x6f\153\x5f\151\x64", "\x62\56\151\163\x62\x6e", "\142\56\164\x69\164\x6c\145", "\x62\x2e\163\151\156\x6f\160\x73\x69\x73", "\142\56\x63\157\x76\x65\x72\40\x61\x73\x20\x69\155\141\147\x65", "\x62\56\167\x72\151\x74\x65\x72", DB::raw("\x53\x55\x4d\x28\124\x49\115\105\123\124\x41\x4d\120\104\x49\x46\106\50\123\x45\x43\x4f\116\x44\54\x20\x61\x2e\x73\x74\x61\x72\164\x5f\162\x65\141\x64\x2c\40\x61\x2e\145\156\144\137\x72\x65\141\x64\x29\x29\40\x61\163\x20\x74\x6f\164\x61\154\137\163\x65\143\157\156\144\163"), DB::raw("\123\105\x43\x5f\x54\x4f\137\x54\x49\115\x45\x28\x53\x55\x4d\50\x54\x49\x4d\x45\x53\x54\x41\115\x50\104\x49\106\x46\x28\x53\x45\x43\117\x4e\104\54\x20\141\56\x73\x74\x61\162\x74\x5f\162\145\141\144\54\x20\141\x2e\x65\x6e\144\137\x72\x65\141\x64\x29\51\x29\40\141\x73\40\x74\157\164\x61\x6c\x5f\164\x69\x6d\x65")])->join("\164\142\x6f\157\x6b\40\141\x73\40\x62", "\141\56\142\157\157\x6b\x5f\151\144", "\x3d", "\x62\x2e\142\157\x6f\153\137\151\144")->where("\141\56\x63\154\151\x65\156\164\137\151\144", $this->client_id)->groupBy(["\142\56\142\157\x6f\153\137\151\144", "\x62\56\151\163\x62\x6e", "\x62\x2e\164\151\164\154\x65", "\142\56\x73\x69\x6e\157\x70\x73\x69\x73", "\142\x2e\143\157\x76\145\162", "\x62\x2e\167\x72\x69\164\145\x72"])->orderBy("\164\157\164\141\154\137\x73\145\143\x6f\156\144\x73", "\144\x65\163\x63")->limit(8); goto NDLsy; NNIm_: Ooeeo: goto raAh3; Nlc1w: $remainingBooks = DB::table("\164\155\141\160\x70\151\156\x67\137\142\x6f\157\153\40\141\163\x20\141")->select(["\x62\x2e\142\x6f\157\x6b\137\x69\144", "\142\x2e\151\x73\x62\156", "\x62\x2e\164\x69\x74\154\145", "\142\x2e\x73\x69\156\x6f\x70\163\151\163", "\142\56\x63\x6f\x76\x65\x72\40\x61\x73\40\x69\155\141\x67\145", "\x62\56\167\162\151\x74\x65\162", DB::raw("\60\x20\x61\163\x20\164\x6f\x74\x61\x6c\137\163\x65\x63\157\156\144\x73"), DB::raw("\x30\x20\x61\163\x20\164\x6f\164\x61\x6c\x5f\x74\151\155\x65")])->join("\x74\142\x6f\157\153\x20\x61\163\x20\x62", function ($join) { $join->on("\x61\56\142\157\x6f\x6b\137\151\x64", "\x3d", "\142\56\x62\157\157\153\x5f\151\x64"); })->where("\x61\56\143\x6c\151\x65\156\164\137\151\144", "\x3d", $this->client_id)->whereNotIn("\142\56\142\x6f\157\x6b\137\x69\x64", $readIsbns)->limit(8 - $dibacaBooks->count()); goto wceKr; raAh3: $finalResults = $results->get()->map(function ($value) { return ["\151\163\x62\x6e" => $value->isbn, "\164\x69\x74\154\145" => $value->title, "\x73\151\156\157\160\163\x69\163" => $value->sinopsis, "\151\155\x61\x67\145" => isset($value->image) && file_exists(public_path("\x2f\163\x74\157\162\141\147\145\57\143\x6f\166\x65\162\163\x2f" . $value->image)) ? "\x2f\163\x74\157\162\x61\x67\145\x2f\143\x6f\166\x65\x72\x73\57" . $value->image : "\57\163\x74\157\162\x61\147\145\57\143\x6f\x76\x65\x72\x73\x2f\x64\145\x66\141\165\x6c\x74\x2d\143\157\x76\145\x72\56\x6a\160\x67", "\x77\x72\151\x74\145\x72" => $value->writer]; }); goto fu0Rn; gXNy4: $results = $dibacaBooksQuery; goto g8zQm; g8zQm: if (!($dibacaBooks->count() < 8)) { goto Ooeeo; } goto y2fEo; NDLsy: $dibacaBooks = $dibacaBooksQuery->get(); goto gXNy4; wceKr: $results = $results->unionAll($remainingBooks); goto NNIm_; y2fEo: $readIsbns = $dibacaBooks->pluck("\142\157\157\153\137\x69\144")->toArray(); goto Nlc1w; IsfoX: } public function getBook(Request $request) { goto HvbFr; hEVU6: $results = DB::table("\x74\155\141\160\x70\x69\156\147\x5f\142\x6f\157\153\x20\x61\163\x20\141")->select(["\x62\56\x62\x6f\x6f\153\137\151\144", "\x61\x2e\x63\x6f\160\171", "\x62\x2e\x69\x73\142\156", "\142\x2e\x74\x69\164\154\x65", "\x62\56\163\151\x6e\x6f\160\163\151\x73", "\142\x2e\143\157\x76\145\162\x20\141\x73\x20\x69\x6d\x61\147\145", "\142\56\x77\162\151\x74\145\162", "\x62\56\141\x67\145", "\x63\x2e\x64\145\163\143\162\151\160\164\x69\157\x6e\40\x61\x73\x20\x63\x61\164\145\147\x6f\162\171"])->join("\164\142\x6f\x6f\x6b\40\141\163\40\142", function ($join) { $join->on("\x61\56\x62\157\157\153\x5f\x69\x64", "\x3d", "\x62\x2e\142\157\157\153\x5f\x69\144"); })->join("\x74\142\x6f\157\153\137\x63\141\164\145\147\157\162\171\x20\141\163\x20\143", function ($join) { $join->on("\x62\x2e\143\x61\x74\x65\147\157\162\x79\137\x69\x64", "\x3d", "\x63\56\x69\x64"); })->when($parameter != '', function ($query) use($parameter) { $query->where(function ($query) use($parameter) { $query->where("\142\56\x77\x72\151\164\145\162", "\114\111\113\x45", "\45" . $parameter . "\x25")->orWhere("\x62\x2e\151\163\x62\x6e", "\x4c\111\x4b\105", "\x25" . $parameter . "\45")->orWhere("\142\x2e\164\x69\164\x6c\x65", "\x4c\x49\x4b\105", "\45" . $parameter . "\x25"); }); })->when(count($category) > 0, function ($query) use($category) { $query->whereIn("\x62\x2e\x63\x61\164\145\147\157\162\171\x5f\151\144", $category); })->where("\x61\56\143\154\151\x65\x6e\164\x5f\151\x64", "\x3d", $this->client_id)->get()->map(function ($value) { return ["\x69\163\142\156" => $value->isbn, "\x74\x69\x74\x6c\x65" => $value->title, "\163\151\156\x6f\160\163\151\163" => $value->sinopsis, "\x69\x6d\x61\x67\x65" => isset($value->image) && file_exists(public_path("\x2f\x73\164\x6f\x72\x61\147\x65\x2f\143\157\166\x65\x72\x73\x2f" . $value->image)) ? "\57\163\x74\x6f\162\x61\147\145\57\143\157\x76\x65\162\163\57" . $value->image : "\57\x73\164\157\162\141\147\145\x2f\143\157\x76\x65\162\163\x2f\x64\x65\146\x61\x75\x6c\x74\x2d\143\157\166\145\162\56\152\x70\147", "\x77\162\151\164\x65\162" => $value->writer]; }); goto tCKHB; HvbFr: $category = $request->categories ?? []; goto KqNNl; tCKHB: return response()->json($results, 200); goto E24_3; KqNNl: $parameter = $request->search ?? ''; goto hEVU6; E24_3: } public function getNewCollection() { $results = DB::table("\164\155\141\x70\x70\151\x6e\x67\x5f\142\157\157\153\40\141\x73\40\x61")->select(["\142\56\142\x6f\157\x6b\x5f\x69\144", "\141\x2e\143\157\160\x79", "\x62\56\x69\x73\x62\156", "\142\x2e\164\151\x74\x6c\145", "\x62\x2e\163\151\156\x6f\160\163\x69\x73", "\142\x2e\143\157\x76\x65\162\x20\141\163\40\x69\155\x61\x67\x65", "\x62\56\x77\x72\151\164\x65\162", "\x62\56\x61\x67\x65", "\143\x2e\144\145\x73\143\x72\x69\160\x74\x69\157\156\x20\x61\x73\40\x63\x61\x74\x65\x67\x6f\162\171"])->join("\x74\142\157\157\153\40\141\163\40\142", function ($join) { $join->on("\x61\56\x62\157\157\x6b\137\x69\144", "\x3d", "\142\56\142\x6f\x6f\153\137\151\x64"); })->join("\164\142\x6f\x6f\153\137\x63\x61\164\145\147\x6f\x72\x79\40\x61\163\x20\x63", function ($join) { $join->on("\x62\56\143\x61\x74\x65\147\x6f\162\x79\x5f\x69\144", "\x3d", "\x63\x2e\x69\144"); })->where("\x61\x2e\143\154\x69\145\x6e\x74\137\151\x64", "\x3d", $this->client_id)->limit(10)->orderBy("\141\x2e\143\162\145\x61\164\x65\x64\x5f\x61\164", "\141\x73\143")->get()->map(function ($value) { return ["\151\x73\x62\156" => $value->isbn, "\164\x69\164\x6c\145" => $value->title, "\x73\x69\x6e\x6f\160\x73\151\163" => $value->sinopsis, "\x69\x6d\x61\147\145" => isset($value->image) && file_exists(public_path("\x2f\x73\x74\x6f\162\x61\147\145\x2f\x63\157\x76\x65\x72\163\x2f" . $value->image)) ? "\x2f\x73\x74\157\162\x61\147\145\57\143\157\x76\145\162\x73\57" . $value->image : "\57\163\164\157\x72\x61\147\145\x2f\143\157\x76\x65\162\x73\57\x64\x65\146\141\x75\154\x74\55\143\157\x76\x65\162\56\152\160\x67", "\x77\162\151\x74\x65\162" => $value->writer]; }); return response()->json($results, 200); } public function getDetail(Request $request) { goto MWYiC; HOxna: return response()->json($results, 200); goto WUpyr; SglZc: if ($user) { goto TFw0s; } goto mpg9U; mpg9U: $query->selectRaw("\x27\116\x27\40\141\x73\x20\162\145\156\x74"); goto mxoXx; bh2NS: if (!$results) { goto d2vvh; } goto zAK8Y; sRmUM: OqNwy: goto PMW10; vVA3j: $user = auth()->user(); goto t0XF6; t0XF6: $query = DB::table("\164\155\x61\x70\160\x69\156\147\x5f\x62\157\x6f\x6b\x20\x61\x73\x20\x61")->select(["\x62\56\x62\x6f\x6f\x6b\137\151\144", "\x61\56\x63\x6f\160\171", "\142\56\151\163\142\x6e", "\142\56\x74\x69\x74\x6c\x65", "\142\x2e\163\151\x6e\157\x70\x73\151\x73", "\x62\x2e\143\x6f\166\x65\162\40\x61\163\x20\151\155\141\x67\x65", "\x62\x2e\x77\x72\151\x74\x65\x72", "\x62\56\141\x67\x65", "\143\x2e\x64\x65\x73\143\162\x69\x70\164\151\157\156\40\x61\163\x20\143\141\x74\145\x67\x6f\162\171", "\x62\x2e\171\145\x61\x72", "\142\x2e\x70\141\x67\145", DB::raw("\141\56\143\x6f\160\x79\40\55\x20\111\106\116\125\114\x4c\x28\144\x2e\x74\157\x74\x61\154\x2c\40\60\x29\40\141\163\x20\162\145\155\x61\x69\156\x69\156\147")])->join("\x74\142\157\x6f\x6b\40\141\163\40\142", function ($join) { $join->on("\x61\x2e\x62\x6f\157\x6b\137\151\144", "\x3d", "\142\x2e\x62\157\157\x6b\137\151\x64"); })->join("\x74\142\x6f\157\153\x5f\143\x61\x74\x65\147\157\x72\x79\x20\x61\163\x20\143", function ($join) { $join->on("\142\56\143\x61\164\x65\x67\x6f\x72\171\x5f\151\x64", "\75", "\x63\56\151\144"); })->leftJoin(DB::raw("\x28\xa\40\x20\x20\40\x20\40\x20\x20\40\x20\x20\x20\x20\x20\40\40\x20\x20\x20\40\x53\x45\114\x45\103\x54\12\40\40\40\x20\x20\x20\40\40\x20\x20\40\40\40\x20\x20\40\40\x20\x20\40\40\40\x20\40\x73\162\143\x2e\x62\157\x6f\x6b\137\151\x64\54\12\40\x20\40\40\40\x20\x20\x20\x20\40\40\x20\x20\40\x20\40\40\40\40\40\40\x20\x20\40\123\125\x4d\x28\x43\x41\123\x45\x20\127\x48\105\x4e\40\x73\162\x63\56\x74\x6f\164\x61\154\40\76\40\61\x20\124\x48\x45\x4e\40\x31\x20\x45\114\123\105\40\x73\x72\143\x2e\x74\x6f\x74\141\154\40\x45\x4e\x44\x29\40\101\x53\x20\164\x6f\x74\141\x6c\xa\x20\x20\40\40\x20\40\40\x20\40\40\40\40\x20\40\40\40\40\x20\40\40\x46\x52\117\x4d\40\50\xa\x20\40\x20\x20\40\x20\40\x20\x20\40\40\40\40\x20\x20\x20\40\x20\x20\x20\40\40\40\40\123\x45\x4c\x45\x43\124\x20\x73\162\x2e\x62\x6f\x6f\153\137\151\x64\54\40\x43\x4f\x55\116\124\50\163\x72\56\142\x6f\157\153\137\x69\x64\51\40\101\x53\x20\164\157\164\141\x6c\54\x20\163\x72\56\x75\x73\x65\x72\137\151\144\xa\40\x20\40\x20\x20\40\x20\x20\x20\x20\x20\40\40\40\x20\40\x20\x20\40\40\40\40\x20\x20\106\122\x4f\x4d\40\50\xa\40\40\40\40\x20\x20\40\40\x20\40\40\40\x20\x20\40\40\40\40\40\x20\x20\x20\40\40\40\40\x20\40\x53\105\114\105\103\x54\x20\142\x6f\157\x6b\137\x69\x64\x2c\40\165\x73\x65\x72\x5f\x69\x64\12\x20\40\x20\40\x20\40\x20\40\x20\x20\40\x20\x20\40\x20\40\40\x20\40\40\40\x20\40\x20\40\40\x20\40\106\122\x4f\115\x20\164\x74\162\x78\x5f\162\x65\x61\144\xa\40\x20\40\x20\x20\x20\40\40\x20\40\x20\40\x20\40\40\40\40\x20\40\x20\40\x20\40\40\40\40\40\x20\127\x48\x45\122\x45\xa\40\40\40\x20\x20\x20\x20\x20\40\x20\x20\x20\40\40\x20\x20\40\40\40\40\x20\x20\40\x20\40\40\x20\40\40\40\40\x20\143\x6c\x69\145\x6e\164\137\x69\x64\x20\x3d\x20\x27" . $this->client_id . "\x27\xa\40\40\40\40\40\x20\40\40\x20\x20\40\40\40\40\x20\40\x20\40\x20\x20\40\x20\40\40\x20\x20\x20\40\40\40\40\40\101\x4e\x44\x20\x66\x6c\x61\147\x5f\145\156\144\x20\x21\x3d\40\47\x59\x27\xa\40\40\x20\40\40\x20\40\x20\x20\x20\40\x20\40\40\40\x20\40\x20\x20\x20\x20\x20\40\40\40\40\x20\x20\xa\x20\x20\x20\x20\40\x20\x20\x20\x20\x20\x20\x20\x20\x20\40\40\x20\x20\40\40\x20\40\x20\40\40\40\x20\x20\125\116\111\117\x4e\x20\x41\114\114\xa\x20\x20\40\x20\40\x20\x20\x20\40\40\x20\40\x20\40\x20\x20\40\x20\x20\40\x20\x20\x20\x20\40\x20\40\x20\12\x20\40\x20\x20\x20\40\x20\x20\40\x20\40\40\x20\x20\40\40\x20\x20\40\x20\x20\40\x20\40\x20\40\40\40\123\x45\114\105\103\x54\40\142\x6f\x6f\153\x5f\x69\x64\x2c\40\x75\x73\145\162\137\151\x64\12\x20\x20\x20\x20\40\40\40\x20\40\40\40\x20\x20\40\40\40\40\x20\x20\x20\40\40\x20\x20\x20\x20\40\x20\106\122\x4f\115\40\x74\x72\145\x6e\x74\x5f\x62\x6f\x6f\153\xa\40\x20\40\x20\x20\x20\40\40\40\x20\40\40\x20\x20\40\x20\x20\40\40\x20\x20\40\x20\40\40\x20\40\40\127\110\x45\x52\x45\xa\x20\40\40\40\40\40\40\x20\40\40\40\40\x20\40\40\40\40\x20\40\x20\40\x20\x20\40\x20\40\x20\x20\40\40\40\40\143\x6c\151\x65\x6e\164\x5f\151\x64\x20\x3d\40\x27" . $this->client_id . "\x27\12\x20\40\x20\40\40\x20\40\40\40\40\x20\40\40\x20\40\40\40\40\40\x20\40\x20\x20\x20\x20\40\40\x20\40\40\40\x20\x41\116\x44\40\146\x6c\x61\x67\x5f\x65\156\x64\x20\x21\75\x20\47\x59\x27\12\x20\40\x20\x20\x20\x20\x20\40\x20\40\x20\x20\x20\40\40\40\x20\x20\40\40\x20\40\40\40\51\x20\x73\162\xa\40\40\x20\x20\x20\40\x20\40\40\x20\x20\x20\40\x20\40\40\40\40\40\40\x20\40\x20\x20\x67\x72\157\165\x70\40\x62\x79\x20\x73\162\56\x62\x6f\157\x6b\x5f\151\x64\54\40\163\162\56\165\163\x65\x72\137\151\144\12\x20\x20\x20\40\40\40\40\40\40\x20\40\40\40\40\x20\x20\40\40\40\x20\x29\163\x72\x63\xa\x20\x20\x20\x20\x20\40\x20\40\x20\x20\x20\40\40\x20\x20\x20\x20\x20\x20\x20\x47\x52\117\125\x50\x20\x42\131\40\x73\x72\143\56\x62\x6f\x6f\x6b\137\151\x64\x29\40\141\x73\x20\144"), function ($join) { $join->on("\142\56\142\x6f\157\153\x5f\151\144", "\x3d", "\x64\56\142\157\157\x6b\137\151\x64"); }); goto SglZc; RzBwj: $query->selectRaw("\x43\101\123\x45\x20\x57\x48\105\116\40\x49\x46\x4e\125\x4c\x4c\50\145\56\x62\157\157\153\x5f\151\x64\54\40\x27\x27\51\40\75\40\x27\x27\x20\124\110\x45\116\40\47\x4e\x27\x20\105\114\123\x45\x20\x27\131\x27\x20\105\116\104\x20\141\x73\x20\162\x65\156\164")->leftJoin("\164\162\145\156\164\x5f\142\x6f\157\153\40\x61\163\40\145", function ($join) use($user) { $join->on("\x62\56\142\x6f\x6f\x6b\x5f\x69\144", "\x3d", "\145\56\x62\x6f\x6f\153\137\x69\144")->where("\x65\56\146\154\141\x67\137\145\x6e\144", "\x3d", "\x4e")->where("\x65\x2e\x75\163\x65\x72\137\151\144", "\x3d", $user->id); }); goto sRmUM; PMW10: $results = $query->where("\x61\x2e\143\x6c\151\145\x6e\x74\x5f\x69\144", "\75", $this->client_id)->where("\142\56\151\x73\142\x6e", "\x3d", $isbn)->first(); goto bh2NS; mxoXx: goto OqNwy; goto buJCP; MWYiC: $isbn = $request->id; goto vVA3j; zAK8Y: $results->image = isset($results->image) && file_exists(public_path("\57\x73\164\157\x72\x61\x67\x65\x2f\x63\x6f\166\x65\x72\163\57" . $results->image)) ? "\57\163\164\157\162\141\x67\145\x2f\x63\157\x76\x65\x72\x73\x2f" . $results->image : "\x2f\x73\x74\x6f\x72\x61\x67\145\57\x63\157\x76\x65\162\163\x2f\144\x65\x66\x61\x75\x6c\x74\x2d\x63\157\x76\145\x72\56\x6a\x70\x67"; goto xaXoR; buJCP: TFw0s: goto RzBwj; xaXoR: d2vvh: goto HOxna; WUpyr: } public function getCategory() { $results = DB::table("\x74\155\141\x70\160\x69\156\147\x5f\x62\x6f\x6f\x6b\40\141\x73\x20\141")->select("\143\x2e\x69\144", "\143\x2e\144\x65\x73\143\162\x69\x70\164\x69\x6f\156", DB::raw("\143\157\x75\156\164\50\x64\x69\163\164\151\x6e\143\164\x20\x61\56\142\x6f\x6f\153\x5f\x69\144\x29\x20\141\x73\x20\164\x6f\164\141\154"))->join("\164\x62\157\x6f\153\40\x61\x73\x20\142", function ($join) { $join->on("\141\56\x62\x6f\x6f\153\x5f\151\144", "\x3d", "\142\56\142\x6f\157\153\x5f\x69\144"); })->join("\164\142\157\x6f\153\137\x63\141\x74\145\147\x6f\x72\171\40\141\x73\x20\x63", "\142\x2e\143\141\x74\x65\x67\x6f\162\171\137\151\x64", "\x3d", "\143\56\151\144")->where("\x61\x2e\143\154\151\145\x6e\x74\137\151\x64", "\x3d", $this->client_id)->distinct()->groupBy("\143\56\x69\x64", "\x63\x2e\x64\x65\x73\x63\162\151\160\x74\x69\157\156")->orderBy("\143\x2e\144\145\x73\x63\162\x69\160\164\x69\x6f\x6e", "\101\123\x43")->get(); return response()->json($results, 200); } public function getBanner() { $results = DB::table("\164\x62\x61\156\x6e\x65\x72\x20\141\x73\40\x61")->select(["\x61\56\151\144", "\141\56\x64\x65\x73\143\162\151\160\164\151\x6f\x6e", "\x61\56\146\x69\x6c\x65\40\x61\x73\40\x69\x6d\x61\x67\x65", "\x61\56\144\x69\x73\160\137\x74\171\x70\x65"])->where("\141\56\143\154\151\145\156\x74\x5f\151\144", "\x3d", $this->client_id)->orderBy("\143\x72\x65\141\x74\145\x64\x5f\141\164", "\104\x45\x53\x43")->get()->map(function ($value) { return ["\151\x64" => $value->id, "\x64\145\x73\x63\162\151\160\x74\x69\x6f\x6e" => $value->description, "\144\151\163\x70\x6c\141\171" => $value->disp_type, "\151\x6d\141\147\145" => isset($value->image) && file_exists(public_path("\x2f\x73\164\x6f\x72\x61\147\145\x2f\x69\x6d\141\x67\x65\163\57\142\x61\x6e\x6e\145\162\x2f" . $value->image)) ? "\x2f\163\164\157\x72\141\147\145\x2f\151\155\x61\x67\x65\x73\57\142\x61\x6e\x6e\145\162\57" . $value->image : "\57\x73\164\157\x72\x61\x67\145\x2f\151\155\x61\147\x65\x73\57\x62\141\156\x6e\145\162\57\x62\141\156\x6e\145\162\61\56\152\x70\147"]; }); return response()->json($results, 200); } public function getArticle(Request $request) { goto DUTp0; DUTp0: $category = $request->id; goto xQ0G5; rBWw4: return response()->json($results, 200); goto pIn8m; xQ0G5: $results = DB::table("\x74\146\151\164\x75\x72\40\141\163\40\x61")->select(["\x61\x2e\151\x64", "\x61\56\164\151\164\x6c\145", "\141\x2e\x64\x65\163\143\162\151\160\164\151\157\156", "\x61\x2e\141\x75\x74\x68\157\162", "\141\56\146\151\x6c\x65\40\141\x73\x20\x69\x6d\141\x67\x65", "\141\x2e\x63\x72\145\x61\164\145\x64\137\141\164\x20\x61\163\40\x70\165\142\x6c\x69\163\x68\145\x64\137\x61\164"])->where("\141\x2e\x63\x6c\x69\145\156\164\137\151\x64", "\75", $this->client_id)->where("\x61\56\143\141\x74\x65\x67\157\162\171", "\75", $category)->where("\x61\56\x66\154\x61\x67\137\141\x6b\x74\151\x66", "\75", "\131")->orderBy("\x63\x72\x65\141\164\x65\144\137\x61\164", "\104\x45\x53\103")->get()->map(function ($value) { return ["\x69\144" => $value->id, "\164\x69\164\x6c\145" => $value->title, "\x63\x6f\x6e\164\145\156\x74" => $value->description, "\141\165\164\150\157\162" => $value->author, "\x70\x75\142\154\x69\163\x68\145\144\137\x61\164" => $value->published_at, "\151\x6d\x61\147\145" => isset($value->image) && file_exists(public_path("\57\x73\x74\157\162\141\x67\145\57\151\x6d\141\147\x65\163\57\156\x65\x77\x73\57" . $value->image)) ? "\57\x73\164\157\162\141\x67\145\57\151\155\x61\x67\145\x73\x2f\x6e\x65\x77\163\x2f" . $value->image : "\57\x73\164\x6f\x72\141\x67\145\x2f\x69\x6d\x61\147\145\x73\57\156\145\x77\x73\x2f\144\145\x66\x61\165\154\164\x2d\x6e\145\x77\163\x2e\x6a\160\x67"]; }); goto rBWw4; pIn8m: } public function getAllArticle() { goto KcU9n; O0qQW: $results["\122\x42"] = $review_buku ?? []; goto mKtnT; Mi5gn: $results["\124\106"] = $titik_fokus ?? []; goto KsWkg; QkspD: $frasa = DB::table("\164\x66\151\x74\x75\x72\x20\141\163\40\x61")->select(["\x61\56\x69\144", "\x61\x2e\x74\x69\x74\x6c\145", "\141\56\x64\145\163\143\162\151\x70\164\x69\x6f\x6e", "\141\56\x61\165\164\x68\x6f\x72", "\141\56\146\x69\x6c\x65\x20\x61\x73\x20\151\x6d\x61\x67\145", "\x61\x2e\x63\162\145\x61\x74\145\x64\137\141\164\40\x61\163\x20\160\x75\x62\154\x69\163\150\x65\144\x5f\x61\x74", "\x61\x2e\x63\141\164\x65\147\157\162\171"])->where("\x61\56\x63\x6c\x69\x65\156\x74\x5f\151\144", "\75", $this->client_id)->where("\x61\56\143\x61\164\145\147\x6f\162\171", "\75", "\x46\122")->where("\141\x2e\146\154\141\x67\137\x61\153\164\151\x66", "\x3d", "\131")->orderBy("\x63\162\145\141\164\x65\x64\137\141\164", "\x44\105\x53\x43")->get()->map(function ($value) { return ["\x69\144" => $value->id, "\164\151\164\x6c\x65" => $value->title, "\153\x61\x74\141" => $value->description, "\142\171" => $value->author, "\160\x75\x62\x6c\151\163\150\145\x64\x5f\x61\164" => $value->published_at, "\143\x61\x74\x65\x67\x6f\x72\171" => $value->category, "\x69\155\141\x67\x65" => isset($value->image) && file_exists(public_path("\x2f\x73\164\157\162\141\147\x65\57\x69\x6d\x61\147\x65\163\57\156\145\x77\x73\x2f" . $value->image)) ? "\x2f\x73\164\x6f\162\141\x67\x65\57\x69\155\141\x67\x65\163\57\156\145\x77\x73\x2f" . $value->image : "\x2f\163\x74\157\x72\141\147\145\x2f\151\x6d\141\x67\x65\163\x2f\x6e\145\x77\163\57\x61\156\x6f\x6e\x69\155\56\152\x70\147"]; }); goto WpD5I; y2tpB: $titik_fokus = DB::table("\164\x66\151\164\x75\x72\x20\141\163\40\141")->select(["\141\x2e\151\x64", "\x61\56\164\151\164\154\x65", "\141\x2e\x64\x65\163\x63\x72\x69\160\x74\x69\x6f\156", "\141\x2e\x61\165\164\150\157\x72", "\x61\56\146\x69\154\145\40\141\x73\40\151\x6d\x61\147\145", "\x61\56\143\162\145\141\x74\145\144\137\141\x74\x20\141\x73\x20\x70\165\142\x6c\x69\163\150\145\x64\x5f\141\164", "\141\56\143\141\x74\145\x67\157\162\171"])->where("\x61\56\143\154\x69\x65\156\x74\x5f\x69\x64", "\75", $this->client_id)->where("\x61\x2e\x63\141\x74\145\147\157\162\171", "\75", "\x54\x46")->where("\x61\56\x66\154\141\x67\x5f\x61\153\x74\151\146", "\75", "\131")->orderBy("\143\162\x65\x61\x74\x65\x64\x5f\x61\164", "\x44\x45\123\x43")->limit(5)->get()->map(function ($value) { return ["\x69\x64" => $value->id, "\164\x69\164\x6c\145" => $value->title, "\143\157\x6e\164\145\x6e\x74" => $value->description, "\x61\165\164\x68\157\162" => $value->author, "\160\x75\142\x6c\151\163\150\x65\144\x5f\141\164" => $value->published_at, "\143\141\x74\145\x67\x6f\162\171" => $value->category, "\151\x6d\x61\x67\x65" => isset($value->image) && file_exists(public_path("\57\163\164\157\162\141\x67\145\57\151\155\141\147\x65\x73\57\x6e\145\167\163\x2f" . $value->image)) ? "\57\163\x74\x6f\x72\x61\x67\x65\57\151\x6d\x61\147\145\163\57\x6e\145\x77\x73\57" . $value->image : "\x2f\x73\164\x6f\x72\141\x67\145\57\x69\x6d\141\147\145\x73\57\156\145\167\163\x2f\144\x65\146\x61\x75\x6c\164\x2d\156\x65\167\x73\56\x6a\x70\147"]; }); goto tSPuK; WpD5I: $review_buku = DB::table("\x74\x66\151\x74\x75\x72\40\141\163\x20\141")->select(["\141\56\151\x64", "\x61\x2e\x74\x69\164\x6c\x65", "\x61\x2e\144\145\x73\143\x72\151\160\164\151\157\156", "\x61\56\x61\x75\164\x68\x6f\162", "\x61\x2e\x66\151\154\x65\40\141\163\x20\x69\x6d\x61\147\x65", "\141\56\143\162\x65\141\164\145\x64\137\141\x74\x20\x61\x73\x20\x70\x75\x62\x6c\151\x73\x68\145\x64\x5f\x61\x74", "\141\56\x63\x61\x74\x65\x67\x6f\x72\x79"])->where("\141\x2e\x63\154\x69\x65\156\x74\x5f\151\x64", "\75", $this->client_id)->where("\x61\x2e\x63\x61\x74\145\147\x6f\x72\x79", "\x3d", "\x52\x42")->where("\141\x2e\146\154\141\147\x5f\x61\153\x74\x69\x66", "\x3d", "\x59")->orderBy("\x63\162\145\x61\x74\x65\x64\x5f\141\x74", "\104\x45\123\103")->limit(5)->get()->map(function ($value) { return ["\x69\x64" => $value->id, "\x74\151\164\154\x65" => $value->title, "\x63\157\x6e\x74\145\156\x74" => $value->description, "\x61\165\x74\150\x6f\162" => $value->author, "\160\x75\142\x6c\x69\x73\x68\145\x64\x5f\141\x74" => $value->published_at, "\x63\x61\164\x65\x67\157\x72\171" => $value->category, "\151\155\x61\x67\145" => isset($value->image) && file_exists(public_path("\57\x73\164\x6f\162\x61\x67\145\x2f\151\155\x61\147\145\x73\57\x6e\x65\167\x73\x2f" . $value->image)) ? "\x2f\163\x74\x6f\x72\141\147\x65\57\x69\x6d\x61\x67\145\x73\x2f\x6e\145\167\x73\x2f" . $value->image : "\57\x73\x74\x6f\x72\141\147\x65\x2f\x69\x6d\141\x67\x65\x73\57\156\145\x77\x73\x2f\x64\x65\146\x61\165\x6c\164\55\156\145\167\x73\56\152\x70\147"]; }); goto OzsCt; I6qA0: $results["\106\x52"] = $frasa ?? []; goto O0qQW; mKtnT: $results["\x4c\120"] = $layar_penulis ?? []; goto Mi5gn; v8rjg: $wawasan = DB::table("\x74\x66\151\x74\x75\x72\x20\x61\163\40\141")->select(["\141\56\151\x64", "\141\56\x74\x69\164\154\x65", "\x61\x2e\x64\x65\163\x63\x72\151\x70\x74\x69\157\156", "\x61\56\x61\165\x74\x68\157\x72", "\x61\56\x66\x69\x6c\x65\40\141\163\40\151\x6d\x61\x67\x65", "\141\56\x63\x72\x65\x61\164\145\x64\137\x61\164\x20\141\x73\40\160\165\142\154\x69\x73\150\x65\x64\x5f\141\164", "\x61\56\143\x61\x74\x65\147\157\162\171"])->where("\141\56\x63\154\x69\x65\x6e\x74\x5f\x69\144", "\x3d", $this->client_id)->where("\141\x2e\x63\x61\x74\x65\x67\157\162\x79", "\x3d", "\x57\x41")->where("\x61\56\146\x6c\x61\147\137\141\153\164\151\x66", "\75", "\131")->orderBy("\x63\162\x65\x61\x74\145\144\x5f\141\164", "\104\105\x53\x43")->limit(5)->get()->map(function ($value) { return ["\x69\x64" => $value->id, "\x74\151\164\x6c\x65" => $value->title, "\143\157\x6e\164\x65\x6e\164" => $value->description, "\141\x75\164\150\x6f\x72" => $value->author, "\x70\165\x62\154\x69\x73\150\x65\x64\x5f\x61\x74" => $value->published_at, "\143\x61\x74\x65\147\x6f\x72\x79" => $value->category, "\x69\x6d\141\147\145" => isset($value->image) && file_exists(public_path("\57\x73\164\157\x72\141\x67\x65\x2f\151\155\141\147\145\x73\57\x6e\145\167\163\57" . $value->image)) ? "\x2f\x73\x74\x6f\x72\x61\147\145\57\x69\x6d\x61\147\x65\163\57\x6e\145\167\x73\x2f" . $value->image : "\57\x73\x74\x6f\x72\141\147\x65\x2f\151\x6d\x61\147\x65\163\57\156\145\x77\163\57\144\145\x66\x61\165\154\164\55\156\x65\x77\163\x2e\152\160\x67"]; }); goto QkspD; OzsCt: $layar_penulis = DB::table("\x74\x66\x69\x74\165\x72\x20\141\163\40\x61")->select(["\x61\56\x69\144", "\141\x2e\164\x69\x74\x6c\x65", "\x61\x2e\144\145\x73\143\162\x69\160\164\x69\157\156", "\x61\56\x61\x75\164\150\x6f\162", "\x61\x2e\x66\x69\x6c\x65\40\x61\x73\x20\x69\x6d\141\147\x65", "\141\56\143\x72\x65\x61\164\x65\144\137\141\164\40\x61\x73\40\x70\x75\142\154\151\163\x68\x65\144\137\141\x74", "\x61\x2e\x63\141\164\145\147\x6f\162\x79"])->where("\141\x2e\x63\154\x69\x65\156\x74\137\151\144", "\75", $this->client_id)->where("\141\x2e\143\141\x74\145\x67\157\x72\171", "\75", "\114\120")->where("\x61\x2e\x66\x6c\141\x67\137\x61\x6b\164\151\x66", "\75", "\x59")->orderBy("\143\162\145\x61\164\145\x64\x5f\x61\x74", "\x44\105\123\103")->limit(5)->get()->map(function ($value) { return ["\151\144" => $value->id, "\x74\151\164\154\145" => $value->title, "\x63\157\x6e\x74\x65\156\164" => $value->description, "\141\x75\x74\x68\x6f\x72" => $value->author, "\160\165\142\x6c\x69\x73\150\145\x64\x5f\141\x74" => $value->published_at, "\x63\141\164\x65\x67\157\162\x79" => $value->category, "\151\x6d\x61\x67\x65" => isset($value->image) && file_exists(public_path("\x2f\x73\164\x6f\x72\x61\x67\x65\x2f\151\155\x61\147\145\x73\57\x6e\x65\x77\163\x2f" . $value->image)) ? "\x2f\163\x74\x6f\x72\x61\x67\145\x2f\151\x6d\141\x67\145\163\x2f\156\x65\x77\x73\57" . $value->image : "\57\163\164\157\x72\141\x67\145\57\151\x6d\141\x67\x65\x73\57\156\145\167\163\57\144\x65\x66\x61\x75\x6c\x74\55\156\145\167\163\x2e\152\x70\147"]; }); goto y2tpB; KcU9n: $tajuk_utama = DB::table("\164\146\151\x74\x75\162\x20\x61\163\x20\x61")->select(["\x61\x2e\151\144", "\x61\x2e\164\x69\164\154\145", "\141\x2e\x64\145\163\143\162\151\160\x74\x69\x6f\156", "\x61\x2e\141\x75\164\x68\x6f\x72", "\141\56\146\151\x6c\145\x20\141\163\x20\151\155\141\147\145", "\x61\56\x63\x72\145\x61\x74\x65\x64\137\x61\164\x20\141\x73\x20\160\165\142\154\x69\x73\x68\x65\144\x5f\x61\164", "\141\56\143\141\164\145\x67\157\x72\171"])->where("\141\56\x63\154\151\145\156\164\x5f\151\144", "\x3d", $this->client_id)->where("\x61\56\x63\x61\164\145\147\157\162\171", "\75", "\124\125")->where("\x61\56\x66\x6c\x61\147\137\x61\153\164\x69\146", "\75", "\x59")->orderBy("\143\x72\x65\141\164\x65\x64\x5f\x61\164", "\x44\x45\123\x43")->limit(4)->get()->map(function ($value) { return ["\x69\144" => $value->id, "\164\151\x74\x6c\x65" => $value->title, "\143\x6f\x6e\164\x65\156\164" => $value->description, "\141\165\164\x68\157\162" => $value->author, "\160\x75\142\x6c\151\163\150\145\144\137\141\164" => $value->published_at, "\143\141\164\x65\x67\157\x72\171" => $value->category, "\151\x6d\x61\x67\x65" => isset($value->image) && file_exists(public_path("\x2f\163\x74\157\162\141\147\145\x2f\x69\155\x61\147\x65\x73\57\x6e\x65\167\163\57" . $value->image)) ? "\x2f\x73\x74\157\162\141\147\x65\x2f\x69\155\x61\x67\145\163\x2f\x6e\145\x77\163\57" . $value->image : "\x2f\x73\x74\157\x72\141\147\x65\57\151\155\141\147\145\x73\x2f\156\145\167\163\x2f\x64\x65\x66\141\x75\x6c\164\x2d\x6e\x65\x77\x73\56\x6a\160\147"]; }); goto v8rjg; rBEX3: $results["\x54\x55"] = $tajuk_utama ?? []; goto d1EPh; d1EPh: $results["\127\x41"] = $wawasan ?? []; goto I6qA0; tSPuK: $humoria = DB::table("\164\x66\151\x74\x75\x72\40\141\163\40\x61")->select(["\x61\x2e\151\144", "\x61\x2e\x74\x69\164\154\145", "\141\56\144\145\163\x63\x72\151\x70\164\x69\157\x6e", "\x61\x2e\141\165\x74\x68\157\162", "\141\56\x66\151\x6c\x65\x20\141\x73\40\151\155\x61\x67\145", "\141\56\x63\x72\x65\141\164\145\x64\x5f\141\x74\x20\x61\x73\x20\160\165\x62\154\151\x73\x68\145\x64\x5f\x61\x74", "\x61\x2e\x63\141\x74\145\147\x6f\x72\171"])->where("\141\56\x63\x6c\x69\145\x6e\164\137\x69\144", "\75", $this->client_id)->where("\x61\56\143\141\x74\145\x67\157\162\x79", "\75", "\x48\x55")->where("\141\56\x66\x6c\141\147\137\x61\153\x74\151\146", "\x3d", "\x59")->orderBy("\x63\x72\145\x61\x74\x65\x64\137\x61\164", "\104\x45\x53\103")->limit(5)->get()->map(function ($value) { return ["\x69\x64" => $value->id, "\x74\151\x74\154\x65" => $value->title, "\143\x6f\156\164\x65\x6e\x74" => $value->description, "\x61\165\164\x68\x6f\162" => $value->author, "\x70\x75\x62\154\x69\163\x68\145\x64\x5f\141\x74" => $value->published_at, "\x63\x61\x74\145\147\157\x72\171" => $value->category, "\151\x6d\x61\147\x65" => isset($value->image) && file_exists(public_path("\x2f\163\x74\x6f\162\141\x67\145\57\x69\x6d\x61\147\x65\163\57\x6e\145\167\163\x2f" . $value->image)) ? "\x2f\163\x74\x6f\x72\141\x67\145\x2f\151\155\x61\x67\145\163\x2f\x6e\x65\x77\163\57" . $value->image : "\57\x73\164\x6f\162\x61\x67\x65\57\151\155\141\147\x65\163\x2f\x6e\x65\167\x73\57\x64\x65\x66\x61\x75\154\x74\x2d\x6e\145\167\x73\56\x6a\160\147"]; }); goto rBEX3; PYPQw: return response()->json($results, 200); goto t2qDI; KsWkg: $results["\x48\125"] = $humoria ?? []; goto PYPQw; t2qDI: } public function getDetailArticle(Request $request) { goto Zu4qF; N6Sa4: $id = $request->id; goto CdA9e; puBov: return response()->json($results, 200); goto Lcbhz; CdA9e: $results = DB::table("\x74\x66\151\164\165\162\40\141\x73\40\x61")->select(["\x61\x2e\151\x64", "\x61\56\164\x69\164\154\145", "\141\56\x64\145\163\x63\162\x69\x70\164\x69\157\156", "\x61\56\141\165\x74\x68\x6f\x72", "\141\x2e\x66\151\x6c\x65\x20\x61\x73\x20\x69\155\141\147\145", "\141\56\143\x72\x65\x61\164\x65\144\x5f\141\164\x20\141\163\40\160\x75\142\154\x69\163\150\x65\x64\x5f\x61\x74"])->where("\x61\56\143\154\151\145\x6e\x74\137\x69\x64", "\75", $this->client_id)->where("\141\56\143\141\x74\x65\147\x6f\x72\171", "\75", $category)->where("\141\x2e\151\x64", "\75", $id)->where("\141\x2e\146\x6c\x61\147\x5f\x61\x6b\x74\151\146", "\x3d", "\x59")->orderBy("\143\162\145\141\164\x65\x64\137\x61\164", "\104\x45\123\x43")->get()->map(function ($value) { return ["\151\144" => $value->id, "\164\x69\x74\154\145" => $value->title, "\143\x6f\x6e\x74\145\156\164" => $value->description, "\x61\165\x74\x68\157\x72" => $value->author, "\x70\x75\142\x6c\151\163\x68\145\144\x5f\141\x74" => $value->published_at, "\x69\155\141\147\145" => isset($value->image) && file_exists(public_path("\x2f\x73\164\157\162\x61\147\145\x2f\x69\155\x61\x67\x65\x73\x2f\156\x65\x77\x73\x2f" . $value->image)) ? "\57\163\x74\x6f\162\141\x67\145\57\151\x6d\141\x67\145\x73\x2f\x6e\145\x77\x73\x2f" . $value->image : "\57\163\x74\157\x72\x61\147\x65\x2f\x69\x6d\141\147\145\x73\57\156\145\x77\163\x2f\x64\145\x66\x61\165\x6c\164\55\156\145\x77\x73\x2e\152\160\147"]; }); goto puBov; Zu4qF: $category = $request->category; goto N6Sa4; Lcbhz: } public function getAppInfo() { $results = DB::table("\x74\143\154\151\145\x6e\x74\40\141\163\40\141")->select(["\141\56\x61\160\x70\x6c\151\x63\141\164\x69\157\156\x5f\156\141\x6d\x65"])->where("\x61\x2e\x63\154\x69\145\156\x74\x5f\151\144", "\75", $this->client_id)->get(); return response()->json($results, 200); } public function getParam() { goto J6K73; YIcvn: return response()->json($results, 200); goto x0wE1; J6K73: $parameter = ["\x72\x65\147\x5f\155\x65\155\142\145\x72", "\x61\144\144\x69\164\x69\x6f\x6e\x61\154\x5f\x66\x65\141\x74\165\162\145\163"]; goto dYz85; dYz85: $results = DB::table("\164\x70\141\162\x61\x6d\145\x74\x65\x72\x20\141\x73\40\141")->select(["\141\x2e\x6e\141\155\145", "\141\56\166\x61\x6c\165\x65"])->where("\x61\56\x63\x6c\x69\x65\156\164\x5f\x69\144", "\75", $this->client_id)->whereIn("\x61\56\x6e\x61\155\x65", $parameter)->get()->keyBy("\156\141\155\x65")->map(function ($item) { return $item->value; }); goto YIcvn; x0wE1: } public function getDtQuiz() { goto c7eu2; c7eu2: $user = auth()->user(); goto riBlJ; riBlJ: $results = DB::table("\x74\161\165\151\x7a\x5f\x68\x20\x61\163\x20\x61")->select(["\141\x2e\x69\144", "\141\x2e\164\x69\x74\x6c\x65", "\x61\x2e\x64\x65\163\x63\x72\151\x70\164\x69\157\x6e", "\141\x2e\x73\x74\141\162\164\x5f\x64\141\x74\x65", "\141\x2e\x65\156\144\x5f\x64\141\x74\145", "\x62\x2e\156\141\x6d\145"])->join("\x75\163\145\x72\163\x20\x61\163\x20\142", function ($join) { $join->on("\x61\x2e\x63\154\151\145\156\164\x5f\x69\144", "\x3d", "\x62\x2e\143\x6c\151\x65\156\x74\137\x69\x64")->on("\x61\x2e\143\x72\145\x61\x74\x65\x64\x5f\x62\x79", "\75", "\142\x2e\x65\155\x61\151\154"); })->where("\x61\x2e\x63\x6c\x69\145\x6e\164\137\x69\x64", "\x3d", $this->client_id)->whereRaw("\x43\117\116\126\x45\x52\x54\x28\x4e\117\x57\x28\x29\x2c\40\104\x41\x54\105\x29\x20\x42\x45\x54\x57\x45\x45\x4e\x20\141\x2e\163\x74\141\162\x74\137\144\141\164\145\x20\x41\116\104\40\x61\56\145\156\x64\137\x64\141\x74\x65")->orderBy("\141\56\143\162\x65\141\x74\145\x64\x5f\141\x74", "\x44\105\123\x43")->get()->map(function ($value) use($user) { goto Ff_Gs; Ff_Gs: if ($user) { goto FzS49; } goto y8Ul7; kXuyW: $finished = false; goto YdLfH; YxjMS: $cek_nilai = $this->getResult($this->client_id, $value->id, $user->id); goto x1PT1; x1PT1: $nilai = $cek_nilai->nilai; goto RQvdU; y8Ul7: $nilai = 0; goto kXuyW; YdLfH: goto Ylk5U; goto nvJME; L90xC: return ["\x69\144" => $value->id, "\164\x69\x74\154\x65" => $value->title, "\144\145\163\143\x72\151\x70\164\x69\x6f\156" => $value->description, "\163\164\x61\162\164\x5f\x64\141\164\x65" => $value->start_date, "\145\x6e\144\x5f\x64\141\x74\x65" => $value->end_date, "\x66\x69\x6e\151\x73\x68\x65\144" => $finished, "\x6e\x61\155\145" => $value->name]; goto aCWV1; RQvdU: $finished = $cek_nilai->finished > 0 ? true : false; goto fS9T0; nvJME: FzS49: goto YxjMS; fS9T0: Ylk5U: goto L90xC; aCWV1: }); goto c3u3O; c3u3O: return response()->json($results, 200); goto NmIXK; NmIXK: } public function getVideo() { goto Drr6E; qqj2a: return response()->json($results, 200); goto W1g8l; Drr6E: $user = auth()->user(); goto kjNsy; kjNsy: $results = DB::table("\x74\x76\151\x64\145\157\x20\141\x73\40\141")->select(["\141\x2e\x69\x64", "\141\56\x74\151\164\154\x65", "\x61\x2e\144\145\x73\x63\162\151\x70\164\151\x6f\x6e", "\x61\x2e\146\151\154\x65"])->where("\141\x2e\143\x6c\151\145\156\164\x5f\151\x64", "\x3d", $this->client_id)->where("\141\56\146\154\x61\x67\x5f\x61\x6b\x74\151\146", "\x3d", "\131")->where("\x61\56\146\x69\x6c\x65", "\41\75", '')->get()->map(function ($value) use($user) { goto KpoWR; Tp1Il: return ["\151\144" => $value->id, "\164\x69\x74\x6c\x65" => $value->title, "\x64\145\x73\143\162\x69\160\164\x69\x6f\x6e" => $value->description, "\x66\151\x6c\x65" => $id != '' ? $id : '']; goto xOrem; yCQlh: $id = "\150\x74\164\x70\x73\72\x2f\x2f\167\x77\167\56\171\x6f\x75\164\x75\x62\x65\x2e\143\157\155\57\x65\155\142\145\144\x2f" . $idv . "\x3f\x65\156\x61\x62\154\145\x6a\163\141\160\151\75\x31"; goto Tp1Il; KpoWR: $url = explode("\x68\164\x74\160\163\72\57\x2f\x77\167\x77\x2e\x79\157\165\x74\165\x62\145\56\143\157\155\x2f\x65\155\x62\145\x64\x2f", $value->file)[1]; goto I6WvV; I6WvV: $idv = explode("\42", $url)[0]; goto yCQlh; xOrem: }); goto qqj2a; W1g8l: } private function getResult($client_id, $survey_id, $user_id) { return DB::table("\164\x71\165\x69\172\x5f\164\x72\x78\40\141\163\x20\141")->select(DB::raw("\x53\125\x4d\50\141\x2e\160\x6f\x69\156\x74\51\x20\x61\163\x20\x6e\151\154\x61\x69"), DB::raw("\103\x4f\125\x4e\124\x28\x61\56\161\x75\x65\x73\164\151\157\x6e\x5f\x69\144\x29\40\141\x73\40\x66\x69\x6e\151\163\150\x65\144"))->where("\x61\x2e\x63\154\151\145\156\164\x5f\151\x64", "\x3d", $client_id)->where("\141\x2e\163\165\162\x76\x65\x79\137\x69\x64", "\75", $survey_id)->where("\x61\56\x75\163\145\x72\137\x69\144", "\75", $user_id)->first(); } }
+
+namespace App\Http\Controllers;
+
+use App\Logs;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class MainController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id = '';
+    public function __construct()
+    {
+      //   $this->middleware('auth');
+      $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('main');
+    }
+
+    public function getInfo()
+    {
+        $user = auth()->user();
+
+        if($user && $user->role == 'member'){
+            $attr = DB::table('tattr_member as a')
+                ->select([
+                    'a.photo as avatar',
+                ])
+                ->where('a.client_id', $this->client_id)
+                ->where('a.id', $user->id)
+                ->get();
+
+            return response()->json([
+               'name'   => $user->name,
+               'avatar' => (isset($attr[0]->avatar) && file_exists(public_path('/storage/images/profile/' . $attr[0]->avatar)) ? '/storage/images/profile/' . $attr[0]->avatar : '/storage/images/profile/default.jpg')
+            ], 200);
+        }
+
+        return response()->json([
+            'name' => '',
+            'avatar' => ''
+        ], 200);
+    }
+    
+    public function getBukuPopuler()
+    {
+        $dibacaBooksQuery = DB::table('ttrx_read as a')
+            ->select([
+                'b.book_id',
+                'b.isbn',
+                'b.title',
+                'b.sinopsis',
+                'b.cover as image',
+                'b.writer',
+                DB::raw('SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read)) as total_seconds'),
+                DB::raw('SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND, a.start_read, a.end_read))) as total_time')
+            ])
+            ->join('tbook as b', 'a.book_id', '=', 'b.book_id')
+            ->where('a.client_id', $this->client_id)
+            ->groupBy([
+                'b.book_id',
+                'b.isbn',
+                'b.title',
+                'b.sinopsis',
+                'b.cover',
+                'b.writer'
+            ])
+            ->orderBy('total_seconds', 'desc')
+            ->limit(8);
+
+        $dibacaBooks    = $dibacaBooksQuery->get();
+        $results        = $dibacaBooksQuery;
+
+        if ($dibacaBooks->count() < 8) {
+            $readIsbns = $dibacaBooks->pluck('book_id')->toArray();
+
+            $remainingBooks = DB::table('tmapping_book as a')
+                ->select([
+                    'b.book_id',
+                    'b.isbn',
+                    'b.title',
+                    'b.sinopsis',
+                    'b.cover as image',
+                    'b.writer',
+                    DB::raw('0 as total_seconds'),
+                    DB::raw('0 as total_time')
+                ])
+                ->join('tbook as b', function($join) {
+                    $join->on('a.book_id', '=', 'b.book_id');
+                })
+                ->where('a.client_id', '=', $this->client_id)
+                ->whereNotIn('b.book_id', $readIsbns)
+                ->limit(8 - $dibacaBooks->count());
+
+            $results = $results->unionAll($remainingBooks);
+        }
+
+        $finalResults = $results
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'isbn'     => $value->isbn,
+                    'title'    => $value->title,
+                    'sinopsis' => $value->sinopsis,
+                    'image'    => (isset($value->image) && file_exists(public_path('/storage/covers/' . $value->image))) 
+                                    ? '/storage/covers/' . $value->image 
+                                    : '/storage/covers/default-cover.jpg',
+                    'writer'   => $value->writer
+                ];
+            });
+        
+
+        return response()->json($finalResults, 200);
+    }
+    
+    public function getBook(Request $request)
+    {
+        // $logs = new Logs( Arr::last(explode("\\", get_class())) );
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $category   = $request->categories ?? [];
+        $parameter  = $request->search ?? '';
+
+        $results = DB::table('tmapping_book as a')
+            ->select([
+                'b.book_id',
+                'a.copy',
+                'b.isbn',
+                'b.title',
+                'b.sinopsis',
+                'b.cover as image',
+                'b.writer',
+                'b.age',
+                'c.description as category'
+            ])
+            ->join('tbook as b', function($join) {
+                $join->on('a.book_id', '=', 'b.book_id');
+            })
+            ->join('tbook_category as c', function($join) {
+                $join->on('b.category_id', '=', 'c.id');
+            })
+            ->when($parameter != '', function($query) use ($parameter) {
+				$query->where(function($query) use ($parameter) {
+					$query->where('b.writer', 'LIKE', '%' . $parameter . '%')
+						  ->orWhere('b.isbn', 'LIKE', '%' . $parameter . '%')
+						  ->orWhere('b.title', 'LIKE', '%' . $parameter . '%');
+				});
+			})
+            ->when(count($category)>0, function($query) use ($category) {
+				$query->whereIn('b.category_id', $category);
+			})
+            ->where('a.client_id', '=', $this->client_id)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'isbn'     => $value->isbn,
+                    'title'    => $value->title,
+                    'sinopsis' => $value->sinopsis,
+                    'image'    => (isset($value->image) && file_exists(public_path('/storage/covers/' . $value->image))) 
+                                    ? '/storage/covers/' . $value->image 
+                                    : '/storage/covers/default-cover.jpg',
+                    'writer'   => $value->writer
+                ];
+            });
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+    
+    public function getNewCollection()
+    {
+        $results = DB::table('tmapping_book as a')
+            ->select([
+                'b.book_id',
+                'a.copy',
+                'b.isbn',
+                'b.title',
+                'b.sinopsis',
+                'b.cover as image',
+                'b.writer',
+                'b.age',
+                'c.description as category'
+            ])
+            ->join('tbook as b', function($join) {
+                $join->on('a.book_id', '=', 'b.book_id');
+            })
+            ->join('tbook_category as c', function($join) {
+                $join->on('b.category_id', '=', 'c.id');
+            })
+            ->where('a.client_id', '=', $this->client_id)
+            ->limit(10)
+            ->orderBy('a.created_at', 'asc')
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'isbn'     => $value->isbn,
+                    'title'    => $value->title,
+                    'sinopsis' => $value->sinopsis,
+                    'image'    => (isset($value->image) && file_exists(public_path('/storage/covers/' . $value->image))) 
+                                    ? '/storage/covers/' . $value->image 
+                                    : '/storage/covers/default-cover.jpg',
+                    'writer'   => $value->writer
+                ];
+            });
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+    
+    public function getDetail(Request $request)
+    {
+        $isbn = $request->id;
+        $user = auth()->user();
+
+        // $logs = new Logs( Arr::last(explode("\\", get_class())) );
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $query = DB::table('tmapping_book as a')
+            ->select([
+                'b.book_id',
+                'a.copy',
+                'b.isbn',
+                'b.title',
+                'b.sinopsis',
+                'b.cover as image',
+                'b.writer',
+                'b.age',
+                'c.description as category',
+                'b.year',
+                'b.page',
+                DB::raw("a.copy - IFNULL(d.total, 0) as remaining"),
+				'f.description as publisher'
+            ])
+            ->join('tbook as b', function($join) {
+                $join->on('a.book_id', '=', 'b.book_id');
+            })
+            ->join('tbook_category as c', function($join) {
+                $join->on('b.category_id', '=', 'c.id');
+            })
+            ->join('tpublisher as f', function($join) {
+                $join->on('b.publisher_id', '=', 'f.id');
+            })
+            ->leftJoin(DB::raw("(
+                    SELECT
+                        src.book_id,
+                        SUM(CASE WHEN src.total > 1 THEN 1 ELSE src.total END) AS total
+                    FROM (
+                        SELECT sr.book_id, COUNT(sr.book_id) AS total, sr.user_id
+                        FROM (
+                            SELECT book_id, user_id
+                            FROM ttrx_read
+                            WHERE
+                                client_id = '".$this->client_id."'
+                                AND flag_end != 'Y'
+                            
+                            UNION ALL
+                            
+                            SELECT book_id, user_id
+                            FROM trent_book
+                            WHERE
+                                client_id = '".$this->client_id."'
+                                AND flag_end != 'Y'
+                        ) sr
+                        group by sr.book_id, sr.user_id
+                    )src
+                    GROUP BY src.book_id) as d"), function($join) {
+                $join->on('b.book_id', '=', 'd.book_id');
+            });
+
+            if ($user) {
+                $query->selectRaw("CASE WHEN IFNULL(e.book_id, '') = '' THEN 'N' ELSE 'Y' END as rent")
+                ->leftJoin('trent_book as e', function($join) use ($user) {
+                    $join->on('b.book_id', '=', 'e.book_id')
+                        ->where('e.flag_end', '=', 'N')
+                        ->where('e.user_id', '=', $user->id);
+                });
+            }else{
+                $query->selectRaw("'N' as rent");
+            }
+
+            $results = $query->where('a.client_id', '=', $this->client_id)
+            ->where('b.isbn', '=', $isbn)
+            ->first();
+
+        if ($results) {
+            $results->image = (isset($results->image) && file_exists(public_path('/storage/covers/' . $results->image))) ? "/storage/covers/" . $results->image : '/storage/covers/default-cover.jpg';
+        }
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+
+    public function getCategory()
+    {
+        $results = DB::table('tmapping_book as a')
+        ->select(
+			'c.id',
+			'c.description',
+			DB::raw("count(distinct a.book_id) as total")
+		)
+        ->join('tbook as b', function ($join) {
+            $join->on('a.book_id', '=', 'b.book_id');
+        })
+        ->join('tbook_category as c', 'b.category_id', '=', 'c.id')
+        ->where('a.client_id', '=', $this->client_id)
+        ->distinct()
+		->groupBy('c.id', 'c.description')
+        ->orderBy('c.description', 'ASC')
+        ->get();
+
+        return response()->json($results, 200);
+    }
+
+    public function getBanner()
+    {
+        $results = DB::table('tbanner as a')
+            ->select([
+                'a.id',
+                'a.description',
+                'a.file as image',
+                'a.disp_type'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'description'   => $value->description,
+                    'display'       => $value->disp_type,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/banner/' . $value->image))) 
+                                    ? '/storage/images/banner/' . $value->image 
+                                    : '/storage/images/banner/banner1.jpg'
+                ];
+            });
+
+        return response()->json($results, 200);
+    }
+
+    public function getArticle(Request $request)
+    {
+        $category = $request->id;
+
+        $results = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', $category)
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        return response()->json($results, 200);
+    }
+
+    public function getAllArticle()
+    {
+        $tajuk_utama = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'TU')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(4)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $wawasan = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'WA')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $frasa = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'FR')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'kata'          => $value->description,
+                    'by'            => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/anonim.jpg'
+                ];
+            });
+
+        $review_buku = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'RB')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $layar_penulis = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'LP')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $titik_fokus = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'TF')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $humoria = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+                'a.category'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', 'HU')
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'category'      => $value->category,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        $results['TU'] = $tajuk_utama ?? [];
+        $results['WA'] = $wawasan ?? [];
+        $results['FR'] = $frasa ?? [];
+        $results['RB'] = $review_buku ?? [];
+        $results['LP'] = $layar_penulis ?? [];
+        $results['TF'] = $titik_fokus ?? [];
+        $results['HU'] = $humoria ?? [];
+
+        return response()->json($results, 200);
+    }
+
+    public function getDetailArticle(Request $request)
+    {
+        $category   = $request->category;
+        $id         = $request->id;
+
+        $results = DB::table('tfitur as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.author',
+                'a.file as image',
+                'a.created_at as published_at',
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.category','=', $category)
+            ->where('a.id','=', $id)
+            ->where('a.flag_aktif','=', 'Y')
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'id'            => $value->id,
+                    'title'         => $value->title,
+                    'content'       => $value->description,
+                    'author'        => $value->author,
+                    'published_at'  => $value->published_at,
+                    'image'         => (isset($value->image) && file_exists(public_path('/storage/images/news/' . $value->image))) 
+                                    ? '/storage/images/news/' . $value->image 
+                                    : '/storage/images/news/default-news.jpg'
+                ];
+            });
+
+        return response()->json($results, 200);
+    }
+
+    public function getAppInfo()
+    {
+        $results = DB::table('tclient as a')
+            ->select([
+                'a.application_name',
+            ])
+            ->where('a.client_id', '=' , $this->client_id)
+            ->get();
+
+        return response()->json($results, 200);
+    }
+
+    public function getParam()
+    {
+		$parameter = ['reg_member', 'additional_features'];
+        $results = DB::table('tparameter as a')
+            ->select([
+                'a.name',
+                'a.value',
+            ])
+            ->where('a.client_id', '=' , $this->client_id)
+            ->whereIn('a.name', $parameter)
+            ->get()
+			->keyBy('name')
+			->map(function ($item) {
+				return $item->value;
+			});
+
+        return response()->json($results, 200);
+    }
+
+	public function getDtQuiz()
+    {
+		// $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, 'START');
+		// DB::enableQueryLog();
+
+		$user = auth()->user();
+
+        $results = DB::table('tquiz_h as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.start_date',
+                'a.end_date',
+				'b.name'
+            ])
+			->join('users as b', function ($join) {
+				$join->on('a.client_id', '=', 'b.client_id')
+				->on('a.created_by', '=', 'b.email');
+			})
+            ->where('a.client_id','=', $this->client_id)
+            ->whereRaw("CONVERT(NOW(), DATE) BETWEEN a.start_date AND a.end_date")
+            ->orderBy('a.created_at', 'DESC')
+            ->get()
+            ->map(function ($value) use ($user) {
+				if($user){
+					$cek_nilai	= $this->getResult($this->client_id, $value->id, $user->id);
+					$nilai		= $cek_nilai->nilai;
+					$finished	= ($cek_nilai->finished > 0 ? true : false);
+				}else{
+					$nilai		= 0;
+					$finished	= false;
+				}
+
+                return [
+                    'id'			=> $value->id,
+                    'title'			=> $value->title,
+                    'description'	=> $value->description,
+                    'start_date'	=> $value->start_date,
+                    'end_date'		=> $value->end_date,
+                    'finished'		=> $finished,
+                    'name'			=> $value->name
+                ];
+            });
+
+		// $queries = DB::getQueryLog();
+		// for($q = 0; $q < count($queries); $q++) {
+		// 	$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+		// 	$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+		// 	$logs->write('SQL', $sql);
+		// }
+
+        return response()->json($results, 200);
+    }
+
+	public function getVideo()
+    {
+		// $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, 'START');
+		// DB::enableQueryLog();
+
+		$user = auth()->user();
+
+        $results = DB::table('tvideo as a')
+            ->select([
+                'a.id',
+                'a.title',
+                'a.description',
+                'a.file'
+            ])
+            ->where('a.client_id','=', $this->client_id)
+            ->where('a.flag_aktif','=', 'Y')
+            ->where('a.file','!=', '')
+            ->get()
+            ->map(function ($value) use ($user) {
+				$url	= explode('https://www.youtube.com/embed/', $value->file)[1];
+				$idv	= explode('"', $url)[0];
+				$id		= "https://www.youtube.com/embed/".$idv."?enablejsapi=1";
+
+                return [
+                    'id'			=> $value->id,
+                    'title'			=> $value->title,
+                    'description'	=> $value->description,
+                    'file'			=> $id != '' ? $id : ''
+                ];
+            });
+
+		// $queries = DB::getQueryLog();
+		// for($q = 0; $q < count($queries); $q++) {
+		// 	$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+		// 	$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+		// 	$logs->write('SQL', $sql);
+		// }
+
+        return response()->json($results, 200);
+    }
+
+	private function getResult($client_id, $survey_id, $user_id){
+		return DB::table('tquiz_trx as a')
+			->select(
+				DB::raw("SUM(a.point) as nilai"),
+				DB::raw("COUNT(a.question_id) as finished")
+			)
+			->where('a.client_id', '=', $client_id)
+			->where('a.survey_id', '=', $survey_id)
+			->where('a.user_id', '=', $user_id)
+			->first();
+	}
+}

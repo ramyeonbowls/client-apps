@@ -1,8 +1,103 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Setting; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class FrasaMasterRepository { public function get($filter, $client_id) : Collection { return DB::table("\164\x66\151\x74\x75\x72\40\x61\163\40\x61")->select("\141\56\x69\144", "\x61\56\x74\x69\x74\154\x65", "\141\x2e\x64\145\x73\x63\x72\x69\x70\x74\x69\x6f\156", "\x61\56\141\x75\164\150\x6f\162", "\x61\56\x66\x69\154\x65", "\141\x2e\143\x61\x74\145\147\157\x72\x79", "\141\56\x66\x6c\x61\x67\x5f\x61\x6b\x74\151\146", "\141\x2e\146\154\141\x67\137\160\154\x61\164\x66\157\x72\x6d", "\x61\x2e\x63\154\151\x65\156\x74\x5f\151\144", "\141\x2e\x63\162\x65\x61\164\x65\x64\x5f\141\164", "\x61\56\143\x72\145\x61\x74\145\x64\137\x62\x79", "\141\56\x75\160\144\x61\164\145\x64\x5f\x61\x74", "\x61\56\165\x70\x64\141\x74\145\x5f\142\x79")->where("\141\x2e\x63\154\x69\145\156\164\137\151\144", "\x3d", $client_id)->where("\x61\56\x63\141\164\x65\147\157\162\x79", "\75", "\106\x52")->sharedLock()->get(); } public function store(object $data, $client_id) : bool { return DB::transaction(function () use($data, $client_id) { return DB::table("\164\146\x69\164\165\162")->insert(["\151\144" => $data->id, "\164\151\164\154\145" => '', "\144\145\x73\143\162\151\160\x74\x69\157\x6e" => $data->description, "\x61\165\x74\150\157\162" => $data->author, "\146\151\154\x65" => $data->file, "\x63\141\x74\x65\x67\x6f\162\x79" => "\x46\x52", "\x66\154\x61\x67\137\x61\x6b\164\x69\146" => $data->flag_aktif, "\146\x6c\x61\x67\137\160\x6c\x61\164\x66\x6f\x72\x6d" => "\116", "\143\x6c\x69\145\156\164\x5f\151\x64" => $client_id, "\x63\x72\x65\141\x74\x65\144\137\141\164" => $data->create_date, "\143\162\x65\141\x74\x65\144\x5f\142\171" => $data->create_by]); }); } public function update(object $data, string $id, $client_id) : bool { return DB::transaction(function () use($data, $id, $client_id) { return DB::table("\x74\146\x69\x74\x75\162")->where("\x69\144", $id)->where("\143\154\151\145\156\x74\x5f\x69\144", "\x3d", $client_id)->where("\x63\141\164\x65\x67\x6f\162\x79", "\x3d", "\x46\x52")->update(["\x74\151\x74\154\x65" => '', "\144\145\x73\x63\x72\151\160\x74\151\x6f\156" => $data->description, "\141\x75\x74\150\157\x72" => $data->author, "\146\151\154\145" => $data->file, "\x66\x6c\x61\147\137\141\x6b\x74\x69\x66" => $data->flag_aktif, "\146\x6c\x61\147\x5f\x70\x6c\x61\164\146\x6f\162\155" => "\116", "\x75\160\x64\x61\x74\145\144\137\x61\164" => $data->modified_date, "\165\160\144\141\164\145\137\142\171" => $data->modified_by]); }); } public function delete(string $id, $client_id) { return DB::transaction(function () use($id, $client_id) { goto YMr_3; YMr_3: $Frasa = DB::table("\x74\x66\151\164\165\162")->where("\x63\154\x69\x65\156\x74\137\151\x64", "\x3d", $client_id)->where("\143\x61\164\x65\x67\157\162\x79", "\x3d", "\106\122")->where("\151\144", $id); goto b9lJ5; X1nF4: return $Frasa->delete(); goto fryju; osMZW: @unlink(storage_path("\141\160\x70\x2f\160\x75\142\154\151\x63\x2f\x69\155\141\147\145\x73\x2f\x6e\145\167\163\x2f" . $Frasa_file->file)); goto X1nF4; b9lJ5: $Frasa_file = $Frasa->first(); goto osMZW; fryju: }); } }
+
+namespace App\Repositories\Setting;
+
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+class FrasaMasterRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($filter, $client_id): Collection
+    {
+        return DB::table('tfitur as a')
+			->select(
+				'a.id',
+				'a.title',
+				'a.description',
+				'a.author',
+				'a.file',
+				'a.category',
+				'a.flag_aktif',
+				'a.flag_platform',
+				'a.client_id',
+				'a.created_at',
+				'a.created_by',
+				'a.updated_at',
+				'a.update_by',
+			)
+            ->where('a.client_id', '=', $client_id)
+            ->where('a.category', '=', 'FR')
+			->sharedLock()
+			->get();
+    }
+
+	/**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data, $client_id): bool
+    {
+        return DB::transaction(function () use ($data, $client_id) {
+            return DB::table('tfitur')->insert([
+                'id'            => $data->id,
+				'title'         => '',
+				'description'   => $data->description,
+				'author'        => $data->author,
+				'file'          => $data->file,
+				'category'      => 'FR',
+				'flag_aktif'    => $data->flag_aktif,
+				'flag_platform' => 'N',
+				'client_id'     => $client_id,
+				'created_at'    => $data->create_date,
+				'created_by'    => $data->create_by
+            ]);
+        });
+    }
+	
+	/**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id, $client_id): bool
+    {
+        return DB::transaction(function () use ($data, $id, $client_id) {
+            return DB::table('tfitur')->where('id', $id)->where('client_id', '=', $client_id)->where('category', '=', 'FR')
+
+                ->update([
+                    'title'         => '',
+                    'description'   => $data->description,
+                    'author'        => $data->author,
+                    'file'          => $data->file,
+                    'flag_aktif'    => $data->flag_aktif,
+                    'flag_platform' => 'N',
+                    'updated_at'    => $data->modified_date,
+                    'update_by'     => $data->modified_by
+                ]);
+        });
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id, $client_id)
+    {
+        return DB::transaction(function () use ($id, $client_id) {
+            $Frasa = DB::table('tfitur')
+                ->where('client_id', '=', $client_id)
+                ->where('category', '=', 'FR')
+                ->where('id', $id);
+
+            $Frasa_file = $Frasa->first();
+            @unlink(storage_path('app/public/images/news/'.$Frasa_file->file));
+
+            return $Frasa->delete();
+        });
+    }
+}

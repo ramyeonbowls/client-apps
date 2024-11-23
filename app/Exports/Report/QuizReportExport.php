@@ -1,8 +1,132 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Exports\Report; use Maatwebsite\Excel\Sheet; use Maatwebsite\Excel\Events\AfterSheet; use Maatwebsite\Excel\Concerns\WithTitle; use Maatwebsite\Excel\Concerns\WithEvents; use Maatwebsite\Excel\Events\BeforeExport; use Maatwebsite\Excel\Concerns\WithHeadings; use Maatwebsite\Excel\Concerns\ShouldAutoSize; use Maatwebsite\Excel\Concerns\WithCustomStartCell; class QuizReportExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize { private $data; public function __construct($data = array()) { goto wKeyG; Li8ll: Sheet::macro("\163\x65\x74\117\x72\151\x65\156\x74\x61\164\151\157\x6e", function (Sheet $sheet, $orientation) { $sheet->getDelegate()->getPageSetup()->setOrientation($orientation); }); goto jkQ4W; jkQ4W: Sheet::macro("\163\x74\171\x6c\x65\x43\145\154\154\163", function (Sheet $sheet, string $cellRange, array $style) { $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style); }); goto ncFlv; wKeyG: $this->data = $data; goto Li8ll; ncFlv: } public function startCell() : string { $starCell = "\101\61"; return $starCell; } public function title() : string { return "\114\141\160\157\162\141\x6e\40\x51\x75\x69\172"; } public function headings() : array { return ["\116\x61\x6d\141\x20\127\x4c", "\120\x72\157\166\x69\156\x73\151", "\x4b\141\142\57\113\x6f\164\x61", "\x4e\x61\x6d\x61\40\115\x65\x6d\x62\x65\162", "\112\165\x64\x75\x6c\40\121\x75\151\172", "\x54\157\164\141\154\40\120\157\x69\156\164", "\x54\141\x6e\x67\x67\141\154\x20\120\145\156\x67\145\162\152\x61\x61\156"]; } public function registerEvents() : array { return [BeforeExport::class => function (BeforeExport $event) { $event->writer->getProperties()->setTitle("\114\x61\x70\x6f\162\141\156\x20\121\x75\x69\172"); $event->writer->getProperties()->setCreator(config("\141\x70\x70\56\x6e\141\x6d\145")); }, AfterSheet::class => function (AfterSheet $event) { goto WvIdz; NWHwO: $event->sheet->styleCells("\101\x32\x3a\x47" . ($row - 1), ["\142\157\x72\144\145\x72\x73" => ["\141\154\x6c\102\x6f\162\144\x65\162\163" => ["\x62\157\162\x64\x65\x72\123\164\171\x6c\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\157\154\x6f\x72" => ["\162\147\x62" => "\70\60\70\60\70\60"]]]]); goto kjOkd; JSX0m: foreach ($this->data as $val) { goto gLsvW; Z4ffR: $event->sheet->setCellValue("\x44" . $row, $val["\156\x61\x6d\145"]); goto kZ5gi; rZuya: $event->sheet->setCellValue("\x43" . $row, $val["\153\x61\142\165\160\x61\x74\145\x6e\x5f\156\141\155\x65"]); goto Z4ffR; gLsvW: $event->sheet->setCellValue("\x41" . $row, $val["\167\154\x5f\156\141\155\x65"]); goto F0ufP; iCIUg: LEAL9: goto beLnh; pIPZg: $event->sheet->setCellValue("\x46" . $row, $val["\x70\157\x69\156\x74"]); goto pn1Ec; pn1Ec: $event->sheet->setCellValue("\x47" . $row, $val["\164\147\x6c"]); goto OlJ6S; F0ufP: $event->sheet->setCellValue("\x42" . $row, $val["\160\x72\x6f\166\151\x6e\x73\x69\137\156\141\x6d\x65"]); goto rZuya; OlJ6S: $row++; goto iCIUg; kZ5gi: $event->sheet->setCellValue("\x45" . $row, $val["\x74\x69\164\x6c\145"]); goto pIPZg; beLnh: } goto HCPKO; TeLYy: if (!(count($this->data) > 0)) { goto Q41IA; } goto NWHwO; adlHz: $event->sheet->styleCells("\x41\61\72\107\x31", ["\x62\x6f\162\x64\145\162\x73" => ["\141\x6c\154\102\157\162\x64\145\162\163" => ["\x62\157\x72\144\145\162\x53\x74\171\154\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\157\x6c\157\162" => ["\x72\x67\x62" => "\x38\x30\x38\60\70\x30"]]]]); goto Rv1Xe; WvIdz: $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE); goto jA4aB; HCPKO: hWuu_: goto TeLYy; jA4aB: $event->sheet->styleCells("\101\x31\x3a\x47\61", ["\146\157\156\x74" => ["\x62\x6f\154\x64" => true], "\141\x6c\151\147\156\x6d\145\x6e\164" => ["\x68\x6f\162\x69\172\157\x6e\x74\141\154" => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, "\x76\145\x72\164\151\x63\x61\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER], "\146\151\x6c\x6c" => ["\x66\151\x6c\x6c\x54\171\160\x65" => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, "\143\x6f\154\x6f\162" => ["\141\162\x67\142" => "\146\x66\x62\64\x63\x36\x65\x37"]]]); goto adlHz; kjOkd: Q41IA: goto e6dB_; Rv1Xe: $row = 2; goto JSX0m; e6dB_: }]; } }
+
+namespace App\Exports\Report;
+
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+
+class QuizReportExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize
+{
+    private $data;
+
+    public function __construct($data = [])
+    {
+        $this->data         = $data;
+
+        Sheet::macro('setOrientation', function (Sheet $sheet, $orientation) {
+            $sheet->getDelegate()->getPageSetup()->setOrientation($orientation);
+        });
+
+        Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
+            $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
+        });
+    }
+    
+    /**
+     * @return string
+     */
+    public function startCell(): string
+    {
+        $starCell = 'A1';
+
+        return $starCell;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Laporan Quiz';
+    }
+
+    /**
+     * @return array
+     */
+    public function headings(): array
+    {
+        return [
+            'Nama WL',
+            'Provinsi',
+            'Kab/Kota',
+            'Nama Member',
+            'Judul Quiz',
+            'Total Point',
+            'Tanggal Pengerjaan'
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setTitle( 'Laporan Quiz' );
+                $event->writer->getProperties()->setCreator( config('app.name') );
+            },
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
+                $event->sheet
+                    ->styleCells('A1:G1', [
+                        'font' => [
+                           'bold' => true
+                        ],
+                        'alignment' => [
+                           'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                           'vertical'     => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                        ],
+                        'fill' => [
+                           'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                           'color' => ['argb' => 'ffb4c6e7']
+                        ]
+                    ]);
+
+                $event->sheet
+                    ->styleCells('A1:G1', [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['rgb' => '808080'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $row = 2;
+                foreach ($this->data as $val) {
+                    $event->sheet->setCellValue('A'.$row, $val['wl_name']);
+                    $event->sheet->setCellValue('B'.$row, $val['provinsi_name']);
+                    $event->sheet->setCellValue('C'.$row, $val['kabupaten_name']);
+                    $event->sheet->setCellValue('D'.$row, $val['name']);
+                    $event->sheet->setCellValue('E'.$row, $val['title']);
+                    $event->sheet->setCellValue('F'.$row, $val['point']);
+                    $event->sheet->setCellValue('G'.$row, $val['tgl']);
+
+                    $row++;
+                }
+
+                if(count($this->data) > 0){
+                    $event->sheet
+                        ->styleCells('A2:G'.($row-1), [
+                            'borders' => [
+                                'allBorders' => [
+                                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                    'color' => ['rgb' => '808080'],
+                                ],
+                            ],
+                        ]
+                    );
+                }
+            }
+        ];
+    }
+}

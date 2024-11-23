@@ -1,8 +1,481 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Dashboard; use App\Logs; use App\Libraries; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; use App\Http\Controllers\Controller; class DashboardController extends Controller { protected $client_id = ''; public function __construct() { goto ihmh0; GObvZ: $this->client_id = config("\141\160\160\56\x63\154\151\145\156\164\x5f\x69\144", ''); goto HrRAW; ihmh0: $this->middleware("\141\x75\164\150"); goto GObvZ; HrRAW: $this->isDinas = Libraries::isDinas(); goto RLBgF; RLBgF: } public function dashAtas() { goto KRyYQ; Dhxhr: goto RiWbu; goto cCMTs; hfa0a: return response()->json($results, 200); goto s4I32; Defod: if ($this->isDinas["\163\x74\x61\x74\x75\x73"]) { goto ZTP3q; } goto tsOLR; z9o_7: if (!($q < count($queries))) { goto DfXZo; } goto e3VbQ; wB5qs: K676z: goto cwwUH; tsOLR: $client_id = [$this->client_id]; goto W94Ky; cwwUH: $q++; goto Dhxhr; vCRO2: RiWbu: goto z9o_7; W94Ky: goto wPDnk; goto kT4Jb; Pba1R: $queries = DB::getQueryLog(); goto s5osc; s5osc: $q = 0; goto vCRO2; e3VbQ: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\156\144\x69\x6e\147\163"], str_replace("\77", "\x27\77\47", $queries[$q]["\x71\x75\145\162\x79"])); goto ZxheF; mBlW6: $logs->write(__FUNCTION__, "\123\124\101\x52\124"); goto WOx9e; yeon9: $member = DB::table("\165\163\145\162\x73\40\141\x73\x20\x61")->select([DB::raw("\x43\x4f\125\x4e\x54\x28\x61\x2e\x69\144\x29\40\141\163\x20\155\x65\x6d\142\x65\162")])->whereIn("\141\x2e\x63\x6c\x69\145\x6e\164\x5f\x69\x64", $client_id)->first(); goto gyZBY; JBrJx: $results = ["\x76\151\x73\x69\164\x6f\x72" => number_format($visitor->visitor, 0, "\x2c", "\56"), "\142\x6f\157\x6b" => number_format($book->book, 0, "\54", "\x2e"), "\155\x65\x6d\x62\x65\x72" => number_format($member->member, 0, "\54", "\56"), "\160\x6f" => number_format($po, 0, "\x2c", "\56")]; goto Pba1R; TafEz: wPDnk: goto g3xYI; ZxheF: $logs->write("\x42\111\x4e\x44\x49\116\x47", "\133" . implode("\x2c\x20", $queries[$q]["\142\151\156\144\151\x6e\x67\163"]) . "\135"); goto mcVHx; mSpg1: $logs->write(__FUNCTION__, "\123\x54\x4f\120\xd\12"); goto hfa0a; gc7Cg: $client_id = $this->getClientID($this->client_id, $this->isDinas); goto TafEz; kT4Jb: ZTP3q: goto gc7Cg; gyZBY: $po = 0; goto JBrJx; mcVHx: $logs->write("\x53\x51\x4c", $sql); goto wB5qs; KRyYQ: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\157\x67"); goto mBlW6; g3xYI: $visitor = DB::table("\164\x76\151\163\x69\x74\x6f\162\163\x20\x61\163\40\141")->select([DB::raw("\103\x4f\125\116\124\50\141\x2e\x69\x64\x29\x20\141\x73\x20\x76\x69\163\x69\x74\157\x72")])->whereIn("\x61\56\x63\154\x69\x65\x6e\x74\137\151\x64", $client_id)->first(); goto lK_cU; lK_cU: $book = DB::table("\x74\x6d\x61\160\160\151\x6e\147\x5f\142\x6f\x6f\x6b\x20\x61\x73\40\141")->select([DB::raw("\103\x4f\x55\x4e\124\50\x61\x2e\x62\157\157\153\137\151\x64\x29\x20\x61\x73\40\x62\x6f\157\x6b")])->whereIn("\x61\56\143\154\x69\x65\156\164\137\x69\144", $client_id)->first(); goto yeon9; WOx9e: DB::enableQueryLog(); goto Defod; cCMTs: DfXZo: goto mSpg1; s4I32: } public function dashBawah(Request $request) { goto UuMbD; unK2a: $q++; goto FL_C4; UuMbD: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto PaPwt; FL_C4: goto Z35P5; goto DNBR1; DNBR1: oSmNC: goto uLODk; GyBiA: $client_id = [$this->client_id]; goto Nkrva; QuTjx: $book_read = $this->TopBookRead($request, $client_id); goto rY44O; AsBEq: DB::enableQueryLog(); goto Vtwbh; rY44O: $results = ["\x64\x61\171\163" => $days, "\155\x6f\x6e\x74\150\163" => $months["\156\x61\155\145"], "\146\157\162\155\141\164\164\145\x64\x44\x61\x74\145" => $formattedDate, "\162\x65\x61\144\137\x64\x61\x69\x6c\x79" => $read_daily, "\166\151\x73\x69\164\137\x64\x61\x69\x6c\x79" => $visit_daily, "\x72\x65\141\x64\137\155\x6f\156\164\150\x6c\x79" => $read_monthly, "\166\x69\x73\151\164\x5f\155\x6f\156\x74\150\x6c\171" => $visit_monthly, "\147\x72\x6f\x77\164\x68\x5f\155\145\155\x62\x65\x72" => $growth_member, "\155\145\x6d\142\x65\162\137\x72\x65\x61\x64" => $member_read, "\x62\x6f\x6f\x6b\x5f\x72\145\x61\144" => $book_read]; goto nmss5; p7LjF: $read_daily = $this->ReadDaily($request, $days, $client_id); goto LsWgi; uLODk: $logs->write(__FUNCTION__, "\123\124\x4f\120\15\xa"); goto gr0_j; F2WDU: an6RV: goto unK2a; LoTy_: $q = 0; goto UBDWu; n6Kt2: $months = $this->getMonths($request->date); goto FCwpv; zY8et: $client_id = $this->getClientID($this->client_id, $this->isDinas); goto fIFEH; fIFEH: yEEEn: goto X6Ssn; lOOUc: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\156\x64\x69\x6e\x67\163"], str_replace("\77", "\47\x3f\x27", $queries[$q]["\x71\165\145\162\171"])); goto Cp7pi; gr0_j: return response()->json($results, 200); goto VG6KK; SG_dL: $member_read = $this->TopMemberRead($request, $client_id); goto QuTjx; W59sa: if (!($q < count($queries))) { goto oSmNC; } goto lOOUc; HCcen: $growth_member = $this->GrowthMember($request, $months, $client_id); goto SG_dL; nmss5: $queries = DB::getQueryLog(); goto LoTy_; PaPwt: $logs->write(__FUNCTION__, "\x53\x54\101\x52\x54"); goto AsBEq; m4U2e: $logs->write("\123\x51\114", $sql . "\xd\xa"); goto F2WDU; Vtwbh: if ($this->isDinas["\x73\164\x61\x74\165\x73"]) { goto aLOSY; } goto GyBiA; LsWgi: $visit_daily = $this->VisitDaily($request, $days, $client_id); goto Kk_ti; X6Ssn: $days = $this->getDates($request->date); goto n6Kt2; FCwpv: $formattedDate = Carbon::createFromFormat("\x59\55\x6d", $request->date)->format("\106\40\131"); goto p7LjF; Bne6V: $visit_monthly = $this->VisitMonthly($request, $months, $client_id); goto HCcen; UBDWu: Z35P5: goto W59sa; T6eDs: aLOSY: goto zY8et; Nkrva: goto yEEEn; goto T6eDs; Kk_ti: $read_monthly = $this->ReadMonthly($request, $months, $client_id); goto Bne6V; Cp7pi: $logs->write("\x42\x49\x4e\x44\x49\x4e\x47", "\133" . implode("\x2c\40", $queries[$q]["\x62\151\x6e\x64\x69\156\147\x73"]) . "\x5d"); goto m4U2e; VG6KK: } private function getClientID($client_id, $isDinas) { goto T0y6C; WhdDs: $results = $sql->get()->pluck("\143\154\x69\145\x6e\164\x5f\151\144"); goto NkAtV; NkAtV: return $results; goto yFPsz; cAEuQ: $sql->where("\141\x2e\x6b\x61\142\x75\160\x61\164\x65\x6e\137\x69\x64", $this->isDinas["\x6b\141\142\165\160\141\164\x65\156"]); goto sgMUy; C1J1e: if (!($this->isDinas["\x6c\x65\x76\145\x6c"] == "\66\x30\x30\63")) { goto nLhqc; } goto cAEuQ; dt1LH: $sql->where("\141\x2e\160\x72\x6f\166\x69\156\x73\151\x5f\x69\144", $this->isDinas["\x70\162\157\166\x69\156\x73\151"]); goto dgsmO; sgMUy: nLhqc: goto WhdDs; T0y6C: $sql = DB::table("\x74\143\154\151\145\x6e\164\x20\141\163\x20\x61")->select("\x61\x2e\143\154\x69\145\156\x74\x5f\151\x64"); goto dX0FB; dX0FB: if (!($this->isDinas["\x6c\145\166\x65\154"] != "\x36\x30\60\x31")) { goto Jbg7n; } goto dt1LH; dgsmO: Jbg7n: goto C1J1e; yFPsz: } private function getDates($date) { goto u2dcq; wvY_h: if (!$startDate->isSameMonth($currentDate)) { goto MPM0X; } goto Yg9rl; Yg9rl: $endDate = $currentDate; goto p2r_S; Zv3Sr: $startDate->addDay(); goto jQgMb; SVwGf: $dateArray[] = $startDate->format("\144"); goto Zv3Sr; p2r_S: MPM0X: goto GNxM1; WIL7l: return $dateArray; goto Psq0T; K2c6D: $startDate = Carbon::parse($date)->startOfMonth(); goto Is3ai; u2dcq: $dateArray = []; goto K2c6D; jQgMb: goto XRdl0; goto Iajcc; JPJ9x: $currentDate = Carbon::now(); goto wvY_h; GNxM1: XRdl0: goto FCpoc; Is3ai: $endDate = Carbon::parse($date)->endOfMonth(); goto JPJ9x; FCpoc: if (!$startDate->lte($endDate)) { goto Z8U89; } goto SVwGf; Iajcc: Z8U89: goto WIL7l; Psq0T: } private function getMonths($date) { goto GK2BA; GK2BA: $monthArray = []; goto w8FKo; T2_K6: $monthNames = []; goto IMDh_; jQ8W0: $monthNumbers = range(1, 12); goto T2_K6; Wm26h: return $monthArray; goto BUmbF; w8FKo: $date = Carbon::parse($date); goto l1Xf3; IMDh_: foreach ($monthNumbers as $month) { goto gZCfN; gZCfN: $monthArray["\156\141\x6d\145"][] = Carbon::createFromFormat("\131\x2d\x6d", "{$year}\x2d{$month}")->format("\x4d"); goto hkWUq; hkWUq: $monthArray["\155\157\x6e\x74\x68"][] = Carbon::createFromFormat("\131\55\x6d", "{$year}\x2d{$month}")->format("\131\55\155"); goto XR9jM; XR9jM: if8H_: goto vWW4T; vWW4T: } goto yAlHh; l1Xf3: $year = $date->year; goto WqMgE; yAlHh: p36DU: goto Wm26h; WqMgE: $months = Carbon::create($year, 1, 1)->months(); goto jQ8W0; BUmbF: } private function ReadDaily($request, $days, $client_id) { goto eYNdL; lO0cX: $result = collect($days)->map(function ($day) use($reader) { $existingDay = $reader->firstWhere("\x64\x61\171", $day); return ["\x64\x61\171" => $day, "\144\x61\x74\141" => $existingDay ? $existingDay->reader : 0]; }); goto MwQlh; MwQlh: return $result; goto GYakx; eYNdL: $reader = DB::table("\x74\164\x72\170\137\x72\145\x61\x64\40\141\163\40\x61")->select([DB::raw("\x44\x41\131\x28\163\164\x61\x72\164\x5f\162\145\x61\144\51\40\x61\163\40\x64\141\171"), DB::raw("\103\x4f\125\x4e\x54\50\x44\111\123\124\111\116\x43\x54\40\141\56\x62\157\157\153\137\151\x64\51\40\141\163\40\x72\x65\141\144\x65\x72")])->join("\x74\143\154\x69\145\x6e\164\x20\141\163\x20\142", function ($join) { $join->on("\141\56\143\154\151\145\x6e\164\x5f\x69\x64", "\x3d", "\142\x2e\x63\154\x69\145\x6e\164\137\151\x64"); })->whereRaw("\x44\x41\x54\105\137\106\117\x52\x4d\101\124\x28\x61\x2e\x73\164\141\x72\164\137\162\x65\x61\x64\54\40\47\45\131\55\45\x6d\x27\51\x20\x3d\40\x27{$request->date}\47")->whereIn("\x61\56\x63\x6c\151\x65\156\164\x5f\x69\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\x62\x2e\160\x72\x6f\166\x69\x6e\163\151\x5f\151\144", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\x62\x2e\153\141\142\165\x70\x61\164\145\x6e\x5f\151\144", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\x62\56\151\x6e\x73\x74\141\x6e\x73\151\137\x6e\141\155\145", $request->wl); })->groupBy(DB::raw("\x44\101\x59\50\x73\164\141\x72\164\137\x72\145\141\144\x29"))->get(); goto lO0cX; GYakx: } private function VisitDaily($request, $days, $client_id) { goto IJjtv; LH7J8: return $result; goto huZmG; ei_y0: $result = collect($days)->map(function ($day) use($visitor) { $existingDay = $visitor->firstWhere("\x64\141\171", $day); return ["\144\141\x79" => $day, "\144\141\164\x61" => $existingDay ? $existingDay->visitor : 0]; }); goto LH7J8; IJjtv: $visitor = DB::table("\164\166\151\x73\x69\164\x6f\162\163\x20\x61\x73\40\x61")->select([DB::raw("\104\101\131\50\144\x61\164\x65\51\40\141\163\40\144\x61\x79"), DB::raw("\103\x4f\x55\x4e\124\50\x44\x49\x53\124\111\x4e\103\x54\x20\141\56\151\144\51\x20\141\x73\x20\x76\x69\163\x69\x74\x6f\162")])->join("\164\x63\154\x69\145\x6e\x74\40\x61\x73\x20\142", function ($join) { $join->on("\141\x2e\x63\x6c\151\x65\x6e\x74\x5f\151\144", "\75", "\x62\56\143\154\x69\145\x6e\164\137\151\144"); })->whereRaw("\104\101\x54\x45\137\106\x4f\x52\115\x41\x54\50\141\56\x64\x61\x74\x65\54\40\47\x25\131\x2d\45\155\x27\x29\40\x3d\x20\x27{$request->date}\47")->whereIn("\141\x2e\x63\154\151\145\x6e\x74\137\151\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\x62\56\160\x72\157\x76\x69\x6e\163\151\x5f\151\144", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\142\x2e\153\x61\142\x75\160\141\x74\x65\x6e\x5f\x69\144", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\142\x2e\151\156\163\164\x61\156\163\151\137\x6e\x61\155\x65", $request->wl); })->groupBy(DB::raw("\x44\101\x59\50\x64\x61\x74\x65\x29"))->get(); goto ei_y0; huZmG: } private function ReadMonthly($request, $months, $client_id) { goto VmJ0J; jnM8f: return $result; goto mR9pM; yYs3y: $reader = DB::table("\164\x74\162\x78\x5f\x72\x65\141\144\x20\x61\163\40\141")->select([DB::raw("\104\x41\x54\x45\137\x46\117\x52\x4d\x41\x54\50\x61\56\163\x74\x61\x72\164\137\162\145\x61\144\54\x20\47\x25\x59\55\x25\155\47\51\x20\141\163\40\155\x6f\156\164\150"), DB::raw("\103\117\x55\x4e\124\x28\x44\x49\123\x54\x49\x4e\x43\x54\x20\x61\56\142\157\157\153\x5f\151\144\51\40\x61\x73\x20\162\x65\x61\x64\145\162")])->join("\164\x63\154\x69\145\156\x74\40\x61\x73\40\x62", function ($join) { $join->on("\x61\56\x63\x6c\151\145\156\x74\137\x69\x64", "\x3d", "\x62\56\143\154\x69\x65\x6e\x74\x5f\151\144"); })->whereRaw("\x44\101\x54\x45\137\106\117\122\x4d\101\124\50\x61\56\x73\164\141\x72\164\x5f\162\145\141\144\x2c\x20\47\45\131\x2d\x25\155\47\51\x20\111\x4e\40\50\x27{$month}\x27\51")->whereIn("\x61\x2e\143\154\151\x65\x6e\164\137\151\x64", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\142\x2e\x70\x72\157\166\151\156\163\151\x5f\151\x64", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\142\56\153\x61\x62\165\160\x61\x74\x65\156\137\x69\144", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\x62\56\x69\156\x73\164\141\x6e\x73\x69\x5f\x6e\x61\x6d\145", $request->wl); })->groupBy(DB::raw("\104\x41\x54\105\x5f\x46\117\122\x4d\101\x54\x28\163\164\141\x72\164\137\x72\x65\141\144\54\x20\x27\45\131\55\45\x6d\x27\51"))->get(); goto g_waA; VmJ0J: $month = implode("\47\x2c\40\47", $months["\155\x6f\156\x74\x68"]); goto yYs3y; g_waA: $result = collect($months["\155\x6f\x6e\x74\x68"])->map(function ($month) use($reader) { $existingMonth = $reader->firstWhere("\155\x6f\156\x74\150", $month); return ["\155\157\x6e\x74\150" => $month, "\144\141\164\141" => $existingMonth ? $existingMonth->reader : 0]; }); goto jnM8f; mR9pM: } private function VisitMonthly($request, $months, $client_id) { goto HP3lF; XF4Jn: $visitor = DB::table("\x74\x76\x69\x73\x69\x74\157\162\163\x20\141\x73\40\141")->select([DB::raw("\104\x41\x54\x45\137\106\117\122\115\x41\124\50\x61\56\x64\x61\x74\145\54\40\47\45\131\x2d\x25\155\x27\x29\x20\141\x73\x20\x6d\157\156\164\150"), DB::raw("\103\117\125\116\x54\50\104\x49\x53\x54\x49\x4e\103\x54\40\141\56\x69\144\51\40\141\163\40\166\x69\163\x69\164\157\162")])->join("\164\143\154\151\145\156\164\40\141\x73\40\x62", function ($join) { $join->on("\x61\x2e\x63\x6c\151\145\156\x74\x5f\x69\144", "\x3d", "\x62\x2e\143\x6c\x69\x65\x6e\x74\x5f\151\x64"); })->whereRaw("\x44\x41\124\x45\x5f\106\x4f\x52\115\101\x54\x28\x61\56\x64\x61\164\145\x2c\x20\47\45\x59\55\45\x6d\x27\x29\40\x49\x4e\x20\50\47{$month}\47\x29")->whereIn("\141\56\x63\154\151\145\156\x74\x5f\x69\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\142\x2e\x70\162\157\166\151\156\x73\x69\137\151\144", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\x62\56\153\141\142\x75\x70\x61\x74\x65\156\137\x69\x64", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\x62\x2e\151\x6e\163\164\141\156\163\x69\137\x6e\141\x6d\145", $request->wl); })->groupBy(DB::raw("\x44\101\124\x45\137\x46\117\122\115\x41\x54\x28\x64\x61\164\145\x2c\40\47\x25\131\x2d\x25\155\47\51"))->get(); goto GrXeQ; HP3lF: $month = implode("\x27\54\40\x27", $months["\155\x6f\x6e\x74\150"]); goto XF4Jn; GrXeQ: $result = collect($months["\x6d\x6f\156\x74\x68"])->map(function ($month) use($visitor) { $existingMonth = $visitor->firstWhere("\155\x6f\156\x74\150", $month); return ["\x6d\157\x6e\164\150" => $month, "\x64\x61\x74\x61" => $existingMonth ? $existingMonth->visitor : 0]; }); goto W0nnU; W0nnU: return $result; goto Hu0Ds; Hu0Ds: } private function GrowthMember($request, $months, $client_id) { goto PNGtl; PNGtl: $month = implode("\47\54\x20\47", $months["\x6d\x6f\x6e\164\x68"]); goto mh7T2; yLn7F: return $result; goto SD_ZZ; mh7T2: $visitor = DB::table("\x75\163\x65\162\163\40\x61\163\x20\141")->select([DB::raw("\104\x41\x54\105\137\x46\x4f\122\x4d\x41\x54\50\141\x2e\x63\162\145\141\164\x65\144\x5f\141\164\54\x20\47\45\x59\x2d\45\155\x27\51\40\141\163\40\155\x6f\x6e\164\x68"), DB::raw("\x43\x4f\x55\116\x54\x28\x44\x49\x53\x54\x49\x4e\103\x54\40\x61\x2e\x69\x64\x29\40\x61\163\x20\x76\151\163\151\x74\157\162")])->join("\x74\x63\x6c\151\x65\x6e\164\x20\141\163\40\x62", function ($join) { $join->on("\141\x2e\x63\x6c\151\x65\156\x74\x5f\x69\x64", "\75", "\142\56\143\154\151\x65\x6e\x74\137\151\144"); })->whereRaw("\x44\101\x54\x45\137\106\x4f\122\x4d\x41\x54\x28\141\56\x63\162\x65\x61\164\x65\144\x5f\x61\164\54\x20\x27\45\131\55\45\x6d\47\51\40\111\x4e\40\x28\47{$month}\x27\x29")->whereIn("\x61\56\x63\x6c\151\145\x6e\x74\137\x69\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\142\x2e\160\162\x6f\166\x69\x6e\163\x69\137\x69\x64", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\x62\x2e\x6b\x61\x62\165\160\141\164\x65\156\137\x69\144", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\x62\x2e\x69\x6e\x73\x74\x61\156\163\151\137\x6e\141\155\145", $request->wl); })->groupBy(DB::raw("\104\x41\124\105\x5f\x46\x4f\x52\x4d\x41\x54\50\x61\x2e\x63\162\145\x61\164\145\144\137\141\x74\x2c\x20\x27\x25\x59\x2d\45\155\x27\51"))->get(); goto siEHC; siEHC: $result = collect($months["\155\x6f\x6e\x74\150"])->map(function ($month) use($visitor) { $existingMonth = $visitor->firstWhere("\155\157\x6e\x74\x68", $month); return ["\x6d\157\156\164\150" => $month, "\144\141\164\141" => $existingMonth ? $existingMonth->visitor : 0]; }); goto yLn7F; SD_ZZ: } private function TopMemberRead($request, $client_id) { $member = DB::table("\x74\164\x72\170\x5f\162\145\x61\x64\40\x61\163\40\x61")->select(["\x61\56\x75\x73\145\x72\x5f\151\144", "\x63\56\x6e\x61\x6d\x65", DB::raw("\x53\105\x43\137\124\x4f\x5f\x54\x49\115\105\50\x53\x55\x4d\50\124\x49\115\105\x53\x54\x41\x4d\x50\104\x49\x46\106\x28\x53\105\x43\x4f\x4e\x44\54\40\163\164\141\x72\x74\137\x72\x65\141\x64\x2c\40\x65\x6e\x64\x5f\x72\145\141\144\x29\x29\51\40\x61\163\40\164\157\164\141\154\112\x61\x6d")])->join("\164\x63\154\x69\x65\156\x74\40\x61\163\x20\x62", function ($join) { $join->on("\141\x2e\143\154\151\145\156\164\137\151\x64", "\75", "\142\x2e\x63\154\x69\x65\x6e\164\x5f\x69\x64"); })->join("\165\163\x65\x72\163\40\141\163\x20\x63", function ($join) { $join->on("\141\x2e\x75\163\145\x72\137\151\x64", "\x3d", "\x63\56\x69\x64"); })->whereRaw("\104\x41\x54\x45\137\106\x4f\x52\115\x41\x54\x28\141\x2e\143\x72\x65\x61\164\145\x64\137\141\x74\x2c\40\47\45\131\55\45\x6d\x27\x29\x20\x3d\x20\x27{$request->date}\x27")->whereIn("\x61\x2e\x63\154\x69\x65\x6e\164\x5f\x69\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\x62\x2e\x70\162\157\166\x69\156\163\x69\137\x69\x64", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\142\56\x6b\x61\142\165\160\x61\164\x65\x6e\x5f\x69\x64", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\x62\56\x69\x6e\163\164\141\x6e\163\x69\137\156\141\x6d\145", $request->wl); })->groupBy("\141\x2e\165\x73\x65\162\x5f\151\x64", "\143\56\156\x61\x6d\145")->orderByRaw("\123\105\103\x5f\x54\117\137\124\x49\x4d\105\50\x53\x55\115\50\x54\111\x4d\x45\x53\x54\x41\115\x50\104\x49\x46\106\50\x53\x45\x43\117\116\x44\54\40\x73\x74\x61\x72\x74\x5f\162\x65\141\x64\54\x20\145\x6e\144\137\x72\x65\x61\x64\x29\51\51\40\104\x45\123\103")->limit(10)->get(); return $member; } private function TopBookRead($request, $client_id) { $book = DB::table("\x74\164\x72\170\x5f\x72\145\141\x64\x20\141\163\x20\141")->select(["\141\x2e\x62\157\157\153\137\x69\x64", "\x63\x2e\164\x69\x74\154\145", "\x63\x2e\143\157\x76\x65\x72", DB::raw("\x43\x4f\125\x4e\124\50\104\111\x53\x54\111\x4e\103\x54\40\141\56\165\163\145\x72\137\x69\x64\51\40\x61\x73\40\164\x6f\164\141\154\x52\145\x61\144")])->join("\164\x63\154\x69\145\x6e\x74\x20\141\x73\x20\142", function ($join) { $join->on("\141\x2e\143\154\x69\x65\x6e\x74\x5f\151\144", "\x3d", "\142\56\143\x6c\x69\x65\x6e\164\137\151\144"); })->join("\164\x62\157\x6f\153\x20\x61\x73\x20\x63", function ($join) { $join->on("\141\56\142\x6f\x6f\x6b\x5f\151\x64", "\x3d", "\143\56\x62\157\157\x6b\x5f\x69\144"); })->whereRaw("\x44\x41\x54\x45\137\x46\x4f\122\115\101\124\x28\141\56\x73\x74\141\x72\x74\137\162\x65\141\144\54\x20\47\45\131\x2d\x25\x6d\47\51\40\x3d\40\47{$request->date}\x27")->whereIn("\141\56\143\154\151\145\156\x74\x5f\x69\144", $client_id)->when($request->provinsi != '', function ($query) use($request) { $query->where("\142\x2e\x70\162\157\x76\x69\156\x73\x69\x5f\x69\144", $request->provinsi); })->when($request->kabupaten != '', function ($query) use($request) { $query->where("\142\x2e\153\x61\x62\165\160\x61\x74\x65\x6e\137\151\x64", $request->kabupaten); })->when($request->wl != '', function ($query) use($request) { $query->where("\142\56\x69\156\x73\164\x61\156\163\x69\x5f\x6e\x61\155\145", $request->wl); })->groupBy("\x61\x2e\142\x6f\157\x6b\x5f\x69\x64", "\143\56\164\151\164\x6c\145", "\x63\56\143\157\166\145\162")->orderByRaw("\x43\x4f\125\x4e\x54\50\x44\111\x53\x54\x49\x4e\103\124\x20\141\56\x75\x73\145\x72\137\151\x64\x29\40\104\x45\x53\103")->limit(10)->get()->map(function ($value) { return ["\142\157\157\153\x5f\151\x64" => $value->book_id, "\164\x69\x74\x6c\145" => $value->title, "\164\x6f\x74\x61\x6c\x52\x65\x61\144" => $value->totalRead, "\143\x6f\166\x65\x72" => isset($value->cover) && file_exists(public_path("\x2f\x73\164\x6f\x72\x61\x67\145\x2f\143\x6f\166\145\x72\163\57" . $value->cover)) ? "\x2f\x73\164\157\162\x61\x67\x65\x2f\143\157\166\x65\162\163\x2f" . $value->cover : "\x2f\163\x74\157\x72\141\x67\x65\57\143\x6f\166\x65\x72\163\x2f\x64\145\146\141\x75\154\x74\x2d\x63\157\166\x65\162\56\x6a\160\x67"]; }); return $book; } public function getKatalog(Request $request) { $results = DB::table("\164\142\x6f\157\x6b\x20\141\163\40\141")->select(["\x61\x2e\142\157\x6f\x6b\x5f\151\x64", "\x61\56\164\x69\164\x6c\x65", "\141\x2e\143\x6f\166\x65\162\x20\141\x73\40\x69\x6d\x61\x67\x65", "\141\x2e\x77\162\x69\164\x65\162"])->orderBy("\143\162\145\141\x74\145\144\x61\x74\145", "\104\x45\x53\x43")->limit(10)->get()->map(function ($value) { return ["\x74\x69\164\x6c\145" => $value->title, "\x69\155\x61\147\x65" => isset($value->image) && file_exists(public_path("\x2f\x73\x74\157\162\141\x67\x65\x2f\x63\157\x76\x65\162\163\x2f" . $value->image)) ? "\x2f\x73\164\157\162\141\147\x65\57\143\157\166\145\162\163\57" . $value->image : "\x2f\x73\x74\x6f\x72\x61\147\x65\57\143\157\x76\x65\x72\x73\57\x64\145\146\141\165\x6c\x74\x2d\143\157\166\145\x72\56\152\160\x67", "\x77\x72\x69\164\x65\162" => $value->writer]; }); return response()->json($results, 200); } }
+
+namespace App\Http\Controllers\Core\Dashboard;
+
+use App\Logs;
+use App\Libraries;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+class DashboardController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id	= '';
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->client_id	= config('app.client_id', '');
+		$this->isDinas		= Libraries::isDinas();
+    }
+
+    public function dashAtas()
+    {
+		$logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, "START");
+        DB::enableQueryLog();
+
+		if($this->isDinas['status']){
+			$client_id	= $this->getClientID($this->client_id, $this->isDinas);
+		}else{
+			$client_id	= [$this->client_id];
+		}
+
+        $visitor = DB::table('tvisitors as a')
+            ->select([
+                DB::raw('COUNT(a.id) as visitor')
+            ])
+            ->whereIn('a.client_id', $client_id)
+			->first();
+
+		$book = DB::table('tmapping_book as a')
+            ->select([
+                DB::raw('COUNT(a.book_id) as book')
+            ])
+            ->whereIn('a.client_id', $client_id)
+			->first();
+
+		$member = DB::table('users as a')
+            ->select([
+                DB::raw('COUNT(a.id) as member')
+            ])
+            ->whereIn('a.client_id', $client_id)
+			->where('a.role', 'member')
+			->first();
+
+		$po = 0;
+
+		$results = [
+			'visitor'	=> number_format($visitor->visitor, 0, ',', '.'),
+			'book'		=> number_format($book->book, 0, ',', '.'),
+			'member'	=> number_format($member->member, 0, ',', '.'),
+			'po'		=> number_format($po, 0, ',', '.')
+		];
+
+		$queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+
+    public function dashBawah(Request $request)
+    {
+		$logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, "START");
+        DB::enableQueryLog();
+
+		if($this->isDinas['status']){
+			$client_id	= $this->getClientID($this->client_id, $this->isDinas);
+		}else{
+			$client_id	= [$this->client_id];
+		}
+
+		$days			= $this->getDates($request->date);
+		$months			= $this->getMonths($request->date);
+		$formattedDate	= Carbon::createFromFormat('Y-m', $request->date)->format('F Y');
+
+		$read_daily		= $this->ReadDaily($request, $days, $client_id);
+		$visit_daily	= $this->VisitDaily($request, $days, $client_id);
+		$read_monthly	= $this->ReadMonthly($request, $months, $client_id);
+		$visit_monthly	= $this->VisitMonthly($request, $months, $client_id);
+		$growth_member	= $this->GrowthMember($request, $months, $client_id);
+		$member_read	= $this->TopMemberRead($request, $client_id);
+		$book_read		= $this->TopBookRead($request, $client_id);
+
+		$results = [
+			'days'			=> $days,
+			'months'		=> $months['name'],
+			'formattedDate'	=> $formattedDate,
+			'read_daily'	=> $read_daily,
+			'visit_daily'	=> $visit_daily,
+			'read_monthly'	=> $read_monthly,
+			'visit_monthly'	=> $visit_monthly,
+			'growth_member'	=> $growth_member,
+			'member_read'	=> $member_read,
+			'book_read'		=> $book_read,
+		];
+
+		$queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql."\r\n");
+        }
+
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+
+	private function getClientID($client_id, $isDinas)
+	{
+		$sql = DB::table('tclient as a')
+			->select(
+				'a.client_id'
+			);
+
+		if($this->isDinas['level'] != '6001'){
+			$sql->where('a.provinsi_id', $this->isDinas['provinsi']);
+		}
+
+		if($this->isDinas['level'] == '6003'){
+			$sql->where('a.kabupaten_id', $this->isDinas['kabupaten']);
+		}
+
+		$results = $sql->get()->pluck('client_id');
+
+		return $results;
+	}
+
+	private function getDates($date) {
+		$dateArray = [];
+
+		$startDate = Carbon::parse($date)->startOfMonth();
+		$endDate = Carbon::parse($date)->endOfMonth();
+		$currentDate = Carbon::now();
+
+		if ($startDate->isSameMonth($currentDate)) {
+			$endDate = $currentDate;
+		}
+
+		while ($startDate->lte($endDate)) {
+			$dateArray[] = $startDate->format('d');
+			$startDate->addDay();
+		}
+
+		return $dateArray;
+	}
+	
+	private function getMonths($date) {
+		$monthArray = [];
+
+		$date = Carbon::parse($date);
+		$year = $date->year;
+		$months = Carbon::create($year, 1, 1)->months();
+		$monthNumbers = range(1, 12);
+		$monthNames = [];
+
+		foreach ($monthNumbers as $month) {
+			$monthArray['name'][]	= Carbon::createFromFormat('Y-m', "$year-$month")->format('M');
+			$monthArray['month'][]	= Carbon::createFromFormat('Y-m', "$year-$month")->format('Y-m');
+		}
+
+		return $monthArray;
+	}
+
+	private function ReadDaily($request, $days, $client_id) {
+		$reader = DB::table('ttrx_read as a')
+            ->select([
+                DB::raw('DAY(start_read) as day'),
+                DB::raw('COUNT(DISTINCT a.book_id) as reader')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.start_read, '%Y-%m') = '$request->date'")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy(DB::raw('DAY(start_read)'))
+			->get();
+
+		$result = collect($days)->map(function($day) use ($reader) {
+			$existingDay = $reader->firstWhere('day', $day);
+			return [
+				'day' => $day,
+				'data' => $existingDay ? $existingDay->reader : 0
+			];
+		});
+
+		return $result;
+	}
+
+	private function VisitDaily($request, $days, $client_id) {
+		$visitor = DB::table('tvisitors as a')
+            ->select([
+                DB::raw('DAY(date) as day'),
+                DB::raw('COUNT(DISTINCT a.id) as visitor')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.date, '%Y-%m') = '$request->date'")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy(DB::raw('DAY(date)'))
+			->get();
+
+		$result = collect($days)->map(function($day) use ($visitor) {
+			$existingDay = $visitor->firstWhere('day', $day);
+			return [
+				'day' => $day,
+				'data' => $existingDay ? $existingDay->visitor : 0
+			];
+		});
+
+		return $result;
+	}
+
+	private function ReadMonthly($request, $months, $client_id) {
+		$month = implode("', '", $months['month']);
+		$reader = DB::table('ttrx_read as a')
+            ->select([
+                DB::raw("DATE_FORMAT(a.start_read, '%Y-%m') as month"),
+                DB::raw('COUNT(DISTINCT a.book_id) as reader')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.start_read, '%Y-%m') IN ('$month')")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy(DB::raw("DATE_FORMAT(start_read, '%Y-%m')"))
+			->get();
+
+		$result = collect($months['month'])->map(function($month) use ($reader) {
+			$existingMonth = $reader->firstWhere('month', $month);
+			return [
+				'month' => $month,
+				'data' => $existingMonth ? $existingMonth->reader : 0
+			];
+		});
+
+		return $result;
+	}
+
+	private function VisitMonthly($request, $months, $client_id) {
+		$month = implode("', '", $months['month']);
+		$visitor = DB::table('tvisitors as a')
+            ->select([
+                DB::raw("DATE_FORMAT(a.date, '%Y-%m') as month"),
+                DB::raw('COUNT(DISTINCT a.id) as visitor')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.date, '%Y-%m') IN ('$month')")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy(DB::raw("DATE_FORMAT(date, '%Y-%m')"))
+			->get();
+
+		$result = collect($months['month'])->map(function($month) use ($visitor) {
+			$existingMonth = $visitor->firstWhere('month', $month);
+			return [
+				'month' => $month,
+				'data' => $existingMonth ? $existingMonth->visitor : 0
+			];
+		});
+
+		return $result;
+	}
+
+	private function GrowthMember($request, $months, $client_id) {
+		$month = implode("', '", $months['month']);
+		$visitor = DB::table('users as a')
+            ->select([
+                DB::raw("DATE_FORMAT(a.created_at, '%Y-%m') as month"),
+                DB::raw('COUNT(DISTINCT a.id) as visitor')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.created_at, '%Y-%m') IN ('$month')")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy(DB::raw("DATE_FORMAT(a.created_at, '%Y-%m')"))
+			->get();
+
+		$result = collect($months['month'])->map(function($month) use ($visitor) {
+			$existingMonth = $visitor->firstWhere('month', $month);
+			return [
+				'month' => $month,
+				'data' => $existingMonth ? $existingMonth->visitor : 0
+			];
+		});
+
+		return $result;
+	}
+
+	private function TopMemberRead($request, $client_id) {
+		$member = DB::table('ttrx_read as a')
+            ->select([
+				'a.user_id',
+				'c.name',
+                DB::raw('SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND, start_read, end_read))) as totalJam')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+			->join('users as c', function($join) {
+				$join->on('a.user_id', '=', 'c.id');
+			})
+            ->whereRaw("DATE_FORMAT(a.created_at, '%Y-%m') = '$request->date'")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy('a.user_id', 'c.name')
+			->orderByRaw('SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND, start_read, end_read))) DESC')
+			->limit(10)
+			->get();
+
+		return $member;
+	}
+
+	private function TopBookRead($request, $client_id) {
+		$book = DB::table('ttrx_read as a')
+            ->select([
+				'a.book_id',
+				'c.title',
+				'c.cover',
+                DB::raw('COUNT(DISTINCT a.user_id) as totalRead')
+				
+            ])
+			->join('tclient as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id');
+			})
+			->join('tbook as c', function($join) {
+				$join->on('a.book_id', '=', 'c.book_id');
+			})
+            ->whereRaw("DATE_FORMAT(a.start_read, '%Y-%m') = '$request->date'")
+            ->whereIn('a.client_id', $client_id)
+			->when($request->provinsi != '', function($query) use ($request) {
+				$query->where('b.provinsi_id', $request->provinsi);
+			})
+			->when($request->kabupaten != '', function($query) use ($request) {
+				$query->where('b.kabupaten_id', $request->kabupaten);
+			})
+			->when($request->wl != '', function($query) use ($request) {
+				$query->where('b.instansi_name', $request->wl);
+			})
+			->groupBy('a.book_id', 'c.title', 'c.cover')
+			->orderByRaw('COUNT(DISTINCT a.user_id) DESC')
+			->limit(10)
+			->get()
+			->map(function ($value) {
+                return [
+                    'book_id'	=> $value->book_id,
+                    'title'		=> $value->title,
+                    'totalRead'	=> $value->totalRead,
+                    'cover'		=> (isset($value->cover) && file_exists(public_path('/storage/covers/' . $value->cover))) 
+                                    ? '/storage/covers/' . $value->cover
+                                    : '/storage/covers/default-cover.jpg'
+                ];
+            });
+
+		return $book;
+	}
+
+	public function getKatalog(Request $request)
+    {
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        $results = DB::table('tbook as a')
+            ->select([
+                'a.book_id',
+                'a.title',
+                'a.cover as image',
+                'a.writer'
+            ])
+			->orderBy('createdate', 'DESC')
+			->limit(10)
+            ->get()
+            ->map(function ($value) {
+                return [
+                    'title'    => $value->title,
+                    'image'    => (isset($value->image) && file_exists(public_path('/storage/covers/' . $value->image))) 
+                                    ? '/storage/covers/' . $value->image 
+                                    : '/storage/covers/default-cover.jpg',
+                    'writer'   => $value->writer
+                ];
+            });
+
+        // $queries = DB::getQueryLog();
+        // for($q = 0; $q < count($queries); $q++) {
+        //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+        //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+        //     $logs->write('SQL', $sql);
+        // }
+
+        // $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($results, 200);
+    }
+}

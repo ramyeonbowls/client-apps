@@ -1,8 +1,130 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Exports\Report; use Maatwebsite\Excel\Sheet; use Maatwebsite\Excel\Events\AfterSheet; use Maatwebsite\Excel\Concerns\WithTitle; use Maatwebsite\Excel\Concerns\WithEvents; use Maatwebsite\Excel\Events\BeforeExport; use Maatwebsite\Excel\Concerns\WithHeadings; use Maatwebsite\Excel\Concerns\ShouldAutoSize; use Maatwebsite\Excel\Concerns\WithCustomStartCell; class ReadBookUserExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize { private $data; public function __construct($data = array()) { goto w6WEr; w6WEr: $this->data = $data; goto XQJA_; S1s3v: Sheet::macro("\163\164\x79\154\145\x43\x65\x6c\154\x73", function (Sheet $sheet, string $cellRange, array $style) { $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style); }); goto x_BCK; XQJA_: Sheet::macro("\163\145\164\117\x72\x69\x65\156\x74\141\164\x69\157\156", function (Sheet $sheet, $orientation) { $sheet->getDelegate()->getPageSetup()->setOrientation($orientation); }); goto S1s3v; x_BCK: } public function startCell() : string { $starCell = "\101\61"; return $starCell; } public function title() : string { return "\x4c\141\x70\157\162\141\156\x20\x42\x61\143\141\40\102\165\153\x75\40\125\x73\x65\162"; } public function headings() : array { return ["\x4e\x61\155\141\40\x57\x4c", "\120\x72\157\166\151\x6e\x73\x69", "\x4b\x61\x62\57\113\x6f\x74\x61", "\116\141\x6d\141\x20\x50\145\155\142\x61\x63\141", "\x4a\165\x6d\x6c\141\150\40\x42\x75\x6b\165\x20\144\x69\40\x42\x61\143\141", "\x54\x6f\164\141\x6c\40\x4a\x61\155"]; } public function registerEvents() : array { return [BeforeExport::class => function (BeforeExport $event) { $event->writer->getProperties()->setTitle("\x4c\141\x70\x6f\162\141\156\x20\x42\141\143\141\x20\x42\x75\153\x75\x20\125\163\145\162"); $event->writer->getProperties()->setCreator(config("\x61\x70\160\56\156\141\x6d\x65")); }, AfterSheet::class => function (AfterSheet $event) { goto sPNTD; IzO_v: if (!(count($this->data) > 0)) { goto Z2UoL; } goto g83nJ; eV8f6: foreach ($this->data as $val) { goto Gqjg0; FpCaV: $event->sheet->setCellValue("\x42" . $row, $val["\160\162\x6f\x76\151\156\163\x69\137\x6e\x61\155\x65"]); goto IxL1w; IxL1w: $event->sheet->setCellValue("\103" . $row, $val["\153\141\142\165\160\x61\x74\x65\156\137\x6e\x61\155\x65"]); goto hft_M; RPz7F: $row++; goto pWY3v; pWY3v: YSELx: goto APw1a; oyirq: $event->sheet->setCellValue("\106" . $row, $val["\144\x75\162\x61\x73\151"])->getStyle("\x46" . $row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); goto RPz7F; Gqjg0: $event->sheet->setCellValue("\x41" . $row, $val["\167\154\137\156\x61\155\x65"]); goto FpCaV; hft_M: $event->sheet->setCellValue("\104" . $row, $val["\x6e\x61\x6d\145"]); goto mSytP; mSytP: $event->sheet->setCellValue("\105" . $row, $val["\144\151\x62\141\143\141"]); goto oyirq; APw1a: } goto OP2x8; qlIEj: $event->sheet->styleCells("\x41\x31\72\x46\61", ["\142\157\x72\144\145\x72\x73" => ["\141\154\x6c\x42\x6f\162\144\x65\x72\163" => ["\142\157\162\x64\x65\x72\x53\x74\171\154\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\143\x6f\154\157\x72" => ["\x72\x67\142" => "\70\60\x38\60\x38\60"]]]]); goto hvCXz; g83nJ: $event->sheet->styleCells("\101\62\72\106" . ($row - 1), ["\142\x6f\162\144\145\x72\x73" => ["\141\154\x6c\x42\x6f\162\x64\x65\x72\163" => ["\x62\x6f\x72\144\145\162\x53\x74\171\154\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\x63\x6f\x6c\157\x72" => ["\x72\x67\142" => "\70\60\70\60\70\60"]]]]); goto r2xtq; r2xtq: Z2UoL: goto dHLYG; sPNTD: $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE); goto jUoAf; jUoAf: $event->sheet->styleCells("\x41\61\x3a\x46\x31", ["\146\157\156\x74" => ["\x62\157\154\x64" => true], "\141\x6c\x69\147\x6e\155\145\156\x74" => ["\x68\157\162\151\x7a\x6f\x6e\164\141\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, "\166\145\x72\x74\x69\143\x61\154" => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER], "\x66\x69\154\x6c" => ["\146\151\154\x6c\124\171\160\x65" => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, "\143\157\154\157\162" => ["\x61\x72\147\x62" => "\x66\x66\142\x34\143\x36\x65\x37"]]]); goto qlIEj; OP2x8: YCC2U: goto IzO_v; hvCXz: $row = 2; goto eV8f6; dHLYG: }]; } }
+
+namespace App\Exports\Report;
+
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+
+class ReadBookUserExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize
+{
+    private $data;
+
+    public function __construct($data = [])
+    {
+        $this->data         = $data;
+
+        Sheet::macro('setOrientation', function (Sheet $sheet, $orientation) {
+            $sheet->getDelegate()->getPageSetup()->setOrientation($orientation);
+        });
+
+        Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
+            $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
+        });
+    }
+    
+    /**
+     * @return string
+     */
+    public function startCell(): string
+    {
+        $starCell = 'A1';
+
+        return $starCell;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Laporan Baca Buku User';
+    }
+
+    /**
+     * @return array
+     */
+    public function headings(): array
+    {
+        return [
+            'Nama WL',
+            'Provinsi',
+            'Kab/Kota',
+            'Nama Pembaca',
+            'Jumlah Buku di Baca',
+            'Total Jam'
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setTitle( 'Laporan Baca Buku User' );
+                $event->writer->getProperties()->setCreator( config('app.name') );
+            },
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
+                $event->sheet
+                    ->styleCells('A1:F1', [
+                        'font' => [
+                           'bold' => true
+                        ],
+                        'alignment' => [
+                           'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                           'vertical'     => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                        ],
+                        'fill' => [
+                           'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                           'color' => ['argb' => 'ffb4c6e7']
+                        ]
+                    ]);
+
+                $event->sheet
+                    ->styleCells('A1:F1', [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['rgb' => '808080'],
+                            ],
+                        ],
+                    ]
+                );
+
+                $row = 2;
+                foreach ($this->data as $val) {
+                    $event->sheet->setCellValue('A'.$row, $val['wl_name']);
+                    $event->sheet->setCellValue('B'.$row, $val['provinsi_name']);
+                    $event->sheet->setCellValue('C'.$row, $val['kabupaten_name']);
+                    $event->sheet->setCellValue('D'.$row, $val['name']);
+                    $event->sheet->setCellValue('E'.$row, $val['dibaca']);
+                    $event->sheet->setCellValue('F'.$row, $val['durasi'])->getStyle('F'.$row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
+
+                    $row++;
+                }
+
+                if(count($this->data) > 0){
+                    $event->sheet
+                        ->styleCells('A2:F'.($row-1), [
+                            'borders' => [
+                                'allBorders' => [
+                                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                    'color' => ['rgb' => '808080'],
+                                ],
+                            ],
+                        ]
+                    );
+                }
+            }
+        ];
+    }
+}

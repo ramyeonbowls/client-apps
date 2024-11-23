@@ -1,8 +1,117 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class QuizReportRepository { public function get($filter) : Collection { goto J0N83; QxwGP: return DB::table("\164\x71\x75\x69\172\x5f\x74\162\170\x20\x61\x73\40\x61")->select("\142\56\x69\x6e\163\164\141\156\163\x69\137\156\141\x6d\x65\40\x61\163\40\x77\154\x5f\156\x61\155\145", "\142\x2e\x70\x72\x6f\x76\x69\x6e\x73\151\137\151\144", "\143\56\x70\162\157\x76\x69\x6e\x73\x69\137\x6e\x61\155\x65", "\142\56\153\x61\142\165\160\141\x74\145\x6e\137\151\x64", "\x64\x2e\153\x61\x62\165\x70\141\164\x65\x6e\137\156\x61\155\x65", "\145\56\x69\144", "\145\56\x6e\141\x6d\x65", "\x61\x2e\163\x75\x72\166\x65\171\x5f\x69\144", "\146\56\x74\x69\x74\x6c\145", DB::raw("\123\125\115\x28\141\x2e\160\157\x69\156\164\51\x20\x41\123\x20\x70\x6f\151\x6e\164"), "\x61\56\x63\162\145\x61\164\x65\x64\x5f\x61\x74\40\101\123\40\x74\147\x6c")->join("\164\143\154\x69\x65\x6e\x74\40\141\163\40\x62", function ($join) { $join->on("\x61\x2e\143\x6c\151\145\156\164\137\151\x64", "\75", "\x62\56\143\154\x69\145\x6e\164\x5f\x69\x64"); })->join("\164\x70\x72\157\x76\x69\156\163\x69\x20\141\163\x20\x63", function ($join) { $join->on("\142\56\160\x72\x6f\x76\x69\x6e\163\151\137\151\x64", "\75", "\x63\x2e\x70\x72\x6f\166\151\x6e\x73\151\137\x69\x64"); })->join("\164\x6b\141\142\x75\x70\x61\164\x65\x6e\40\x61\x73\40\144", function ($join) { $join->on("\x62\x2e\153\x61\142\x75\160\141\x74\145\x6e\x5f\151\x64", "\x3d", "\144\x2e\x6b\141\142\x75\x70\141\164\x65\x6e\137\151\x64"); })->join("\165\163\x65\162\163\x20\x61\163\x20\x65", function ($join) { $join->on("\141\x2e\165\x73\x65\x72\x5f\151\144", "\75", "\x65\56\151\144")->on("\x61\x2e\143\x6c\x69\145\156\x74\137\x69\144", "\75", "\145\56\143\154\x69\x65\x6e\164\137\151\x64"); })->join("\x74\161\165\151\x7a\x5f\150\x20\x61\x73\40\x66", function ($join) { $join->on("\x61\56\x73\x75\162\x76\x65\x79\x5f\151\x64", "\x3d", "\146\x2e\x69\144")->on("\x61\56\x63\154\x69\145\156\164\x5f\151\144", "\x3d", "\x66\x2e\143\154\x69\x65\x6e\x74\137\x69\144"); })->where("\141\x2e\143\x6c\x69\145\x6e\164\137\x69\144", "\x3d", $client_id)->where("\x62\56\160\162\157\x76\x69\156\163\x69\137\151\144", "\75", $PROVINSI)->where("\x62\56\153\141\142\165\x70\141\x74\145\x6e\x5f\151\x64", "\x3d", $KABUPATEN)->where("\x66\x2e\x63\162\145\x61\164\x65\x64\137\142\171", "\x3d", $created_by)->when(!empty($END_DATE), function ($query) use($START_DATE, $END_DATE) { return $query->whereBetween(DB::raw("\x44\101\x54\105\x28\141\56\x63\x72\145\x61\164\145\144\137\x61\x74\51"), [$START_DATE, $END_DATE]); }, function ($query) use($START_DATE) { return $query->where(DB::raw("\104\101\x54\105\x28\x61\56\x63\x72\145\x61\x74\145\144\x5f\141\164\51"), "\75", $START_DATE); })->groupBy("\142\x2e\151\156\163\x74\x61\156\163\151\x5f\156\x61\155\145", "\x62\x2e\160\162\x6f\166\151\156\163\x69\137\151\x64", "\x63\x2e\160\162\157\166\151\x6e\x73\x69\x5f\156\x61\x6d\x65", "\x62\56\x6b\x61\142\165\160\x61\164\x65\x6e\x5f\x69\x64", "\x64\x2e\153\141\x62\x75\160\141\x74\x65\x6e\137\156\141\x6d\x65", "\x65\56\x69\144", "\145\x2e\x6e\141\x6d\x65", "\x61\56\x73\x75\x72\166\145\x79\137\x69\144", "\x66\56\x74\151\164\154\145", "\x61\x2e\143\162\145\x61\x74\x65\x64\x5f\x61\x74")->get(); goto ZB7nd; SJIly: extract($filter); goto QxwGP; J0N83: $client_id = $this->getClientID($filter); goto SJIly; ZB7nd: } private function getClientID($filter) { goto CLXjY; CLXjY: extract($filter); goto DpP9M; DpP9M: $query = DB::table("\x74\143\154\x69\x65\156\164\40\141\163\40\x61")->select("\x61\x2e\143\154\151\145\156\164\x5f\x69\144")->where("\x61\56\160\x72\157\x76\x69\x6e\x73\151\x5f\x69\144", "\x3d", $PROVINSI)->where("\141\x2e\x6b\x61\x62\165\160\x61\164\x65\156\137\x69\x64", "\75", $KABUPATEN)->where("\x61\x2e\x69\156\163\x74\141\x6e\x73\x69\x5f\156\x61\x6d\x65", "\x3d", $WL)->sharedLock()->get(); goto QmWTE; QmWTE: return $query[0]->client_id ?? ''; goto hBZ23; hBZ23: } public function getQuestion($filter) { goto lNGwN; BZPmB: $client_id = $this->getClientID($filter); goto iBYW8; lNGwN: extract($filter); goto BZPmB; iBYW8: return DB::table("\164\161\x75\151\172\x5f\161\x75\145\163\x74\151\157\x6e\40\141\163\40\x61")->select("\x61\56\x2a")->where("\141\56\x63\154\151\x65\156\x74\137\x69\144", "\x3d", $client_id)->where("\x61\56\x73\165\162\x76\x65\x79\x5f\x69\144", "\x3d", $survey_id)->get(); goto qXcXJ; qXcXJ: } public function getAnswer($filter, $question_id) { goto Z6Rj1; bnPH0: return DB::table("\164\x71\165\151\x7a\137\x74\x72\x78\40\141\163\40\x61")->select("\141\56\52", "\x62\56\144\145\x73\x63\162\x69\x70\164\x69\157\156", "\x62\x2e\x70\157\x69\x6e\164")->leftjoin("\x74\161\165\x69\172\x5f\x61\156\163\x77\145\162\40\141\163\x20\142", function ($join) { $join->on("\x61\56\x63\154\151\145\156\164\x5f\x69\x64", "\75", "\142\x2e\143\x6c\x69\145\156\164\x5f\151\144")->on("\141\56\163\165\x72\166\145\171\137\x69\144", "\75", "\x62\x2e\163\x75\x72\166\x65\171\x5f\x69\x64")->on("\x61\56\161\x75\x65\x73\164\151\x6f\x6e\x5f\151\144", "\75", "\x62\56\x71\x75\x65\x73\x74\151\157\156\x5f\151\x64")->on("\x61\56\141\x6e\163\x77\145\162\137\151\x64", "\75", "\142\x2e\x69\144"); })->where("\141\x2e\x63\x6c\x69\x65\x6e\164\137\x69\x64", "\x3d", $client_id)->where("\x61\x2e\x73\165\x72\x76\x65\171\137\x69\144", "\75", $survey_id)->where("\141\56\165\x73\x65\162\137\151\x64", "\75", $id)->where("\141\56\x71\165\145\163\x74\x69\157\156\137\x69\144", "\x3d", $question_id)->get(); goto pZ_vV; Z6Rj1: extract($filter); goto wJHrv; wJHrv: $client_id = $this->getClientID($filter); goto bnPH0; pZ_vV: } }
+
+namespace App\Repositories\Report;
+
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+class QuizReportRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($filter): Collection
+    {
+        $client_id = $this->getClientID($filter);
+        extract($filter);
+
+        return DB::table('tquiz_trx as a')
+            ->select(
+                'b.instansi_name as wl_name',
+                'b.provinsi_id',
+                'c.provinsi_name',
+                'b.kabupaten_id',
+                'd.kabupaten_name',
+                'e.id',
+                'e.name',
+                'a.survey_id',
+                'f.title',
+                DB::raw("SUM(a.point) AS point"),
+                'a.created_at AS tgl'
+            )
+            ->join('tclient as b', function ($join) {
+                $join->on('a.client_id', '=', 'b.client_id');
+            })
+            ->join('tprovinsi as c', function ($join) {
+                $join->on('b.provinsi_id', '=', 'c.provinsi_id');
+            })
+            ->join('tkabupaten as d', function ($join) {
+                $join->on('b.kabupaten_id', '=', 'd.kabupaten_id');
+            })
+            ->join('users as e', function ($join) {
+                $join->on('a.user_id', '=', 'e.id')
+                    ->on('a.client_id', '=', 'e.client_id');
+            })
+            ->join('tquiz_h as f', function ($join) {
+                $join->on('a.survey_id', '=', 'f.id')
+                    ->on('a.client_id', '=', 'f.client_id');
+            })
+            ->where('a.client_id', '=', $client_id)
+            ->where('b.provinsi_id', '=', $PROVINSI)
+            ->where('b.kabupaten_id', '=', $KABUPATEN)
+            ->where('f.created_by', '=', $created_by)
+			->when(!empty($END_DATE), function ($query) use ($START_DATE, $END_DATE) {
+                return $query->whereBetween(DB::raw('DATE(a.created_at)'), [$START_DATE, $END_DATE]);
+            }, function ($query) use ($START_DATE) {
+                return $query->where(DB::raw('DATE(a.created_at)'), '=', $START_DATE);
+            })
+			->groupBy('b.instansi_name', 'b.provinsi_id', 'c.provinsi_name', 'b.kabupaten_id', 'd.kabupaten_name', 'e.id', 'e.name', 'a.survey_id', 'f.title', 'a.created_at')
+            ->get();
+    }
+
+    private function getClientID($filter)
+    {
+        extract($filter);
+
+        $query = DB::table('tclient as a')
+            ->select(
+                'a.client_id'
+            )
+            ->where('a.provinsi_id', '=', $PROVINSI)
+            ->where('a.kabupaten_id', '=', $KABUPATEN)
+            ->where('a.instansi_name', '=', $WL)
+            ->sharedLock()
+            ->get();
+        return $query[0]->client_id ?? '';
+    }
+
+    public function getQuestion($filter)
+    {
+        extract($filter);
+		$client_id = $this->getClientID($filter);
+
+        return DB::table('tquiz_question as a')
+			->select(
+				'a.*'
+			)
+			->where('a.client_id','=', $client_id)
+			->where('a.survey_id','=', $survey_id)
+			->get();
+    }
+
+	public function getAnswer($filter, $question_id)
+    {
+        extract($filter);
+		$client_id = $this->getClientID($filter);
+
+        return DB::table('tquiz_trx as a')
+			->select(
+				'a.*',
+				'b.description',
+				'b.point'
+			)
+			->leftjoin('tquiz_answer as b', function($join) {
+				$join->on('a.client_id', '=', 'b.client_id')
+					->on('a.survey_id', '=', 'b.survey_id')
+					->on('a.question_id', '=', 'b.question_id')
+					->on('a.answer_id', '=', 'b.id');
+			})
+			->where('a.client_id', '=', $client_id)
+			->where('a.survey_id', '=', $survey_id)
+			->where('a.user_id', '=', $id)
+			->where('a.question_id', '=', $question_id)
+			->get();
+    }
+}

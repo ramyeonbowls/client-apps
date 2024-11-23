@@ -1,8 +1,79 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Services\Master; use App\Repositories\Master\MemberMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class MemberMasterService { private MemberMasterRepository $member_repo; public function __construct() { $this->member_repo = new MemberMasterRepository(); $this->client_id = config("\x61\160\x70\56\x63\x6c\x69\145\x6e\x74\x5f\151\144", ''); } public function get() : Collection { return new Collection($this->member_repo->get($this->client_id)); } public function store(object $data) : bool { goto wTyDm; wTyDm: $datetime_now = Carbon::now("\x41\163\151\x61\x2f\112\x61\153\141\x72\164\x61"); goto AMfYY; AMfYY: $data->create_date = $datetime_now; goto CDqPC; CDqPC: $data->modified_date = $datetime_now; goto TZmCd; TZmCd: return $this->member_repo->store($data, $this->client_id); goto P5rTc; P5rTc: } public function update(object $data, string $id) : bool { goto jFDem; uc9_j: $username = auth()->user()->email; goto hbNlx; ZZGSL: $data->modified_date = $datetime_now; goto fCgGv; fCgGv: return $this->member_repo->update($data, $id); goto IjtmY; xLPvi: $data->modified_by = $username; goto ZZGSL; hbNlx: $data->file = $data->file ?? $data->current_file; goto xLPvi; jFDem: $datetime_now = Carbon::now("\101\163\x69\141\x2f\112\x61\153\x61\x72\x74\x61"); goto uc9_j; IjtmY: } public function delete(string $id) { return $this->member_repo->delete($id, $this->client_id); } public function check(string $id) { return $this->member_repo->check($id, $this->client_id); } }
+
+namespace App\Services\Master;
+
+use App\Repositories\Master\MemberMasterRepository;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
+
+class MemberMasterService 
+{
+	private MemberMasterRepository $member_repo;
+
+    public function __construct()
+    {
+        $this->member_repo = new MemberMasterRepository();
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get(): Collection
+    {
+        return new Collection($this->member_repo->get($this->client_id));
+    }
+
+    /**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+
+        $data->create_date      = $datetime_now;
+        $data->modified_date    = $datetime_now;
+
+        return $this->member_repo->store($data, $this->client_id);
+    }
+
+     /**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+        $username = auth()->user()->email;
+
+        $data->file = $data->file ?? $data->current_file;
+
+        $data->modified_by 		= $username;
+        $data->modified_date 	= $datetime_now;
+
+        return $this->member_repo->update($data, $id);
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id)
+    {
+        return $this->member_repo->delete($id, $this->client_id);
+    }
+    
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function check(string $id)
+    {
+        return $this->member_repo->check($id, $this->client_id);
+    }
+}

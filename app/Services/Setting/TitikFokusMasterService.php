@@ -1,8 +1,74 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Services\Setting; use App\Repositories\Setting\TitikFokusMasterRepository; use Carbon\Carbon; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Query\Builder; use Illuminate\Support\Collection; class TitikFokusMasterService { private TitikFokusMasterRepository $TitikFokus_repo; protected $client_id = ''; public function __construct() { $this->TitikFokus_repo = new TitikFokusMasterRepository(); $this->client_id = config("\141\160\160\x2e\x63\154\151\x65\x6e\x74\137\151\144", ''); } public function get(array $filter = []) : Collection { return new Collection($this->TitikFokus_repo->get($filter, $this->client_id)); } public function store(object $data) : bool { goto SOdn_; truEL: $data->create_by = $username; goto k1RNe; TauwJ: $username = auth()->user()->email; goto truEL; C5wuC: return $this->TitikFokus_repo->store($data, $this->client_id); goto Mfa1D; SOdn_: $datetime_now = Carbon::now("\x41\x73\151\x61\57\x4a\141\x6b\x61\162\164\x61"); goto TauwJ; ulB9J: $data->flag_aktif = $data->flag_aktif == "\164\162\x75\x65" ? "\131" : "\x4e"; goto C5wuC; k1RNe: $data->create_date = $datetime_now; goto ulB9J; Mfa1D: } public function update(object $data, string $id) : bool { goto vN4G1; vd6kt: return $this->TitikFokus_repo->update($data, $id, $this->client_id); goto ckR69; asiy9: $data->file = $data->file ?? $data->current_file; goto bMbI3; ghJjC: $data->flag_aktif = $data->flag_aktif == "\x74\x72\x75\145" ? "\x59" : "\x4e"; goto vd6kt; itlrV: $data->modified_date = $datetime_now; goto ghJjC; IN3KP: $username = auth()->user()->email; goto asiy9; bMbI3: $data->modified_by = $username; goto itlrV; vN4G1: $datetime_now = Carbon::now("\x41\x73\x69\141\57\x4a\141\153\x61\162\164\141"); goto IN3KP; ckR69: } public function delete(string $id) { return $this->TitikFokus_repo->delete($id, $this->client_id); } }
+
+namespace App\Services\Setting;
+
+use App\Repositories\Setting\TitikFokusMasterRepository;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
+
+class TitikFokusMasterService 
+{
+	private TitikFokusMasterRepository $TitikFokus_repo;
+
+    protected $client_id = '';
+    public function __construct()
+    {
+        $this->TitikFokus_repo = new TitikFokusMasterRepository();
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get(array $filter = []): Collection
+    {
+        return new Collection($this->TitikFokus_repo->get($filter, $this->client_id));
+    }
+
+    /**
+     * @param object $data
+     * @return bool
+     */
+    public function store(object $data): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+        $username = auth()->user()->email;
+
+        $data->create_by        = $username;
+        $data->create_date      = $datetime_now;
+        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
+
+        return $this->TitikFokus_repo->store($data, $this->client_id);
+    }
+
+     /**
+     * @param object $data
+     * @param string $id
+     * @return bool
+     */
+    public function update(object $data, string $id): bool
+    {
+        $datetime_now = Carbon::now("Asia/Jakarta");
+        $username = auth()->user()->email;
+
+        $data->file = $data->file ?? $data->current_file;
+
+        $data->modified_by 		= $username;
+        $data->modified_date 	= $datetime_now;
+        $data->flag_aktif       = $data->flag_aktif=='true' ? 'Y' : 'N';
+
+        return $this->TitikFokus_repo->update($data, $id, $this->client_id);
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function delete(string $id)
+    {
+        return $this->TitikFokus_repo->delete($id, $this->client_id);
+    }
+}

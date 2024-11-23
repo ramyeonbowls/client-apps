@@ -8,8 +8,8 @@
     "file": "assets/_commonjsHelpers-DSXiPLDm.js",
     "name": "_commonjsHelpers"
   },
-  "__routes-BvLrOQag.js": {
-    "file": "assets/_routes-BvLrOQag.js",
+  "__routes-DVNIwmGs.js": {
+    "file": "assets/_routes-DVNIwmGs.js",
     "name": "_routes",
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js"
@@ -1231,7 +1231,7 @@
     "src": "public/images/flags/zw.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BMp0aUFV.js",
+    "file": "assets/app-Cb6zrqyE.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -1278,13 +1278,13 @@
     ]
   },
   "resources/js/appreader.js": {
-    "file": "assets/appreader-Buf1deCX.js",
+    "file": "assets/appreader-DFVwgvj6.js",
     "name": "appreader",
     "src": "resources/js/appreader.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BvLrOQag.js",
+      "__routes-DVNIwmGs.js",
       "resources/js/components/member/AppReader.vue",
       "__commonjsHelpers-DSXiPLDm.js",
       "_sweetalert2.all-BTEucekq.js"
@@ -1381,7 +1381,7 @@
     "isEntry": true
   },
   "resources/js/components/Home.vue": {
-    "file": "assets/Home-D7I4AUHS.js",
+    "file": "assets/Home-DogGgmct.js",
     "name": "Home",
     "src": "resources/js/components/Home.vue",
     "isDynamicEntry": true,
@@ -1390,7 +1390,7 @@
       "_sweetalert2.min-C72B2ZMm.js"
     ],
     "css": [
-      "assets/Home-C2jsL6oz.css"
+      "assets/Home-DUNYuX3X.css"
     ]
   },
   "resources/js/components/Profile.vue": {
@@ -1470,7 +1470,7 @@
     ]
   },
   "resources/js/components/member/AppReader.vue": {
-    "file": "assets/AppReader-Cx-RmIJi.js",
+    "file": "assets/AppReader-lDPm5ik3.js",
     "name": "AppReader",
     "src": "resources/js/components/member/AppReader.vue",
     "isDynamicEntry": true,
@@ -1486,7 +1486,7 @@
       "___vite-browser-external-D7Ct-6yo.js"
     ],
     "css": [
-      "assets/AppReader-CcaWuQLK.css"
+      "assets/AppReader-BhOEgwxP.css"
     ],
     "assets": [
       "assets/pdf.worker-eDZEDl3N.mjs"
@@ -1506,7 +1506,7 @@
     ]
   },
   "resources/js/components/member/Book.vue": {
-    "file": "assets/Book-DI6r1NVf.js",
+    "file": "assets/Book-dB18g4DP.js",
     "name": "Book",
     "src": "resources/js/components/member/Book.vue",
     "isDynamicEntry": true,
@@ -1515,7 +1515,7 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
-      "assets/Book-N80g5a0I.css"
+      "assets/Book-aZZ5SZmd.css"
     ]
   },
   "resources/js/components/member/DetailArtikel.vue": {
@@ -1585,7 +1585,7 @@
     ]
   },
   "resources/js/components/member/HomeMain.vue": {
-    "file": "assets/HomeMain-Cv0jmpg-.js",
+    "file": "assets/HomeMain-C1fqxHxy.js",
     "name": "HomeMain",
     "src": "resources/js/components/member/HomeMain.vue",
     "isDynamicEntry": true,
@@ -1595,7 +1595,7 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
-      "assets/HomeMain-DwVYQQmk.css"
+      "assets/HomeMain-CAMiQPMa.css"
     ]
   },
   "resources/js/components/member/ListGames.vue": {
@@ -1661,7 +1661,7 @@
     ]
   },
   "resources/js/components/member/ViewBook.vue": {
-    "file": "assets/ViewBook-pOoSI3XO.js",
+    "file": "assets/ViewBook-DcB3qS3D.js",
     "name": "ViewBook",
     "src": "resources/js/components/member/ViewBook.vue",
     "isDynamicEntry": true,
@@ -1671,7 +1671,7 @@
       "__commonjsHelpers-DSXiPLDm.js"
     ],
     "css": [
-      "assets/ViewBook-BBKQVuyq.css"
+      "assets/ViewBook-C5-7zoy1.css"
     ]
   },
   "resources/js/components/member/formLogin.vue": {
@@ -1987,13 +1987,13 @@
     ]
   },
   "resources/js/form.js": {
-    "file": "assets/form-Be5hj9-s.js",
+    "file": "assets/form-CT3d-I8d.js",
     "name": "form",
     "src": "resources/js/form.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BvLrOQag.js",
+      "__routes-DVNIwmGs.js",
       "_vee-validate.esm-Nlz2O7Po.js",
       "__commonjsHelpers-DSXiPLDm.js"
     ]
@@ -2009,13 +2009,13 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-RjnN4TZU.js",
+    "file": "assets/main-DNRxVhs0.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2.min-C72B2ZMm.js",
-      "__routes-BvLrOQag.js",
+      "__routes-DVNIwmGs.js",
       "_component-DpQEOCBu.js",
       "_v4-DvF23Exx.js",
       "__commonjsHelpers-DSXiPLDm.js",

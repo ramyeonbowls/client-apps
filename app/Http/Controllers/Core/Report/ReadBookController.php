@@ -1,8 +1,153 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Report; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use App\Http\Controllers\Controller; use Maatwebsite\Excel\Facades\Excel; use App\Exports\Report\ReadbookExport; use App\Services\Report\ReadBookService; use Yajra\DataTables\Facades\DataTables; class ReadBookController extends Controller { private ReadBookService $book_service; public function __construct() { $this->middleware("\141\165\164\150"); $this->book_service = new ReadBookService(); } public function index(Request $request) : JsonResponse { goto OAN3F; fDCTt: try { goto wzZmP; n36Sf: $filter["\123\x54\101\x52\x54\x5f\104\101\124\105"] = $request->START_DATE ?? ''; goto icBnY; bKOu0: ADv68: goto giIRP; jGvNF: $q = 0; goto vxbYU; sD7Hm: goto i_J1X; goto QFEp5; icBnY: $filter["\x45\x4e\x44\137\104\101\x54\x45"] = $request->END_DATE ?? ''; goto fYHLp; QFEp5: iXIzU: goto BBq62; Bp0S4: $sql = Str::replaceArray("\77", $queries[$q]["\142\151\156\144\151\x6e\147\163"], str_replace("\x3f", "\x27\77\47", $queries[$q]["\x71\x75\145\x72\x79"])); goto YA5r1; XDtmV: $logs->write("\123\121\114", $sql); goto bKOu0; r1d1F: $filter["\x50\122\117\x56\x49\x4e\123\x49"] = $request->PROVINSI ?? ''; goto vWAx1; luJ3W: if (!($q < count($queries))) { goto iXIzU; } goto Bp0S4; vxbYU: i_J1X: goto luJ3W; fYHLp: $results = $this->book_service->get($filter); goto KkOso; giIRP: $q++; goto sD7Hm; vWAx1: $filter["\113\101\102\125\x50\x41\124\x45\116"] = $request->KABUPATEN ?? ''; goto f4Lpo; f4Lpo: $filter["\x57\114"] = $request->WL ?? ''; goto n36Sf; KkOso: $queries = DB::getQueryLog(); goto jGvNF; wzZmP: DB::enableQueryLog(); goto r1d1F; YA5r1: $logs->write("\x42\111\x4e\104\111\x4e\x47", "\x5b" . implode("\54\x20", $queries[$q]["\142\x69\156\144\151\156\x67\163"]) . "\x5d"); goto XDtmV; BBq62: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\122", $th->getMessage()); } goto DnPSO; Gwyzd: return DataTables::of($results)->escapeColumns()->addIndexColumn()->toJson(); goto Z2xKW; LMPzS: ro7qW: goto h3wpf; DnPSO: $logs->write(__FUNCTION__, "\123\124\x4f\x50\xd\12"); goto Gwyzd; wppR5: $results = []; goto fDCTt; OAN3F: if (!$request->has("\156\157\x64\x61\x74\x61")) { goto ro7qW; } goto o1ewn; CEhtS: $logs->write(__FUNCTION__, "\x53\x54\x41\122\124"); goto wppR5; o1ewn: return DataTables::of([])->toJson(); goto LMPzS; h3wpf: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\147"); goto CEhtS; Z2xKW: } public function store() { } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update() { } public function destroy(string $id) : JsonResponse { } public function ExportXLS(Request $request) { goto KGnWa; OJFvp: $logs->write("\123\x51\x4c", $sql); goto Gn_IQ; KGnWa: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\x67"); goto cau2x; SZnP6: $logs->write("\x42\x49\116\x44\x49\116\107", "\x5b" . implode("\x2c\40", $queries[$q]["\142\x69\156\144\151\156\147\163"]) . "\x5d"); goto OJFvp; JARF2: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\144\151\156\x67\x73"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\161\165\145\x72\171"])); goto SZnP6; yyxKd: b8qCJ: goto s0qjY; WY1wG: return Excel::download(new ReadbookExport($results), "\114\x61\x70\x6f\162\x61\156\137\102\141\x63\141\137\102\165\x6b\x75\x2e\x78\154\163\170"); goto ehcnG; LHh1O: if (!($q < count($queries))) { goto b8qCJ; } goto JARF2; pFKDR: $q = 0; goto fWwpj; fWwpj: AHq_F: goto LHh1O; Gn_IQ: tAT94: goto St3aj; JAXqp: $queries = DB::getQueryLog(); goto pFKDR; pOigD: $results = []; goto MI2Fl; MI2Fl: try { goto LDJQM; TCth6: $filter["\x50\122\x4f\x56\x49\x4e\x53\x49"] = $request->PROVINSI ?? ''; goto LLQQU; LDJQM: DB::enableQueryLog(); goto TCth6; UQlL9: $filter["\x53\124\x41\122\124\137\x44\x41\x54\105"] = $request->START_DATE ?? ''; goto ln9DE; LcFtN: $this->book_service->get($filter)->map(function ($value, $i) use(&$results) { goto McLPt; McLPt: $results[$i]["\x77\154\137\156\141\x6d\x65"] = $value->wl_name; goto h5IcR; pwY_6: $results[$i]["\153\141\x62\x75\160\141\x74\x65\x6e\x5f\x6e\x61\155\x65"] = $value->kabupaten_name; goto Px01N; h5IcR: $results[$i]["\160\x72\x6f\166\151\x6e\163\151\x5f\156\141\155\x65"] = $value->provinsi_name; goto pwY_6; Px01N: $results[$i]["\x70\x65\155\142\x61\143\x61"] = $value->pembaca; goto AD4RP; AD4RP: $results[$i]["\144\165\162\141\163\151"] = $value->durasi; goto DIfTH; DIfTH: }); goto aG05V; ln9DE: $filter["\105\116\x44\x5f\x44\101\124\105"] = $request->END_DATE ?? ''; goto LcFtN; wKmfc: $filter["\127\x4c"] = $request->WL ?? ''; goto UQlL9; LLQQU: $filter["\x4b\x41\x42\x55\120\x41\124\105\116"] = $request->KABUPATEN ?? ''; goto wKmfc; aG05V: } catch (\Exception $e) { $logs->write("\105\122\122\x4f\122", $e->getMessage()); } goto JAXqp; cau2x: $logs->write(__FUNCTION__, "\x53\124\x41\122\124"); goto pOigD; St3aj: $q++; goto BIvt2; s0qjY: $logs->write(__FUNCTION__, "\123\124\117\x50\xd\xa"); goto WY1wG; BIvt2: goto AHq_F; goto yyxKd; ehcnG: } }
+
+namespace App\Http\Controllers\Core\Report;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Report\ReadbookExport;
+use App\Services\Report\ReadBookService;
+use Yajra\DataTables\Facades\DataTables;
+
+class ReadBookController extends Controller
+{
+    private ReadBookService $book_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->book_service = new ReadBookService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        if($request->has('nodata')) {
+            return DataTables::of([])->toJson();
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+            $filter['START_DATE']   = $request->START_DATE ?? '';
+            $filter['END_DATE']     = $request->END_DATE ?? '';
+
+            $results = $this->book_service->get($filter);
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update()
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        //
+    }
+
+    public function ExportXLS(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+            $filter['START_DATE']   = $request->START_DATE ?? '';
+            $filter['END_DATE']     = $request->END_DATE ?? '';
+
+            $this->book_service->get($filter)->map(function($value, $i) use (&$results) {
+                $results[$i]['wl_name']         = $value->wl_name;
+                $results[$i]['provinsi_name']   = $value->provinsi_name;
+                $results[$i]['kabupaten_name']  = $value->kabupaten_name;
+    			$results[$i]['pembaca']         = $value->pembaca;
+    			$results[$i]['durasi']          = $value->durasi;
+            });
+        } catch (\Exception $e) {
+            $logs->write("ERROR", $e->getMessage());
+        }
+
+        $queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return Excel::download(new ReadbookExport($results), 'Laporan_Baca_Buku.xlsx');
+    }
+}

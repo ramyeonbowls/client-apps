@@ -1,8 +1,103 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Auth; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use App\Http\Controllers\Controller; use Illuminate\Auth\Events\Verified; use Illuminate\Foundation\Auth\User; use Illuminate\Support\Facades\Auth; use Illuminate\Foundation\Auth\VerifiesEmails; use Illuminate\Auth\Access\AuthorizationException; class VerificationController extends Controller { use VerifiesEmails; protected $redirectTo = "\x2f"; public function __construct() { goto qD8DX; qD8DX: $this->middleware("\141\165\164\150")->except("\166\x65\x72\x69\146\x79"); goto pL4fg; dtrcw: $this->middleware("\164\x68\162\157\x74\164\154\x65\x3a\66\x2c\61")->only("\x76\145\162\x69\x66\x79", "\x72\145\163\x65\x6e\x64"); goto d6RCo; pL4fg: $this->middleware("\163\151\147\156\x65\144")->only("\x76\145\162\151\146\x79"); goto dtrcw; d6RCo: } public function verify(Request $request) { goto GGLWi; m3AOT: return $request->wantsJson() ? new JsonResponse([], 204) : redirect($this->redirectPath())->with("\x76\145\x72\151\x66\x69\145\144", true); goto lkR0q; qqsUp: lTNEr: goto qYjrX; fNSYT: throw new AuthorizationException(); goto qqsUp; k8ooB: if (hash_equals((string) $request->route("\151\x64"), (string) $user->getKey())) { goto M1JbG; } goto x2UE7; qYjrX: if (!$user->hasVerifiedEmail()) { goto odjhF; } goto HO4LJ; XyriN: Auth::login($user); goto HoYPb; jnxQt: odjhF: goto Zt5sy; CtHqA: event(new Verified($user)); goto YUEFd; GGLWi: $user = User::findOrFail($request->route("\x69\x64")); goto k8ooB; x2UE7: throw new AuthorizationException(); goto pLVJK; lTQ93: if (hash_equals((string) $request->route("\x68\x61\x73\x68"), sha1($user->getEmailForVerification()))) { goto lTNEr; } goto fNSYT; YUEFd: if ($user->flag_approve === "\x59") { goto xXJlK; } goto f_SGc; nK4pQ: xXJlK: goto XyriN; HoYPb: ACvUw: goto d3Xla; HO4LJ: return $request->wantsJson() ? new JsonResponse([], 204) : redirect($this->redirectPath())->with("\x76\x65\x72\151\146\151\x65\x64", true); goto jnxQt; XFbpQ: goto ACvUw; goto nK4pQ; f_SGc: return $request->wantsJson() ? new JsonResponse(["\155\x65\x73\163\x61\147\x65" => "\x41\x6b\165\156\40\141\156\x64\141\40\x62\x65\154\165\x6d\x20\x64\151\40\141\x70\160\162\157\x76\x65\x2c\x20\163\x69\154\x61\x68\x6b\x61\x6e\x20\x68\x75\142\165\x6e\x67\151\40\160\x65\164\x75\x67\x61\x73\40\x70\x65\x72\160\165\163\x74\x61\153\141\x61\156\x2e"], 403) : redirect($this->redirectPath())->withErrors(["\145\x6d\x61\x69\154" => "\101\x6b\165\x6e\40\x61\x6e\x64\x61\x20\142\145\154\165\x6d\40\144\x69\x20\141\160\x70\x72\157\166\x65\x2c\x20\163\x69\154\x61\150\153\141\156\x20\x68\165\x62\x75\156\x67\x69\x20\x70\145\x74\x75\147\x61\x73\40\160\145\162\x70\165\163\164\x61\153\x61\141\x6e\56"]); goto XFbpQ; pLVJK: M1JbG: goto lTQ93; Zt5sy: if (!$user->markEmailAsVerified()) { goto LtTQ9; } goto CtHqA; d3Xla: LtTQ9: goto m3AOT; lkR0q: } public function resend(Request $request) { goto fBM9c; Jq6kP: CJcc_: goto n0WKW; hCeRJ: return $request->wantsJson() ? new JsonResponse([], 204) : redirect($this->redirectPath()); goto Jq6kP; fBM9c: if (!$request->user()->hasVerifiedEmail()) { goto CJcc_; } goto hCeRJ; n0WKW: $request->user()->sendEmailVerificationNotification(); goto l1H5O; l1H5O: return $request->wantsJson() ? new JsonResponse([], 202) : back()->with("\162\145\x73\x65\156\x74", true); goto ENkBZ; ENkBZ: } }
+
+namespace App\Http\Controllers\Auth;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Auth\Access\AuthorizationException;
+
+class VerificationController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Email Verification Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for handling email verification for any
+    | user that recently registered with the application. Emails may also
+    | be re-sent if the user didn't receive the original email message.
+    |
+    */
+
+    use VerifiesEmails;
+
+    /**
+     * Where to redirect users after verification.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('verify');
+        $this->middleware('signed')->only('verify');
+        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    public function verify(Request $request)
+    {
+        $user = User::findOrFail($request->route('id'));
+
+        if (! hash_equals((string) $request->route('id'), (string) $user->getKey())) {
+            throw new AuthorizationException;
+        }
+
+        if (! hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
+            throw new AuthorizationException;
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            return $request->wantsJson()
+                        ? new JsonResponse([], 204)
+                        : redirect($this->redirectPath())->with('verified', true);
+        }
+
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
+
+            if ($user->flag_approve === 'Y') {
+                Auth::login($user);
+            } else {
+                return $request->wantsJson()
+                        ? new JsonResponse(['message' => 'Akun anda belum di approve, silahkan hubungi petugas perpustakaan.'], 403)
+                        : redirect($this->redirectPath())->withErrors(['email' => 'Akun anda belum di approve, silahkan hubungi petugas perpustakaan.']);
+            }
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 204)
+                    : redirect($this->redirectPath())->with('verified', true);
+    }
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function resend(Request $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return $request->wantsJson()
+                        ? new JsonResponse([], 204)
+                        : redirect($this->redirectPath());
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 202)
+                    : back()->with('resent', true);
+    }
+}

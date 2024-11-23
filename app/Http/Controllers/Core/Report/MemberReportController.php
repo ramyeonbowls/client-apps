@@ -1,8 +1,150 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Report; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use App\Http\Controllers\Controller; use Maatwebsite\Excel\Facades\Excel; use App\Exports\Report\MemberReportExport; use App\Services\Report\MemberReportService; use Yajra\DataTables\Facades\DataTables; class MemberReportController extends Controller { private MemberReportService $book_service; public function __construct() { $this->middleware("\x61\165\x74\150"); $this->book_service = new MemberReportService(); } public function index(Request $request) : JsonResponse { goto ByIyz; Q_yaZ: try { goto aKxs_; WmMZW: $q++; goto yL0ek; PBwns: out39: goto xa2R1; K_HFW: y4cD3: goto JOVkV; WXuVA: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\144\151\156\147\x73"], str_replace("\77", "\x27\x3f\x27", $queries[$q]["\161\165\145\x72\171"])); goto TZjuw; aKxs_: DB::enableQueryLog(); goto UBbnv; jSGam: $results = $this->book_service->get($filter); goto G2WRA; PTlCa: $filter["\x4b\101\102\125\x50\101\124\105\116"] = $request->KABUPATEN ?? ''; goto VgkSy; G2WRA: $queries = DB::getQueryLog(); goto U4rb2; xa2R1: if (!($q < count($queries))) { goto y4cD3; } goto WXuVA; TZjuw: $logs->write("\102\x49\116\x44\111\116\107", "\133" . implode("\54\x20", $queries[$q]["\142\x69\x6e\x64\x69\156\147\x73"]) . "\135"); goto HxXKE; I45K3: UdNHn: goto WmMZW; HxXKE: $logs->write("\x53\x51\x4c", $sql); goto I45K3; yL0ek: goto out39; goto K_HFW; U4rb2: $q = 0; goto PBwns; UBbnv: $filter["\120\122\117\x56\x49\x4e\x53\111"] = $request->PROVINSI ?? ''; goto PTlCa; VgkSy: $filter["\127\114"] = $request->WL ?? ''; goto jSGam; JOVkV: } catch (Throwable $th) { $logs->write("\105\x52\x52\117\x52", $th->getMessage()); } goto gkNM6; SNKCJ: $results = []; goto Q_yaZ; VcCmj: return DataTables::of([])->toJson(); goto lVNEN; k5Zcg: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\x6f\x67"); goto U_D0B; U_D0B: $logs->write(__FUNCTION__, "\x53\x54\x41\122\x54"); goto SNKCJ; WV4kV: return DataTables::of($results)->escapeColumns()->addIndexColumn()->toJson(); goto rHg4N; ByIyz: if (!$request->has("\156\x6f\144\x61\164\x61")) { goto qN80U; } goto VcCmj; gkNM6: $logs->write(__FUNCTION__, "\123\124\117\x50\15\xa"); goto WV4kV; lVNEN: qN80U: goto k5Zcg; rHg4N: } public function store() { } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update() { } public function destroy(string $id) : JsonResponse { } public function ExportXLS(Request $request) { goto fzcv0; K90Ea: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\x64\151\x6e\147\163"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\x71\x75\145\162\171"])); goto gTLci; xbywu: goto Bj_3N; goto IywqY; iZ2VT: if (!($q < count($queries))) { goto hIp1h; } goto K90Ea; fzcv0: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\147"); goto MEUps; zIFJw: $q = 0; goto giNmh; k0CWv: $q++; goto xbywu; a2K3x: $logs->write("\123\x51\x4c", $sql); goto W6jrW; MEUps: $logs->write(__FUNCTION__, "\123\x54\x41\122\x54"); goto n32z0; vlJ8X: $queries = DB::getQueryLog(); goto zIFJw; IywqY: hIp1h: goto B0i7g; LIzj6: return Excel::download(new MemberReportExport($results), "\x4c\141\160\x6f\x72\141\156\x5f\102\141\x63\x61\x5f\x42\x75\153\x75\x2e\170\x6c\x73\x78"); goto KbQlP; n32z0: $results = []; goto sSsg3; gTLci: $logs->write("\x42\x49\x4e\x44\111\116\x47", "\133" . implode("\54\40", $queries[$q]["\142\x69\x6e\x64\x69\156\x67\163"]) . "\135"); goto a2K3x; sSsg3: try { goto seipy; ZeUzt: $filter["\113\101\x42\x55\x50\x41\124\x45\116"] = $request->KABUPATEN ?? ''; goto EoAv1; EoAv1: $filter["\x57\114"] = $request->WL ?? ''; goto rVhTX; J1V1Z: $filter["\x50\x52\117\x56\111\116\x53\x49"] = $request->PROVINSI ?? ''; goto ZeUzt; rVhTX: $this->book_service->get($filter)->map(function ($value, $i) use(&$results) { goto PmPxA; cGhCI: $results[$i]["\145\155\141\x69\x6c"] = $value->email; goto CCUHr; cv3AY: $results[$i]["\x70\162\157\166\x69\156\163\x69\137\156\141\155\x65"] = $value->provinsi_name; goto b8Yxs; UDdDp: $results[$i]["\156\141\x6d\145"] = $value->name; goto cGhCI; b8Yxs: $results[$i]["\153\x61\x62\x75\160\141\x74\x65\x6e\137\156\141\155\x65"] = $value->kabupaten_name; goto UDdDp; PmPxA: $results[$i]["\167\154\x5f\x6e\x61\x6d\145"] = $value->wl_name; goto cv3AY; CCUHr: $results[$i]["\x63\162\145\141\164\145\144\x5f\x61\x74"] = $value->created_at; goto z_bg4; z_bg4: }); goto d32Hv; seipy: DB::enableQueryLog(); goto J1V1Z; d32Hv: } catch (\Exception $e) { $logs->write("\105\122\122\x4f\x52", $e->getMessage()); } goto vlJ8X; W6jrW: x05W9: goto k0CWv; B0i7g: $logs->write(__FUNCTION__, "\123\x54\x4f\120\xd\xa"); goto LIzj6; giNmh: Bj_3N: goto iZ2VT; KbQlP: } }
+
+namespace App\Http\Controllers\Core\Report;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Report\MemberReportExport;
+use App\Services\Report\MemberReportService;
+use Yajra\DataTables\Facades\DataTables;
+
+class MemberReportController extends Controller
+{
+    private MemberReportService $book_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->book_service = new MemberReportService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        if($request->has('nodata')) {
+            return DataTables::of([])->toJson();
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+
+            $results = $this->book_service->get($filter);
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update()
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        //
+    }
+
+    public function ExportXLS(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $filter['PROVINSI']     = $request->PROVINSI ?? '';
+            $filter['KABUPATEN']    = $request->KABUPATEN ?? '';
+            $filter['WL']           = $request->WL ?? '';
+
+            $this->book_service->get($filter)->map(function($value, $i) use (&$results) {
+                $results[$i]['wl_name']         = $value->wl_name;
+                $results[$i]['provinsi_name']   = $value->provinsi_name;
+                $results[$i]['kabupaten_name']  = $value->kabupaten_name;
+    			$results[$i]['name']            = $value->name;
+    			$results[$i]['email']           = $value->email;
+    			$results[$i]['created_at']      = $value->created_at;
+            });
+        } catch (\Exception $e) {
+            $logs->write("ERROR", $e->getMessage());
+        }
+
+        $queries = DB::getQueryLog();
+        for($q = 0; $q < count($queries); $q++) {
+            $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            $logs->write('SQL', $sql);
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return Excel::download(new MemberReportExport($results), 'Laporan_Baca_Buku.xlsx');
+    }
+}

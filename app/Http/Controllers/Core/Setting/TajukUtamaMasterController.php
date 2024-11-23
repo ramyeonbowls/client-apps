@@ -1,8 +1,234 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Setting\TajukUtamaMasterService; use App\Http\Requests\Setting\StoreTajukUtamaMasterRequest; use App\Http\Requests\Setting\UpdateTajukUtamaMasterRequest; class TajukUtamaMasterController extends Controller { private TajukUtamaMasterService $TajukUtama_service; public function __construct() { $this->middleware("\141\x75\164\150"); $this->TajukUtama_service = new TajukUtamaMasterService(); } public function index(Request $request) : JsonResponse { goto PEEaw; kHG06: try { goto cXSzf; e09d2: $q = 0; goto NOAXX; kYw0n: $q++; goto cEyaJ; cEyaJ: goto yJZr2; goto DOW6A; AbggA: $results = $this->TajukUtama_service->get(); goto F73Y6; DOW6A: wYZos: goto mqqsP; cXSzf: DB::enableQueryLog(); goto AbggA; XSq1I: if (!($q < count($queries))) { goto wYZos; } goto GnkjJ; F73Y6: $queries = DB::getQueryLog(); goto e09d2; CQczo: H6t8f: goto kYw0n; GnkjJ: $logs->write("\102\111\x4e\x44\111\116\x47", "\133" . implode("\x2c\40", $queries[$q]["\x62\x69\x6e\x64\151\156\147\163"]) . "\x5d"); goto ZTOJ5; ZTOJ5: $logs->write("\123\121\114", $queries[$q]["\x71\165\145\162\171"]); goto CQczo; NOAXX: yJZr2: goto XSq1I; mqqsP: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\122", $th->getMessage()); } goto SeYgz; Wgm1l: $results = []; goto kHG06; sb23N: $logs->write(__FUNCTION__, "\x53\124\101\122\124"); goto Wgm1l; SeYgz: $logs->write(__FUNCTION__, "\123\x54\117\120\xd\12"); goto i1yDV; i1yDV: return DataTables::of($results)->escapeColumns()->editColumn("\143\162\x65\x61\164\x65\144\x5f\141\x74", function ($value) { return Carbon::parse($value->created_at)->toDateTimeString(); })->editColumn("\165\x70\144\141\x74\x65\x64\x5f\x61\x74", function ($value) { return Carbon::parse($value->updated_at)->toDateTimeString(); })->addIndexColumn()->toJson(); goto xNfeC; PEEaw: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\157\147"); goto sb23N; xNfeC: } public function store(StoreTajukUtamaMasterRequest $request) : JsonResponse { goto WkJTq; GXNpp: $logs->write(__FUNCTION__, "\123\x54\x41\122\124"); goto UOLQz; xNgvK: $result["\x6d\145\163\x73\141\147\x65"] = ''; goto Tto8M; UOLQz: $result["\163\164\x61\164\x75\163"] = 200; goto xNgvK; Tto8M: try { goto iD8Zf; VyCCz: $q++; goto lgr7L; TLYNk: mEYek: goto JJSvk; NsAL8: try { goto fK4zF; DiB3F: $validated["\x66\x69\x6c\145"] = $TajukUtama_name; goto U9mDt; lzBHd: $extension = $request->file("\146\x69\x6c\145")->getClientOriginalExtension(); goto lpDA_; lpDA_: $TajukUtama_name = "\x54\125\x5f" . $request->id . "\x2e" . $extension; goto E51Nx; E51Nx: $request->file("\146\151\154\145")->storeAs("\x2f\160\165\142\x6c\151\143\57\x69\x6d\x61\147\x65\163\57\x6e\x65\167\x73", $TajukUtama_name); goto DiB3F; fK4zF: $TajukUtama_file = $request->file("\x66\x69\x6c\145")->getClientOriginalName(); goto lzBHd; U9mDt: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\122", $th->getMessage()); } goto fQYhu; nWGvc: if (!$created) { goto m1MhN; } goto U3yQ7; fQYhu: cIic4: goto auEJ3; RKeIR: FIeGz: goto tJVaX; MYrk1: $result["\x6d\x65\x73\x73\x61\147\x65"] = "\x44\x61\164\141\40\x62\x65\162\150\x61\x73\x69\154\40\x64\151\x62\165\141\x74\56"; goto deEBd; uEk7D: $logs->write("\x42\x49\116\104\x49\x4e\x47", "\133" . implode("\54\40", $queries[$q]["\x62\x69\x6e\144\151\156\147\163"]) . "\x5d"); goto H77qs; auEJ3: $created = $this->TajukUtama_service->store((object) $validated); goto nWGvc; w9uii: if (!$request->hasFile("\146\151\x6c\x65")) { goto cIic4; } goto NsAL8; deEBd: m1MhN: goto v_omn; lgr7L: goto FIeGz; goto TLYNk; tJVaX: if (!($q < count($queries))) { goto mEYek; } goto uEk7D; U3yQ7: $logs->write("\111\x4e\106\117", "\x53\x75\x63\143\x65\163\163\x66\165\154\154\x79\x20\143\x72\145\141\x74\145\144"); goto qTqqI; kXzrk: dcI12: goto VyCCz; H77qs: $logs->write("\x53\x51\114", $queries[$q]["\x71\165\x65\162\x79"]); goto kXzrk; v_omn: $queries = DB::getQueryLog(); goto FRYHf; qTqqI: $result["\163\x74\141\x74\165\x73"] = 201; goto MYrk1; FRYHf: $q = 0; goto RKeIR; iD8Zf: DB::enableQueryLog(); goto w9uii; JJSvk: } catch (Throwable $th) { $logs->write("\x45\122\122\x4f\122", $th->getMessage()); $result["\x6d\x65\x73\x73\x61\x67\x65"] = "\x44\x61\164\x61\40\147\x61\x67\x61\154\x20\144\x69\142\165\141\x74\56\x3c\142\162\76" . $th->getMessage(); } goto oapcl; g_y9B: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\147"); goto GXNpp; oapcl: $logs->write(__FUNCTION__, "\123\124\117\120\xd\12"); goto tcqPI; tcqPI: return response()->json($result["\x6d\x65\x73\x73\x61\x67\145"], $result["\x73\x74\141\164\165\x73"]); goto E4f9g; WkJTq: $validated = $request->validated(); goto g_y9B; E4f9g: } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update(UpdateTajukUtamaMasterRequest $request, string $id) : JsonResponse { goto a4Ykx; q60i4: return response()->json($result["\155\145\x73\163\141\x67\145"], $result["\x73\x74\141\x74\165\163"]); goto OfxRI; a4Ykx: try { $validated = $request->validated(); } catch (ValidationException $e) { return response()->json(["\145\x72\162\x6f\x72" => $e->errors()], 422); } goto bU0yY; Vq69W: $logs->write(__FUNCTION__, "\x53\x54\x41\x52\x54"); goto AI2QO; wsUar: try { goto QWe08; OBcGL: CNYS7: goto ueI8w; CbCRN: $q = 0; goto eMTRu; SYdd6: $result["\x73\x74\141\164\x75\x73"] = 201; goto I2Bob; ueI8w: $q++; goto f16dR; MTp4L: if (!($q < count($queries))) { goto HFYAb; } goto Y3fJH; Y3fJH: $logs->write("\x42\111\116\104\x49\x4e\x47", "\133" . implode("\x2c\40", $queries[$q]["\142\x69\x6e\x64\x69\x6e\x67\163"]) . "\x5d"); goto INbR9; Qdpn7: tNBCl: goto g_Qne; b2gPP: if (!$updated) { goto tNBCl; } goto h2sIK; I2Bob: $result["\x6d\x65\163\163\141\147\x65"] = "\104\141\164\141\40\142\145\x72\x68\x61\x73\x69\154\x20\x64\x69\x70\145\x72\142\141\162\165\151\x2e"; goto Qdpn7; INbR9: $logs->write("\123\x51\x4c", $queries[$q]["\161\165\x65\162\x79"]); goto OBcGL; S0k6J: HFYAb: goto o7gnG; h2sIK: $logs->write("\x49\116\x46\117", "\123\x75\x63\143\x65\x73\163\146\165\x6c\x6c\x79\40\165\160\144\141\164\x65\144"); goto SYdd6; QWe08: DB::enableQueryLog(); goto hOvUU; ZvDEj: bCHet: goto to1yW; f16dR: goto f0gDu; goto S0k6J; to1yW: $updated = $this->TajukUtama_service->update((object) $validated, $id); goto b2gPP; g_Qne: $queries = DB::getQueryLog(); goto CbCRN; hOvUU: if (!$request->hasFile("\x66\x69\x6c\x65")) { goto bCHet; } goto cnJaL; eMTRu: f0gDu: goto MTp4L; cnJaL: try { goto oc86r; jlYcE: $request->file("\146\151\154\145")->storeAs("\57\160\x75\142\x6c\x69\x63\57\151\155\x61\x67\145\x73\57\156\145\167\163", $TajukUtama_name); goto TjCxo; oc86r: $TajukUtama_file = $request->file("\146\x69\x6c\145")->getClientOriginalName(); goto tuRMQ; TjCxo: $validated["\x66\x69\154\145"] = $TajukUtama_name; goto MqNvA; hi4iW: $TajukUtama_name = "\x54\125\x5f" . $request->id . "\x2e" . $extension; goto jlYcE; tuRMQ: $extension = $request->file("\146\x69\154\145")->getClientOriginalExtension(); goto hi4iW; MqNvA: } catch (Throwable $th) { $logs->write("\x45\x52\122\x4f\122", $th->getMessage()); } goto ZvDEj; o7gnG: } catch (Throwable $th) { $logs->write("\105\122\122\117\122", $th->getMessage()); $result["\x6d\x65\163\x73\x61\x67\145"] = "\x44\141\x74\141\x20\147\141\x67\141\154\40\x64\151\160\x65\x72\142\x61\162\165\151\56\74\142\162\76" . $th->getMessage(); } goto q60i4; bU0yY: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\x67"); goto Vq69W; H4S1s: $result["\x6d\x65\163\163\141\147\145"] = ''; goto wsUar; AI2QO: $result["\x73\x74\x61\164\165\163"] = 200; goto H4S1s; OfxRI: } public function destroy(string $id) : JsonResponse { goto tGpJl; k3U9k: try { goto RUwnH; v5Jps: $logs->write("\x53\121\114", $queries[$q]["\x71\x75\x65\162\x79"]); goto RCvSk; DRGvm: tpeLE: goto l6UVC; wmsxo: goto Eht4A; goto DRGvm; W0gr7: $deleted = $this->TajukUtama_service->delete($id); goto iWjpt; iWjpt: $queries = DB::getQueryLog(); goto rjWc0; l6UVC: if (!$deleted) { goto zoe2M; } goto bpadn; RUwnH: DB::enableQueryLog(); goto W0gr7; RCvSk: vQkxL: goto CeDFb; CeDFb: $q++; goto wmsxo; rjWc0: $q = 0; goto RSKBb; bpadn: $result["\155\145\x73\x73\x61\x67\x65"] = "\104\x61\164\x61\40\142\145\x72\150\x61\x73\x69\154\x20\x64\x69\x68\141\x70\x75\163"; goto SP39H; rPhBr: $logs->write("\x42\x49\116\x44\x49\116\107", "\x5b" . implode("\x2c\x20", $queries[$q]["\x62\151\x6e\x64\151\x6e\147\163"]) . "\135"); goto v5Jps; SP39H: zoe2M: goto Wj3wV; lt8lK: if (!($q < count($queries))) { goto tpeLE; } goto rPhBr; RSKBb: Eht4A: goto lt8lK; Wj3wV: } catch (Throwable $th) { $logs->write("\x45\122\x52\117\x52", $th->getMessage()); $result["\x6d\145\x73\163\141\147\x65"] = "\104\141\x74\x61\x20\147\x61\147\141\154\40\144\x69\x68\x61\x70\x75\163\56\x3c\142\x72\76" . $th->getMessage(); } goto sf19i; w4hu0: return response()->json($result["\155\145\x73\x73\141\x67\x65"], $result["\163\x74\x61\x74\165\163"]); goto mtfOS; tGpJl: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\157\147"); goto xOnJk; mtXKp: $result["\155\145\x73\163\x61\x67\x65"] = ''; goto k3U9k; sf19i: $logs->write(__FUNCTION__, "\x53\124\x4f\120\xd\xa"); goto w4hu0; xOnJk: $logs->write(__FUNCTION__, "\123\124\x41\122\x54"); goto y2OVx; y2OVx: $result["\x73\164\141\x74\x75\x73"] = 200; goto mtXKp; mtfOS: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Setting\TajukUtamaMasterService;
+use App\Http\Requests\Setting\StoreTajukUtamaMasterRequest;
+use App\Http\Requests\Setting\UpdateTajukUtamaMasterRequest;
+
+class TajukUtamaMasterController extends Controller
+{
+    private TajukUtamaMasterService $TajukUtama_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->TajukUtama_service = new TajukUtamaMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->TajukUtama_service->get();
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('created_at', function ($value) {
+                return Carbon::parse($value->created_at)->toDateTimeString();
+            })
+            ->editColumn('updated_at', function ($value) {
+                return Carbon::parse($value->updated_at)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  IconMenuDeviceRequestStore  $request
+     * @return JsonResponse
+     */
+    public function store(StoreTajukUtamaMasterRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('file')) {
+                try {
+                    $TajukUtama_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $TajukUtama_name = 'TU_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $TajukUtama_name);
+
+                    $validated['file'] = $TajukUtama_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $created = $this->TajukUtama_service->store((object)$validated);
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil dibuat.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal dibuat.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateTajukUtamaMasterRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(UpdateTajukUtamaMasterRequest $request, string $id): JsonResponse
+    {
+        try {
+            $validated = $request->validated();
+            // Rest of your logic
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->errors()], 422);
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            if ($request->hasFile('file')) {
+                try {
+                    $TajukUtama_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $TajukUtama_name = 'TU_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $TajukUtama_name);
+
+                    $validated['file'] = $TajukUtama_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updated = $this->TajukUtama_service->update((object)$validated, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $deleted = $this->TajukUtama_service->delete($id);
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

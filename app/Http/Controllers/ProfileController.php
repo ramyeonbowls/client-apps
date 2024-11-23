@@ -1,8 +1,177 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers; use App\Logs; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Hash; use Illuminate\Support\Facades\Validator; class ProfileController extends Controller { protected $client_id = ''; public function __construct() { $this->middleware("\141\x75\164\x68"); $this->client_id = config("\141\x70\x70\56\143\154\x69\x65\x6e\x74\137\151\144", ''); } public function index() { goto AuLPs; FGcW8: return response()->json(["\156\x61\x6d\x65" => $user->name, "\145\x6d\141\x69\154" => $user->email, "\166\145\x72\x69\146\151\145\x64" => $user->email_verified_at != '' ? true : false, "\160\150\157\x6e\x65" => $attr[0]->phone ?? '', "\x67\x65\x6e\x64\x65\162" => $attr[0]->gender ?? '', "\x62\151\x72\x74\x68\x64\141\171" => $attr[0]->birthday ?? '', "\156\151\153" => $attr[0]->nik ?? '', "\141\166\141\x74\x61\162" => isset($attr[0]->avatar) && file_exists(public_path("\57\163\x74\157\162\141\147\145\x2f\151\155\x61\x67\x65\x73\57\160\162\x6f\146\151\154\x65\57" . $attr[0]->avatar)) ? "\x2f\x73\x74\157\162\x61\147\x65\57\151\155\x61\x67\145\163\x2f\x70\x72\x6f\x66\151\x6c\145\x2f" . $attr[0]->avatar : "\x2f\x73\164\157\162\x61\147\145\57\x69\x6d\x61\147\x65\x73\x2f\160\x72\157\146\151\x6c\145\x2f\x64\x65\146\141\165\154\x74\56\x6a\160\147"], 200); goto zHz11; LUW7S: return response()->json(["\x6e\141\155\145" => '', "\x65\x6d\x61\x69\x6c" => '', "\160\x68\157\156\145" => '', "\x67\145\156\144\145\162" => '', "\142\151\162\x74\150\144\141\171" => '', "\156\x69\x6b" => '', "\x61\166\x61\x74\x61\x72" => ''], 200); goto aFHqs; AuLPs: Carbon::setLocale("\151\144"); goto mPfNp; mPfNp: $user = auth()->user(); goto cuiwq; E8nub: $attr = DB::table("\164\141\x74\164\162\x5f\155\x65\x6d\x62\x65\x72\x20\141\x73\x20\141")->select(["\141\x2e\142\151\x72\x74\x68\144\x61\x79", "\141\56\156\151\x6b", "\x61\x2e\x67\x65\x6e\144\145\x72", "\x61\56\160\x68\157\x6e\x65", "\141\x2e\160\150\x6f\164\157\40\141\x73\x20\141\166\x61\x74\141\162"])->where("\141\56\x63\x6c\151\145\156\x74\x5f\151\x64", $this->client_id)->where("\x61\x2e\151\144", $user->id)->get(); goto FGcW8; cuiwq: if (!($user && $user->role == "\x6d\145\x6d\142\145\162")) { goto N0JgD; } goto E8nub; zHz11: N0JgD: goto LUW7S; aFHqs: } public function UpdateProfile(Request $request) { goto N0FlD; kAVn7: $logs->write(__FUNCTION__, "\123\124\x41\x52\x54"); goto ubiwn; FELpY: return response()->json(["\145\162\x72\x6f\x72\x73" => $validator->errors()], 400); goto NhGPj; X8WLh: try { goto GL6Lb; ZMGtX: $user->update(["\x6e\x61\155\x65" => $request->name, "\145\155\141\x69\154" => $request->email, "\x75\x70\x64\x61\x74\x65\x64\137\141\164" => Carbon::now("\x41\x73\x69\x61\x2f\112\141\x6b\141\x72\164\x61")]); goto zBbJy; zBbJy: if (empty($request->password)) { goto AIrA5; } goto l0OLs; qTUwY: $q++; goto I5U0V; oK5IF: $emailChanged = $user->email !== $request->email; goto ZMGtX; Zmx_G: $user->sendEmailVerificationNotification(); goto TMxea; BqXFZ: $logs->write(__FUNCTION__, "\x53\124\117\120\xd\xa"); goto Bs5zI; oT2xM: $sql = Str::replaceArray("\77", $queries[$q]["\142\x69\156\x64\151\156\x67\163"], str_replace("\77", "\x27\x3f\x27", $queries[$q]["\x71\165\x65\162\171"])); goto xJmBy; g_4Qf: $attr = DB::table("\164\x61\164\164\x72\137\155\x65\155\x62\145\162")->where("\x69\x64", $user->id)->where("\x63\154\x69\145\156\x74\137\151\x64", $this->client_id)->update($updateData); goto HqmQN; CZVNH: xMNSY: goto BqXFZ; Bs5zI: return response()->json("\x55\160\144\x61\164\145\x20\160\162\x6f\146\x69\x6c\x65\x20\x73\x75\143\x63\145\x73\163\146\x75\x6c\41\x2e", 201); goto QraEC; I5U0V: goto SfFOn; goto CZVNH; HHijH: a0mQz: goto g_4Qf; l0OLs: $user->update(["\x70\141\163\163\x77\x6f\x72\144" => Hash::make($request->password)]); goto T1VEF; jVXUS: if (!$request->hasFile("\141\166\x61\x74\x61\162")) { goto KbHIZ; } goto GHaxx; MiROf: $avatar_name = ''; goto jVXUS; GL6Lb: DB::enableQueryLog(); goto sk01u; x5Pm8: FC1Cw: goto qTUwY; os4pF: $updateData["\160\x68\157\x74\157"] = $avatar_name; goto HHijH; sk01u: \DB::beginTransaction(); goto oK5IF; JJb34: $updateData = ["\x6e\x69\153" => $request->nik, "\x70\150\x6f\x6e\x65" => $request->phone, "\142\151\x72\164\150\144\x61\171" => $request->birthday, "\147\145\156\144\x65\x72" => $request->gender, "\x75\160\x64\x61\x74\145\144\137\x61\x74" => Carbon::now("\x41\x73\x69\x61\x2f\x4a\x61\x6b\141\x72\x74\x61")]; goto q2Zs4; q2Zs4: if (empty($avatar_name)) { goto a0mQz; } goto os4pF; Ms2h9: SfFOn: goto yPK1X; jss9j: $q = 0; goto Ms2h9; Pg2zR: $queries = DB::getQueryLog(); goto jss9j; k_brs: \DB::commit(); goto Pg2zR; TMxea: OGwpK: goto k_brs; yPK1X: if (!($q < count($queries))) { goto xMNSY; } goto oT2xM; T1VEF: AIrA5: goto MiROf; jE7EZ: KbHIZ: goto JJb34; xJmBy: $logs->write("\x42\x49\116\104\x49\116\x47", "\133" . implode("\54\x20", $queries[$q]["\142\151\x6e\144\151\156\147\163"]) . "\135"); goto XzXlG; HqmQN: if (!$emailChanged) { goto OGwpK; } goto Zmx_G; GHaxx: try { goto d23XB; QGisG: $extension = $request->file("\141\x76\x61\164\x61\162")->getClientOriginalExtension(); goto Flyfl; d23XB: $avatar_file = $request->file("\x61\x76\141\164\141\x72")->getClientOriginalName(); goto QGisG; Flyfl: $avatar_name = $this->client_id . "\x2d" . $user->id . "\x2e" . $extension; goto A2VTh; A2VTh: $request->file("\141\x76\x61\164\x61\x72")->storeAs("\57\x70\x75\142\154\x69\143\x2f\x69\x6d\x61\147\x65\x73\57\x70\162\x6f\x66\x69\x6c\145", $avatar_name); goto frPMo; frPMo: } catch (Throwable $th) { $logs->write("\105\122\x52\x4f\122", $th->getMessage()); } goto jE7EZ; XzXlG: $logs->write("\x53\x51\x4c", $sql); goto x5Pm8; QraEC: } catch (\Exception $e) { goto tcVmC; tcVmC: $logs->write("\105\122\122\117\122", $e->getMessage()); goto mF24w; wPlOM: return response()->json("\125\160\144\141\x74\145\x20\x70\x72\157\146\x69\154\145\x20\x66\x61\151\154\145\144\41\40\120\x6c\145\141\163\145\40\164\x72\x79\40\x61\147\x61\151\156\56", 500); goto p3EYW; mF24w: \DB::rollBack(); goto wPlOM; p3EYW: } goto LXHkE; og4I2: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\x6f\x67"); goto kAVn7; NhGPj: kWKLW: goto X8WLh; GwHgp: if (!$validator->fails()) { goto kWKLW; } goto FELpY; ubiwn: $validator = Validator::make($request->all(), ["\x6e\141\x6d\x65" => ["\162\x65\x71\165\151\x72\x65\144", "\x73\x74\x72\x69\x6e\x67", "\155\x61\x78\72\x32\x35\x35"], "\x65\155\x61\x69\154" => ["\x72\145\161\165\151\x72\x65\x64", "\x73\x74\162\151\x6e\147", "\x65\155\x61\151\154", "\155\x61\170\72\x32\x35\65", "\165\x6e\x69\161\x75\x65\72\165\163\145\162\163\54\145\x6d\x61\x69\x6c\54" . $user->id], "\x6e\x69\x6b" => "\156\x75\154\x6c\141\x62\x6c\145\174\x73\164\x72\x69\156\147\x7c\x6d\x61\170\x3a\62\x30", "\160\150\157\156\145" => "\x72\145\161\165\x69\x72\x65\144\x7c\163\x74\x72\151\x6e\x67\174\x6d\x61\170\72\61\65", "\142\x69\x72\164\x68\x64\141\x79" => "\x72\x65\x71\x75\151\162\145\144\x7c\144\141\x74\x65", "\147\x65\x6e\x64\145\x72" => "\x72\x65\x71\x75\151\x72\145\144\174\163\x74\x72\151\156\x67\x7c\151\x6e\72\114\54\x50"]); goto GwHgp; N0FlD: Carbon::setLocale("\x69\144"); goto qMpJ2; qMpJ2: $user = auth()->user(); goto og4I2; LXHkE: } }
+
+namespace App\Http\Controllers;
+
+use App\Logs;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
+class ProfileController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id = '';
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->client_id = config('app.client_id', '');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+        // $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        // $logs->write(__FUNCTION__, "START");
+        // DB::enableQueryLog();
+
+        if($user && $user->role == 'member'){
+            $attr = DB::table('tattr_member as a')
+                ->select([
+                    'a.birthday',
+                    'a.nik',
+                    'a.gender',
+                    'a.phone',
+                    'a.photo as avatar',
+                ])
+                ->where('a.client_id', $this->client_id)
+                ->where('a.id', $user->id)
+                ->get();
+
+            // $queries = DB::getQueryLog();
+            // for($q = 0; $q < count($queries); $q++) {
+            //     $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+            //     $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+            //     $logs->write('SQL', $sql);
+            // }
+    
+            // $logs->write(__FUNCTION__, "STOP\r\n");
+
+            return response()->json([
+               'name'               => $user->name,
+               'email'              => $user->email,
+               'verified'           => ($user->email_verified_at != '') ? true : false,
+               'phone'              => $attr[0]->phone ?? '',
+               'gender'             => $attr[0]->gender ?? '',
+               'birthday'           => $attr[0]->birthday ?? '',
+               'nik'                => $attr[0]->nik ?? '',
+               'avatar'             => (isset($attr[0]->avatar) && file_exists(public_path('/storage/images/profile/' . $attr[0]->avatar)) ? '/storage/images/profile/' . $attr[0]->avatar : '/storage/images/profile/default.jpg')
+            ], 200);
+        }
+
+        return response()->json([
+            'name'               => '',
+            'email'              => '',
+            'phone'              => '',
+            'gender'             => '',
+            'birthday'           => '',
+            'nik'                => '',
+            'avatar'             => ''
+        ], 200);
+    }
+
+    public function UpdateProfile(Request $request)
+    {
+        Carbon::setLocale('id');
+        $user = auth()->user();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'nik' => 'nullable|string|max:20',
+            'phone' => 'required|string|max:15',
+            'birthday' => 'required|date',
+            'gender' => 'required|string|in:L,P',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        try {
+            DB::enableQueryLog();
+            \DB::beginTransaction();
+
+            $emailChanged = $user->email !== $request->email;
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'updated_at' => Carbon::now('Asia/Jakarta'),
+            ]);
+
+            if (!empty($request->password)) {
+                $user->update([
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+
+            $avatar_name    = "";
+            if ($request->hasFile('avatar')) {
+                try {
+                    $avatar_file    = $request->file('avatar')->getClientOriginalName();
+                    $extension      = $request->file('avatar')->getClientOriginalExtension();
+                    $avatar_name    = $this->client_id.'-'.$user->id.'.'. $extension;
+                    $request->file('avatar')->storeAs('/public/images/profile', $avatar_name);
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updateData = [
+                'nik'           => $request->nik,
+                'phone'         => $request->phone,
+                'birthday'      => $request->birthday,
+                'gender'        => $request->gender,
+                'updated_at'    => Carbon::now('Asia/Jakarta')
+            ];
+
+            if (!empty($avatar_name)) {
+                $updateData['photo'] = $avatar_name;
+            }
+
+            $attr = DB::table('tattr_member')
+                    ->where('id', $user->id)
+                    ->where('client_id', $this->client_id)
+                    ->update($updateData);
+
+            if ($emailChanged) {
+                $user->sendEmailVerificationNotification();
+            }
+
+            \DB::commit();
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+
+            $logs->write(__FUNCTION__, "STOP\r\n");
+            return response()->json('Update profile successful!.', 201);
+        } catch (\Exception $e) {
+            $logs->write("ERROR", $e->getMessage());
+            \DB::rollBack();
+
+            return response()->json('Update profile failed! Please try again.', 500);
+        }
+    }
+}

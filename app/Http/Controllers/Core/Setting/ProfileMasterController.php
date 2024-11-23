@@ -1,8 +1,420 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Illuminate\Support\Facades\Hash; use Illuminate\Support\Facades\Crypt; use Illuminate\Support\Facades\Storage; use App\Http\Requests\Setting\UpdateProfileMasterRequest; class ProfileMasterController extends Controller { protected $client_id = ''; protected $app_url = ''; public function __construct() { goto GQjmb; N58l3: $this->app_url = config("\x61\160\x70\56\x75\x72\154", ''); goto PKLBA; Qc2ub: $this->client_id = config("\141\160\x70\56\x63\154\x69\x65\x6e\164\x5f\151\x64", ''); goto N58l3; GQjmb: $this->middleware("\141\x75\164\150"); goto Qc2ub; PKLBA: } public function index(Request $request) { goto aWyqq; lZ_7B: goto GcUuM; goto uOHB6; uOHB6: d2S3U: goto sINVl; ep9VR: $q++; goto lZ_7B; vwF48: Z_L8g: goto gcVvZ; rruCZ: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\156\144\151\156\147\x73"], str_replace("\x3f", "\x27\x3f\x27", $queries[$q]["\x71\x75\145\162\171"])); goto P5nrJ; Wu6Sc: $queries = DB::getQueryLog(); goto Ywg0r; Xmt4L: $logs->write(__FUNCTION__, "\123\x54\x41\x52\124"); goto wdXjo; H3fts: $results = []; goto RKU1C; gcVvZ: return response()->json($results, 200); goto lz9wR; t3scC: $results = DB::table("\x74\143\x6c\x69\x65\x6e\x74\40\141\163\x20\x61")->select(["\141\x2e\x2a", "\x62\56\160\162\x6f\166\x69\x6e\163\151\137\x6e\141\155\x65", "\x63\x2e\x6b\x61\x62\165\160\x61\164\x65\156\137\x6e\x61\155\145", "\x64\x2e\x6b\x65\x63\x61\x6d\x61\164\141\156\137\156\141\x6d\x65", "\x65\56\153\x65\154\165\162\x61\150\141\156\x5f\156\141\x6d\x65", DB::raw("\x27" . $this->app_url . "\47\x20\x61\163\40\141\160\160\137\x75\162\x6c")])->join("\164\x70\162\x6f\166\151\156\x73\151\40\141\163\x20\x62", "\x61\56\160\162\x6f\x76\151\156\x73\x69\x5f\x69\x64", "\x3d", "\x62\56\160\162\157\x76\151\156\163\x69\x5f\x69\x64")->join("\164\x6b\x61\x62\x75\x70\x61\x74\145\x6e\40\x61\x73\40\x63", "\141\56\153\x61\x62\165\160\141\164\x65\156\x5f\151\144", "\75", "\x63\56\x6b\x61\x62\x75\160\x61\164\145\x6e\137\x69\x64")->join("\164\x6b\145\143\141\155\x61\164\141\156\x20\x61\x73\x20\x64", "\141\56\x6b\x65\x63\x61\155\141\164\141\156\137\151\x64", "\75", "\x64\x2e\x6b\145\x63\141\x6d\x61\x74\x61\156\x5f\x69\x64")->join("\x74\x6b\x65\x6c\x75\x72\141\x68\x61\156\x20\x61\x73\x20\x65", "\x61\x2e\x6b\145\154\x75\x72\x61\x68\x61\x6e\137\151\x64", "\x3d", "\x65\56\153\x65\154\165\162\x61\150\141\x6e\x5f\151\x64")->where("\141\56\143\154\x69\145\156\x74\x5f\x69\144", $this->client_id)->first(); goto Wu6Sc; aWyqq: $user = auth()->user(); goto gARfB; gARfB: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto Xmt4L; Wpj2h: uFTMv: goto ep9VR; wdXjo: DB::enableQueryLog(); goto H3fts; MELv7: $logs->write("\123\x51\114", $sql); goto Wpj2h; P5nrJ: $logs->write("\x42\111\116\x44\x49\116\x47", "\133" . implode("\54\40", $queries[$q]["\142\x69\x6e\x64\x69\x6e\x67\x73"]) . "\135"); goto MELv7; RKU1C: if (!($user && $user->role == "\x61\x64\155\151\x6e")) { goto Z_L8g; } goto t3scC; q7uBn: return response()->json($results, 200); goto vwF48; Fi9H0: if (!($q < count($queries))) { goto d2S3U; } goto rruCZ; sINVl: $logs->write(__FUNCTION__, "\x53\x54\x4f\120\15\xa"); goto q7uBn; Ywg0r: $q = 0; goto rifPU; rifPU: GcUuM: goto Fi9H0; lz9wR: } public function store(UpdateProfileMasterRequest $request) : JsonResponse { goto W0OEO; CptkQ: $logs->write(__FUNCTION__, "\x53\124\101\x52\124"); goto AXy4y; W0OEO: $user = auth()->user(); goto GVJ_b; lqIZz: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\157\147"); goto CptkQ; e3y8I: $logs->write(__FUNCTION__, "\x53\124\x4f\x50\15\xa"); goto KWOP2; hxU0G: $result["\155\x65\x73\x73\141\147\145"] = ''; goto Ucy9k; AXy4y: $result["\x73\164\x61\x74\x75\163"] = 200; goto hxU0G; Ucy9k: try { goto T01U1; gjG1J: vCc2I: goto zIYr_; mMdGJ: $result["\163\x74\141\164\x75\163"] = 201; goto AlmZa; hqTsr: m7cfT: goto nWiBg; zZgEH: if (!$request->has("\x70\141\163\163\x77\157\162\x64")) { goto je7M3; } goto BW_A0; YwKvW: $logs->write("\x53\x51\x4c", $queries[$q]["\161\165\x65\x72\171"]); goto ep12u; F9SYm: $logs->write("\x42\111\x4e\x44\111\116\107", "\x5b" . implode("\54\x20", $queries[$q]["\142\151\156\x64\x69\156\x67\163"]) . "\135"); goto YwKvW; e04pB: vHdSf: goto H_kyq; FY95W: $data = (object) $validated; goto PJ7eT; T01U1: DB::enableQueryLog(); goto YLCHg; Z0Lg0: $created = DB::table("\164\x63\154\151\x65\156\x74")->where("\143\x6c\x69\x65\x6e\164\x5f\151\144", $this->client_id)->update($updateData); goto FgbbI; BW_A0: $user->update(["\160\x61\163\163\167\x6f\162\x64" => Hash::make($request->password)]); goto khm2B; FjW53: $logs->write("\111\x4e\x46\x4f", "\123\x75\143\143\145\x73\x73\146\165\154\x6c\171\x20\143\162\x65\x61\x74\145\x64"); goto mMdGJ; FgbbI: if (!$created) { goto vCc2I; } goto FjW53; choOT: try { goto DfMiR; cIrVq: $logoSmallPath = $request->file("\154\x6f\147\157\137\163\155\141\154\x6c")->move(public_path("\151\x6d\x61\147\145\163\x2f\154\x6f\x67\x6f"), $logo_small_name); goto G0ook; DfMiR: $extension = $request->file("\154\157\147\157\x5f\163\155\x61\x6c\154")->getClientOriginalExtension(); goto ebvH5; mL79R: imagecopyresampled($resizedImage, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height); goto IqHDJ; p1Rfi: imagedestroy($source); goto DW8P2; Zp_In: $favicon_name = "\146\x61\166\151\x63\157\x6e\56" . $extension; goto cIrVq; LNE0f: iOrJH: goto itMmD; ebvH5: $logo_small_name = "\154\x6f\x67\157\137\163\x6d\x61\154\x6c\56" . $extension; goto Zp_In; Vzkql: KaGPg: goto mL79R; H2Djq: $newHeight = 200; goto Bxv9m; Bxv9m: $resizedImage = imagecreatetruecolor($newWidth, $newHeight); goto eNvnO; iLI4T: lucLs: goto Vzkql; dcPJy: $newWidth = 200; goto H2Djq; G0ook: list($width, $height) = getimagesize($logoSmallPath); goto dcPJy; qQ75s: AEnBd: goto LNE0f; eNvnO: switch (strtolower($extension)) { case "\x70\x6e\147": goto bbE_f; sEKOw: goto KaGPg; goto VwMdN; ZfpRr: imagesavealpha($resizedImage, true); goto sEKOw; bbE_f: $source = imagecreatefrompng(public_path("\151\x6d\141\x67\x65\163\57\154\157\147\157\x2f" . $logo_small_name)); goto LZ2xn; LZ2xn: imagealphablending($resizedImage, false); goto ZfpRr; VwMdN: default: throw new Exception("\x55\x6e\163\165\x70\160\157\x72\164\x65\144\40\x69\155\141\x67\145\x20\146\x6f\162\155\141\164\x2e"); } goto iLI4T; IqHDJ: $faviconPath = public_path("\x73\x74\157\162\141\x67\145\57\x69\155\x61\x67\145\x73\x2f\154\157\x67\x6f\57" . $favicon_name); goto z0ac8; z0ac8: switch (strtolower($extension)) { case "\160\156\x67": imagepng($resizedImage, $faviconPath); goto iOrJH; } goto qQ75s; itMmD: imagedestroy($resizedImage); goto p1Rfi; DW8P2: } catch (Throwable $th) { $logs->write("\x45\x52\122\117\122", $th->getMessage()); } goto aZueA; khm2B: je7M3: goto Z0Lg0; AlmZa: $result["\x6d\x65\163\163\x61\147\145"] = "\x53\x75\143\143\145\x73\x73\146\x75\154\154\x79\x20\143\162\x65\141\x74\x65\144\56"; goto gjG1J; SCENU: goto oUssQ; goto e04pB; YLCHg: if (!$request->hasFile("\x6c\x6f\x67\157")) { goto m7cfT; } goto BYvmL; d2bke: if (!($q < count($queries))) { goto vHdSf; } goto F9SYm; aZueA: apw9O: goto FY95W; BYvmL: try { goto OvlmX; OvlmX: $extension = $request->file("\x6c\x6f\147\157")->getClientOriginalExtension(); goto X9Bio; YKlAb: $request->file("\x6c\x6f\147\x6f")->move(public_path("\151\x6d\x61\147\145\163\x2f\154\x6f\147\x6f"), $logo_name); goto NWtwN; X9Bio: $logo_name = "\x6c\x6f\147\157\56" . $extension; goto YKlAb; NWtwN: } catch (Throwable $th) { $logs->write("\105\122\122\x4f\x52", $th->getMessage()); } goto hqTsr; nWiBg: if (!$request->hasFile("\154\157\x67\157\x5f\x73\x6d\x61\x6c\x6c")) { goto apw9O; } goto choOT; RGFCf: $q++; goto SCENU; PJ7eT: $updateData = ["\141\x70\x70\x6c\x69\143\x61\164\x69\157\156\x5f\156\141\x6d\x65" => $request->application_name, "\x61\144\144\162\145\x73\163" => $request->address, "\156\160\x77\160" => $request->npwp, "\x61\x64\155\x69\156\151\x73\x74\x72\141\x74\157\x72\x5f\156\x61\155\145" => $request->administrator_name, "\x61\144\x6d\x69\x6e\x69\163\164\x72\x61\x74\x6f\x72\x5f\160\150\x6f\x6e\x65" => $request->administrator_phone, "\165\160\144\141\x74\145\x64\x5f\141\164" => Carbon::now("\101\163\151\x61\x2f\112\x61\x6b\x61\162\164\141")]; goto zZgEH; Gdi_L: oUssQ: goto d2bke; zIYr_: $queries = DB::getQueryLog(); goto mSxal; mSxal: $q = 0; goto Gdi_L; ep12u: UG2LY: goto RGFCf; H_kyq: } catch (Throwable $th) { $logs->write("\105\x52\122\x4f\122", $th->getMessage()); $result["\155\145\163\163\141\x67\145"] = "\106\x61\151\154\x65\144\x20\143\162\x65\x61\164\145\x64\56\x3c\x62\x72\x3e" . $th->getMessage(); } goto e3y8I; GVJ_b: $validated = $request->validated(); goto lqIZz; KWOP2: return response()->json($result["\155\x65\163\163\x61\x67\145"], $result["\x73\x74\141\164\x75\163"]); goto NOzQ3; NOzQ3: } public function show(string $id) : JsonResponse { goto fROy0; DXLki: CUmFW: goto yP4NN; fROy0: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto FQIZQ; k7mhk: pGyNv: goto DXLki; FQIZQ: if (!(request()->has("\x70\x61\x72\x61\155") && request()->param != '')) { goto B0dnr; } goto PGzw3; PGzw3: switch (request()->param) { case "\x70\x72\157\166\x69\x6e\x73\151\55\155\x73\x74": goto GAOrv; dt7ln: a7ndL: goto Hup8m; Fg2GQ: if (!$provinsi) { goto rMgVy; } goto TcLRO; KTYEf: if (!($q < count($queries))) { goto jz2kM; } goto Jcmno; k6g7S: jz2kM: goto rREXA; Hup8m: $q++; goto ORFc1; GAOrv: DB::enableQueryLog(); goto p8mRg; Nk2eP: return response()->json($results, 200); goto XpYXJ; ODTlh: $queries = DB::getQueryLog(); goto l26uT; zwMU5: $logs->write("\x53\121\x4c", $sql); goto dt7ln; TcLRO: $results = $provinsi->map(function ($value, $key) { return ["\151\x64" => $value->id, "\x6e\x61\x6d\145" => $value->name]; }); goto feZhz; wVrCu: $logs->write("\x42\111\x4e\104\x49\x4e\107", "\x5b" . implode("\54\x20", $queries[$q]["\142\x69\x6e\144\151\x6e\147\163"]) . "\135"); goto zwMU5; rREXA: $results = []; goto Fg2GQ; ORFc1: goto vQUXe; goto k6g7S; N92ZL: vQUXe: goto KTYEf; XpYXJ: goto CUmFW; goto jNF3V; p8mRg: $provinsi = DB::table("\164\160\162\157\166\151\156\163\x69\x20\x61\163\x20\141")->sharedLock()->select("\x61\56\160\x72\157\x76\x69\x6e\x73\151\x5f\x69\x64\x20\141\x73\40\x69\x64", "\141\x2e\x70\162\157\x76\151\x6e\x73\151\137\x6e\141\x6d\145\40\141\x73\x20\156\x61\x6d\145")->get(); goto ODTlh; feZhz: rMgVy: goto Nk2eP; Jcmno: $sql = Str::replaceArray("\77", $queries[$q]["\x62\151\156\x64\x69\x6e\147\163"], str_replace("\x3f", "\47\x3f\47", $queries[$q]["\161\x75\145\162\x79"])); goto wVrCu; l26uT: $q = 0; goto N92ZL; jNF3V: case "\153\141\142\165\x70\141\x74\x65\x6e\x2d\155\x73\164": goto fs01O; SeK79: rSWdW: goto lnKHq; Z65QZ: if (!($q < count($queries))) { goto GTfhF; } goto TA78d; PwQJR: $results = []; goto PTE13; Ouj0D: goto CUmFW; goto uewdk; IPqbY: wERle: goto h4rLv; PTE13: if (!$kabupaten) { goto rSWdW; } goto HMYd8; HMYd8: $results = $kabupaten->map(function ($value, $key) { return ["\151\144" => $value->id, "\x6e\x61\x6d\x65" => $value->name]; }); goto SeK79; h4rLv: $q++; goto PnoyU; eLpyD: $queries = DB::getQueryLog(); goto U3pgZ; oJ9us: $provinsi = request()->provinsi ?? ''; goto Q5lzM; lnKHq: return response()->json($results, 200); goto Ouj0D; PnoyU: goto aKLJK; goto rPV9f; fs01O: DB::enableQueryLog(); goto oJ9us; kOh87: $logs->write("\x53\121\x4c", $sql); goto IPqbY; TA78d: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\x64\x69\156\x67\x73"], str_replace("\x3f", "\47\77\47", $queries[$q]["\x71\165\x65\x72\171"])); goto AjQoH; AjQoH: $logs->write("\x42\x49\116\104\x49\116\107", "\x5b" . implode("\54\40", $queries[$q]["\x62\151\156\144\x69\x6e\x67\x73"]) . "\135"); goto kOh87; Q5lzM: $kabupaten = DB::table("\x74\153\141\142\x75\x70\141\164\145\156\x20\x61\x73\40\141")->sharedLock()->select("\x61\56\x6b\141\x62\x75\160\x61\x74\x65\156\137\151\x64\x20\x61\163\x20\151\x64", "\141\x2e\153\141\x62\165\x70\141\164\x65\156\137\156\x61\155\145\40\x61\163\x20\x6e\x61\155\x65")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\x61\56\160\x72\157\x76\151\x6e\x73\x69\137\x69\x64", $provinsi); })->get(); goto eLpyD; zVOSy: aKLJK: goto Z65QZ; U3pgZ: $q = 0; goto zVOSy; rPV9f: GTfhF: goto PwQJR; uewdk: case "\x6b\145\143\141\x6d\141\164\141\x6e\x2d\x6d\163\x74": goto jqObb; kLpxE: $q = 0; goto TrHpA; gUxfI: S1gOx: goto yKaen; sB6j1: $results = $kecamatan->map(function ($value, $key) { return ["\x69\x64" => $value->id, "\x6e\x61\x6d\145" => $value->name]; }); goto GDX8F; zcZQ1: return response()->json($results, 200); goto BPYHu; lj5Es: $logs->write("\102\111\116\x44\x49\116\107", "\133" . implode("\54\x20", $queries[$q]["\x62\x69\156\x64\151\x6e\x67\163"]) . "\x5d"); goto M4FET; yKaen: $results = []; goto NdqsC; ar5OE: $sql = Str::replaceArray("\77", $queries[$q]["\x62\151\x6e\144\x69\156\147\x73"], str_replace("\x3f", "\x27\77\47", $queries[$q]["\x71\x75\x65\x72\x79"])); goto lj5Es; G9YOb: $kabupaten = request()->kabupaten ?? ''; goto meS2p; MGZHm: goto UEM_U; goto gUxfI; l1xMn: $queries = DB::getQueryLog(); goto kLpxE; jPebT: $q++; goto MGZHm; VA5uA: if (!($q < count($queries))) { goto S1gOx; } goto ar5OE; jqObb: DB::enableQueryLog(); goto v24yT; GDX8F: y2k65: goto zcZQ1; dyOWp: otji4: goto jPebT; BPYHu: goto CUmFW; goto kec5i; TrHpA: UEM_U: goto VA5uA; M4FET: $logs->write("\123\121\114", $sql); goto dyOWp; meS2p: $kecamatan = DB::table("\x74\153\145\143\141\x6d\141\x74\141\x6e\x20\x61\163\x20\x61")->sharedLock()->select("\x61\56\153\x65\x63\141\155\141\164\141\156\137\x69\144\x20\141\163\x20\151\x64", "\x61\56\x6b\145\143\141\x6d\141\x74\141\156\x5f\x6e\141\x6d\x65\40\141\163\x20\156\x61\x6d\x65")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\x61\x2e\160\162\157\x76\x69\156\163\151\137\151\144", $provinsi); })->when(isset($kabupaten) && $kabupaten != '', function ($query) use($kabupaten) { $query->where("\x61\56\153\141\x62\165\160\141\x74\x65\x6e\x5f\151\144", $kabupaten); })->get(); goto l1xMn; NdqsC: if (!$kecamatan) { goto y2k65; } goto sB6j1; v24yT: $provinsi = request()->provinsi ?? ''; goto G9YOb; kec5i: case "\153\145\x6c\165\162\x61\150\141\156\55\155\163\164": goto kWLxh; DoWsm: $provinsi = request()->provinsi ?? ''; goto kQecZ; G6Ebq: if (!$kelurahan) { goto I2Mdo; } goto zu9i3; jTupV: $kecamatan = request()->kecamatan ?? ''; goto Gb3L4; kQecZ: $kabupaten = request()->kabupaten ?? ''; goto jTupV; EfSQ_: goto CUmFW; goto LJXF3; dhvfj: I2Mdo: goto HdKf2; vXOjv: goto O3X_K; goto IYrOA; IYrOA: bV5K0: goto LHJkS; KCk0n: $logs->write("\102\111\116\x44\x49\116\107", "\133" . implode("\54\x20", $queries[$q]["\x62\151\156\144\x69\x6e\x67\x73"]) . "\135"); goto s_Y3y; eWaqK: $queries = DB::getQueryLog(); goto TeJ6z; K4SD3: O3X_K: goto F8aIf; kWLxh: DB::enableQueryLog(); goto DoWsm; TeJ6z: $q = 0; goto K4SD3; HdKf2: return response()->json($results, 200); goto EfSQ_; zu9i3: $results = $kelurahan->map(function ($value, $key) { return ["\x69\144" => $value->id, "\x6e\141\x6d\x65" => $value->name]; }); goto dhvfj; lzmdZ: Bg9O0: goto DCKa7; s_Y3y: $logs->write("\123\121\114", $sql); goto lzmdZ; bLPwt: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\x6e\x64\151\x6e\x67\163"], str_replace("\77", "\x27\x3f\x27", $queries[$q]["\161\165\145\162\171"])); goto KCk0n; DCKa7: $q++; goto vXOjv; LHJkS: $results = []; goto G6Ebq; F8aIf: if (!($q < count($queries))) { goto bV5K0; } goto bLPwt; Gb3L4: $kelurahan = DB::table("\x74\153\x65\x6c\165\162\141\150\x61\156\x20\141\163\x20\141")->sharedLock()->select("\141\56\x6b\x65\x6c\165\162\x61\150\141\156\137\151\x64\x20\141\163\40\x69\x64", "\x61\56\153\x65\154\165\162\x61\150\x61\156\137\156\x61\155\145\x20\141\x73\40\x6e\x61\155\x65")->when(isset($provinsi) && $provinsi != '', function ($query) use($provinsi) { $query->where("\141\x2e\x70\x72\x6f\x76\151\156\x73\151\137\151\x64", $provinsi); })->when(isset($kabupaten) && $kabupaten != '', function ($query) use($kabupaten) { $query->where("\x61\56\x6b\x61\x62\x75\160\141\x74\145\156\x5f\151\x64", $kabupaten); })->when(isset($kecamatan) && $kecamatan != '', function ($query) use($kecamatan) { $query->where("\141\x2e\x6b\x65\143\x61\155\141\x74\141\156\x5f\151\144", $kecamatan); })->get(); goto eWaqK; LJXF3: case "\x6b\141\x74\x65\x67\x6f\162\x69\x2d\x6d\x73\x74": goto MIKgk; r18XW: $results = $ketegori->map(function ($value, $key) { return ["\x69\x64" => $value->id, "\156\x61\155\x65" => $value->name]; }); goto H2zl9; SeHAZ: kH6RM: goto N8ggp; JkG_g: $ketegori = DB::table("\164\142\x6f\157\153\137\143\x61\x74\x65\x67\157\162\x79\x20\x61\163\40\141")->sharedLock()->select("\141\x2e\151\x64\40\141\163\40\151\144", "\141\x2e\144\x65\x73\x63\162\151\160\164\x69\157\x6e\x20\141\x73\x20\x6e\141\155\x65")->get(); goto eXqx8; N8ggp: if (!($q < count($queries))) { goto Yvcum; } goto Z2Xf1; eXqx8: $queries = DB::getQueryLog(); goto HwFsV; HzrtD: $logs->write("\123\121\x4c", $sql); goto vcp5b; U_iNl: $logs->write("\x42\111\116\104\x49\116\107", "\133" . implode("\54\x20", $queries[$q]["\142\x69\x6e\144\151\156\x67\163"]) . "\x5d"); goto HzrtD; HwFsV: $q = 0; goto SeHAZ; H2zl9: F4qda: goto ljQmj; MIKgk: DB::enableQueryLog(); goto JkG_g; aYPGT: $results = []; goto R6weT; Z2Xf1: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\x6e\x64\x69\156\147\x73"], str_replace("\x3f", "\x27\77\47", $queries[$q]["\161\165\145\162\x79"])); goto U_iNl; ljQmj: return response()->json($results, 200); goto D2VB1; MS4Fb: goto kH6RM; goto m4QCs; R6weT: if (!$ketegori) { goto F4qda; } goto r18XW; D2VB1: goto CUmFW; goto QV_R6; TzRUH: $q++; goto MS4Fb; vcp5b: GRvYo: goto TzRUH; m4QCs: Yvcum: goto aYPGT; QV_R6: default: return response()->json(request()->param, 200); goto CUmFW; } goto k7mhk; yP4NN: B0dnr: goto dZJ6_; dZJ6_: } public function update(Request $request, string $id) : JsonResponse { return response()->json($request, 200); } public function destroy(string $id) : JsonResponse { return response()->json($id, 200); } public function exportPDF(Request $request) { goto BIYRc; Q3r9G: return view("\x70\x64\x66\x2e\141\147\162\x65\x65\155\x65\x6e\x74\137\x6c\x65\x74\164\x65\x72"); goto opW5g; iFrF0: $logs->write(__FUNCTION__, "\123\x54\x41\122\124"); goto Q3r9G; BIYRc: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\x67"); goto iFrF0; opW5g: $logs->write(__FUNCTION__, "\x53\x54\117\x50\15\12"); goto Ct_YT; Ct_YT: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Setting\UpdateProfileMasterRequest;
+
+class ProfileMasterController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    protected $client_id = '';
+    protected $app_url = '';
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->client_id    = config('app.client_id', '');
+        $this->app_url      = config('app.url', '');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request)
+    {
+        $user = auth()->user();
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, "START");
+        DB::enableQueryLog();
+
+        $results = [];
+        if($user && $user->role == 'admin'){
+            $results = DB::table('tclient as a')
+                ->select([
+                    'a.*',
+                    'b.provinsi_name',
+                    'c.kabupaten_name',
+                    'd.kecamatan_name',
+                    'e.kelurahan_name',
+                    DB::raw("'".$this->app_url."' as app_url")
+                ])
+                ->join('tprovinsi as b', 'a.provinsi_id', '=', 'b.provinsi_id')
+                ->join('tkabupaten as c', 'a.kabupaten_id', '=', 'c.kabupaten_id')
+                ->join('tkecamatan as d', 'a.kecamatan_id', '=', 'd.kecamatan_id')
+                ->join('tkelurahan as e', 'a.kelurahan_id', '=', 'e.kelurahan_id')
+                ->where('a.client_id', $this->client_id)
+                ->first();
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+    
+            $logs->write(__FUNCTION__, "STOP\r\n");
+
+            return response()->json($results, 200);
+        }
+
+        return response()->json($results, 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  UpdateProfileMasterRequest  $request
+     * @return JsonResponse
+     */
+    public function store(UpdateProfileMasterRequest $request): JsonResponse
+    {
+        $user = auth()->user();
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('logo')) {
+                try {
+                    $extension = $request->file('logo')->getClientOriginalExtension();
+                    $logo_name = 'logo.' . $extension;
+
+                    $request->file('logo')->move(public_path('images/logo'), $logo_name);
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+            
+            if ($request->hasFile('logo_small')) {
+                try {
+                    $extension          = $request->file('logo_small')->getClientOriginalExtension();
+                    $logo_small_name    = 'logo_small.' . $extension;
+                    $favicon_name       = 'favicon.' . $extension;
+
+                    $logoSmallPath		= $request->file('logo_small')->move(public_path('images/logo'), $logo_small_name);
+                    
+					// Resize the favicon image
+					list($width, $height) = getimagesize($logoSmallPath);
+					$newWidth = 200;
+					$newHeight = 200;
+			
+					// Create a new blank image with the new dimensions
+					$resizedImage = imagecreatetruecolor($newWidth, $newHeight);
+			
+					// Load the original image based on its type
+					switch (strtolower($extension)) {
+						case 'png':
+							$source = imagecreatefrompng(public_path('images/logo/' . $logo_small_name));
+							imagealphablending($resizedImage, false);
+							imagesavealpha($resizedImage, true);
+							break;
+						default:
+							throw new Exception('Unsupported image format.');
+					}
+			
+					// Resize and save the favicon image
+					imagecopyresampled($resizedImage, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+					$faviconPath = public_path('storage/images/logo/' . $favicon_name);
+			
+					switch (strtolower($extension)) {
+						case 'png':
+							imagepng($resizedImage, $faviconPath);
+							break;
+					}
+			
+					// Free memory
+					imagedestroy($resizedImage);
+					imagedestroy($source);
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $data = (object)$validated;
+
+            $updateData = [
+                'application_name'      => $request->application_name,
+                'address'               => $request->address,
+                'npwp'                  => $request->npwp,
+                'administrator_name'    => $request->administrator_name,
+                'administrator_phone'   => $request->administrator_phone,
+                'updated_at'            => Carbon::now('Asia/Jakarta')
+            ];
+
+            if ($request->has('password')) {
+                $user->update([
+                    'password' => Hash::make($request->password),
+                ]);
+            }
+
+            $created = DB::table('tclient')
+                    ->where('client_id', $this->client_id)
+                    ->update($updateData);
+   
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Successfully created.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Failed created.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function show(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+
+        if (request()->has('param') && request()->param != '') {
+            switch (request()->param) {
+                case 'provinsi-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = DB::table('tprovinsi as a')->sharedLock()
+                        ->select(
+                            'a.provinsi_id as id',
+                            'a.provinsi_name as name'
+                        )
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($provinsi) {
+                        $results = $provinsi->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kabupaten-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = DB::table('tkabupaten as a')->sharedLock()
+                        ->select(
+                            'a.kabupaten_id as id',
+                            'a.kabupaten_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kabupaten) {
+                        $results = $kabupaten->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kecamatan-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = request()->kabupaten ?? '';
+                    $kecamatan = DB::table('tkecamatan as a')->sharedLock()
+                        ->select(
+                            'a.kecamatan_id as id',
+                            'a.kecamatan_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->when(isset($kabupaten) && $kabupaten != '', function($query) use ($kabupaten) {
+                            $query->where('a.kabupaten_id', $kabupaten);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kecamatan) {
+                        $results = $kecamatan->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kelurahan-mst':
+                    DB::enableQueryLog();
+
+                    $provinsi = request()->provinsi ?? '';
+                    $kabupaten = request()->kabupaten ?? '';
+                    $kecamatan = request()->kecamatan ?? '';
+                    $kelurahan = DB::table('tkelurahan as a')->sharedLock()
+                        ->select(
+                            'a.kelurahan_id as id',
+                            'a.kelurahan_name as name'
+                        )
+                        ->when(isset($provinsi) && $provinsi != '', function($query) use ($provinsi) {
+                            $query->where('a.provinsi_id', $provinsi);
+                        })
+                        ->when(isset($kabupaten) && $kabupaten != '', function($query) use ($kabupaten) {
+                            $query->where('a.kabupaten_id', $kabupaten);
+                        })
+                        ->when(isset($kecamatan) && $kecamatan != '', function($query) use ($kecamatan) {
+                            $query->where('a.kecamatan_id', $kecamatan);
+                        })
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($kelurahan) {
+                        $results = $kelurahan->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                case 'kategori-mst':
+                    DB::enableQueryLog();
+
+                    $ketegori = DB::table('tbook_category as a')->sharedLock()
+                        ->select(
+                            'a.id as id',
+                            'a.description as name'
+                        )
+                        ->get();
+
+                    $queries = DB::getQueryLog();
+                    for ($q = 0; $q < count($queries); $q++) {
+                        $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                        $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                        $logs->write('SQL', $sql);
+                    }
+
+                    $results = [];
+                    if($ketegori) {
+                        $results = $ketegori->map(function($value, $key) {
+                            return [
+                                'id' => $value->id,
+                                'name' => $value->name
+                            ];
+                        });
+                    }
+
+                    return response()->json($results, 200);
+                break;
+
+                default:
+                    return response()->json(request()->param, 200);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id): JsonResponse
+    {
+        return response()->json($request, 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    public function exportPDF(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        return view('pdf.agreement_letter');
+
+        $logs->write(__FUNCTION__, "STOP\r\n");
+    }
+}

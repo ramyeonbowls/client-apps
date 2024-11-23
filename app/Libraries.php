@@ -1,8 +1,47 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App; use App; use Config; use Artisan; use Illuminate\Support\Facades\DB; class Libraries { public static function isDinas() { goto EXq8M; qDrVI: $result["\x6c\x65\166\x65\154"] = ''; goto Z6519; YkP7k: $result["\160\x72\x6f\166\x69\x6e\x73\x69"] = ''; goto IIqLV; Z6519: $result["\143\157\x75\x6e\x74\x72\x79"] = ''; goto YkP7k; M66sB: $client_id = config("\141\160\x70\x2e\x63\x6c\151\145\156\164\137\x69\x64", ''); goto IZWji; IIqLV: $result["\153\141\142\x75\160\141\x74\x65\156"] = ''; goto M66sB; IZWji: try { goto rA48B; h4RsG: $result["\143\141\x74\x65\147\157\162\171"] = $parameter->client_category; goto HUw8l; HUw8l: $result["\x6c\145\x76\145\x6c"] = $parameter->client_level; goto oF__B; rA48B: $parameter = DB::table("\x74\143\154\151\x65\156\x74\40\x61\x73\x20\x61")->select("\x61\56\143\x6c\x69\x65\156\164\x5f\143\141\x74\145\147\x6f\162\171", "\x61\x2e\x63\154\151\x65\x6e\164\137\154\145\166\x65\x6c", "\x61\56\143\x6f\165\156\x74\162\171\x5f\151\144", "\141\56\160\x72\x6f\166\151\x6e\163\151\x5f\x69\x64", "\141\56\153\141\x62\x75\x70\x61\164\x65\156\137\151\x64")->where("\141\56\x63\154\151\x65\x6e\164\137\x69\x64", $client_id)->first(); goto kg2uG; kg2uG: if (!$parameter) { goto LgIz7; } goto Zozf2; j14mk: $result["\153\x61\x62\165\160\x61\x74\x65\x6e"] = $parameter->kabupaten_id; goto jQN8l; nuqrN: LgIz7: goto nQ8O2; oF__B: $result["\x63\157\x75\x6e\164\x72\171"] = $parameter->country_id; goto AegZ2; AegZ2: $result["\160\x72\x6f\x76\x69\x6e\x73\x69"] = $parameter->provinsi_id; goto j14mk; jQN8l: return $result; goto nuqrN; Zozf2: $result["\x73\x74\x61\x74\x75\x73"] = $parameter->client_category == "\61\x30\x30\66" ? true : false; goto h4RsG; nQ8O2: } catch (\PDOException $e) { return $result; } goto fa8xg; F2amo: $result["\143\x61\164\145\147\x6f\x72\171"] = ''; goto qDrVI; EXq8M: $result["\163\x74\141\164\165\x73"] = false; goto F2amo; fa8xg: } }
+
+namespace App;
+
+use App;
+use Config;
+use Artisan;
+use Illuminate\Support\Facades\DB;
+
+class Libraries 
+{
+	public static function isDinas()
+	{
+		$result['status']		= false;
+		$result['category']		= '';
+		$result['level']		= '';
+		$result['country']		= '';
+		$result['provinsi']		= '';
+		$result['kabupaten']	= '';
+		$client_id			= config('app.client_id', '');
+		try {
+			$parameter = DB::table('tclient as a')
+				->select(
+					'a.client_category',
+					'a.client_level',
+					'a.country_id',
+					'a.provinsi_id',
+					'a.kabupaten_id'
+				)
+				->where('a.client_id', $client_id)
+				->first();
+
+			if($parameter) {
+				$result['status']		= ($parameter->client_category == '1006') ? true : false;
+				$result['category']		= $parameter->client_category;
+				$result['level']		= $parameter->client_level;
+				$result['country']		= $parameter->country_id;
+				$result['provinsi']		= $parameter->provinsi_id;
+				$result['kabupaten']	= $parameter->kabupaten_id;
+
+				return $result;
+			}
+		} catch (\PDOException $e) {
+			return $result;
+		}
+	}
+}

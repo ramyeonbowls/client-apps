@@ -1,8 +1,76 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class StoreTitikFokusMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\x64" => "\x72\145\x71\x75\151\162\x65\144\174\165\156\x69\161\x75\x65\x3a\x74\x66\151\164\165\x72\54\x69\144\54\x63\x61\164\145\x67\157\x72\x79\174\155\141\x78\x3a\x35\60", "\164\x69\164\154\145" => "\x72\x65\161\x75\151\x72\145\x64\174\155\141\170\72\x32\65\65", "\141\165\164\150\157\162" => "\155\141\170\x3a\65\x30", "\x64\145\x73\143\162\151\160\164\x69\x6f\x6e" => "\x72\145\x71\x75\151\162\x65\x64", "\146\x6c\x61\147\137\x61\153\x74\x69\x66" => "\x72\145\161\165\151\x72\x65\x64\x7c\x6d\x61\x78\x3a\x35", "\x66\151\x6c\145" => ["\x72\145\161\165\x69\x72\145\x64", "\155\x69\155\145\x73\x3a\x6a\x70\145\147\x2c\160\156\147\54\x6a\x70\x67", "\x6d\x61\170\72\61\x35\x30\60", Rule::dimensions()->maxWidth(700)->maxHeight(350)], "\143\x75\162\x72\145\x6e\x74\x5f\x66\151\154\x65" => "\x6e\x75\154\x6c\141\142\x6c\145"]; } public function attributes() : array { return ["\x69\144" => "\x49\x44\x20\124\151\164\x69\153\x20\x46\x6f\153\165\163", "\x74\151\x74\x6c\x65" => "\112\165\144\165\x6c\x20\x54\151\x74\x69\153\40\x46\x6f\153\x75\163", "\146\x6c\141\147\137\141\x6b\164\151\146" => "\x41\153\164\x69\x66\40\124\x69\x74\x69\153\x20\106\157\x6b\165\163", "\x64\x65\x73\x63\x72\x69\x70\164\151\x6f\x6e" => "\113\x6f\156\x74\145\156\40\124\x69\x74\151\x6b\40\x46\157\153\x75\163", "\x66\x69\154\x65" => "\106\x69\154\145\x20\124\x69\164\151\x6b\x20\106\157\x6b\x75\x73"]; } public function messages() : array { goto h08IT; W2ASD: $dimensionMessage = "\x54\150\x65\x20\x66\x69\x6c\x65\x20\x64\x69\155\145\x6e\163\x69\x6f\156\163\40\143\141\156\47\x74\x20\142\x65\40\x6c\141\x72\x67\x65\162\x20\x74\150\141\x6e\x20\67\60\60\x20\x78\x20\63\65\60\x20\160\x69\x78\x65\x6c\x73\56"; goto qRKOG; qRKOG: return ["\146\151\154\145\56\x72\145\161\165\151\x72\145\144" => "\124\x68\145\40\x66\x69\154\x65\40\x69\x73\40\162\145\x71\x75\x69\162\145\144\x2e", "\146\151\154\x65\56\155\151\x6d\145\x73" => "\x54\150\145\40\x66\151\x6c\145\40\x6d\x75\x73\164\40\x62\x65\40\x61\x20\x76\141\154\151\144\x20\151\x6d\x61\147\145\40\164\171\160\145\x20\x28\152\160\145\147\x2c\40\160\156\147\54\40\x6a\x70\x67\51\x2e", "\x66\x69\154\145\56\x6d\141\x78" => "\x54\x68\145\x20\146\151\154\x65\x20\x73\151\x7a\x65\x20\143\x61\156\x6e\x6f\x74\40\x62\x65\40\154\x61\x72\147\145\x72\x20\x74\150\141\156\x20\61\65\x30\x30\x20\x4b\102\56", "\146\x69\x6c\x65\x2e\x64\x69\x6d\145\x6e\163\x69\157\x6e\x73" => $dimensionMessage]; goto cP4fO; h08IT: $dimensionMessage = "\124\150\145\x20\x66\x69\x6c\145\40\144\151\155\145\156\x73\151\157\156\163\40\141\162\145\40\x69\x6e\x76\x61\154\151\144\56"; goto W2ASD; cP4fO: } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class StoreTitikFokusMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required|unique:tfitur,id,category|max:50',
+            'title' => 'required|max:255',
+            'author' => 'max:50',
+            'description' => 'required',
+            'flag_aktif' => 'required|max:5',
+            'file' => [
+                'required',
+                'mimes:jpeg,png,jpg',
+                'max:1500',
+                Rule::dimensions()->maxWidth(700)->maxHeight(350),
+            ],
+            'current_file' => 'nullable',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'id' => 'ID Titik Fokus',
+            'title' => 'Judul Titik Fokus',
+            'flag_aktif' => 'Aktif Titik Fokus',
+            'description' => 'Konten Titik Fokus',
+            'file' => 'File Titik Fokus',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        $dimensionMessage = 'The file dimensions are invalid.';
+        $dimensionMessage = 'The file dimensions can\'t be larger than 700 x 350 pixels.';
+
+        return [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
+            'file.max' => 'The file size cannot be larger than 1500 KB.',
+            'file.dimensions' => $dimensionMessage,
+        ];
+    }
+}

@@ -1,8 +1,75 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Models\Web; use Illuminate\Database\Eloquent\Model; use Illuminate\Database\Eloquent\Builder; use Illuminate\Database\Eloquent\Factories\HasFactory; class Visitors extends Model { use HasFactory; protected $table = "\164\x76\151\x73\x69\164\x6f\x72\163"; protected $primaryKey = array("\151\144", "\143\x6c\151\145\156\x74\x5f\151\144", "\x64\141\164\x65", "\x76\151\x73\151\164\157\162"); public $incrementing = false; protected $fillable = array("\151\x64", "\x63\x6c\x69\145\x6e\x74\x5f\x69\144", "\144\141\x74\x65", "\x76\151\163\x69\164\157\162", "\160\x6c\x61\x74\146\x6f\x72\155", "\144\x65\x76\151\x63\x65", "\142\162\x6f\167\163\145\x72", "\x62\x72\157\167\x73\x65\x72\x5f\x6e\141\x6d\145", "\x75\163\145\162\137\141\x67\145\156\x74", "\x63\162\145\141\164\145\144\x5f\x61\164", "\165\x70\144\141\164\x65\144\137\x61\164"); protected function setKeysForSaveQuery($query) { goto ZMvR_; wAl1n: jxhtG: goto opKCB; jDXtr: K49Gy: goto yTL0h; yTL0h: return $query; goto D7ynR; ZQud0: if (is_array($keys)) { goto jxhtG; } goto AnpOb; opKCB: foreach ($keys as $keyName) { $query->where($keyName, "\x3d", $this->getKeyForSaveQuery($keyName)); adag8: } goto jDXtr; AnpOb: return parent::setKeysForSaveQuery($query); goto wAl1n; ZMvR_: $keys = $this->getKeyName(); goto ZQud0; D7ynR: } protected function getKeyForSaveQuery($keyName = null) { goto tiwSR; tiwSR: if (!is_null($keyName)) { goto Ci1FW; } goto yRbsu; yRbsu: $keyName = $this->getKeyName(); goto MQU2m; BMuhG: return $this->original[$keyName] ?? $this->getAttribute($keyName); goto Tqi3M; MQU2m: Ci1FW: goto BMuhG; Tqi3M: } }
+
+namespace App\Models\Web;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Visitors extends Model
+{
+    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'tvisitors';
+    protected $primaryKey = ['id', 'client_id', 'date', 'visitor'];
+    public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'id',
+        'client_id',
+        'date',
+        'visitor',
+        'platform',
+        'device',
+        'browser',
+        'browser_name',
+        'user_agent',
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * Set the keys for a save update query.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function setKeysForSaveQuery($query)
+    {
+        $keys = $this->getKeyName();
+        if (!is_array($keys)) {
+            return parent::setKeysForSaveQuery($query);
+        }
+
+        foreach ($keys as $keyName) {
+            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
+        }
+
+        return $query;
+    }
+
+    /**
+     * Get the primary key value for a save query.
+     *
+     * @param string|null $keyName
+     * @return mixed
+     */
+    protected function getKeyForSaveQuery($keyName = null)
+    {
+        if (is_null($keyName)) {
+            $keyName = $this->getKeyName();
+        }
+
+        return $this->original[$keyName] ?? $this->getAttribute($keyName);
+    }
+}

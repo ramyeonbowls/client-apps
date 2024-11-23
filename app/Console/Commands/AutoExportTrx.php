@@ -1,8 +1,619 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:18             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Console\Commands; use Storage; use App\Logs; use Carbon\Carbon; use Illuminate\Support\Str; use Illuminate\Console\Command; use Illuminate\Support\Facades\DB; class AutoExportTrx extends Command { protected $signature = "\x67\x69\x6e\145\x73\x69\x61\72\145\x78\x70\x6f\162\x74\55\164\162\170\x20\x7b\x42\114\x4f\x43\x4b\x3d\125\x53\105\122\123\175\40\173\55\x2d\x64\145\x62\165\147\175\x20\173\x2d\55\x70\x65\x72\x69\157\x64\145\x3d\x7d"; protected $description = "\103\157\155\x6d\x61\156\x64\x20\x66\157\162\40\x75\160\144\x61\x74\x65\x20\145\x78\160\157\x72\164\40\164\162\141\x6e\x73\x61\x63\x74\151\x6f\156\40\x74\157\40\x66\164\160\40\x7b\102\114\x4f\x43\x4b\x3d\167\150\x69\x63\150\40\164\x72\141\156\163\x61\143\164\x69\157\x6e\x20\164\157\40\x65\x78\x70\x6f\162\164\x7d\x20\x7b\55\x2d\x64\145\142\x75\x67\75\x70\162\x69\x6e\x74\x20\x71\x75\145\x72\171\40\x74\157\x20\x6c\157\147\x73\175\40\173\x2d\55\160\x65\x72\151\x6f\x64\145\75\55\x31\175"; public function handle() { goto bzrSV; sA7yH: $q++; goto Jcfi4; G8UeV: goto SELESAI; goto st3h_; G2wj_: goto SELESAI; goto lrtuW; SsLP1: $logs->write("\123\124\117\120", "\15\xa"); goto EYTpU; fkBv6: $ftp_username = env("\x46\x54\x50\x5f\125\x53\x45\122\116\101\x4d\105"); goto E3Bpd; faZ6y: if (!$this->debug) { goto CbsJE; } goto bpB5F; ihsKM: $queries = DB::getQueryLog(); goto U3HSd; rLsZx: pUQKt: goto idZwU; hCoPs: $q = 0; goto hH16x; q4_4O: if (!$this->debug) { goto gO2wQ; } goto uQN3z; kxu5P: $queries = DB::getQueryLog(); goto HZTn3; fVJRj: HD2Pb: goto KqMOo; SSmHJ: goto xQRoD; goto r2A3i; YaE2A: $query = DB::table("\165\163\x65\162\163\40\141\x73\40\141")->select(["\x61\x2e\x2a"])->where(function ($query) { $query->whereRaw("\104\x41\x54\105\137\x46\x4f\122\x4d\x41\124\50\x61\x2e\x63\x72\145\x61\x74\x65\x64\137\x61\164\54\40\47\x25\x59\x25\155\47\51\40\x3d\x20\47" . $this->periode . "\x27")->orWhereRaw("\x44\101\x54\x45\137\106\117\122\115\x41\x54\50\x61\x2e\x75\160\x64\x61\x74\x65\x64\137\141\164\x2c\40\x27\45\131\45\155\x27\x29\40\75\40\47" . $this->periode . "\x27"); })->get(); goto utGmn; kPXJZ: $query = DB::table("\164\166\x69\163\151\x74\x6f\x72\163\40\141\x73\40\x61")->select(["\141\x2e\x2a"])->where(function ($query) { $query->whereRaw("\104\101\x54\105\x5f\x46\117\x52\115\x41\x54\50\x61\x2e\143\x72\x65\141\164\x65\144\137\141\x74\x2c\40\47\x25\131\x25\155\47\x29\40\x3d\40\x27" . $this->periode . "\47")->orWhereRaw("\x44\x41\x54\x45\137\106\117\122\115\x41\x54\50\x61\56\x75\160\144\x61\x74\145\x64\137\x61\164\x2c\40\47\45\131\45\x6d\x27\x29\40\x3d\x20\x27" . $this->periode . "\x27"); })->get(); goto pyR7v; A8ZAD: if ($filter_block == '' || $filter_block == "\x41\x4c\114\102\114\x4f\x43\113") { goto vVfdb; } goto G2wj_; ldfUk: B2NV6: goto EyXrc; W16U0: $q++; goto jLXIR; dEHyR: AX1n0: goto FYcu2; uP1LD: $SECTIONNAME = "\x52\105\101\104"; goto q4_4O; bzrSV: $client_id = config("\141\x70\x70\56\143\x6c\151\x65\x6e\164\x5f\151\144", ''); goto tjfj4; O4kV7: gO2wQ: goto HrCee; U3HSd: $q = 0; goto UG4xF; fN6eI: pWYP8: goto fVJRj; HNzZg: if (!$this->debug) { goto KEasV; } goto RqOSt; pTeov: $query = DB::table("\164\141\164\164\x72\137\155\145\x6d\x62\x65\162\x20\x61\163\x20\x61")->select(["\141\56\x2a", "\142\56\x65\155\x61\151\154"])->join("\165\163\x65\x72\x73\40\x61\163\40\142", function ($join) { $join->on("\141\56\x63\x6c\x69\x65\x6e\x74\x5f\151\x64", "\x3d", "\x62\x2e\143\x6c\151\145\x6e\164\137\x69\x64")->on("\141\x2e\x69\144", "\x3d", "\142\56\151\x64"); })->where(function ($query) { $query->whereRaw("\104\x41\x54\105\137\x46\117\x52\x4d\101\x54\x28\141\x2e\x63\162\145\x61\x74\145\144\137\x61\164\x2c\x20\x27\x25\x59\x25\155\47\x29\40\75\x20\47" . $this->periode . "\x27")->orWhereRaw("\104\x41\124\105\x5f\106\117\x52\x4d\101\x54\x28\141\56\x75\160\x64\141\x74\145\144\x5f\x61\164\54\x20\47\45\131\45\x6d\47\51\40\75\x20\x27" . $this->periode . "\47"); })->get(); goto W6XkR; Xzsp9: $sql = Str::replaceArray("\77", $queries[$q]["\x62\151\156\144\x69\156\147\x73"], str_replace("\77", "\47\x3f\47", $queries[$q]["\161\x75\x65\x72\x79"])); goto A8jVD; EyXrc: bodRp: goto TdX6m; PVSAp: riyFY: goto oq2ew; AcYGq: gfa6k: goto zjXO_; XV_r7: if (!$this->debug) { goto bodRp; } goto ihsKM; rLdE8: USERS: goto Bsfoj; JvYFJ: if (!$this->debug) { goto PKxpX; } goto fVNAH; c5p1F: $q = 0; goto jByRp; bShIp: if (!($q < count($queries))) { goto B2NV6; } goto v7U3E; uQN3z: DB::enableQueryLog(); goto O4kV7; TzXV_: GmRsy: goto sA7yH; Efawj: READ: goto uP1LD; tjfj4: $job_info = pathinfo(__FILE__); goto aRzP7; jLXIR: goto S0s5j; goto PVSAp; pyR7v: try { goto bsoPD; TXasr: $logs->write("\104\141\x74\x61", "\x5b" . $row . "\x5d"); goto ztDAC; v3pg9: $logs->write("\105\x72\162\157\x72", "\x46\151\154\145\40\165\160\x6c\157\x61\x64\x65\x64\x20\163\x75\143\x63\x65\x73\163\x66\x75\x6c\154\x79\x20\164\x6f\x20\x46\x54\120\x20\163\145\x72\166\x65\x72\x2e"); goto v1wMS; ztDAC: if ($row > 0) { goto gJeU1; } goto MKHiT; dtiOQ: ftp_close($conn_id); goto JPbpW; hq9br: $file = storage_path("\x61\x70\160\57\x67\x6e\x73\x5f" . $this->periode . "\137\166\151\x73\x69\x74\x2e\143\163\166"); goto WIZhE; GYmzk: sKuNA: goto mlzUB; rbIX5: KTbJ_: goto v3pg9; v1wMS: F0Yt0: goto dtiOQ; bsoPD: $this->line("\102\105\x47\x49\x4e\40\75\x3e\x20" . $SECTIONNAME); goto IrWXy; r_HDT: fputcsv($handle, ["\151\144", "\143\x6c\x69\145\156\164\137\x69\x64", "\144\x61\x74\x65", "\x76\151\x73\x69\x74\157\x72", "\x70\154\141\164\x66\157\x72\155", "\x64\x65\x76\151\x63\x65", "\142\x72\x6f\167\163\x65\x72", "\142\x72\x6f\167\163\145\x72\x5f\x6e\141\x6d\145", "\165\163\145\x72\x5f\141\147\145\x6e\164", "\143\x72\145\x61\x74\x65\144\x5f\141\164", "\165\160\x64\x61\164\x65\144\x5f\141\x74"], "\174"); goto FnsLR; iGS6x: $logs->write("\105\x72\x72\157\162", "\165\160\x6c\157\x61\x64\151\x6e\x67\x20\x74\x68\145\40\x66\x69\154\145\40\x74\157\x20\106\124\x50\56"); goto Ior0U; jB3yq: if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) { goto KTbJ_; } goto iGS6x; FnsLR: foreach ($query as $value) { fputcsv($handle, [$value->id, $value->client_id, $value->date, $value->visitor, $value->platform, $value->device, $value->browser, $value->browser_name, $value->user_agent, $value->created_at, $value->updated_at], "\174"); zOoUw: } goto vIYwA; M9eZd: SIlgZ: goto QEEi6; QEEi6: $this->line("\x45\116\104\x20\75\76\x20" . $SECTIONNAME . "\15\xa"); goto AQPqd; gJRWj: $login = ftp_login($conn_id, $ftp_username, $ftp_password); goto NRYf0; MKHiT: $this->line("\116\x6f\40\104\141\x74\141"); goto Bj5U5; vIYwA: lEbez: goto a8zey; JPbpW: zaSaS: goto ghBOl; ghBOl: unlink($file); goto M9eZd; Bj5U5: goto SIlgZ; goto vCuCE; Ior0U: goto F0Yt0; goto rbIX5; GElGS: goto zaSaS; goto GYmzk; WIZhE: $handle = fopen($file, "\167"); goto r_HDT; NRYf0: if ($login) { goto sKuNA; } goto tsgUn; tsgUn: $logs->write("\x45\162\162\x6f\x72", "\x46\x54\x50\x20\x6c\x6f\147\151\156\x20\x66\141\151\154\145\144\56"); goto GElGS; IrWXy: $row = count($query); goto TXasr; zXC9L: $conn_id = ftp_connect($ftp_host); goto gJRWj; mlzUB: $remote_file = basename($file); goto jB3yq; vCuCE: gJeU1: goto hq9br; a8zey: fclose($handle); goto zXC9L; AQPqd: } catch (\PDOException $e_H) { goto hhEF2; hhEF2: $sqlState = $e_H->errorInfo[0]; goto sdj92; oab6m: $errMessage = $e_H->errorInfo[2]; goto LfkZk; sdj92: $errCode = $e_H->errorInfo[1]; goto oab6m; LfkZk: $logs->write($SECTIONNAME, "\105\122\122\x4f\x52\x20" . $sqlState . "\x20\75\76\x20" . $errMessage . "\xa"); goto lfVcy; lfVcy: } goto U2PWh; e4ES2: $query = DB::table("\164\162\x65\x6e\x74\137\142\157\x6f\x6b\40\x61\163\40\x61")->select(["\141\x2e\52", "\142\x2e\x65\155\x61\x69\x6c"])->join("\165\x73\x65\x72\163\40\141\x73\40\142", function ($join) { $join->on("\x61\56\x63\x6c\x69\x65\156\164\137\x69\x64", "\x3d", "\142\x2e\143\154\151\145\156\x74\x5f\151\x64")->on("\141\56\x75\163\145\162\137\151\144", "\x3d", "\x62\x2e\151\144"); })->where(function ($query) { $query->whereRaw("\104\101\x54\x45\x5f\106\117\122\x4d\101\x54\x28\x61\x2e\x63\x72\x65\x61\x74\145\x64\137\141\x74\54\40\x27\45\x59\45\155\x27\x29\x20\x3d\x20\x27" . $this->periode . "\47")->orWhereRaw("\x44\x41\124\105\137\106\117\x52\x4d\101\x54\x28\141\56\165\160\144\x61\164\x65\x64\x5f\141\x74\x2c\x20\x27\45\x59\45\155\47\51\x20\75\40\x27" . $this->periode . "\47"); })->get(); goto a0JOd; oO4k6: $logs->write("\123\121\x4c", $sql); goto fZABq; EXqg6: RENT: goto NTIRU; sWUgf: try { goto aglsk; vR5kQ: HJoWt: goto NaPBm; LQPbT: $this->line("\116\157\x20\x44\x61\x74\x61"); goto iwly_; f1S3q: $logs->write("\x45\162\x72\157\x72", "\x46\x54\x50\40\154\157\x67\151\156\40\146\x61\151\154\x65\144\x2e"); goto zcHZT; jIJUD: P1UKj: goto j9X5z; J2EMf: ftp_close($conn_id); goto EvuHt; NaPBm: $file = storage_path("\141\160\160\x2f\x67\156\x73\137" . $this->periode . "\137\x72\145\x61\x64\x2e\143\163\x76"); goto wBlDP; qDRLe: GUXHH: goto GfsOT; MQDo3: V3WBt: goto ScgFv; aglsk: $this->line("\102\105\107\x49\116\x20\x3d\76\x20" . $SECTIONNAME); goto Qd4UX; DJWpA: $logs->write("\104\x61\x74\x61", "\133" . $row . "\x5d"); goto tYWs1; Qd4UX: $row = count($query); goto DJWpA; EvuHt: BIsvL: goto sI3Be; jXcyH: foreach ($query as $value) { fputcsv($handle, [$value->id, $value->user_id, $value->client_id, $value->start_read, $value->end_read, $value->created_at, $value->updated_at, $value->book_id, $value->flag_end, $value->email], "\x7c"); w7BS2: } goto MQDo3; YZLHs: $logs->write("\x45\x72\x72\x6f\162", "\x75\x70\154\x6f\x61\x64\151\156\147\40\x74\150\x65\40\x66\x69\154\145\40\x74\157\40\x46\x54\x50\56"); goto VTP2k; j9X5z: $this->line("\105\116\104\x20\x3d\76\40" . $SECTIONNAME . "\15\xa"); goto YUkN2; sI3Be: unlink($file); goto jIJUD; wBlDP: $handle = fopen($file, "\x77"); goto ZenXy; eAldk: $login = ftp_login($conn_id, $ftp_username, $ftp_password); goto oueTC; ZenXy: fputcsv($handle, ["\x69\x64", "\165\x73\145\162\137\x69\x64", "\143\154\151\145\156\164\137\x69\144", "\x73\x74\141\162\x74\137\x72\145\141\144", "\145\156\x64\x5f\x72\x65\141\144", "\x63\162\145\x61\x74\x65\x64\x5f\x61\x74", "\165\160\x64\141\164\145\144\x5f\141\164", "\x62\x6f\x6f\153\137\x69\x64", "\146\154\x61\x67\137\145\x6e\x64", "\145\x6d\141\x69\x6c"], "\174"); goto jXcyH; ScgFv: fclose($handle); goto APX14; jOAMX: if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) { goto YLAav; } goto YZLHs; VTP2k: goto b8H2q; goto CsfVy; tYWs1: if ($row > 0) { goto HJoWt; } goto LQPbT; oueTC: if ($login) { goto GUXHH; } goto f1S3q; XqQd4: b8H2q: goto J2EMf; APX14: $conn_id = ftp_connect($ftp_host); goto eAldk; iwly_: goto P1UKj; goto vR5kQ; zcHZT: goto BIsvL; goto qDRLe; CsfVy: YLAav: goto qRLNl; qRLNl: $logs->write("\105\162\162\157\162", "\x46\x69\154\145\x20\x75\x70\154\157\141\x64\x65\x64\x20\x73\165\x63\x63\x65\163\163\x66\x75\154\154\171\40\x74\x6f\40\106\124\120\40\x73\145\x72\x76\145\x72\x2e"); goto XqQd4; GfsOT: $remote_file = basename($file); goto jOAMX; YUkN2: } catch (\PDOException $e_H) { goto PfB8V; AntIV: $errCode = $e_H->errorInfo[1]; goto y8rML; Uw8Rx: $logs->write($SECTIONNAME, "\105\x52\x52\x4f\x52\40" . $sqlState . "\40\x3d\76\x20" . $errMessage . "\12"); goto sNBMj; PfB8V: $sqlState = $e_H->errorInfo[0]; goto AntIV; y8rML: $errMessage = $e_H->errorInfo[2]; goto Uw8Rx; sNBMj: } goto xdBYc; PVLI_: $now = Carbon::now("\x41\x73\151\141\57\x4a\x61\153\x61\162\x74\x61"); goto EqbII; JdPN8: VISIT: goto hTAND; UG4xF: SczCj: goto bShIp; HZTn3: $q = 0; goto upPuP; kxYnQ: $logs->write("\123\121\x4c", $sql); goto uVAte; l23QE: goto SczCj; goto ldfUk; v4HNO: ATTR: goto a84Du; FAjVY: $ftp_host = env("\106\124\x50\137\x48\x4f\x53\x54"); goto fkBv6; hA4b7: if (!($q < count($queries))) { goto X0I9f; } goto Sf73i; RwHyd: $logs = new Logs($client_id . "\137" . $this->periode . "\x5f" . $nama_jobs . "\x5f" . $filter_block); goto PCgtp; fOIjQ: DB::enableQueryLog(); goto RV9FO; m3Vyd: $this->debug = $this->option("\x64\145\142\165\x67") ?? 0; goto HZpqE; fh6Ik: EFlZu: goto JdPN8; pi1HK: DB::enableQueryLog(); goto UZ4ub; BWgux: if (!($q < count($queries))) { goto riyFY; } goto Xzsp9; NrrH1: goto SELESAI; goto L3MEW; a84Du: $SECTIONNAME = "\101\124\124\x52"; goto rigT0; lT6Gl: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\151\x6e\x64\151\156\147\163"], str_replace("\77", "\47\77\47", $queries[$q]["\161\165\145\x72\x79"])); goto gk7Ff; v7U3E: $sql = Str::replaceArray("\77", $queries[$q]["\142\151\156\144\x69\156\147\163"], str_replace("\77", "\x27\77\x27", $queries[$q]["\161\165\145\x72\171"])); goto kitkr; BqasT: $q = 0; goto AcYGq; fVNAH: DB::enableQueryLog(); goto jsdhi; calgM: CbsJE: goto kPXJZ; mpbh8: if (!$this->debug) { goto HD2Pb; } goto kB0PO; RV9FO: V2tYi: goto YaE2A; eFFcf: $q++; goto l23QE; xd8YV: goto SELESAI; goto rLsZx; upPuP: S0s5j: goto BWgux; rigT0: if (!$this->debug) { goto uOE_o; } goto pi1HK; idZwU: SELESAI: goto SsLP1; nZcpB: aPUlU: goto XBvU6; W6XkR: try { goto JPGHy; SfOFj: $logs->write("\105\x72\x72\x6f\162", "\x46\x54\x50\40\154\x6f\147\x69\x6e\x20\x66\x61\x69\154\x65\144\x2e"); goto W_qsx; RF1W6: fputcsv($handle, ["\x69\144", "\x63\x6c\151\x65\x6e\164\x5f\x69\x64", "\x6e\151\x6b", "\160\150\x6f\156\x65", "\x62\x69\x72\x74\150\144\141\x79", "\160\150\x6f\164\157", "\x63\162\x65\141\x74\145\x64\137\141\x74", "\165\x70\144\x61\x74\145\x64\137\x61\x74", "\x67\145\x6e\x64\x65\x72", "\x65\x6d\141\x69\154"], "\x7c"); goto gA2Mw; gCld2: mqPhm: goto QJJlj; zFCeM: $remote_file = basename($file); goto g0zgM; fVIvb: if ($login) { goto JxIar; } goto SfOFj; mw6Ev: $login = ftp_login($conn_id, $ftp_username, $ftp_password); goto fVIvb; gA2Mw: foreach ($query as $value) { fputcsv($handle, [$value->id, $value->client_id, $value->nik, $value->phone, $value->birthday, $value->photo, $value->created_at, $value->updated_at, $value->gender, $value->email], "\x7c"); WK1jH: } goto kFBZr; A79aI: if ($row > 0) { goto ndybl; } goto RH1Tl; phQl9: unlink($file); goto tyt4E; rfeSP: $logs->write("\x45\162\x72\x6f\162", "\106\x69\x6c\x65\x20\165\x70\x6c\x6f\141\144\x65\144\x20\163\x75\143\x63\145\x73\163\x66\x75\x6c\154\171\40\164\157\40\106\x54\x50\x20\x73\x65\162\166\x65\x72\56"); goto gCld2; dzz04: JxIar: goto zFCeM; YlNT4: iE0wj: goto phQl9; HoKRz: Mg2YX: goto rfeSP; QJJlj: ftp_close($conn_id); goto YlNT4; g0zgM: if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) { goto Mg2YX; } goto jdb1l; yeUH7: $file = storage_path("\x61\x70\x70\x2f\147\156\163\x5f" . $this->periode . "\137\141\x74\x74\x72\56\143\163\x76"); goto pI3Nz; J12jh: fclose($handle); goto mJG_D; lckoj: $row = count($query); goto mNAhh; JPGHy: $this->line("\102\x45\107\111\x4e\40\75\x3e\x20" . $SECTIONNAME); goto lckoj; jdb1l: $logs->write("\x45\x72\x72\157\x72", "\165\160\154\x6f\x61\x64\151\x6e\147\x20\x74\x68\145\40\x66\151\x6c\145\x20\164\x6f\x20\106\124\x50\x2e"); goto RKmM_; Cm5QN: goto hxl0V; goto yu3f1; tyt4E: hxl0V: goto UR7ku; pI3Nz: $handle = fopen($file, "\x77"); goto RF1W6; RKmM_: goto mqPhm; goto HoKRz; yu3f1: ndybl: goto yeUH7; W_qsx: goto iE0wj; goto dzz04; mJG_D: $conn_id = ftp_connect($ftp_host); goto mw6Ev; RH1Tl: $this->line("\x4e\157\40\x44\141\x74\141"); goto Cm5QN; UR7ku: $this->line("\105\x4e\104\x20\x3d\x3e\x20" . $SECTIONNAME . "\15\xa"); goto DJ2tH; mNAhh: $logs->write("\x44\141\164\x61", "\133" . $row . "\135"); goto A79aI; kFBZr: f45Po: goto J12jh; DJ2tH: } catch (\PDOException $e_H) { goto gdcvn; gdcvn: $sqlState = $e_H->errorInfo[0]; goto qsQlY; OUavN: $errMessage = $e_H->errorInfo[2]; goto ZWpHe; qsQlY: $errCode = $e_H->errorInfo[1]; goto OUavN; ZWpHe: $logs->write($SECTIONNAME, "\x45\122\122\117\x52\40" . $sqlState . "\40\x3d\x3e\40" . $errMessage . "\12"); goto RJcSE; RJcSE: } goto mpbh8; sjc9J: goto SELESAI; goto fh6Ik; mP1PD: f6GwU: goto W16U0; RqOSt: $queries = DB::getQueryLog(); goto c5p1F; oq2ew: QL_dI: goto iXXKp; HZpqE: $this->periode = $this->option("\160\x65\162\151\x6f\x64\x65") !== '' ? now()->addMonths((int) $this->option("\160\x65\x72\151\157\144\145"))->format("\131\x6d") : now()->format("\131\x6d"); goto RwHyd; lrtuW: vVfdb: goto rLdE8; zjXO_: if (!($q < count($queries))) { goto pWYP8; } goto DjPaQ; xdBYc: if (!$this->debug) { goto QL_dI; } goto kxu5P; F5IR9: $logs->write("\123\121\x4c", $sql); goto TzXV_; aRzP7: $nama_jobs = $job_info["\146\x69\154\145\x6e\141\x6d\x65"]; goto PVLI_; nUF8j: $q++; goto bZIqq; FYcu2: KEasV: goto Eh6xS; kitkr: $logs->write("\x42\111\116\x44\111\116\x47", "\x5b" . implode("\54\x20", $queries[$q]["\x62\151\x6e\x64\x69\156\147\x73"]) . "\x5d"); goto kxYnQ; bpB5F: DB::enableQueryLog(); goto calgM; HrCee: $query = DB::table("\164\x74\162\x78\x5f\x72\x65\x61\144\x20\141\163\x20\x61")->select(["\x61\56\52", "\x62\56\145\155\141\x69\154"])->join("\x75\163\145\162\163\40\x61\163\x20\142", function ($join) { $join->on("\x61\56\143\x6c\x69\145\156\164\x5f\x69\x64", "\75", "\x62\56\x63\154\x69\145\x6e\x74\x5f\x69\144")->on("\x61\56\165\163\145\x72\137\151\144", "\x3d", "\x62\56\x69\x64"); })->whereRaw("\104\x41\x54\x45\x5f\106\117\122\x4d\101\124\x28\141\x2e\163\x74\141\162\x74\x5f\x72\145\141\x64\x2c\40\x27\x25\x59\45\x6d\47\x29\x20\x3d\x20\47" . $this->periode . "\47")->get(); goto sWUgf; Sf73i: $sql = Str::replaceArray("\77", $queries[$q]["\142\x69\x6e\144\151\x6e\147\163"], str_replace("\x3f", "\x27\77\x27", $queries[$q]["\161\165\145\162\x79"])); goto wfFY5; wfFY5: $logs->write("\x42\x49\x4e\104\111\x4e\107", "\133" . implode("\x2c\40", $queries[$q]["\x62\x69\156\144\151\156\x67\x73"]) . "\135"); goto BvGIe; Eh6xS: if ($filter_block == '' || $filter_block == "\101\x4c\x4c\x42\114\117\103\x4b") { goto EFlZu; } goto sjc9J; lSfid: $queries = DB::getQueryLog(); goto hCoPs; hH16x: xQRoD: goto hA4b7; FE5iw: LxFtQ: goto A8ZAD; n1Nc2: $q++; goto SSmHJ; jByRp: VxONu: goto xxPIb; rRjee: KoR27: goto FE5iw; iXXKp: if ($filter_block == '' || $filter_block == "\x41\x4c\114\102\114\x4f\103\113") { goto JgAhC; } goto Kwgp4; bZIqq: goto VxONu; goto dEHyR; st3h_: bc4a4: goto Efawj; A8jVD: $logs->write("\x42\111\116\x44\x49\x4e\107", "\133" . implode("\x2c\40", $queries[$q]["\x62\x69\156\144\x69\x6e\147\x73"]) . "\135"); goto Z19md; DjPaQ: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\x69\x6e\x64\151\156\147\163"], str_replace("\x3f", "\x27\77\x27", $queries[$q]["\x71\165\x65\x72\171"])); goto OM1vw; NTIRU: $SECTIONNAME = "\x52\105\x4e\x54"; goto JvYFJ; hTAND: $SECTIONNAME = "\126\x49\123\111\124"; goto faZ6y; PCgtp: $logs->write("\x53\124\x41\x52\124", ''); goto FAjVY; a0JOd: try { goto nhdOk; JAIDO: if ($row > 0) { goto Uw3tz; } goto Ok1y5; DZKGH: QisAm: goto yo8ii; p2POb: $logs->write("\x45\x72\x72\x6f\x72", "\106\x69\x6c\x65\40\x75\x70\154\157\x61\144\145\x64\x20\x73\x75\x63\143\x65\x73\x73\146\x75\154\x6c\x79\40\x74\x6f\40\106\x54\120\40\163\145\x72\x76\x65\x72\x2e"); goto iIpFu; vYXt0: fclose($handle); goto AgrKA; SlLja: if ($login) { goto nfCBZ; } goto ebbpT; yo8ii: unlink($file); goto JlMSz; rgLRa: $handle = fopen($file, "\x77"); goto tnsYY; zdA1u: foreach ($query as $value) { fputcsv($handle, [$value->client_id, $value->user_id, $value->book_id, $value->start_date, $value->end_date, $value->flag_end, $value->created_at, $value->updated_at, $value->email], "\174"); oyOz2: } goto uwFB_; Pm0rL: $file = storage_path("\141\x70\160\x2f\147\x6e\163\x5f" . $this->periode . "\x5f\162\145\156\164\56\x63\163\166"); goto rgLRa; uwFB_: eBrgA: goto vYXt0; ebbpT: $logs->write("\x45\x72\x72\x6f\162", "\106\124\120\x20\x6c\157\147\151\156\40\x66\141\x69\x6c\145\x64\56"); goto xoF3m; aIoO6: goto xZO7d; goto n0KC0; ZysGz: $logs->write("\x45\162\162\157\x72", "\165\160\154\x6f\141\144\x69\x6e\147\40\164\x68\145\x20\146\x69\154\x65\40\x74\157\x20\x46\124\x50\56"); goto X7tj4; AgrKA: $conn_id = ftp_connect($ftp_host); goto BrLmx; X7tj4: goto Hh1cq; goto QkY0N; iTC9U: if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) { goto mVgBV; } goto ZysGz; Bj3yh: $remote_file = basename($file); goto iTC9U; xJbl2: $logs->write("\104\x61\x74\x61", "\133" . $row . "\135"); goto JAIDO; n0KC0: Uw3tz: goto Pm0rL; QkY0N: mVgBV: goto p2POb; h8_nZ: ftp_close($conn_id); goto DZKGH; Ok1y5: $this->line("\x4e\x6f\40\104\141\164\x61"); goto aIoO6; JlMSz: xZO7d: goto TewQy; AhUFH: $row = count($query); goto xJbl2; BrLmx: $login = ftp_login($conn_id, $ftp_username, $ftp_password); goto SlLja; TewQy: $this->line("\x45\x4e\x44\x20\75\76\40" . $SECTIONNAME . "\xd\xa"); goto KFK7H; ePKpI: nfCBZ: goto Bj3yh; xoF3m: goto QisAm; goto ePKpI; tnsYY: fputcsv($handle, ["\x63\x6c\151\145\156\164\137\151\144", "\x75\x73\x65\x72\137\x69\144", "\142\x6f\157\153\137\151\x64", "\163\x74\x61\x72\x74\137\144\x61\164\x65", "\x65\156\x64\137\144\141\x74\145", "\x66\154\x61\147\x5f\145\x6e\x64", "\143\x72\145\x61\164\145\x64\137\x61\x74", "\x75\x70\144\x61\x74\145\144\137\x61\x74", "\x65\x6d\x61\151\154"], "\174"); goto zdA1u; iIpFu: Hh1cq: goto h8_nZ; nhdOk: $this->line("\102\x45\x47\111\x4e\40\x3d\x3e\x20" . $SECTIONNAME); goto AhUFH; KFK7H: } catch (\PDOException $e_H) { goto fyTTD; GuSQ3: $logs->write($SECTIONNAME, "\x45\122\x52\x4f\x52\40" . $sqlState . "\x20\x3d\x3e\x20" . $errMessage . "\xa"); goto PKMlT; TOVfE: $errMessage = $e_H->errorInfo[2]; goto GuSQ3; fyTTD: $sqlState = $e_H->errorInfo[0]; goto pkqUX; pkqUX: $errCode = $e_H->errorInfo[1]; goto TOVfE; PKMlT: } goto HNzZg; kB0PO: $queries = DB::getQueryLog(); goto BqasT; KZdki: switch ($filter_block) { case "\125\123\105\x52\x53": goto USERS; goto LxFtQ; case "\x41\124\x54\122": goto ATTR; goto LxFtQ; case "\x52\105\x41\x44": goto READ; goto LxFtQ; case "\122\105\x4e\x54": goto RENT; goto LxFtQ; case "\x56\111\123\111\124": goto VISIT; goto LxFtQ; } goto rRjee; XBvU6: if ($filter_block == '' || $filter_block == "\101\x4c\x4c\102\114\x4f\103\x4b") { goto pUQKt; } goto xd8YV; KqMOo: if ($filter_block == '' || $filter_block == "\101\114\114\102\114\117\x43\x4b") { goto bc4a4; } goto G8UeV; r2A3i: X0I9f: goto nZcpB; TdX6m: if ($filter_block == '' || $filter_block == "\x41\114\x4c\x42\114\x4f\x43\x4b") { goto wkVqI; } goto NrrH1; L3MEW: wkVqI: goto v4HNO; jsdhi: PKxpX: goto e4ES2; UZ4ub: uOE_o: goto pTeov; Z19md: $logs->write("\123\x51\x4c", $sql); goto mP1PD; Jcfi4: goto gfa6k; goto fN6eI; EqbII: $filter_block = $this->argument("\x42\x4c\x4f\x43\x4b") ? $this->argument("\102\114\117\103\113") : "\122\105\x41\104"; goto m3Vyd; U2PWh: if (!$this->debug) { goto aPUlU; } goto lSfid; gk7Ff: $logs->write("\102\x49\x4e\104\x49\116\x47", "\x5b" . implode("\54\x20", $queries[$q]["\142\x69\156\x64\x69\156\147\x73"]) . "\x5d"); goto oO4k6; xxPIb: if (!($q < count($queries))) { goto AX1n0; } goto lT6Gl; v_HjG: lI7jl: goto n1Nc2; Kwgp4: goto SELESAI; goto tEiG3; E3Bpd: $ftp_password = env("\x46\124\120\137\120\101\123\123\127\x4f\122\104"); goto KZdki; tEiG3: JgAhC: goto EXqg6; utGmn: try { goto wVGnb; pv8jW: if ($login) { goto mowx2; } goto oVKc0; ogX4Q: $logs->write("\105\162\x72\157\x72", "\165\160\x6c\157\141\x64\x69\x6e\x67\40\x74\150\145\40\x66\x69\154\x65\x20\164\x6f\40\106\x54\120\x2e"); goto PoeMt; rt8i1: TFMNv: goto mBCIX; JCPfX: mowx2: goto WfwFm; QPPfi: if ($row > 0) { goto dYAec; } goto ZU9mj; ybWZ9: $handle = fopen($file, "\x77"); goto dUkBu; JUrYD: $file = storage_path("\141\x70\x70\57\x67\x6e\163\x5f" . $this->periode . "\x5f\165\x73\162\x2e\143\x73\x76"); goto ybWZ9; NU1eN: $logs->write("\x45\x72\x72\157\x72", "\106\151\x6c\145\x20\165\160\154\x6f\141\x64\145\x64\40\163\x75\143\x63\145\163\163\146\x75\x6c\x6c\171\40\164\157\x20\106\x54\120\x20\x73\x65\162\166\145\162\x2e"); goto ij_J5; c23Zt: $login = ftp_login($conn_id, $ftp_username, $ftp_password); goto pv8jW; mBCIX: unlink($file); goto gzZ0z; HDKjM: foreach ($query as $value) { fputcsv($handle, [$value->id, $value->name, $value->email, $value->email_verified_at, $value->password, $value->remember_token, $value->created_at, $value->updated_at, $value->role, $value->client_id, $value->flag_approve], "\x7c"); SIdB2: } goto Ti4mg; ij_J5: qSJt_: goto zEj1O; rw3_I: $this->line("\x45\116\x44\40\x3d\76\x20" . $SECTIONNAME . "\xd\12"); goto fKOr1; d9pk9: $conn_id = ftp_connect($ftp_host); goto c23Zt; gzZ0z: sMb1c: goto rw3_I; C5gCU: $row = count($query); goto C3wdM; oVKc0: $logs->write("\105\162\x72\157\162", "\106\124\x50\40\x6c\x6f\x67\151\x6e\x20\146\x61\151\154\145\144\56"); goto cSlzh; q3a9_: goto sMb1c; goto KzKMY; wVGnb: $this->line("\102\105\107\111\x4e\x20\x3d\76\40" . $SECTIONNAME); goto C5gCU; dUkBu: fputcsv($handle, ["\151\x64", "\x6e\x61\155\145", "\x65\155\x61\151\154", "\x65\x6d\141\x69\x6c\x5f\166\x65\162\x69\x66\151\x65\x64\x5f\x61\164", "\x70\141\x73\x73\x77\157\x72\x64", "\162\145\x6d\145\x6d\x62\145\162\x5f\164\x6f\153\145\x6e", "\x63\162\145\x61\164\x65\144\x5f\141\164", "\165\x70\x64\x61\164\145\x64\x5f\141\x74", "\162\x6f\154\145", "\143\x6c\151\145\x6e\x74\x5f\x69\144", "\x66\x6c\x61\x67\137\141\160\160\x72\157\166\x65"], "\x7c"); goto HDKjM; zEj1O: ftp_close($conn_id); goto rt8i1; Ti4mg: jKfZg: goto Oh20X; Oh20X: fclose($handle); goto d9pk9; PoeMt: goto qSJt_; goto JHxoa; JHxoa: IleE9: goto NU1eN; KzKMY: dYAec: goto JUrYD; cSlzh: goto TFMNv; goto JCPfX; bNdkA: if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) { goto IleE9; } goto ogX4Q; C3wdM: $logs->write("\x44\x61\164\x61", "\133" . $row . "\135"); goto QPPfi; ZU9mj: $this->line("\x4e\157\40\104\141\x74\141"); goto q3a9_; WfwFm: $remote_file = basename($file); goto bNdkA; fKOr1: } catch (\PDOException $e_H) { goto Hza9q; QTQMH: $errMessage = $e_H->errorInfo[2]; goto oglgF; oglgF: $logs->write($SECTIONNAME, "\x45\x52\122\117\x52\40" . $sqlState . "\x20\75\x3e\40" . $errMessage . "\xa"); goto hcg7v; WmkET: $errCode = $e_H->errorInfo[1]; goto QTQMH; Hza9q: $sqlState = $e_H->errorInfo[0]; goto WmkET; hcg7v: } goto XV_r7; BvGIe: $logs->write("\x53\x51\x4c", $sql); goto v_HjG; fZABq: Y19v2: goto nUF8j; Bsfoj: $SECTIONNAME = "\125\123\x45\122\x53"; goto Stnw_; uVAte: ZYs5f: goto eFFcf; OM1vw: $logs->write("\102\111\x4e\x44\111\116\x47", "\x5b" . implode("\54\40", $queries[$q]["\x62\x69\156\144\x69\156\147\163"]) . "\x5d"); goto F5IR9; Stnw_: if (!$this->debug) { goto V2tYi; } goto fOIjQ; EYTpU: } }
+
+namespace App\Console\Commands;
+
+use Storage;
+use App\Logs;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+
+class AutoExportTrx extends Command
+{
+	/**
+	 * The name and signature of the console command.
+	 *
+	 * @var string
+	 */
+	protected $signature = 'ginesia:export-trx {BLOCK=USERS} {--debug} {--periode=}';
+
+	/**
+	 * The console command description.
+	 *
+	 * @var string
+	 */
+	protected $description = 'Command for update export transaction to ftp {BLOCK=which transaction to export} {--debug=print query to logs} {--periode=-1}';
+
+	/**
+	 * Execute the console command.
+	 */
+	public function handle()
+	{
+		$client_id          = config('app.client_id', '');
+		$job_info           = pathinfo(__FILE__); 
+		$nama_jobs          = $job_info['filename'];
+		$now                = Carbon::now('Asia/Jakarta');
+		$filter_block       = ($this->argument('BLOCK')) ? $this->argument('BLOCK') : 'READ';
+		$this->debug        = $this->option('debug') ?? 0;
+		$this->periode      = $this->option('periode') !== '' ? now()->addMonths((int)$this->option('periode'))->format('Ym') : now()->format('Ym');
+
+		$logs = new Logs($client_id.'_'.$this->periode.'_'.$nama_jobs.'_'.$filter_block);
+		$logs->write('START', '');
+
+		$this->ftp_host = env('FTP_HOST');
+		$this->ftp_username = env('FTP_USERNAME');
+		$this->ftp_password = env('FTP_PASSWORD');
+
+		switch ($filter_block) {
+			case 'USERS':
+				goto USERS;
+				break;
+
+			case 'ATTR':
+				goto ATTR;
+				break;
+
+			case 'READ':
+				goto READ;
+				break;
+
+			case 'RENT':
+				goto RENT;
+				break;
+
+			case 'VISIT':
+				goto VISIT;
+				break;
+
+			case 'ALLTRX':
+				goto ALLTRX;
+				break;
+		}
+
+		if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+
+		ALLTRX:
+		/* Execute all blocks */
+			$this->exportUsers($logs, $client_id);
+			$this->exportAttr($logs, $client_id);
+			$this->exportRead($logs, $client_id);
+			$this->exportRent($logs, $client_id);
+			$this->exportVisit($logs, $client_id);
+			goto SELESAI;
+		/* ALLTRX */
+
+		USERS:
+		/* USERS */
+			$this->exportUsers($logs, $client_id);
+			if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+		/* USERS */
+
+		ATTR:
+		/* ATTR */
+			$this->exportAttr($logs, $client_id);
+			if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+		/* ATTR */
+
+		READ:
+		/* READ */
+			$this->exportRead($logs, $client_id);
+			if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+		/* READ */
+
+		RENT:
+		/* RENT */
+			$this->exportRent($logs, $client_id);
+			if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+		/* RENT */
+
+		VISIT:
+		/* VISIT */
+			$this->exportVisit($logs, $client_id);
+			if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+		/* VISIT */
+
+		SELESAI:
+		/* SELESAI */
+			$logs->write("STOP", "\r\n");
+		/* SELESAI */
+	}
+
+	private function exportUsers($logs, $client_id)
+	{
+		$SECTIONNAME = "USERS";
+		if($this->debug) DB::enableQueryLog();
+
+		$query = DB::table('users as a')
+			->select([
+				'a.*'
+			])
+			->where(function($query) {
+				$query->whereRaw("DATE_FORMAT(a.created_at, '%Y%m') = '".$this->periode."'")
+					->orWhereRaw("DATE_FORMAT(a.updated_at, '%Y%m') = '".$this->periode."'");
+			})
+			->get();
+
+		try {
+			$this->line("BEGIN => ". $SECTIONNAME);
+
+			$row = count($query);
+			$logs->write("Data", "[".$row."]");
+
+			if ($row > 0) {
+				$file = storage_path("app/gns_".$this->periode."_usr.csv");
+				$handle = fopen($file, 'w');
+
+				fputcsv($handle, ['id', 'name', 'email', 'email_verified_at', 'password', 'remember_token', 'created_at', 'updated_at', 'role', 'client_id', 'flag_approve'], '|');
+
+				foreach ($query as $value) {
+					fputcsv($handle, [
+						$value->id,
+						$value->name,
+						$value->email,
+						$value->email_verified_at,
+						$value->password,
+						$value->remember_token,
+						$value->created_at,
+						$value->updated_at,
+						$value->role,
+						$value->client_id,
+						$value->flag_approve
+					], '|');
+				}
+
+				fclose($handle);
+
+				$conn_id	= ftp_connect($this->ftp_host);
+				$login		= ftp_login($conn_id, $this->ftp_username, $this->ftp_password);
+
+				if ($login) {
+					$remote_dir = '/'.$client_id;
+					// Check if the directory exists
+					if (!@ftp_chdir($conn_id, $remote_dir)) {
+						// If it doesn't exist, create it
+						if (ftp_mkdir($conn_id, $remote_dir)) {
+							$logs->write("Success", "Created directory: $remote_dir");
+						} else {
+							$logs->write("Error", "Failed to create directory: $remote_dir");
+						}
+					}
+
+					// Upload the file to the client_id directory
+					$remote_file = $remote_dir.'/'.basename($file);
+
+					if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+						$logs->write("Success", "File uploaded successfully to FTP server.");
+					} else {
+						$logs->write("Error", "uploading the file to FTP.");
+					}
+
+					ftp_close($conn_id);
+				} else {
+					$logs->write("Error", "FTP login failed.");
+				}
+
+				unlink($file);
+			}else{
+				$this->line("No Data");  
+			}
+
+			$this->line("END => ". $SECTIONNAME."\r\n" );
+		} catch (\PDOException $e_H) {
+			$sqlState   = $e_H->errorInfo[0];
+			$errCode    = $e_H->errorInfo[1];
+			$errMessage = $e_H->errorInfo[2];
+
+			$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+		}
+
+		if($this->debug){
+			$queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+		}
+	}
+
+	private function exportAttr($logs, $client_id)
+	{
+		$SECTIONNAME = "ATTR";
+		if($this->debug) DB::enableQueryLog();
+
+		$query = DB::table('tattr_member as a')
+			->select([
+				'a.*',
+				'b.email'
+			])
+			->join('users as b', function ($join) {
+				$join->on('a.client_id', '=', 'b.client_id')
+				->on('a.id', '=', 'b.id');
+			})
+			->where(function($query) {
+				$query->whereRaw("DATE_FORMAT(a.created_at, '%Y%m') = '".$this->periode."'")
+					->orWhereRaw("DATE_FORMAT(a.updated_at, '%Y%m') = '".$this->periode."'");
+			})
+			->get();
+
+		try {
+			$this->line("BEGIN => ". $SECTIONNAME);
+
+			$row = count($query);
+			$logs->write("Data", "[".$row."]");
+
+			if ($row > 0) {
+				$file = storage_path("app/gns_".$this->periode."_attr.csv");
+				$handle = fopen($file, 'w');
+
+				fputcsv($handle, ['id', 'client_id', 'nik', 'phone', 'birthday', 'photo', 'created_at', 'updated_at', 'gender', 'email'], '|');
+
+				foreach ($query as $value) {
+					fputcsv($handle, [
+						$value->id,
+						$value->client_id,
+						$value->nik,
+						$value->phone,
+						$value->birthday,
+						$value->photo,
+						$value->created_at,
+						$value->updated_at,
+						$value->gender,
+						$value->email
+					], '|');
+				}
+
+				fclose($handle);
+
+				$conn_id	= ftp_connect($this->ftp_host);
+				$login		= ftp_login($conn_id, $this->ftp_username, $this->ftp_password);
+
+				if ($login) {
+					$remote_dir = '/'.$client_id;
+					// Check if the directory exists
+					if (!@ftp_chdir($conn_id, $remote_dir)) {
+						// If it doesn't exist, create it
+						if (ftp_mkdir($conn_id, $remote_dir)) {
+							$logs->write("Success", "Created directory: $remote_dir");
+						} else {
+							$logs->write("Error", "Failed to create directory: $remote_dir");
+						}
+					}
+
+					// Upload the file to the client_id directory
+					$remote_file = $remote_dir.'/'.basename($file);
+
+					if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+						$logs->write("Success", "File uploaded successfully to FTP server.");
+					} else {
+						$logs->write("Error", "uploading the file to FTP.");
+					}
+
+					ftp_close($conn_id);
+				} else {
+					$logs->write("Error", "FTP login failed.");
+				}
+
+				unlink($file);
+			}else{
+				$this->line("No Data");  
+			}
+
+			$this->line("END => ". $SECTIONNAME."\r\n" );
+		} catch (\PDOException $e_H) {
+			$sqlState   = $e_H->errorInfo[0];
+			$errCode    = $e_H->errorInfo[1];
+			$errMessage = $e_H->errorInfo[2];
+
+			$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+		}
+
+		if($this->debug){
+			$queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+		}
+	}
+
+	private function exportRead($logs, $client_id)
+	{
+		$SECTIONNAME = "READ";
+		if($this->debug) DB::enableQueryLog();
+
+		$query = DB::table('ttrx_read as a')
+			->select([
+				'a.*',
+				'b.email'
+			])
+			->join('users as b', function ($join) {
+				$join->on('a.client_id', '=', 'b.client_id')
+				->on('a.user_id', '=', 'b.id');
+			})
+			->whereRaw("DATE_FORMAT(a.start_read, '%Y%m') = '".$this->periode."'")
+			->get();
+
+		try {
+			$this->line("BEGIN => ". $SECTIONNAME);
+
+			$row = count($query);
+			$logs->write("Data", "[".$row."]");
+
+			if ($row > 0) {
+				$file = storage_path("app/gns_".$this->periode."_read.csv");
+				$handle = fopen($file, 'w');
+
+				fputcsv($handle, ['id', 'user_id', 'client_id', 'start_read', 'end_read', 'created_at', 'updated_at', 'book_id', 'flag_end', 'email'], '|');
+
+				foreach ($query as $value) {
+					fputcsv($handle, [
+						$value->id,
+						$value->user_id,
+						$value->client_id,
+						$value->start_read,
+						$value->end_read,
+						$value->created_at,
+						$value->updated_at,
+						$value->book_id,
+						$value->flag_end,
+						$value->email
+					], '|');
+				}
+
+				fclose($handle);
+
+				$conn_id	= ftp_connect($this->ftp_host);
+				$login		= ftp_login($conn_id, $this->ftp_username, $this->ftp_password);
+
+				if ($login) {
+					$remote_dir = '/'.$client_id;
+					// Check if the directory exists
+					if (!@ftp_chdir($conn_id, $remote_dir)) {
+						// If it doesn't exist, create it
+						if (ftp_mkdir($conn_id, $remote_dir)) {
+							$logs->write("Success", "Created directory: $remote_dir");
+						} else {
+							$logs->write("Error", "Failed to create directory: $remote_dir");
+						}
+					}
+
+					// Upload the file to the client_id directory
+					$remote_file = $remote_dir.'/'.basename($file);
+
+					if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+						$logs->write("Success", "File uploaded successfully to FTP server.");
+					} else {
+						$logs->write("Error", "uploading the file to FTP.");
+					}
+
+					ftp_close($conn_id);
+				} else {
+					$logs->write("Error", "FTP login failed.");
+				}
+
+				unlink($file);
+			}else{
+				$this->line("No Data");  
+			}
+
+			$this->line("END => ". $SECTIONNAME."\r\n" );
+		} catch (\PDOException $e_H) {
+			$sqlState   = $e_H->errorInfo[0];
+			$errCode    = $e_H->errorInfo[1];
+			$errMessage = $e_H->errorInfo[2];
+
+			$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+		}
+
+		if($this->debug){
+			$queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+		}
+	}
+
+	private function exportRent($logs, $client_id)
+	{
+		$SECTIONNAME = "RENT";
+		if($this->debug) DB::enableQueryLog();
+
+		$query = DB::table('trent_book as a')
+			->select([
+				'a.*',
+				'b.email'
+			])
+			->join('users as b', function ($join) {
+				$join->on('a.client_id', '=', 'b.client_id')
+				->on('a.user_id', '=', 'b.id');
+			})
+			->where(function($query) {
+				$query->whereRaw("DATE_FORMAT(a.created_at, '%Y%m') = '".$this->periode."'")
+					->orWhereRaw("DATE_FORMAT(a.updated_at, '%Y%m') = '".$this->periode."'");
+			})
+			->get();
+
+		try {
+			$this->line("BEGIN => ". $SECTIONNAME);
+
+			$row = count($query);
+			$logs->write("Data", "[".$row."]");
+
+			if ($row > 0) {
+				$file = storage_path("app/gns_".$this->periode."_rent.csv");
+				$handle = fopen($file, 'w');
+
+				fputcsv($handle, ['client_id', 'user_id', 'book_id', 'start_date', 'end_date', 'flag_end', 'created_at', 'updated_at', 'email'], '|');
+
+				foreach ($query as $value) {
+					fputcsv($handle, [
+						$value->client_id,
+						$value->user_id,
+						$value->book_id,
+						$value->start_date,
+						$value->end_date,
+						$value->flag_end,
+						$value->created_at,
+						$value->updated_at,
+						$value->email
+					], '|');
+				}
+
+				fclose($handle);
+
+				$conn_id	= ftp_connect($this->ftp_host);
+				$login		= ftp_login($conn_id, $this->ftp_username, $this->ftp_password);
+
+				if ($login) {
+					$remote_dir = '/'.$client_id;
+					// Check if the directory exists
+					if (!@ftp_chdir($conn_id, $remote_dir)) {
+						// If it doesn't exist, create it
+						if (ftp_mkdir($conn_id, $remote_dir)) {
+							$logs->write("Success", "Created directory: $remote_dir");
+						} else {
+							$logs->write("Error", "Failed to create directory: $remote_dir");
+						}
+					}
+
+					// Upload the file to the client_id directory
+					$remote_file = $remote_dir.'/'.basename($file);
+
+					if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+						$logs->write("Success", "File uploaded successfully to FTP server.");
+					} else {
+						$logs->write("Error", "uploading the file to FTP.");
+					}
+
+					ftp_close($conn_id);
+				} else {
+					$logs->write("Error", "FTP login failed.");
+				}
+
+				unlink($file);
+			}else{
+				$this->line("No Data");  
+			}
+
+			$this->line("END => ". $SECTIONNAME."\r\n" );
+		} catch (\PDOException $e_H) {
+			$sqlState   = $e_H->errorInfo[0];
+			$errCode    = $e_H->errorInfo[1];
+			$errMessage = $e_H->errorInfo[2];
+
+			$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+		}
+
+		if($this->debug){
+			$queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+		}
+	}
+
+	private function exportVisit($logs, $client_id)
+	{
+		$SECTIONNAME = "VISIT";
+		if($this->debug) DB::enableQueryLog();
+
+		$query = DB::table('tvisitors as a')
+			->select([
+				'a.*'
+			])
+			->where(function($query) {
+				$query->whereRaw("DATE_FORMAT(a.created_at, '%Y%m') = '".$this->periode."'")
+					->orWhereRaw("DATE_FORMAT(a.updated_at, '%Y%m') = '".$this->periode."'");
+			})
+			->get();
+
+		try {
+			$this->line("BEGIN => ". $SECTIONNAME);
+
+			$row = count($query);
+			$logs->write("Data", "[".$row."]");
+
+			if ($row > 0) {
+				$file = storage_path("app/gns_".$this->periode."_visit.csv");
+				$handle = fopen($file, 'w');
+
+				fputcsv($handle, ['id', 'client_id', 'date', 'visitor', 'platform', 'device', 'browser', 'browser_name', 'user_agent', 'created_at', 'updated_at'], '|');
+
+				foreach ($query as $value) {
+					fputcsv($handle, [
+						$value->id,
+						$value->client_id,
+						$value->date,
+						$value->visitor,
+						$value->platform,
+						$value->device,
+						$value->browser,
+						$value->browser_name,
+						$value->user_agent,
+						$value->created_at,
+						$value->updated_at
+					], '|');
+				}
+
+				fclose($handle);
+
+				$conn_id	= ftp_connect($this->ftp_host);
+				$login		= ftp_login($conn_id, $this->ftp_username, $this->ftp_password);
+
+				if ($login) {
+					$remote_dir = '/'.$client_id;
+					// Check if the directory exists
+					if (!@ftp_chdir($conn_id, $remote_dir)) {
+						// If it doesn't exist, create it
+						if (ftp_mkdir($conn_id, $remote_dir)) {
+							$logs->write("Success", "Created directory: $remote_dir");
+						} else {
+							$logs->write("Error", "Failed to create directory: $remote_dir");
+						}
+					}
+
+					// Upload the file to the client_id directory
+					$remote_file = $remote_dir.'/'.basename($file);
+
+					if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+						$logs->write("Success", "File uploaded successfully to FTP server.");
+					} else {
+						$logs->write("Error", "uploading the file to FTP.");
+					}
+
+					ftp_close($conn_id);
+				} else {
+					$logs->write("Error", "FTP login failed.");
+				}
+
+				unlink($file);
+			}else{
+				$this->line("No Data");  
+			}
+
+			$this->line("END => ". $SECTIONNAME."\r\n" );
+		} catch (\PDOException $e_H) {
+			$sqlState   = $e_H->errorInfo[0];
+			$errCode    = $e_H->errorInfo[1];
+			$errMessage = $e_H->errorInfo[2];
+
+			$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+		}
+
+		if($this->debug){
+			$queries = DB::getQueryLog();
+			for($q = 0; $q < count($queries); $q++) {
+				$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+				$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+				$logs->write('SQL', $sql);
+			}
+		}
+	}
+}

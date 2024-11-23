@@ -1,8 +1,62 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class MemberReportRepository { public function get($filter) : Collection { goto C0SHW; uKnip: extract($filter); goto DtqvN; DtqvN: return DB::table("\164\x63\154\x69\x65\x6e\164\x20\141\163\40\x61")->select("\141\x2e\151\x6e\x73\164\141\156\163\x69\x5f\x6e\x61\155\145\x20\x61\x73\40\167\154\x5f\156\x61\155\145", "\x61\56\x70\162\157\166\x69\x6e\163\151\137\151\x64", "\x63\56\160\162\x6f\x76\151\x6e\x73\151\137\156\x61\155\x65", "\141\x2e\x6b\141\142\x75\x70\141\x74\145\156\x5f\x69\x64", "\x64\56\153\141\x62\x75\x70\141\164\x65\x6e\137\156\x61\155\145", "\x62\x2e\x6e\x61\155\x65", "\142\x2e\x65\x6d\141\x69\x6c", "\x62\x2e\143\x72\145\141\164\145\x64\137\141\x74")->join("\165\x73\145\x72\163\x20\x61\163\x20\x62", function ($join) { $join->on("\141\56\x63\154\151\145\156\164\137\x69\144", "\75", "\x62\56\143\154\151\x65\156\x74\x5f\x69\144"); })->join("\164\160\162\157\166\151\x6e\x73\x69\40\141\163\40\143", function ($join) { $join->on("\x61\x2e\160\x72\157\x76\151\156\163\x69\x5f\x69\x64", "\x3d", "\x63\56\x70\162\157\166\x69\x6e\163\151\137\x69\144"); })->join("\164\153\141\x62\165\160\141\x74\x65\x6e\x20\141\x73\x20\x64", function ($join) { $join->on("\141\56\153\x61\142\x75\160\141\164\x65\x6e\x5f\x69\x64", "\x3d", "\144\x2e\x6b\141\142\x75\160\141\x74\145\156\x5f\151\x64"); })->where("\x61\x2e\143\x6c\x69\145\x6e\164\137\x69\144", "\75", $client_id)->where("\141\x2e\x70\162\157\x76\151\156\163\151\x5f\x69\x64", "\75", $PROVINSI)->where("\x61\x2e\153\141\142\165\160\141\164\x65\156\x5f\151\144", "\x3d", $KABUPATEN)->sharedLock()->get(); goto pGwJ_; C0SHW: $client_id = $this->getClientID($filter); goto uKnip; pGwJ_: } private function getClientID($filter) { goto g09Ln; yh16Y: return $query[0]->client_id ?? ''; goto MOVoG; g09Ln: extract($filter); goto m4Yy0; m4Yy0: $query = DB::table("\164\x63\154\x69\x65\156\164\40\141\163\x20\x61")->select("\x61\56\x63\154\151\x65\x6e\x74\x5f\151\x64")->where("\x61\x2e\160\162\x6f\166\x69\x6e\163\151\x5f\151\x64", "\75", $PROVINSI)->where("\141\x2e\x6b\141\x62\165\x70\141\x74\145\156\137\x69\144", "\x3d", $KABUPATEN)->where("\141\56\151\x6e\163\164\x61\156\163\151\137\x6e\141\x6d\145", "\75", $WL)->sharedLock()->get(); goto yh16Y; MOVoG: } }
+
+namespace App\Repositories\Report;
+
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+class MemberReportRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($filter): Collection
+    {
+        $client_id = $this->getClientID($filter);
+        extract($filter);
+
+        return DB::table('tclient as a')
+            ->select(
+                'a.instansi_name as wl_name',
+                'a.provinsi_id',
+                'c.provinsi_name',
+                'a.kabupaten_id',
+                'd.kabupaten_name',
+                'b.name',
+                'b.email',
+                'b.created_at'
+            )
+            ->join('users as b', function ($join) {
+                $join->on('a.client_id', '=', 'b.client_id');
+            })
+            ->join('tprovinsi as c', function ($join) {
+                $join->on('a.provinsi_id', '=', 'c.provinsi_id');
+            })
+            ->join('tkabupaten as d', function ($join) {
+                $join->on('a.kabupaten_id', '=', 'd.kabupaten_id');
+            })
+            ->where('a.client_id', '=', $client_id)
+            ->where('a.provinsi_id', '=', $PROVINSI)
+            ->where('a.kabupaten_id', '=', $KABUPATEN)
+            ->sharedLock()
+            ->get();
+    }
+    
+    private function getClientID($filter)
+    {
+        extract($filter);
+
+        $query = DB::table('tclient as a')
+            ->select(
+                'a.client_id'
+            )
+            ->where('a.provinsi_id', '=', $PROVINSI)
+            ->where('a.kabupaten_id', '=', $KABUPATEN)
+            ->where('a.instansi_name', '=', $WL)
+            ->sharedLock()
+            ->get();
+        return $query[0]->client_id ?? '';
+    }
+}

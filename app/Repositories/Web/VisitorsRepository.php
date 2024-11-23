@@ -1,8 +1,64 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Web; use Carbon\Carbon; use App\Models\Web\Visitors; use Illuminate\Support\Facades\DB; use Browser; class VisitorsRepository { public function createVisitor($data) { goto akceS; rKd9h: $client_id = config("\x61\160\x70\56\x63\x6c\x69\x65\x6e\x74\x5f\151\144", ''); goto LUilM; akceS: Carbon::setLocale("\151\144"); goto V0Hh2; LUilM: try { Visitors::updateOrCreate(["\x69\144" => $data->id, "\x63\x6c\151\145\x6e\x74\x5f\x69\144" => $client_id, "\x64\141\x74\x65" => $date, "\x76\x69\163\x69\x74\x6f\x72" => $data->getClientIp()], ["\x70\x6c\141\164\146\x6f\162\155" => Browser::platformFamily(), "\144\x65\166\x69\x63\x65" => Browser::isDesktop() ? "\x44\x65\163\x6b\164\157\x70" : Browser::deviceFamily(), "\x62\162\x6f\167\x73\145\x72" => Browser::browserFamily(), "\x62\162\157\167\163\x65\x72\137\156\x61\x6d\x65" => Browser::browserName(), "\x75\163\145\162\x5f\x61\x67\145\x6e\164" => Browser::userAgent(), "\165\x70\x64\x61\x74\x65\x64\137\x61\x74" => Carbon::now("\101\x73\151\x61\x2f\112\141\x6b\141\162\164\x61")]); return true; } catch (\Exception $e) { \Log::error("\x41\x63\143\145\163\x73\x20\x6d\x65\155\x62\145\x72\x20\x6c\x6f\x67\40\146\x61\151\x6c\145\144\x20\x3d\76\x20" . $e->getMessage()); return false; } goto UP5Ms; V0Hh2: $date = Carbon::now("\101\x73\151\x61\57\x4a\x61\153\x61\x72\164\141")->format("\131\55\x6d\x2d\x64"); goto rKd9h; UP5Ms: } public function ReadFitur($data) { goto ozrYF; R6UCP: $date = Carbon::now("\x41\163\151\x61\x2f\x4a\141\153\x61\x72\x74\x61")->format("\x59\x2d\155\55\x64"); goto HaUp8; ozrYF: Carbon::setLocale("\x69\x64"); goto R6UCP; n3uUe: try { $rent = DB::table("\x74\x72\145\x61\x64\137\x66\151\164\x75\162")->insert(["\x63\154\151\x65\156\164\x5f\151\144" => $client_id, "\146\151\164\x75\162" => $data->category, "\x69\x64\137\x66\x69\164\165\162" => $data->id, "\x63\x72\x65\x61\x74\145\144\137\x61\x74" => Carbon::now("\x41\163\x69\141\57\112\x61\x6b\x61\x72\164\141")]); return true; } catch (\Exception $e) { \Log::error("\122\145\141\144\x20\x46\x69\x74\x75\x72\x20\x6c\x6f\x67\x20\146\x61\x69\154\145\x64\40\75\76\x20" . $e->getMessage()); return false; } goto sYYiy; HaUp8: $client_id = config("\141\x70\160\56\143\154\151\x65\x6e\164\x5f\x69\144", ''); goto n3uUe; sYYiy: } }
+
+namespace App\Repositories\Web;
+
+use Carbon\Carbon;
+use App\Models\Web\Visitors;
+use Illuminate\Support\Facades\DB;
+use Browser;
+
+class VisitorsRepository 
+{
+	public function createVisitor($data)
+	{
+		Carbon::setLocale('id');
+		$date = Carbon::now('Asia/Jakarta')->format('Y-m-d');
+		$client_id = config('app.client_id', '');
+
+		try {
+			Visitors::updateOrCreate(
+				[
+					'id' => $data->id,
+					'client_id' => $client_id,
+					'date' => $date,
+					'visitor' => $data->getClientIp(),
+				],
+				[
+					'platform' => Browser::platformFamily(),
+					'device' => Browser::isDesktop() ? 'Desktop' : Browser::deviceFamily(),
+					'browser' => Browser::browserFamily(),
+					'browser_name' => Browser::browserName(),
+					'user_agent' => Browser::userAgent(),
+					'updated_at' => Carbon::now('Asia/Jakarta')
+				]
+			);
+
+			return true;
+		} catch (\Exception $e) {
+			\Log::error('Access member log failed => ' . $e->getMessage());
+        	return false;
+		}
+	}
+
+	public function ReadFitur($data)
+	{
+		Carbon::setLocale('id');
+		$date = Carbon::now('Asia/Jakarta')->format('Y-m-d');
+		$client_id = config('app.client_id', '');
+
+		try {
+			$rent	= DB::table('tread_fitur')
+				->insert([
+					'client_id'		=> $client_id,
+					'fitur'			=> $data->category,
+					'id_fitur'		=> $data->id,
+					'created_at'	=> Carbon::now('Asia/Jakarta')
+				]);
+
+			return true;
+		} catch (\Exception $e) {
+			\Log::error('Read Fitur log failed => ' . $e->getMessage());
+        	return false;
+		}
+	}
+}

@@ -1,8 +1,78 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Report; use App\Models\IconMenu\IconMenu; use Illuminate\Support\Facades\DB; use Illuminate\Support\Collection; class BookReportRepository { public function get($filter) : Collection { goto CXyZJ; LX3RK: extract($filter); goto P7e02; P7e02: return DB::table("\x74\155\141\x70\160\x69\x6e\x67\137\142\x6f\x6f\x6b\40\x61\x73\40\x61")->select("\141\x2e\142\157\x6f\x6b\x5f\x69\x64", "\142\x2e\143\x6f\166\x65\162", "\142\56\x74\x69\x74\x6c\x65", "\x62\56\151\x73\x62\156", "\142\x2e\x65\151\163\142\156", "\x62\x2e\171\145\x61\162", "\142\56\167\x72\x69\164\x65\162", "\144\x2e\x64\x65\163\143\x72\151\160\x74\151\157\x6e\40\141\x73\x20\160\x75\x62\154\151\x73\150\145\162", "\x63\56\x64\x65\163\143\162\x69\x70\x74\151\157\156\40\141\163\x20\x63\141\x74\145\147\157\162\171", "\141\x2e\143\157\x70\x79\40\x61\163\40\x71\x74\x79", "\x65\x2e\x70\x72\157\166\151\x6e\x73\151\137\151\x64", "\146\x2e\x70\x72\157\x76\x69\156\x73\151\x5f\156\x61\155\x65", "\x65\56\x6b\x61\142\165\160\x61\164\145\156\x5f\151\x64", "\147\x2e\153\x61\142\x75\160\141\x74\145\156\x5f\156\141\x6d\145", "\x65\56\x69\156\163\x74\x61\156\163\151\x5f\x6e\141\x6d\x65\40\141\x73\x20\167\x6c\137\x6e\141\x6d\x65")->join("\x74\x62\x6f\157\153\40\x61\163\40\x62", function ($join) { $join->on("\141\56\142\x6f\157\x6b\137\151\x64", "\x3d", "\142\56\142\157\157\153\x5f\x69\x64"); })->join("\x74\x62\x6f\157\x6b\x5f\143\141\164\x65\x67\x6f\x72\x79\40\141\x73\40\143", function ($join) { $join->on("\142\56\143\x61\164\x65\147\x6f\x72\x79\x5f\x69\x64", "\x3d", "\x63\x2e\151\144"); })->leftjoin("\x74\160\x75\x62\x6c\x69\163\150\145\162\40\x61\x73\x20\144", function ($join) { $join->on("\142\56\x70\165\x62\154\151\163\x68\145\x72\137\x69\144", "\75", "\144\56\x69\144"); })->join("\164\x63\x6c\x69\145\156\x74\x20\141\163\x20\x65", function ($join) { $join->on("\141\x2e\143\154\x69\145\156\164\x5f\x69\x64", "\x3d", "\145\56\x63\x6c\151\x65\x6e\x74\x5f\151\x64"); })->join("\x74\160\162\157\166\151\x6e\163\x69\x20\141\163\40\146", function ($join) { $join->on("\x65\56\160\162\157\166\151\156\163\151\x5f\151\x64", "\75", "\146\x2e\x70\162\157\166\151\156\x73\x69\x5f\x69\144"); })->join("\164\153\141\x62\x75\x70\x61\164\145\156\x20\x61\x73\40\x67", function ($join) { $join->on("\145\x2e\x6b\141\x62\165\x70\x61\x74\x65\x6e\x5f\151\x64", "\x3d", "\147\56\x6b\141\142\x75\160\x61\x74\145\x6e\x5f\151\x64"); })->where("\x61\56\x63\154\151\145\156\x74\137\151\144", "\75", $client_id)->where("\145\56\x70\x72\x6f\166\151\156\163\x69\137\x69\x64", "\x3d", $PROVINSI)->where("\145\x2e\153\141\142\165\x70\x61\x74\x65\156\137\x69\144", "\75", $KABUPATEN)->sharedLock()->get(); goto V34zp; CXyZJ: $client_id = $this->getClientID($filter); goto LX3RK; V34zp: } private function getClientID($filter) { goto IXWn3; XIT9j: return $query[0]->client_id ?? ''; goto kEtWp; Z8uTy: $query = DB::table("\x74\143\x6c\151\x65\156\164\x20\x61\x73\40\x61")->select("\x61\x2e\143\x6c\151\145\156\164\137\x69\x64")->where("\141\x2e\x70\162\x6f\166\x69\x6e\x73\x69\x5f\151\144", "\75", $PROVINSI)->where("\141\x2e\x6b\x61\x62\x75\x70\141\164\145\156\x5f\x69\x64", "\x3d", $KABUPATEN)->where("\x61\x2e\151\x6e\x73\164\141\156\x73\x69\137\x6e\141\155\x65", "\x3d", $WL)->sharedLock()->get(); goto XIT9j; IXWn3: extract($filter); goto Z8uTy; kEtWp: } }
+
+namespace App\Repositories\Report;
+
+use App\Models\IconMenu\IconMenu;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+class BookReportRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($filter): Collection
+    {
+        $client_id = $this->getClientID($filter);
+        extract($filter);
+
+        return DB::table('tmapping_book as a')
+			->select(
+				'a.book_id',
+				'b.cover',
+				'b.title',
+				'b.isbn',
+				'b.eisbn',
+				'b.year',
+				'b.writer',
+				'd.description as publisher',
+				'c.description as category',
+                'a.copy as qty',
+                'e.provinsi_id',
+                'f.provinsi_name',
+                'e.kabupaten_id',
+                'g.kabupaten_name',
+                'e.instansi_name as wl_name'
+			)
+            ->join('tbook as b', function($join) {
+                $join->on('a.book_id', '=', 'b.book_id');
+            })
+            ->join('tbook_category as c', function($join) {
+                $join->on('b.category_id', '=', 'c.id');
+            })
+            ->leftjoin('tpublisher as d', function($join) {
+                $join->on('b.publisher_id', '=', 'd.id');
+            })
+            ->join('tclient as e', function ($join) {
+                $join->on('a.client_id', '=', 'e.client_id');
+            })
+            ->join('tprovinsi as f', function ($join) {
+                $join->on('e.provinsi_id', '=', 'f.provinsi_id');
+            })
+            ->join('tkabupaten as g', function ($join) {
+                $join->on('e.kabupaten_id', '=', 'g.kabupaten_id');
+            })
+            ->where('a.client_id', '=', $client_id)
+            ->where('e.provinsi_id', '=', $PROVINSI)
+            ->where('e.kabupaten_id', '=', $KABUPATEN)
+			->sharedLock()
+			->get();
+    }
+
+    private function getClientID($filter)
+    {
+        extract($filter);
+
+        $query = DB::table('tclient as a')
+            ->select(
+                'a.client_id'
+            )
+            ->where('a.provinsi_id', '=', $PROVINSI)
+            ->where('a.kabupaten_id', '=', $KABUPATEN)
+            ->where('a.instansi_name', '=', $WL)
+            ->sharedLock()
+            ->get();
+        return $query[0]->client_id ?? '';
+    }
+}

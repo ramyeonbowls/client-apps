@@ -1,8 +1,234 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Setting\TitikFokusMasterService; use App\Http\Requests\Setting\StoreTitikFokusMasterRequest; use App\Http\Requests\Setting\UpdateTitikFokusMasterRequest; class TitikFokusMasterController extends Controller { private TitikFokusMasterService $TitikFokus_service; public function __construct() { $this->middleware("\x61\x75\164\x68"); $this->TitikFokus_service = new TitikFokusMasterService(); } public function index(Request $request) : JsonResponse { goto JrfPA; VFaqc: try { goto oKKy6; gQgHn: $q++; goto cKMaa; hbMQq: $queries = DB::getQueryLog(); goto vVpZp; XKH3y: UUjyw: goto PBLfu; ZSFie: if (!($q < count($queries))) { goto UUjyw; } goto x0rZ2; U8Sup: $logs->write("\123\121\x4c", $queries[$q]["\161\165\x65\x72\171"]); goto SRiNH; x0rZ2: $logs->write("\x42\111\116\x44\x49\116\x47", "\133" . implode("\x2c\x20", $queries[$q]["\x62\151\156\144\x69\156\147\163"]) . "\135"); goto U8Sup; cKMaa: goto FziUJ; goto XKH3y; oKKy6: DB::enableQueryLog(); goto FBbyA; SRiNH: PK5vN: goto gQgHn; vVpZp: $q = 0; goto ZrE8P; FBbyA: $results = $this->TitikFokus_service->get(); goto hbMQq; ZrE8P: FziUJ: goto ZSFie; PBLfu: } catch (Throwable $th) { $logs->write("\x45\122\x52\x4f\x52", $th->getMessage()); } goto vcQal; ra3vX: $logs->write(__FUNCTION__, "\x53\124\x41\x52\x54"); goto RuPW5; J437K: return DataTables::of($results)->escapeColumns()->editColumn("\143\162\145\x61\x74\x65\144\x5f\x61\x74", function ($value) { return Carbon::parse($value->created_at)->toDateTimeString(); })->editColumn("\165\x70\144\x61\164\145\144\x5f\x61\164", function ($value) { return Carbon::parse($value->updated_at)->toDateTimeString(); })->addIndexColumn()->toJson(); goto JLrhs; RuPW5: $results = []; goto VFaqc; vcQal: $logs->write(__FUNCTION__, "\123\x54\117\120\xd\12"); goto J437K; JrfPA: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto ra3vX; JLrhs: } public function store(StoreTitikFokusMasterRequest $request) : JsonResponse { goto d74x4; cO3qX: $result["\155\x65\163\x73\x61\x67\145"] = ''; goto VXx4k; VXx4k: try { goto NQs0N; v3C_g: $logs->write("\x53\x51\114", $queries[$q]["\x71\165\145\162\171"]); goto u86Lr; KcMcZ: $q++; goto Hoz_k; phVC_: $created = $this->TitikFokus_service->store((object) $validated); goto faROe; hxVAE: $logs->write("\102\x49\x4e\x44\111\x4e\x47", "\133" . implode("\x2c\x20", $queries[$q]["\x62\x69\156\x64\x69\156\147\163"]) . "\x5d"); goto v3C_g; Hoz_k: goto n4nOX; goto xWiej; p7d_h: if (!$request->hasFile("\146\151\x6c\x65")) { goto Xbv_k; } goto jmUEE; Wchg1: $logs->write("\111\x4e\x46\117", "\x53\x75\143\143\x65\163\x73\x66\165\154\154\x79\x20\x63\162\145\x61\x74\145\x64"); goto uA_2g; WhRR0: hnOsr: goto Lnzr5; TVCyi: if (!($q < count($queries))) { goto hSHcZ; } goto hxVAE; eMM_M: $result["\155\145\x73\x73\141\147\x65"] = "\x44\x61\164\x61\x20\x62\145\162\x68\141\163\151\154\40\144\151\x62\x75\141\164\56"; goto WhRR0; Lnzr5: $queries = DB::getQueryLog(); goto N56c_; jmUEE: try { goto AqgXX; PgQ1e: $validated["\146\151\154\145"] = $TitikFokus_name; goto yqZMY; Ytr_v: $request->file("\146\151\x6c\145")->storeAs("\x2f\160\x75\x62\154\x69\x63\x2f\151\x6d\141\147\x65\163\x2f\156\145\x77\x73", $TitikFokus_name); goto PgQ1e; Pm2Bj: $TitikFokus_name = "\124\x46\137" . $request->id . "\56" . $extension; goto Ytr_v; AqgXX: $TitikFokus_file = $request->file("\x66\151\154\x65")->getClientOriginalName(); goto yOvo3; yOvo3: $extension = $request->file("\x66\x69\154\145")->getClientOriginalExtension(); goto Pm2Bj; yqZMY: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\122", $th->getMessage()); } goto f8I8d; u86Lr: U34v_: goto KcMcZ; VbLa8: n4nOX: goto TVCyi; xWiej: hSHcZ: goto CbrMi; NQs0N: DB::enableQueryLog(); goto p7d_h; f8I8d: Xbv_k: goto phVC_; faROe: if (!$created) { goto hnOsr; } goto Wchg1; N56c_: $q = 0; goto VbLa8; uA_2g: $result["\x73\x74\x61\x74\x75\x73"] = 201; goto eMM_M; CbrMi: } catch (Throwable $th) { $logs->write("\105\x52\x52\117\x52", $th->getMessage()); $result["\x6d\x65\x73\x73\141\147\x65"] = "\x44\141\164\x61\x20\x67\141\147\x61\154\40\144\151\142\x75\x61\164\x2e\74\x62\162\76" . $th->getMessage(); } goto T3r1Y; v2Ehx: return response()->json($result["\x6d\145\x73\x73\x61\x67\x65"], $result["\x73\x74\141\x74\x75\x73"]); goto Y2ivX; d74x4: $validated = $request->validated(); goto R8ZGT; YpvDC: $result["\x73\164\x61\x74\x75\x73"] = 200; goto cO3qX; R8ZGT: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto pFoWJ; pFoWJ: $logs->write(__FUNCTION__, "\123\124\x41\122\x54"); goto YpvDC; T3r1Y: $logs->write(__FUNCTION__, "\x53\124\117\x50\xd\12"); goto v2Ehx; Y2ivX: } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update(UpdateTitikFokusMasterRequest $request, string $id) : JsonResponse { goto o28cr; j1TbE: return response()->json($result["\x6d\145\163\163\141\147\x65"], $result["\163\x74\141\x74\165\163"]); goto pm9cl; hDKAr: $logs->write(__FUNCTION__, "\123\x54\101\x52\x54"); goto f5pex; o28cr: try { $validated = $request->validated(); } catch (ValidationException $e) { return response()->json(["\145\162\x72\x6f\162" => $e->errors()], 422); } goto Fywg1; Fywg1: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\157\147"); goto hDKAr; qaXLX: try { goto M_uYL; ituY1: $result["\x6d\145\x73\x73\141\147\145"] = "\x44\x61\164\x61\x20\142\145\162\150\141\163\x69\x6c\40\x64\151\160\x65\162\142\141\162\165\151\x2e"; goto DZtYL; fBlX9: if (!($q < count($queries))) { goto YkSBw; } goto JsrUg; fdSM_: $updated = $this->TitikFokus_service->update((object) $validated, $id); goto uKZBh; fB3A_: $q = 0; goto lgVnu; J4oU7: try { goto fDGUa; DZy7b: $validated["\146\x69\154\145"] = $TitikFokus_name; goto oTQQ7; pzxVT: $extension = $request->file("\x66\x69\x6c\x65")->getClientOriginalExtension(); goto rkEF0; rkEF0: $TitikFokus_name = "\x54\106\137" . $request->id . "\56" . $extension; goto DMMK2; DMMK2: $request->file("\x66\x69\154\145")->storeAs("\x2f\x70\165\142\x6c\151\143\57\151\x6d\141\x67\x65\163\x2f\x6e\145\167\x73", $TitikFokus_name); goto DZy7b; fDGUa: $TitikFokus_file = $request->file("\146\151\x6c\145")->getClientOriginalName(); goto pzxVT; oTQQ7: } catch (Throwable $th) { $logs->write("\105\122\x52\x4f\x52", $th->getMessage()); } goto qY97y; lgVnu: UI7zh: goto fBlX9; VXk2e: if (!$request->hasFile("\146\151\154\145")) { goto hnMq3; } goto J4oU7; mj7Ir: $q++; goto kBsvJ; UMRO2: $logs->write("\x53\121\x4c", $queries[$q]["\x71\165\145\x72\171"]); goto I0vut; rIpkn: $result["\163\164\141\x74\x75\163"] = 201; goto ituY1; M_uYL: DB::enableQueryLog(); goto VXk2e; I0vut: RPxQ8: goto mj7Ir; DZtYL: Xow7F: goto dMGwo; dMGwo: $queries = DB::getQueryLog(); goto fB3A_; kBsvJ: goto UI7zh; goto tOrxH; uKZBh: if (!$updated) { goto Xow7F; } goto o0gD5; qY97y: hnMq3: goto fdSM_; JsrUg: $logs->write("\102\111\x4e\x44\x49\116\x47", "\x5b" . implode("\x2c\40", $queries[$q]["\x62\151\x6e\x64\151\x6e\147\163"]) . "\x5d"); goto UMRO2; tOrxH: YkSBw: goto HBTYQ; o0gD5: $logs->write("\111\116\x46\117", "\x53\x75\x63\143\x65\x73\x73\x66\x75\154\154\x79\x20\x75\160\144\141\x74\145\x64"); goto rIpkn; HBTYQ: } catch (Throwable $th) { $logs->write("\x45\122\x52\x4f\122", $th->getMessage()); $result["\x6d\145\x73\163\141\x67\x65"] = "\x44\141\x74\141\x20\147\141\147\x61\154\40\144\151\x70\x65\162\x62\x61\x72\x75\x69\56\74\142\162\76" . $th->getMessage(); } goto j1TbE; f5pex: $result["\163\164\141\164\165\x73"] = 200; goto ajjnX; ajjnX: $result["\x6d\x65\163\x73\x61\147\145"] = ''; goto qaXLX; pm9cl: } public function destroy(string $id) : JsonResponse { goto I13n2; DRlDx: try { goto Bn9Ao; bqCR3: $result["\155\145\163\x73\141\x67\145"] = "\104\x61\x74\x61\x20\142\145\162\150\141\x73\x69\x6c\x20\144\x69\x68\x61\160\x75\163"; goto p0rQb; R1gDC: goto fZmEk; goto Bv4I4; JE9xv: fZmEk: goto nWVkd; lUj5p: $q++; goto R1gDC; dsj1K: if (!$deleted) { goto iuO5m; } goto bqCR3; hVjq4: Bcojs: goto lUj5p; Bv4I4: DumFJ: goto dsj1K; XWrr6: $deleted = $this->TitikFokus_service->delete($id); goto NjySc; en75I: $logs->write("\x53\x51\114", $queries[$q]["\x71\165\x65\x72\x79"]); goto hVjq4; Bn9Ao: DB::enableQueryLog(); goto XWrr6; KJBjB: $logs->write("\102\x49\116\x44\111\x4e\107", "\133" . implode("\54\40", $queries[$q]["\142\151\x6e\144\151\156\147\163"]) . "\135"); goto en75I; nWVkd: if (!($q < count($queries))) { goto DumFJ; } goto KJBjB; NjySc: $queries = DB::getQueryLog(); goto eFaCS; p0rQb: iuO5m: goto F32X7; eFaCS: $q = 0; goto JE9xv; F32X7: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\122", $th->getMessage()); $result["\155\x65\x73\x73\141\x67\145"] = "\104\141\x74\x61\40\x67\x61\x67\x61\154\40\144\151\x68\141\160\x75\163\56\74\142\162\x3e" . $th->getMessage(); } goto uSXBw; cTLSg: $result["\x6d\x65\163\163\141\x67\145"] = ''; goto DRlDx; rVWW7: $result["\x73\x74\141\x74\x75\x73"] = 200; goto cTLSg; TEwPR: return response()->json($result["\x6d\145\x73\x73\x61\147\145"], $result["\163\x74\141\164\x75\163"]); goto n3FtL; uSXBw: $logs->write(__FUNCTION__, "\x53\124\117\x50\15\xa"); goto TEwPR; I13n2: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\114\157\147"); goto NqUQT; NqUQT: $logs->write(__FUNCTION__, "\x53\x54\x41\x52\124"); goto rVWW7; n3FtL: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Setting\TitikFokusMasterService;
+use App\Http\Requests\Setting\StoreTitikFokusMasterRequest;
+use App\Http\Requests\Setting\UpdateTitikFokusMasterRequest;
+
+class TitikFokusMasterController extends Controller
+{
+    private TitikFokusMasterService $TitikFokus_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->TitikFokus_service = new TitikFokusMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->TitikFokus_service->get();
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('created_at', function ($value) {
+                return Carbon::parse($value->created_at)->toDateTimeString();
+            })
+            ->editColumn('updated_at', function ($value) {
+                return Carbon::parse($value->updated_at)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  IconMenuDeviceRequestStore  $request
+     * @return JsonResponse
+     */
+    public function store(StoreTitikFokusMasterRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('file')) {
+                try {
+                    $TitikFokus_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $TitikFokus_name = 'TF_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $TitikFokus_name);
+
+                    $validated['file'] = $TitikFokus_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $created = $this->TitikFokus_service->store((object)$validated);
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil dibuat.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal dibuat.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateTitikFokusMasterRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(UpdateTitikFokusMasterRequest $request, string $id): JsonResponse
+    {
+        try {
+            $validated = $request->validated();
+            // Rest of your logic
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->errors()], 422);
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            if ($request->hasFile('file')) {
+                try {
+                    $TitikFokus_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $TitikFokus_name = 'TF_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $TitikFokus_name);
+
+                    $validated['file'] = $TitikFokus_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updated = $this->TitikFokus_service->update((object)$validated, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $deleted = $this->TitikFokus_service->delete($id);
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

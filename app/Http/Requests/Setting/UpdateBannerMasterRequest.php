@@ -1,8 +1,84 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class UpdateBannerMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { goto S5FBQ; AnZ5p: goto pjPIO; goto wKR5E; geKA2: $dimensionRule = $dimensionRule->maxWidth(1300)->maxHeight(500); goto AnZ5p; IkOBT: pjPIO: goto YwMDN; YwMDN: return ["\151\144" => "\162\145\161\x75\151\x72\145\x64\x7c\x65\x78\151\x73\x74\163\x3a\164\x62\141\x6e\156\145\162\x2c\151\144\174\155\x61\170\72\61\60\60", "\x64\145\163\143" => "\x72\x65\161\x75\151\162\x65\x64\174\x6d\141\170\72\61\60\60", "\164\x79\160\x65" => "\162\x65\161\165\x69\x72\x65\x64\x7c\155\x61\170\72\61\x30\x30", "\146\x69\x6c\x65" => ["\162\145\x71\x75\151\162\x65\x64", "\x6d\x69\x6d\x65\x73\x3a\152\160\x65\147\x2c\x70\x6e\147\x2c\152\160\147", "\155\x61\x78\72\x31\65\x30\60", $dimensionRule], "\x63\x75\162\162\x65\156\164\x5f\x66\x69\154\x65" => "\x6e\x75\x6c\154\141\x62\x6c\145"]; goto bbrX0; BrAfR: if ($type === "\x77\x65\142") { goto a_8g1; } goto os5IZ; JcDRN: $dimensionRule = $dimensionRule->maxWidth(400)->maxHeight(250); goto IkOBT; os5IZ: if ($type === "\155\x6f\142\x69\x6c\145") { goto TRR0V; } goto TYRoW; uVjos: $dimensionRule = Rule::dimensions(); goto BrAfR; wKR5E: TRR0V: goto JcDRN; BVnw9: a_8g1: goto geKA2; TYRoW: goto pjPIO; goto BVnw9; S5FBQ: $type = request()->type; goto uVjos; bbrX0: } public function attributes() : array { return ["\x69\144" => "\x49\x44\40\x42\141\156\156\145\x72", "\x64\x65\163\x63" => "\x44\145\163\x63\x20\x42\141\x6e\x6e\145\x72", "\164\x79\x70\x65" => "\124\171\x70\145\x20\x42\x61\x6e\x6e\x65\162", "\x66\x69\154\145" => "\106\x69\x6c\145\x20\102\x61\156\x6e\145\162"]; } public function messages() : array { goto kzEq5; GTuLM: if ($type === "\167\145\142") { goto xhKAR; } goto C8Mud; RrBFw: $dimensionMessage = "\124\150\145\x20\x66\151\x6c\x65\x20\144\x69\x6d\x65\156\163\151\x6f\156\163\x20\143\141\x6e\47\164\40\142\145\x20\154\x61\x72\x67\x65\x72\x20\x74\x68\141\156\40\64\60\60\x20\170\40\62\65\60\40\160\x69\170\x65\154\x73\x20\146\157\162\40\155\x6f\x62\x69\154\145\x2e"; goto Sh_S5; kzEq5: $type = request()->type; goto Wgh6P; Sh_S5: rR31s: goto E3Vt2; E3Vt2: return ["\x66\x69\154\145\56\162\x65\161\x75\x69\162\x65\x64" => "\x54\x68\x65\40\x66\151\154\x65\x20\151\163\40\x72\x65\161\x75\151\162\x65\144\56", "\146\x69\x6c\145\56\155\x69\x6d\145\x73" => "\x54\x68\x65\x20\x66\151\x6c\145\40\155\x75\x73\164\x20\142\145\x20\x61\40\166\141\x6c\x69\x64\x20\151\x6d\141\x67\145\x20\x74\x79\160\x65\40\x28\152\x70\145\147\x2c\x20\160\x6e\147\x2c\x20\152\160\147\51\56", "\x66\151\154\145\56\x6d\x61\x78" => "\x54\150\x65\x20\146\x69\154\145\x20\163\x69\172\x65\x20\x63\141\x6e\x6e\157\x74\x20\x62\145\x20\x6c\x61\162\147\145\x72\40\164\x68\141\x6e\40\x31\x35\x30\60\40\x4b\x42\56", "\146\151\154\x65\x2e\x64\x69\x6d\x65\x6e\x73\x69\157\x6e\163" => $dimensionMessage]; goto XxUPe; NAe4W: BCAFO: goto RrBFw; B9JpH: goto rR31s; goto NAe4W; tUaPJ: xhKAR: goto WFHp_; C8Mud: if ($type === "\155\157\142\151\154\x65") { goto BCAFO; } goto Haqq8; WFHp_: $dimensionMessage = "\124\x68\x65\40\146\x69\x6c\x65\x20\144\151\x6d\x65\x6e\163\151\157\x6e\x73\x20\143\x61\156\x27\x74\40\142\145\x20\x6c\141\x72\x67\145\162\x20\164\150\x61\156\x20\x31\63\x30\60\40\170\40\x35\x30\x30\40\x70\151\170\145\x6c\163\x20\x66\157\x72\40\167\x65\142\x2e"; goto B9JpH; Wgh6P: $dimensionMessage = "\124\x68\145\x20\x66\x69\x6c\x65\40\144\x69\155\145\156\163\151\x6f\156\163\40\141\162\145\x20\151\x6e\x76\141\x6c\151\144\56"; goto GTuLM; Haqq8: goto rR31s; goto tUaPJ; XxUPe: } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UpdateBannerMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        $type = request()->type;
+        $dimensionRule = Rule::dimensions();
+        if ($type === 'web') {
+            $dimensionRule = $dimensionRule->maxWidth(1300)->maxHeight(500);
+        } elseif ($type === 'mobile') {
+            $dimensionRule = $dimensionRule->maxWidth(400)->maxHeight(250);
+        }
+
+        return [
+            'id' => 'required|exists:tbanner,id|max:100',
+            'desc' => 'required|max:100',
+            'type' => 'required|max:100',
+            'file' => [
+                'required',
+                'mimes:jpeg,png,jpg',
+                'max:1500',
+                $dimensionRule
+            ],
+            'current_file' => 'nullable',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'id' => 'ID Banner',
+            'desc' => 'Desc Banner',
+            'type' => 'Type Banner',
+            'file' => 'File Banner',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        $type = request()->type;
+        $dimensionMessage = 'The file dimensions are invalid.';
+        if ($type === 'web') {
+            $dimensionMessage = 'The file dimensions can\'t be larger than 1300 x 500 pixels for web.';
+        } elseif ($type === 'mobile') {
+            $dimensionMessage = 'The file dimensions can\'t be larger than 400 x 250 pixels for mobile.';
+        }
+
+        return [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
+            'file.max' => 'The file size cannot be larger than 1500 KB.',
+            'file.dimensions' => $dimensionMessage,
+        ];
+    }
+}

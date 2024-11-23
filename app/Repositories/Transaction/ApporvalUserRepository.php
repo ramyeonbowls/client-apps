@@ -1,8 +1,59 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:21             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Repositories\Transaction; use Carbon\Carbon; use Illuminate\Support\Collection; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Hash; class ApporvalUserRepository { public function get($client_id) : Collection { return DB::table("\165\x73\145\162\x73\40\x61\163\x20\141")->select("\141\56\151\x64", "\142\x2e\x6e\x69\153", "\x62\56\x70\150\x6f\164\x6f", "\x61\x2e\156\141\155\x65", "\x61\x2e\x65\x6d\x61\x69\x6c", "\x62\56\x70\150\157\x6e\x65", "\x62\x2e\142\151\x72\164\150\x64\141\171", "\141\x2e\145\x6d\141\151\x6c\x5f\166\x65\162\x69\146\x69\x65\144\137\141\164", "\x61\x2e\143\162\x65\x61\164\x65\144\x5f\141\x74")->join("\x74\141\x74\164\162\137\x6d\145\x6d\142\145\x72\x20\141\x73\40\x62", function ($join) { $join->on("\x61\x2e\151\144", "\x3d", "\x62\x2e\x69\x64"); })->where("\x61\x2e\143\154\x69\x65\x6e\x74\x5f\151\144", "\75", $client_id)->where("\x61\x2e\162\x6f\154\x65", "\75", "\x6d\145\x6d\142\145\x72")->where("\x61\56\x66\154\x61\x67\x5f\x61\160\160\x72\x6f\166\145", "\75", "\x4e")->get(); } public function store(array $data, $client_id) : bool { return DB::transaction(function () use($data, $client_id) { goto ANHpq; zDjmI: opnM_: goto rWL3H; ANHpq: foreach ($data as $key => $value) { $appr = DB::table("\x75\163\x65\162\x73")->where("\151\x64", $value["\x69\x64"])->where("\x63\154\x69\x65\x6e\x74\137\x69\x64", $client_id)->update(["\146\x6c\x61\147\x5f\x61\160\x70\x72\157\166\145" => "\131", "\x75\160\x64\141\164\145\x64\x5f\141\x74" => Carbon::now("\101\x73\x69\141\57\x4a\x61\153\141\162\164\141")]); aXnk1: } goto zDjmI; rWL3H: return $appr; goto zxxI1; zxxI1: }); } }
+
+namespace App\Repositories\Transaction;
+
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class ApporvalUserRepository 
+{
+	/**
+     * @param array $filter
+     * @return Collection
+     */
+    public function get($client_id): Collection
+    {
+        return DB::table('users as a')
+			->select(
+				'a.id',
+				'b.nik',
+				'b.photo',
+				'a.name',
+				'a.email',
+				'b.phone',
+				'b.birthday',
+				'a.email_verified_at',
+				'a.created_at'
+			)
+            ->join('tattr_member as b', function($join) {
+                $join->on('a.id', '=', 'b.id');
+            })
+            ->where('a.client_id', '=', $client_id)
+            ->where('a.role', '=', 'member')
+            ->where('a.flag_approve', '=', 'N')
+			->get();
+    }
+
+	/**
+     * @param array $data
+     * @return bool
+     */
+    public function store(array $data, $client_id): bool
+    {
+        return DB::transaction(function () use ($data, $client_id) {
+			foreach ($data as $key => $value) {
+				$appr = DB::table('users')
+				->where('id', $value['id'])
+				->where('client_id', $client_id)
+                ->update([
+                    'flag_approve' => 'Y',
+                    'updated_at' => Carbon::now("Asia/Jakarta"),
+                ]);
+			}
+
+			return $appr;
+        });
+    }
+}

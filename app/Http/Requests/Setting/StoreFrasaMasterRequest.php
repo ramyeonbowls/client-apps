@@ -1,8 +1,76 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class StoreFrasaMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x69\x64" => "\162\145\x71\165\x69\x72\145\144\x7c\x75\156\x69\x71\x75\145\x3a\164\146\151\x74\165\162\x2c\151\x64\54\143\141\164\x65\147\157\162\171\x7c\x6d\141\x78\72\65\x30", "\164\151\x74\x6c\x65" => "\x6d\x61\170\x3a\x32\65\x35", "\x61\x75\164\150\157\162" => "\x72\145\161\165\x69\x72\x65\144\174\x6d\141\170\72\62\x30\x30", "\144\x65\163\x63\x72\151\x70\x74\151\x6f\156" => "\x72\x65\x71\x75\151\x72\x65\144", "\146\154\x61\x67\x5f\x61\153\x74\x69\x66" => "\162\x65\161\x75\x69\162\145\x64\x7c\155\141\x78\72\65", "\146\x69\x6c\145" => ["\162\145\x71\165\151\x72\145\x64", "\x6d\x69\155\x65\163\x3a\152\160\145\147\54\160\x6e\147\x2c\152\x70\147", "\x6d\x61\x78\72\x31\65\60\60", Rule::dimensions()->maxWidth(300)->maxHeight(300)], "\x63\x75\x72\162\x65\x6e\164\x5f\146\151\154\x65" => "\156\x75\154\154\141\x62\x6c\145"]; } public function attributes() : array { return ["\x69\144" => "\x49\x44\x20\106\162\141\x73\141", "\164\151\164\x6c\x65" => "\112\x75\x64\165\154\x20\106\x72\141\163\x61", "\146\154\x61\147\137\x61\x6b\x74\151\x66" => "\101\x6b\x74\151\146\x20\x46\162\141\163\x61", "\x64\x65\163\143\x72\151\x70\164\151\x6f\x6e" => "\x4b\157\x6e\x74\x65\156\40\x46\162\141\x73\x61", "\x66\x69\x6c\x65" => "\x46\151\x6c\145\40\106\x72\141\163\141"]; } public function messages() : array { goto Rfdhv; i4Fhw: $dimensionMessage = "\124\150\x65\40\x66\151\x6c\x65\40\144\x69\x6d\145\x6e\x73\x69\x6f\x6e\x73\40\x63\141\x6e\47\164\x20\x62\145\x20\x6c\x61\162\147\x65\x72\x20\x74\150\141\156\x20\63\60\60\x20\170\x20\x33\60\60\40\x70\151\x78\145\154\163\x2e"; goto dh3qA; Rfdhv: $dimensionMessage = "\124\x68\145\x20\x66\x69\154\145\x20\144\151\x6d\x65\156\163\x69\x6f\156\163\40\141\162\x65\x20\x69\x6e\166\141\x6c\151\144\56"; goto i4Fhw; dh3qA: return ["\x66\x69\x6c\x65\56\x72\x65\161\165\x69\x72\145\144" => "\124\x68\145\x20\146\x69\154\x65\40\151\x73\x20\x72\x65\161\x75\151\x72\x65\x64\56", "\x66\151\154\145\56\x6d\x69\155\145\x73" => "\124\x68\145\40\x66\151\154\145\40\x6d\x75\x73\x74\40\x62\x65\40\141\40\x76\x61\154\151\144\x20\x69\x6d\141\147\x65\40\164\171\160\145\40\50\x6a\160\145\x67\54\40\x70\156\x67\54\40\152\160\x67\x29\56", "\x66\x69\x6c\145\56\x6d\x61\x78" => "\x54\150\x65\40\146\x69\x6c\x65\40\x73\x69\x7a\x65\x20\x63\141\156\x6e\x6f\x74\x20\x62\x65\x20\154\x61\162\x67\x65\x72\x20\x74\150\x61\156\40\x31\x35\60\60\x20\113\102\x2e", "\x66\151\154\x65\56\144\x69\155\145\x6e\163\151\157\x6e\x73" => $dimensionMessage]; goto rwZn9; rwZn9: } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class StoreFrasaMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required|unique:tfitur,id,category|max:50',
+            'title' => 'max:255',
+            'author' => 'required|max:200',
+            'description' => 'required',
+            'flag_aktif' => 'required|max:5',
+            'file' => [
+                'required',
+                'mimes:jpeg,png,jpg',
+                'max:1500',
+                Rule::dimensions()->maxWidth(300)->maxHeight(300),
+            ],
+            'current_file' => 'nullable',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'id' => 'ID Frasa',
+            'title' => 'Judul Frasa',
+            'flag_aktif' => 'Aktif Frasa',
+            'description' => 'Konten Frasa',
+            'file' => 'File Frasa',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        $dimensionMessage = 'The file dimensions are invalid.';
+        $dimensionMessage = 'The file dimensions can\'t be larger than 300 x 300 pixels.';
+
+        return [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
+            'file.max' => 'The file size cannot be larger than 1500 KB.',
+            'file.dimensions' => $dimensionMessage,
+        ];
+    }
+}

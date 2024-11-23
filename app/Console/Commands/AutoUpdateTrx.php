@@ -1,8 +1,198 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:18             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Console\Commands; use App\Logs; use Carbon\Carbon; use Illuminate\Support\Str; use Illuminate\Console\Command; use Illuminate\Support\Facades\DB; class AutoUpdateTrx extends Command { protected $signature = "\147\x69\x6e\x65\x73\151\x61\x3a\x75\x70\144\141\x74\145\x2d\x74\x72\x78\x20\x7b\x42\114\117\x43\x4b\x3d\122\105\x41\x44\x7d\x20\173\55\x2d\141\154\x6c\143\x6c\151\x65\156\164\x73\175\x20\173\x2d\55\144\x65\142\165\x67\x7d"; protected $description = "\103\157\155\155\141\156\x64\x20\x66\157\162\x20\x75\x70\144\x61\x74\145\40\x66\x6c\x61\147\x20\x74\162\141\156\163\141\143\164\151\x6f\156\x20\167\x69\164\x68\40\160\141\162\x61\155\x65\164\x65\x72\163\40\173\102\114\x4f\x43\113\75\167\150\151\143\x68\40\164\162\x61\x6e\x73\x61\x63\x74\x69\x6f\x6e\40\x74\x6f\40\x75\160\144\x61\x74\x65\175\x20\x7b\55\x2d\x61\154\154\x63\x6c\151\x65\156\x74\163\75\x77\150\x65\x74\x68\x65\162\40\x61\x6c\154\40\143\x6c\151\145\156\x74\x73\x20\x6f\x72\40\x6a\165\163\x74\x20\164\x68\151\x73\40\143\x6c\x69\x65\156\x74\175\x20\173\x2d\55\x64\x65\x62\x75\147\75\x70\162\x69\x6e\164\x20\x71\165\145\x72\x79\x20\164\157\x20\154\157\147\x73\175"; public function handle() { goto y72Jv; VVhlo: pMdvG: goto Mu2I2; eVu2E: try { goto GVR0u; do2IL: if ($row > 0) { goto cfvz2; } goto g_axg; q0jHs: $row = count($query); goto pmNYv; g_axg: $this->line("\x4e\x6f\40\104\x61\164\x61"); goto zO_iL; zO_iL: goto fkwkX; goto ckJMG; ckJMG: cfvz2: goto Tuj_I; q1NOp: $this->line("\x45\116\x44\x20\75\x3e\40" . $SECTIONNAME . "\xd\12"); goto Tpkhq; Tuj_I: $this->line("\106\157\165\x6e\x64\40" . $row . "\x20\x44\x61\x74\141"); goto PPvuG; qmlCN: zmEUR: goto CNs4m; pmNYv: $logs->write("\104\141\x74\x61", "\133" . $row . "\x5d"); goto do2IL; PPvuG: foreach ($query as $value) { $update = DB::table("\x74\162\145\156\x74\x5f\142\157\x6f\153")->where("\143\x6c\x69\145\156\164\x5f\151\144", $value->client_id)->where("\165\163\145\x72\x5f\151\144", $value->user_id)->where("\x62\x6f\x6f\x6b\137\151\x64", $value->book_id)->update(["\x66\154\x61\x67\137\x65\156\x64" => "\x59", "\x75\x70\x64\141\x74\x65\x64\137\x61\x74" => $now]); vSFmw: } goto qmlCN; CNs4m: fkwkX: goto q1NOp; GVR0u: $this->line("\x42\105\107\x49\116\40\75\x3e\x20" . $SECTIONNAME); goto q0jHs; Tpkhq: } catch (\PDOException $e_H) { goto bNwMP; bH70L: $errMessage = $e_H->errorInfo[2]; goto htuZt; htuZt: $logs->write($SECTIONNAME, "\105\x52\122\117\122\x20" . $sqlState . "\x20\75\x3e\40" . $errMessage . "\xa"); goto pAov_; bNwMP: $sqlState = $e_H->errorInfo[0]; goto iGgEH; iGgEH: $errCode = $e_H->errorInfo[1]; goto bH70L; pAov_: } goto E2IPs; Ohi1z: $SECTIONNAME = "\122\105\116\x54"; goto Knj5C; K8p4Q: $rent_day = 3; goto K7EFp; SO3hX: if (!$this->debug) { goto vD6y6; } goto iwM_u; E2IPs: if (!$this->debug) { goto RMVW0; } goto MQLxy; KdS2h: $query = DB::table("\x74\164\x72\170\x5f\162\145\141\x64\x20\141\x73\40\141")->select(["\x61\56\x69\x64", "\141\56\143\x6c\151\x65\156\x74\137\151\144", "\141\x2e\x75\x73\x65\162\137\x69\144", "\141\56\142\157\157\x6b\x5f\151\x64", "\x61\56\x73\164\141\x72\x74\x5f\x72\x65\141\144", "\141\x2e\145\x6e\144\137\x72\145\x61\x64"])->when(!$this->allclients, function ($query) use($client_id) { return $query->where("\x61\x2e\x63\154\x69\x65\x6e\164\x5f\x69\x64", $client_id); })->where("\141\x2e\x66\x6c\141\x67\137\145\156\144", "\x4e")->where("\145\156\x64\x5f\162\x65\x61\144", "\74\x3d", Carbon::now("\x41\163\x69\x61\57\112\141\x6b\141\x72\x74\x61")->subMinutes(30))->get(); goto JV_XU; Knj5C: $RENT_H_CountSuccess = $RENT_H_CountFailed = 0; goto eTVTS; fajns: AAKC9: goto sTfXt; oqr3K: if (!($q < count($queries))) { goto W4Vsw; } goto xltK6; o2dJD: PL7Yk: goto JnrgO; yI2tC: $nama_jobs = $job_info["\146\x69\154\x65\156\141\155\145"]; goto igmEp; Up3kh: $logs->write("\x42\111\x4e\x44\x49\x4e\107", "\x5b" . implode("\x2c\x20", $queries[$q]["\x62\151\156\x64\151\x6e\147\163"]) . "\135"); goto tnTgy; pt_wN: giNFo: goto Ei7oR; WEItL: $job_info = pathinfo(__FILE__); goto yI2tC; dLBJp: $q = 0; goto BxJpJ; kTOY2: GM4H0: goto KdS2h; wZFwf: DjhOj: goto o3CY1; LvbXD: $logs->write("\123\124\x4f\120", "\15\xa"); goto Y42Oq; eTVTS: if (!$this->debug) { goto j0vmI; } goto nvGGp; ltaS6: ZoJe6: goto mI2eu; tnTgy: $logs->write("\123\x51\x4c", $sql); goto iUSBn; reEwr: switch ($filter_block) { case "\122\105\101\x44": goto READ; goto Jezyu; case "\122\x45\x4e\x54": goto RENT; goto Jezyu; } goto fajns; MQLxy: $queries = DB::getQueryLog(); goto dLBJp; tZ906: W4Vsw: goto EwRok; d3of4: goto xAZLT; goto tZ906; g7X5n: $this->debug = $this->option("\144\x65\x62\165\x67") ?? 0; goto eazLW; K7EFp: try { $rent_days = DB::select("\x53\105\114\105\103\124\40\x60\x76\x61\154\x75\145\140\40\x46\122\117\x4d\x20\164\x70\141\162\141\155\x65\164\145\162\x20\x57\110\x45\122\105\x20\140\156\141\x6d\x65\x60\x3d\47\162\x65\x6e\164\x5f\x62\x6f\157\x6b\47\73"); $rent_day = $rent_days ? (int) $rent_days[0]->value : 3; } catch (\PDOException $e) { $logs->write("\x45\x52\122\117\x52\x20\x50\101\122\101\115\x45\x54\x45\122\75\x27\162\145\156\164\137\x62\157\157\153\47", $e->getMessage() . "\12"); } goto CRvAG; eazLW: $this->allclients = $this->option("\141\154\x6c\143\154\151\x65\156\x74\163") ?? 0; goto PsTZB; JnrgO: $q++; goto MfbRU; CRvAG: $query = DB::table("\164\162\145\x6e\164\137\142\157\x6f\153\40\141\x73\40\141")->select(["\x61\x2e\143\154\x69\x65\156\164\x5f\151\144", "\x61\x2e\165\x73\145\x72\137\x69\144", "\141\56\142\x6f\157\x6b\137\151\x64", "\141\56\x73\x74\x61\x72\x74\137\144\x61\x74\145", "\x61\56\145\x6e\x64\137\144\141\x74\145"])->when(!$this->allclients, function ($query) use($client_id) { return $query->where("\x61\56\143\154\151\145\156\164\x5f\x69\x64", $client_id); })->where("\141\56\146\154\x61\x67\137\145\156\x64", "\116")->where("\x65\x6e\x64\137\144\141\164\x65", "\74\x3d", Carbon::now("\x41\163\x69\x61\57\x4a\141\x6b\141\x72\x74\x61"))->get(); goto eVu2E; iUSBn: B2tmA: goto PCSV3; Mu2I2: READ: goto ihgjP; igmEp: $now = Carbon::now("\101\x73\x69\141\57\112\x61\x6b\141\162\164\141"); goto e1cFt; xltK6: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\x6e\144\x69\x6e\x67\x73"], str_replace("\x3f", "\47\x3f\x27", $queries[$q]["\161\x75\145\162\x79"])); goto Up3kh; iwM_u: $queries = DB::getQueryLog(); goto VR24C; ooEen: $logs->write("\123\121\114", $sql); goto o2dJD; BJUYB: if ($filter_block == '' || $filter_block == "\101\x4c\114\102\x4c\117\103\x4b") { goto pMdvG; } goto UBK02; PsTZB: $logs = new Logs(($this->allclients ? '' : $client_id . "\137") . $nama_jobs . "\137" . $filter_block); goto oO4t0; JV_XU: try { goto nJdCw; Jldje: QCruo: goto t31bK; iHVf5: goto XH6YX; goto Jldje; tBpfx: foreach ($query as $value) { $update = DB::table("\x74\164\162\x78\137\x72\x65\141\144")->where("\x69\x64", $value->id)->where("\143\x6c\x69\x65\x6e\x74\x5f\151\144", $value->client_id)->where("\165\x73\145\162\x5f\x69\144", $value->user_id)->where("\x62\157\x6f\153\x5f\151\x64", $value->book_id)->update(["\146\154\141\x67\x5f\x65\x6e\x64" => "\x59", "\165\160\x64\x61\164\x65\144\x5f\141\x74" => $now]); HkkED: } goto zkCR0; t31bK: $this->line("\106\157\165\x6e\144\40" . $row . "\40\104\x61\x74\141"); goto tBpfx; j2aum: XH6YX: goto B_F3n; zkCR0: Xiqwk: goto j2aum; nJdCw: $this->line("\102\x45\x47\x49\x4e\40\x3d\76\40" . $SECTIONNAME); goto vGsx0; B_F3n: $this->line("\105\x4e\104\x20\75\76\x20" . $SECTIONNAME . "\xd\xa"); goto YiQOY; jdYxI: $logs->write("\104\x61\x74\x61", "\x5b" . $row . "\135"); goto BfnmF; PYGid: $this->line("\116\157\40\x44\x61\x74\141"); goto iHVf5; BfnmF: if ($row > 0) { goto QCruo; } goto PYGid; vGsx0: $row = count($query); goto jdYxI; YiQOY: } catch (\PDOException $e_H) { goto uJQIe; jNTEr: $errMessage = $e_H->errorInfo[2]; goto xDoa8; xDoa8: $logs->write($SECTIONNAME, "\x45\x52\x52\117\x52\x20" . $sqlState . "\x20\75\76\x20" . $errMessage . "\xa"); goto klnwm; mgQo1: $errCode = $e_H->errorInfo[1]; goto jNTEr; uJQIe: $sqlState = $e_H->errorInfo[0]; goto mgQo1; klnwm: } goto SO3hX; o3CY1: if (!($q < count($queries))) { goto CJtTh; } goto L4XqN; EwRok: RMVW0: goto KI99v; wyk7F: j0vmI: goto K8p4Q; BxJpJ: xAZLT: goto oqr3K; MfbRU: goto DjhOj; goto V_7B3; nvGGp: DB::enableQueryLog(); goto wyk7F; ijaCZ: if ($filter_block == '' || $filter_block == "\x41\114\114\x42\114\x4f\x43\113") { goto giNFo; } goto MYJnY; VR24C: $q = 0; goto wZFwf; LrV_4: $logs->write("\102\x49\116\x44\111\116\x47", "\133" . implode("\x2c\40", $queries[$q]["\142\x69\156\x64\151\156\x67\163"]) . "\x5d"); goto ooEen; MYJnY: goto SELESAI; goto pt_wN; rzFQg: goto SELESAI; goto ltaS6; Xe31W: $READ_H_CountSuccess = $READ_H_CountFailed = 0; goto CmHKN; PCSV3: $q++; goto d3of4; sTfXt: Jezyu: goto BJUYB; L4XqN: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\x64\151\x6e\x67\x73"], str_replace("\x3f", "\x27\77\47", $queries[$q]["\161\165\145\x72\171"])); goto LrV_4; mI2eu: SELESAI: goto LvbXD; oO4t0: $logs->write("\x53\124\x41\122\x54", ''); goto reEwr; V_7B3: CJtTh: goto V1yyD; K2CYp: DB::enableQueryLog(); goto kTOY2; y72Jv: $client_id = config("\141\160\160\x2e\x63\x6c\x69\145\156\x74\137\151\144", ''); goto WEItL; KI99v: if ($filter_block == '' || $filter_block == "\101\x4c\x4c\x42\114\x4f\x43\x4b") { goto ZoJe6; } goto rzFQg; V1yyD: vD6y6: goto ijaCZ; CmHKN: if (!$this->debug) { goto GM4H0; } goto K2CYp; Ei7oR: RENT: goto Ohi1z; UBK02: goto SELESAI; goto VVhlo; ihgjP: $SECTIONNAME = "\x52\x45\101\104"; goto Xe31W; e1cFt: $filter_block = $this->argument("\x42\x4c\x4f\x43\113") ? $this->argument("\102\x4c\x4f\x43\x4b") : "\x52\x45\x41\104"; goto g7X5n; Y42Oq: } }
+
+namespace App\Console\Commands;
+
+use App\Logs;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+
+class AutoUpdateTrx extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'ginesia:update-trx {BLOCK=READ} {--allclients} {--debug}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command for update flag transaction with parameters {BLOCK=which transaction to update} {--allclients=whether all clients or just this client} {--debug=print query to logs}';
+
+    /**
+     * Execute the console command.
+     */
+    public function handle()
+    {
+		$client_id			= config('app.client_id', '');
+        $job_info       	= pathinfo(__FILE__); 
+        $nama_jobs			= $job_info['filename'];
+		$now				= Carbon::now('Asia/Jakarta');
+		$filter_block   	= ($this->argument('BLOCK')) ? $this->argument('BLOCK') : 'READ';
+		$this->debug		= $this->option('debug') ?? 0;
+		$this->allclients	= $this->option('allclients') ?? 0;
+
+		$logs = new Logs(($this->allclients ? '' : $client_id.'_' ).$nama_jobs.'_'.$filter_block);
+        $logs->write('START', '');
+
+		switch ($filter_block) {
+            case 'READ':
+                goto READ;
+                break;
+
+            case 'RENT':
+                goto RENT;
+                break;
+        }
+
+        if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI;
+
+		READ:
+        /* READ */
+            $SECTIONNAME = "READ";
+            $READ_H_CountSuccess = $READ_H_CountFailed = 0;
+			if($this->debug) DB::enableQueryLog();
+
+			$query = DB::table('ttrx_read as a')
+				->select([
+					'a.id',
+					'a.client_id',
+					'a.user_id',
+					'a.book_id',
+					'a.start_read',
+					'a.end_read'
+				])
+				->when(!$this->allclients, function ($query) use ($client_id) {
+					return $query->where('a.client_id', $client_id);
+				})
+				->where('a.flag_end', 'N')
+				->where('end_read', '<=', Carbon::now('Asia/Jakarta')->subMinutes(30))
+				->get();
+
+            try {
+				$this->line("BEGIN => ". $SECTIONNAME);
+
+				$row = count($query);
+				$logs->write("Data", "[".$row."]");
+
+                if ($row > 0) {
+					$this->line("Found ". $row." Data" );
+
+					foreach ($query as $value) {
+						$update	= DB::table('ttrx_read')
+						->where('id', $value->id)
+						->where('client_id', $value->client_id)
+						->where('user_id', $value->user_id)
+						->where('book_id', $value->book_id)
+						->update([
+							'flag_end'  => 'Y',
+							'updated_at' => $now
+						]);
+					}
+                }else{
+                    $this->line("No Data");  
+                }
+
+                $this->line("END => ". $SECTIONNAME."\r\n" );
+            } catch (\PDOException $e_H) {
+                $sqlState   = $e_H->errorInfo[0];
+                $errCode    = $e_H->errorInfo[1];
+                $errMessage = $e_H->errorInfo[2];
+
+				$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+            }
+
+			if($this->debug){
+				$queries = DB::getQueryLog();
+				for($q = 0; $q < count($queries); $q++) {
+					$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+					$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+					$logs->write('SQL', $sql);
+				}
+			}
+
+            if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI; 
+        /* READ */
+
+		RENT:
+        /* RENT */
+            $SECTIONNAME = "RENT";
+            $RENT_H_CountSuccess = $RENT_H_CountFailed = 0;
+			if($this->debug) DB::enableQueryLog();
+            
+            $rent_day = 3;
+			try {
+				$rent_days  = DB::select("SELECT `value` FROM tparameter WHERE `name`='rent_book';");
+				$rent_day   = $rent_days ? (int) $rent_days[0]->value : 3;
+			} catch (\PDOException $e) {
+				$logs->write("ERROR PARAMETER='rent_book'", $e->getMessage() ."\n");
+			}
+
+			$query = DB::table('trent_book as a')
+				->select([
+					'a.client_id',
+					'a.user_id',
+					'a.book_id',
+					'a.start_date',
+					'a.end_date'
+				])
+				->when(!$this->allclients, function ($query) use ($client_id) {
+					return $query->where('a.client_id', $client_id);
+				})
+				->where('a.flag_end', 'N')
+				->where('end_date', '<=', Carbon::now('Asia/Jakarta'))
+				->get();
+
+            try {
+				$this->line("BEGIN => ". $SECTIONNAME);
+				$row = count($query);
+				$logs->write("Data", "[".$row."]");
+
+                if ($row > 0) {
+					$this->line("Found ". $row." Data" );
+
+					foreach ($query as $value) {
+						$update	= DB::table('trent_book')
+						->where('client_id', $value->client_id)
+						->where('user_id', $value->user_id)
+						->where('book_id', $value->book_id)
+						->update([
+							'flag_end'  => 'Y',
+							'updated_at' => $now
+						]);
+					}
+                }else{
+                    $this->line("No Data");  
+                }
+
+                $this->line("END => ". $SECTIONNAME."\r\n" );
+            } catch (\PDOException $e_H) {
+                $sqlState   = $e_H->errorInfo[0];
+                $errCode    = $e_H->errorInfo[1];
+                $errMessage = $e_H->errorInfo[2];
+
+				$logs->write($SECTIONNAME, "ERROR ". $sqlState. " => ". $errMessage. "\n");
+            }
+
+			if($this->debug){
+				$queries = DB::getQueryLog();
+				for($q = 0; $q < count($queries); $q++) {
+					$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+					$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+					$logs->write('SQL', $sql);
+				}
+			}
+
+            if (!($filter_block=='' || $filter_block=='ALLBLOCK')) goto SELESAI; 
+        /* RENT */
+
+		SELESAI:
+
+        $logs->write("STOP", "\r\n");
+    }
+}

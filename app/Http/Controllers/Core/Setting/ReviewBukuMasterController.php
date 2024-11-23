@@ -1,8 +1,234 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Setting; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Yajra\DataTables\Facades\DataTables; use App\Services\Setting\ReviewBukuMasterService; use App\Http\Requests\Setting\StoreReviewBukuMasterRequest; use App\Http\Requests\Setting\UpdateReviewBukuMasterRequest; class ReviewBukuMasterController extends Controller { private ReviewBukuMasterService $ReviewBuku_service; public function __construct() { $this->middleware("\x61\x75\x74\150"); $this->ReviewBuku_service = new ReviewBukuMasterService(); } public function index(Request $request) : JsonResponse { goto MoWQt; iuP1E: return DataTables::of($results)->escapeColumns()->editColumn("\143\x72\145\x61\x74\x65\144\x5f\141\164", function ($value) { return Carbon::parse($value->created_at)->toDateTimeString(); })->editColumn("\165\x70\x64\x61\164\145\144\137\x61\164", function ($value) { return Carbon::parse($value->updated_at)->toDateTimeString(); })->addIndexColumn()->toJson(); goto CCVjV; C1l2x: $results = []; goto MYypi; NSSTJ: $logs->write(__FUNCTION__, "\123\124\101\x52\x54"); goto C1l2x; MYypi: try { goto tOF1U; laqRr: goto JHAwC; goto bqB3G; r55Hs: $q = 0; goto HnJUN; XcTDO: $q++; goto laqRr; SEz20: $queries = DB::getQueryLog(); goto r55Hs; wFx1m: eTY6A: goto XcTDO; KnDNy: $logs->write("\102\111\x4e\104\x49\x4e\107", "\133" . implode("\x2c\x20", $queries[$q]["\x62\x69\x6e\x64\151\156\147\x73"]) . "\x5d"); goto w06yd; Wt63q: $results = $this->ReviewBuku_service->get(); goto SEz20; tOF1U: DB::enableQueryLog(); goto Wt63q; HnJUN: JHAwC: goto oD3Wd; oD3Wd: if (!($q < count($queries))) { goto f0wOv; } goto KnDNy; bqB3G: f0wOv: goto sZZd2; w06yd: $logs->write("\x53\x51\x4c", $queries[$q]["\x71\x75\145\162\171"]); goto wFx1m; sZZd2: } catch (Throwable $th) { $logs->write("\x45\x52\x52\x4f\x52", $th->getMessage()); } goto In5vH; In5vH: $logs->write(__FUNCTION__, "\123\124\x4f\120\15\xa"); goto iuP1E; MoWQt: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\x67"); goto NSSTJ; CCVjV: } public function store(StoreReviewBukuMasterRequest $request) : JsonResponse { goto QsXVK; N4v5K: return response()->json($result["\155\145\163\x73\x61\x67\145"], $result["\163\164\141\164\x75\x73"]); goto aOOb4; PAuwM: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto Gkhzs; UX0zN: try { goto A423m; yF6Hm: goto m1vwT; goto aZv1o; DRU2t: $result["\x6d\145\163\x73\x61\x67\145"] = "\x44\x61\164\141\x20\x62\x65\162\x68\x61\163\x69\154\x20\x64\x69\x62\165\141\x74\56"; goto caTE4; aZv1o: R5pxE: goto Jfm9P; K6JE5: XqWSw: goto tZGI_; aUPUH: seiF5: goto GeugD; rFItv: $logs->write("\123\121\114", $queries[$q]["\x71\165\x65\162\171"]); goto aUPUH; r53_C: if (!$created) { goto daePI; } goto J7YOK; OM8mK: m1vwT: goto Rpnez; SQEpl: $logs->write("\102\111\116\104\111\x4e\x47", "\133" . implode("\54\40", $queries[$q]["\x62\151\156\x64\151\156\147\x73"]) . "\135"); goto rFItv; Rpnez: if (!($q < count($queries))) { goto R5pxE; } goto SQEpl; bM00q: $queries = DB::getQueryLog(); goto QmwIW; GeugD: $q++; goto yF6Hm; iWS3z: if (!$request->hasFile("\x66\x69\x6c\x65")) { goto XqWSw; } goto KO1Q1; U3vQ2: $result["\163\x74\x61\x74\165\163"] = 201; goto DRU2t; QmwIW: $q = 0; goto OM8mK; J7YOK: $logs->write("\x49\x4e\106\117", "\123\165\143\143\145\163\163\x66\x75\154\x6c\171\x20\x63\x72\145\141\x74\x65\144"); goto U3vQ2; A423m: DB::enableQueryLog(); goto iWS3z; KO1Q1: try { goto gAujq; jAf23: $validated["\x66\151\154\x65"] = $ReviewBuku_name; goto JuEBv; CCGNe: $extension = $request->file("\x66\151\154\145")->getClientOriginalExtension(); goto FGUWU; gAujq: $ReviewBuku_file = $request->file("\146\151\x6c\x65")->getClientOriginalName(); goto CCGNe; bg8ll: $request->file("\x66\151\154\145")->storeAs("\x2f\x70\x75\x62\x6c\x69\x63\57\x69\x6d\x61\x67\x65\163\x2f\156\x65\167\163", $ReviewBuku_name); goto jAf23; FGUWU: $ReviewBuku_name = "\x52\x42\137" . $request->id . "\56" . $extension; goto bg8ll; JuEBv: } catch (Throwable $th) { $logs->write("\x45\122\x52\117\x52", $th->getMessage()); } goto K6JE5; caTE4: daePI: goto bM00q; tZGI_: $created = $this->ReviewBuku_service->store((object) $validated); goto r53_C; Jfm9P: } catch (Throwable $th) { $logs->write("\x45\122\x52\117\122", $th->getMessage()); $result["\x6d\145\x73\163\x61\x67\145"] = "\x44\141\x74\141\40\147\141\147\141\154\40\144\151\142\165\141\164\x2e\x3c\142\162\x3e" . $th->getMessage(); } goto ibprI; ibprI: $logs->write(__FUNCTION__, "\123\x54\117\x50\xd\12"); goto N4v5K; QsXVK: $validated = $request->validated(); goto PAuwM; Gkhzs: $logs->write(__FUNCTION__, "\x53\x54\x41\x52\124"); goto ByR8d; Ot0ir: $result["\155\x65\163\163\141\147\x65"] = ''; goto UX0zN; ByR8d: $result["\x73\x74\141\x74\165\163"] = 200; goto Ot0ir; aOOb4: } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update(UpdateReviewBukuMasterRequest $request, string $id) : JsonResponse { goto zaTff; KfpHw: return response()->json($result["\x6d\x65\x73\x73\141\x67\x65"], $result["\x73\164\141\x74\x75\163"]); goto qUiYE; zaTff: try { $validated = $request->validated(); } catch (ValidationException $e) { return response()->json(["\145\162\162\x6f\x72" => $e->errors()], 422); } goto b_CyU; QULq_: try { goto yJ4MP; tdUC0: goto H58cQ; goto DApqw; yJ4MP: DB::enableQueryLog(); goto PSZGw; l1VEL: if (!($q < count($queries))) { goto B5ErC; } goto mtLpV; G1EFr: try { goto Xr7TV; CivOV: $extension = $request->file("\146\x69\x6c\x65")->getClientOriginalExtension(); goto uOzbY; EzxYM: $validated["\x66\x69\x6c\145"] = $ReviewBuku_name; goto iYVl1; uOzbY: $ReviewBuku_name = "\122\102\x5f" . $request->id . "\56" . $extension; goto m7PkW; m7PkW: $request->file("\x66\x69\154\145")->storeAs("\57\160\x75\x62\154\151\x63\x2f\x69\x6d\x61\x67\145\163\57\156\145\167\163", $ReviewBuku_name); goto EzxYM; Xr7TV: $ReviewBuku_file = $request->file("\x66\151\x6c\145")->getClientOriginalName(); goto CivOV; iYVl1: } catch (Throwable $th) { $logs->write("\x45\122\122\x4f\x52", $th->getMessage()); } goto iczHa; t78Gx: IR7mx: goto S8GeS; ZdMzS: $logs->write("\123\x51\114", $queries[$q]["\x71\165\145\x72\x79"]); goto WcP8U; mtLpV: $logs->write("\102\x49\116\x44\x49\116\x47", "\133" . implode("\x2c\x20", $queries[$q]["\142\x69\x6e\144\x69\156\147\163"]) . "\x5d"); goto ZdMzS; nvCI6: $result["\x6d\x65\x73\x73\x61\x67\x65"] = "\104\x61\x74\141\x20\142\x65\x72\150\x61\163\x69\x6c\40\144\x69\x70\x65\x72\x62\141\x72\165\x69\56"; goto t78Gx; b5y9u: $q++; goto tdUC0; Q5pAN: $q = 0; goto YrtR0; YrtR0: H58cQ: goto l1VEL; DApqw: B5ErC: goto zy1Xk; S8GeS: $queries = DB::getQueryLog(); goto Q5pAN; Brz5e: $logs->write("\x49\116\106\x4f", "\x53\x75\x63\143\145\x73\x73\x66\x75\154\154\171\40\165\160\x64\x61\164\x65\144"); goto miylx; jm3qL: $updated = $this->ReviewBuku_service->update((object) $validated, $id); goto ViO5K; WcP8U: OshB_: goto b5y9u; PSZGw: if (!$request->hasFile("\x66\151\x6c\x65")) { goto fz7KM; } goto G1EFr; miylx: $result["\163\164\141\x74\165\163"] = 201; goto nvCI6; iczHa: fz7KM: goto jm3qL; ViO5K: if (!$updated) { goto IR7mx; } goto Brz5e; zy1Xk: } catch (Throwable $th) { $logs->write("\105\122\x52\117\122", $th->getMessage()); $result["\155\145\x73\163\x61\x67\145"] = "\104\x61\164\x61\40\147\141\147\141\154\40\x64\x69\160\x65\x72\142\x61\162\165\x69\56\x3c\142\162\76" . $th->getMessage(); } goto KfpHw; pcpmH: $logs->write(__FUNCTION__, "\x53\124\101\122\x54"); goto bCv1V; bCv1V: $result["\x73\164\x61\164\165\x73"] = 200; goto tP01U; b_CyU: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\147"); goto pcpmH; tP01U: $result["\155\145\163\163\141\x67\145"] = ''; goto QULq_; qUiYE: } public function destroy(string $id) : JsonResponse { goto ye1Hr; YC3c8: $logs->write(__FUNCTION__, "\x53\x54\117\x50\xd\xa"); goto BlWcS; SyF1p: try { goto ax7sq; eZ6ef: e77J3: goto PzAbw; ax7sq: DB::enableQueryLog(); goto g4BFC; lvvLb: $result["\x6d\145\163\163\x61\x67\x65"] = "\x44\141\164\141\40\142\x65\x72\x68\141\x73\x69\x6c\x20\x64\151\x68\141\160\x75\x73"; goto qqJSW; g4BFC: $deleted = $this->ReviewBuku_service->delete($id); goto xNEPk; yE4W2: fSIgl: goto UVVPE; RfzIW: if (!($q < count($queries))) { goto e77J3; } goto uIYhi; Y12NQ: $q = 0; goto ejA5l; PzAbw: if (!$deleted) { goto zxpEB; } goto lvvLb; Gb8HS: goto cd5fp; goto eZ6ef; qqJSW: zxpEB: goto yfGJc; ejA5l: cd5fp: goto RfzIW; UVVPE: $q++; goto Gb8HS; PpU6r: $logs->write("\x53\121\x4c", $queries[$q]["\x71\165\145\162\x79"]); goto yE4W2; uIYhi: $logs->write("\x42\x49\x4e\104\x49\116\107", "\133" . implode("\54\x20", $queries[$q]["\142\151\x6e\144\x69\x6e\147\x73"]) . "\135"); goto PpU6r; xNEPk: $queries = DB::getQueryLog(); goto Y12NQ; yfGJc: } catch (Throwable $th) { $logs->write("\x45\x52\x52\117\122", $th->getMessage()); $result["\155\145\163\163\141\x67\x65"] = "\104\141\164\x61\x20\147\141\x67\141\154\40\144\x69\x68\x61\160\165\163\x2e\74\142\162\x3e" . $th->getMessage(); } goto YC3c8; ye1Hr: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\114\x6f\x67"); goto JbKWW; JbKWW: $logs->write(__FUNCTION__, "\x53\124\101\x52\x54"); goto jW28c; iE77P: $result["\x6d\x65\163\x73\141\147\x65"] = ''; goto SyF1p; jW28c: $result["\x73\164\141\x74\165\163"] = 200; goto iE77P; BlWcS: return response()->json($result["\155\145\163\x73\x61\x67\145"], $result["\163\164\x61\164\x75\x73"]); goto ygeDz; ygeDz: } }
+
+namespace App\Http\Controllers\Core\Setting;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
+use App\Services\Setting\ReviewBukuMasterService;
+use App\Http\Requests\Setting\StoreReviewBukuMasterRequest;
+use App\Http\Requests\Setting\UpdateReviewBukuMasterRequest;
+
+class ReviewBukuMasterController extends Controller
+{
+    private ReviewBukuMasterService $ReviewBuku_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->ReviewBuku_service = new ReviewBukuMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->ReviewBuku_service->get();
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('created_at', function ($value) {
+                return Carbon::parse($value->created_at)->toDateTimeString();
+            })
+            ->editColumn('updated_at', function ($value) {
+                return Carbon::parse($value->updated_at)->toDateTimeString();
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  IconMenuDeviceRequestStore  $request
+     * @return JsonResponse
+     */
+    public function store(StoreReviewBukuMasterRequest $request): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+            
+            if ($request->hasFile('file')) {
+                try {
+                    $ReviewBuku_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $ReviewBuku_name = 'RB_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $ReviewBuku_name);
+
+                    $validated['file'] = $ReviewBuku_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $created = $this->ReviewBuku_service->store((object)$validated);
+            if ($created) {
+                $logs->write("INFO", "Successfully created");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil dibuat.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal dibuat.<br>" . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateReviewBukuMasterRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(UpdateReviewBukuMasterRequest $request, string $id): JsonResponse
+    {
+        try {
+            $validated = $request->validated();
+            // Rest of your logic
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->errors()], 422);
+        }
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            if ($request->hasFile('file')) {
+                try {
+                    $ReviewBuku_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $ReviewBuku_name = 'RB_'. $request->id . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/news', $ReviewBuku_name);
+
+                    $validated['file'] = $ReviewBuku_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updated = $this->ReviewBuku_service->update((object)$validated, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $deleted = $this->ReviewBuku_service->delete($id);
+
+            $queries = DB::getQueryLog();
+            for ($q = 0; $q < count($queries); $q++) {
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $queries[$q]['query']);
+            }
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

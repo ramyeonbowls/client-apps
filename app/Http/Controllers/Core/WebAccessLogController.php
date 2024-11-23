@@ -1,8 +1,116 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core; use Illuminate\Http\Request; use App\Http\Controllers\Controller; use App\Services\Web\WebAccessLogService; class WebAccessLogController extends Controller { protected $webAccessLogService; public function __construct(WebAccessLogService $webAccessLogService) { $this->middleware("\141\x75\164\x68"); $this->webAccessLogService = $webAccessLogService; } public function index() { } public function store(Request $request) { goto hp4Mo; JAfC5: $results["\x6d\145\163\x73\x61\x67\145"] = ''; goto EcKN_; hp4Mo: if (!$request->has("\x6e\x61\155\x65")) { goto vzNyZ; } goto j17Gy; n3GUw: vzNyZ: goto TxFU7; j17Gy: $results["\x73\x74\x61\164\165\x73"] = 200; goto znCGT; znCGT: $results["\x73\x75\x63\x63\145\163\x73"] = false; goto JAfC5; TxFU7: return response()->json("\156\x6f\x20\162\145\x63\157\162\x64\40\141\x63\143\x65\163\x73\40\x6c\x6f\147\x73\56", 200); goto juKhU; D5_tP: return response()->json($results, $results["\163\164\141\164\x75\x73"]); goto n3GUw; EcKN_: try { goto ybCyJ; saWgd: t8rC6: goto GXOra; VyPK_: if (!$webAccessLog) { goto t8rC6; } goto tQhq4; iuSx6: $results["\x73\x75\x63\143\x65\x73\163"] = true; goto zQZI1; tQhq4: $results["\163\164\141\164\x75\x73"] = 201; goto iuSx6; ybCyJ: $webAccessLog = $this->webAccessLogService->createAccessLog($request); goto VyPK_; zQZI1: $results["\x6d\x65\163\x73\x61\x67\145"] = "\x53\x75\x63\x63\x65\163\x73\146\165\x6c\x6c\x79\x20\x72\145\x63\x6f\162\144\x20\141\143\143\x65\x73\x73\x20\154\x6f\147\163\x2e"; goto saWgd; GXOra: } catch (\Throwable $th) { $results["\163\x74\x61\164\165\163"] = 500; $results["\x6d\145\163\163\141\147\145"] = $th->getMessage(); } goto D5_tP; juKhU: } public function show($id) { goto IwTXH; IwTXH: $results["\x73\x74\x61\x74\x75\x73"] = 200; goto YP_W5; YP_W5: $results["\x73\x75\143\143\145\x73\x73"] = true; goto NT7tE; oQ3Tx: try { goto sNonm; IwUtM: $results["\x73\165\143\143\145\x73\x73"] = false; goto W738U; BegYC: tY4mi: goto v0UWA; PZmNc: return response()->json($webAccessLog, 200); goto BegYC; NpH9c: iMX3Z: goto PZmNc; eorVt: goto tY4mi; goto NpH9c; sNonm: $webAccessLog = $this->webAccessLogService->getAclPermission($id); goto mcLPV; WK6xI: $results["\x73\164\x61\x74\x75\163"] = 403; goto IwUtM; mcLPV: if ($webAccessLog) { goto iMX3Z; } goto WK6xI; W738U: $results["\x6d\x65\163\x73\x61\x67\145"] = "\x57\145\x20\141\162\145\40\x73\157\162\162\171\x20\142\x75\x74\40\x79\x6f\x75\40\x64\157\40\156\x6f\x74\x20\x68\141\x76\x65\x20\x70\x65\162\x6d\151\x73\x73\151\157\156\40\164\x6f\40\141\143\143\x65\163\163\x20\164\150\x69\163\x20\x70\141\147\145"; goto eorVt; v0UWA: } catch (\Throwable $th) { goto k612A; QUQpW: $results["\x6d\145\x73\x73\141\147\x65"] = $th->getMessage(); goto D5iQP; JHHLk: $results["\x73\x75\143\x63\145\163\163"] = false; goto QUQpW; k612A: $results["\x73\164\141\x74\165\x73"] = 500; goto JHHLk; D5iQP: } goto RyPYC; NT7tE: $results["\x6d\x65\x73\163\x61\147\x65"] = ''; goto oQ3Tx; RyPYC: return response()->json($results, $results["\163\164\x61\164\165\163"]); goto ELFNm; ELFNm: } public function update(Request $request, $id) { } public function destroy($id) { } }
+
+namespace App\Http\Controllers\Core;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Web\WebAccessLogService;
+
+class WebAccessLogController extends Controller
+{
+    protected $webAccessLogService;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(WebAccessLogService $webAccessLogService)
+    {
+        $this->middleware('auth');
+        $this->webAccessLogService = $webAccessLogService;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if($request->has('name')) {
+            $results['status'] = 200;
+            $results['success'] = false;
+            $results['message'] = '';
+            try {
+                $webAccessLog = $this->webAccessLogService->createAccessLog($request);
+
+                if($webAccessLog) {
+                    $results['status'] = 201;
+                    $results['success'] = true;
+                    $results['message'] = 'Successfully record access logs.';
+                }
+            } catch (\Throwable $th) {
+                $results['status'] = 500;
+                $results['message'] = $th->getMessage();
+            }
+
+            return response()->json($results, $results['status']);
+        }
+        return response()->json('no record access logs.', 200);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $results['status'] = 200;
+        $results['success'] = true;
+        $results['message'] = '';
+        try {
+            $webAccessLog = $this->webAccessLogService->getAclPermission($id);
+
+            if($webAccessLog) {
+                return response()->json($webAccessLog, 200);
+            } else {
+                $results['status'] = 403;
+                $results['success'] = false;
+                $results['message'] = 'We are sorry but you do not have permission to access this page';
+            }
+        } catch (\Throwable $th) {
+            $results['status'] = 500;
+            $results['success'] = false;
+            $results['message'] = $th->getMessage();
+        }
+
+        return response()->json($results, $results['status']);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

@@ -1,8 +1,64 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Support\Facades\Validator; use Illuminate\Validation\Rule; class UpdateProfileTeacherMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x6e\141\155\x65" => ["\162\145\x71\165\151\162\145\144", "\x73\164\x72\x69\x6e\x67", "\155\x61\x78\72\62\65\65"], "\x65\155\x61\151\154" => ["\162\x65\x71\165\151\x72\x65\144", "\163\x74\x72\151\x6e\147", "\x65\155\141\151\154", "\155\x61\170\x3a\x32\x35\x35", "\x75\x6e\151\161\165\145\72\x75\x73\x65\x72\163\x2c\145\x6d\x61\x69\x6c"], "\x6e\151\153" => "\x6e\x75\x6c\x6c\x61\142\154\145\x7c\163\164\x72\151\x6e\147\x7c\x6d\141\170\x3a\x32\x30", "\160\x68\157\x6e\x65" => "\162\145\x71\x75\x69\162\x65\144\174\x73\x74\x72\151\156\147\174\155\141\170\72\61\x35", "\x62\x69\162\164\150\144\141\171" => "\x72\x65\x71\x75\x69\x72\145\x64\x7c\x64\141\x74\x65", "\x67\x65\156\x64\x65\x72" => "\x72\x65\161\165\151\162\145\x64\x7c\163\x74\162\151\156\x67\x7c\151\156\x3a\114\x2c\120"]; } public function attributes() : array { return ["\x6e\x61\155\145" => "\116\x61\155\x61\40\107\165\x72\165", "\x65\155\x61\x69\x6c" => "\x45\x6d\x61\x69\x6c\40\x47\x75\x72\x75", "\156\151\x6b" => "\116\157\155\157\x72\x20\x49\144\x65\x6e\164\151\x74\141\163", "\160\150\157\156\145" => "\x4e\x6f\x6d\x6f\162\x20\x54\145\154\145\x70\x6f\156", "\x62\x69\162\164\150\144\141\x79" => "\124\x61\x6e\147\x67\141\x6c\x20\114\141\150\151\162", "\x67\x65\x6e\x64\x65\x72" => "\x4a\x65\x6e\x69\163\x20\113\145\154\x61\155\x69\156"]; } public function messages() : array { return ["\x66\151\154\145\x2e\144\x69\x6d\145\156\x73\151\157\156\163" => "\124\150\x65\x20\72\141\x74\164\162\x69\142\165\164\145\40\144\151\155\x65\156\x73\151\x6f\x6e\x73\40\143\x61\x6e\164\40\142\x65\x20\x6c\x61\162\147\x65\162\40\x74\x68\x61\x6e\x20\61\65\63\x30\40\x78\40\65\61\x30\40\160\x69\170\x65\154\163\56"]; } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+class UpdateProfileTeacherMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'nik' => 'nullable|string|max:20',
+            'phone' => 'required|string|max:15',
+            'birthday' => 'required|date',
+            'gender' => 'required|string|in:L,P',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => 'Nama Guru',
+            'email' => 'Email Guru',
+            'nik' => 'Nomor Identitas',
+            'phone' => 'Nomor Telepon',
+            'birthday' => 'Tanggal Lahir',
+            'gender' => 'Jenis Kelamin'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'file.dimensions' => 'The :attribute dimensions cant be larger than 1530 x 510 pixels.',
+        ];
+    }
+}

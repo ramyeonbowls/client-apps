@@ -1,8 +1,102 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:18             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Exports\Master; use Maatwebsite\Excel\Sheet; use Maatwebsite\Excel\Events\AfterSheet; use Maatwebsite\Excel\Concerns\WithTitle; use Maatwebsite\Excel\Concerns\WithEvents; use Maatwebsite\Excel\Events\BeforeExport; use Maatwebsite\Excel\Concerns\WithHeadings; use Maatwebsite\Excel\Concerns\ShouldAutoSize; use Maatwebsite\Excel\Concerns\WithCustomStartCell; class MemberMasterTemplateExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize { public function __construct() { Sheet::macro("\x73\x65\164\117\162\151\x65\x6e\164\x61\x74\x69\x6f\x6e", function (Sheet $sheet, $orientation) { $sheet->getDelegate()->getPageSetup()->setOrientation($orientation); }); Sheet::macro("\163\x74\171\x6c\145\103\145\x6c\154\x73", function (Sheet $sheet, string $cellRange, array $style) { $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style); }); } public function startCell() : string { $starCell = "\101\61"; return $starCell; } public function title() : string { return "\x4d\145\155\x62\x65\162"; } public function headings() : array { return ["\x4e\141\155\x61\40\x4c\x65\x6e\x67\153\141\160", "\x45\x6d\141\x69\x6c", "\116\x6f\x6d\157\x72\40\x48\x70", "\112\x65\156\x69\x73\40\x4b\145\154\x61\155\x69\156\x20\50\x4c\57\120\x29", "\124\141\x6e\147\147\141\154\40\x4c\x61\x68\151\x72\40\x28\131\131\x59\131\x2d\x4d\x4d\x2d\x44\104\51", "\116\x6f\x6d\157\162\x20\x49\x64\x65\156\x74\151\164\141\x73", "\120\141\x73\163\167\x6f\162\x64"]; } public function registerEvents() : array { return [BeforeExport::class => function (BeforeExport $event) { $event->writer->getProperties()->setTitle("\124\145\155\160\154\x61\164\145\x20\115\145\x6d\x62\145\x72"); $event->writer->getProperties()->setCreator(config("\x61\160\x70\56\x6e\141\155\x65")); }, AfterSheet::class => function (AfterSheet $event) { goto R10K2; w1o5n: $event->sheet->styleCells("\x41\x31\x3a\x47\x31", ["\142\x6f\162\144\145\162\x73" => ["\x61\154\154\102\x6f\162\x64\x65\x72\x73" => ["\142\157\x72\x64\145\162\x53\164\171\x6c\x65" => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN, "\x63\157\154\x6f\x72" => ["\162\147\142" => "\70\x30\x38\x30\70\x30"]]]]); goto LXgM_; hcn4z: $event->sheet->styleCells("\x41\x31\x3a\107\61", ["\146\x6f\x6e\x74" => ["\142\x6f\154\x64" => true], "\x61\154\x69\x67\156\x6d\145\x6e\x74" => ["\x68\157\x72\151\x7a\x6f\156\164\141\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, "\x76\145\162\x74\151\143\x61\x6c" => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER], "\x66\x69\154\154" => ["\146\x69\154\x6c\x54\171\160\x65" => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID, "\143\x6f\154\x6f\x72" => ["\x61\162\x67\x62" => "\x66\x66\x62\x34\143\66\145\x37"]]]); goto w1o5n; R10K2: $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE); goto hcn4z; LXgM_: }]; } }
+
+namespace App\Exports\Master;
+
+use Maatwebsite\Excel\Sheet;
+use Maatwebsite\Excel\Events\AfterSheet;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+
+class MemberMasterTemplateExport implements WithCustomStartCell, WithHeadings, WithTitle, WithEvents, ShouldAutoSize
+{
+    public function __construct()
+    {
+        Sheet::macro('setOrientation', function (Sheet $sheet, $orientation) {
+            $sheet->getDelegate()->getPageSetup()->setOrientation($orientation);
+        });
+
+        Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
+            $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
+        });
+    }
+    
+    /**
+     * @return string
+     */
+    public function startCell(): string
+    {
+        $starCell = 'A1';
+
+        return $starCell;
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'Member';
+    }
+
+    /**
+     * @return array
+     */
+    public function headings(): array
+    {
+        return [
+            'Nama Lengkap',
+            'Email',
+            'Nomor Hp',
+            'Jenis Kelamin (L/P)',
+            'Tanggal Lahir (YYYY-MM-DD)',
+            'Nomor Identitas',
+            'Password'
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerEvents(): array
+    {
+        return [
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setTitle( 'Template Member' );
+                $event->writer->getProperties()->setCreator( config('app.name') );
+            },
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
+                $event->sheet
+                    ->styleCells('A1:G1', [
+                        'font' => [
+                           'bold' => true
+                        ],
+                        'alignment' => [
+                           'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                           'vertical'     => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                        ],
+                        'fill' => [
+                           'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                           'color' => ['argb' => 'ffb4c6e7']
+                        ]
+                    ]);
+
+                $event->sheet
+                    ->styleCells('A1:G1', [
+                        'borders' => [
+                            'allBorders' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                'color' => ['rgb' => '808080'],
+                            ],
+                        ],
+                    ]
+                );
+            }
+        ];
+    }
+}

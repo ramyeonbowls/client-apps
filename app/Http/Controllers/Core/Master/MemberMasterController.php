@@ -1,8 +1,305 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:19             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Controllers\Core\Master; use App\Logs; use Exception; use Throwable; use Carbon\Carbon; use Illuminate\Support\Arr; use Illuminate\Support\Str; use Illuminate\Http\Request; use Illuminate\Http\JsonResponse; use Illuminate\Support\Facades\DB; use Illuminate\Support\Facades\Log; use App\Http\Controllers\Controller; use Maatwebsite\Excel\Facades\Excel; use PhpOffice\PhpSpreadsheet\IOFactory; use Yajra\DataTables\Facades\DataTables; use Illuminate\Support\Facades\Validator; use App\Services\Master\MemberMasterService; use App\Exports\Master\MemberMasterTemplateExport; class MemberMasterController extends Controller { private MemberMasterService $member_service; public function __construct() { $this->middleware("\x61\x75\164\x68"); $this->member_service = new MemberMasterService(); } public function index(Request $request) : JsonResponse { goto zQClA; wmZdo: return DataTables::of($results)->escapeColumns()->editColumn("\x70\150\x6f\164\157", function ($value) { goto K00Ch; Buk6v: return $photoUrl; goto SZxvF; K00Ch: $photo = isset($value->photo) ? public_path("\57\163\164\x6f\x72\x61\147\x65\x2f\151\x6d\x61\147\x65\163\57\x70\162\x6f\x66\151\x6c\x65\x2f" . $value->photo) : null; goto iFLcL; iFLcL: $photoUrl = $photo && file_exists($photo) ? "\57\x73\164\x6f\x72\141\x67\x65\57\x69\155\141\147\145\163\57\x70\x72\157\146\x69\x6c\x65\x2f" . $value->photo : "\57\163\164\x6f\x72\x61\x67\145\x2f\x69\x6d\x61\147\145\163\x2f\160\x72\157\146\151\x6c\145\x2f\x64\145\x66\141\x75\154\x74\x2e\x6a\160\x67"; goto Buk6v; SZxvF: })->addIndexColumn()->toJson(); goto bmoDj; ccFDu: $results = []; goto W4AuQ; Xp2CC: $logs->write(__FUNCTION__, "\x53\124\x41\x52\x54"); goto ccFDu; XJ0FU: $logs->write(__FUNCTION__, "\123\x54\117\120\15\xa"); goto wmZdo; zQClA: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto Xp2CC; W4AuQ: try { goto aCx5c; NUmW8: goto GcfTX; goto gnnq1; fjn0l: $q++; goto NUmW8; FkKYj: $queries = DB::getQueryLog(); goto I1W4r; p1VHW: $results = $this->member_service->get(); goto FkKYj; DFGBt: GcfTX: goto FSxhp; aCx5c: DB::enableQueryLog(); goto p1VHW; I1W4r: $q = 0; goto DFGBt; gnnq1: S6uE1: goto ilXWa; Xqca9: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\x6e\x64\151\156\x67\x73"], str_replace("\77", "\47\77\x27", $queries[$q]["\161\165\145\x72\171"])); goto FIflE; UQGRR: wf61E: goto fjn0l; FSxhp: if (!($q < count($queries))) { goto S6uE1; } goto Xqca9; FIflE: $logs->write("\102\x49\x4e\x44\111\x4e\x47", "\133" . implode("\x2c\x20", $queries[$q]["\142\x69\156\x64\x69\x6e\147\163"]) . "\x5d"); goto gTSZ0; gTSZ0: $logs->write("\123\x51\x4c", $sql); goto UQGRR; ilXWa: } catch (Throwable $th) { $logs->write("\105\122\122\x4f\x52", $th->getMessage()); } goto XJ0FU; bmoDj: } public function store(Request $request) { goto Y0dgW; Y0dgW: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\157\x67"); goto Oq_a2; Lt_3Y: return Excel::download(new MemberMasterTemplateExport(), "\115\141\163\x74\145\x72\137\x4d\145\x6d\x62\x65\162\137\x54\145\x6d\160\x6c\141\x74\x65\x2e\x78\154\x73\x78"); goto oddCU; EVtFh: try { goto chqlC; ydyfI: if (!$validator->fails()) { goto TLrjZ; } goto l5OoN; AiH_k: ++$row; goto Oo8IC; BXxQ_: $data = ["\156\141\x6d\x65" => $name, "\145\155\141\151\154" => $email, "\160\150\x6f\156\145" => $phone, "\x67\x65\x6e\144\145\162" => $gender, "\x62\151\x72\164\x68\x64\141\x79" => $birthday, "\156\151\153" => $nik, "\160\141\163\163\x77\157\x72\144" => $password]; goto Yu2Gh; NF2Vd: $logs->write("\123\121\114", $sql); goto kQ5td; kQ5td: tAfY_: goto b5y2z; h4oG2: OSMcw: goto ILpq_; rhR4S: if (!$check) { goto JcjGj; } goto p0x6J; bjiwP: if (!($row <= $H_highestRow)) { goto Aw7wh; } goto Ahl4W; S3TrS: $Sheetheader = $spreadsheet->getSheet(0); goto YoT2Q; Vd60J: $birthday = trim($Sheetheader->getCellByColumnAndRow(5, $row)->getFormattedValue()); goto X9gJB; D4xU9: $result["\x6d\145\163\x73\x61\147\145"] = $messages; goto UkgK3; eytyl: IpG4F: goto ZGeYF; vOdzR: DB::enableQueryLog(); goto g2i0x; g2i0x: $spreadsheet = IOFactory::load($request->file("\x66\151\154\145")); goto S3TrS; p0x6J: try { goto tyMET; X6EF0: $messages = "\104\x61\x74\x61\40\x67\x61\x67\141\x6c\x20\x64\151\142\165\141\164\56"; goto YseYj; YseYj: Nepn4: goto P5upG; kK52o: $check = false; goto X6EF0; RWL_V: if ($created) { goto Nepn4; } goto kK52o; tyMET: $created = $this->member_service->store((object) $data); goto RWL_V; P5upG: } catch (Throwable $e) { goto HuUbH; jtb_N: $logs->write("\105\x52\122\117\122", $e->getMessage()); goto QaolF; Ykkxr: $messages = "\x44\141\x74\x61\40\x67\141\147\141\154\40\x64\x69\x62\165\141\x74\x2e"; goto jtb_N; HuUbH: $check = false; goto Ykkxr; QaolF: } goto rIvL5; fbGHF: $gender = trim($Sheetheader->getCellByColumnAndRow(4, $row)->getFormattedValue()); goto Vd60J; TPq9s: TLrjZ: goto rhR4S; fjVpZ: $password = trim($Sheetheader->getCellByColumnAndRow(7, $row)->getFormattedValue()); goto BXxQ_; cJzNj: $email = trim($Sheetheader->getCellByColumnAndRow(2, $row)->getFormattedValue()); goto aqbM5; CK4v9: $H_worksheetTitle_A = explode("\x20", $H_worksheetTitle); goto pcGyZ; PYuvD: $errors = ''; goto sUNW8; tgDcF: $sql = Str::replaceArray("\77", $queries[$q]["\x62\x69\156\x64\151\x6e\x67\163"], str_replace("\x3f", "\47\77\47", $queries[$q]["\161\x75\145\162\171"])); goto qh4Ow; v2k32: FKaiG: goto vt6n0; qh4Ow: $logs->write("\102\x49\116\x44\111\x4e\107", "\x5b" . implode("\54\x20", $queries[$q]["\142\151\156\x64\151\156\x67\x73"]) . "\x5d"); goto NF2Vd; X9gJB: $nik = trim($Sheetheader->getCellByColumnAndRow(6, $row)->getFormattedValue()); goto fjVpZ; iVhlY: xl7dU: goto WHdMt; sUNW8: foreach ($validator->errors()->all() as $error) { $errors .= "\x45\x72\162\x6f\162\163\40\151\156\x20\x72\x6f\167\40" . $row . "\x3a\x20" . $error . "\x3c\142\x72\76"; zF9QD: } goto v2k32; a5kiu: $result["\x73\x74\x61\x74\165\163"] = 201; goto fbldT; HjkrJ: TwdsF: goto AiH_k; Ahl4W: $name = trim($Sheetheader->getCellByColumnAndRow(1, $row)->getFormattedValue()); goto cJzNj; aqbM5: $phone = trim($Sheetheader->getCellByColumnAndRow(3, $row)->getFormattedValue()); goto fbGHF; WHdMt: $row = 2; goto QIsSn; jBD9q: $this->logs->write("\105\x52\x52\117\x52", "\127\162\157\x6e\x67\x20\124\145\155\x70\154\x61\164\145\x21"); goto L6kls; Yu2Gh: $validator = Validator::make($data, ["\156\141\x6d\x65" => ["\x72\x65\x71\x75\151\162\145\144", "\163\164\162\151\x6e\147", "\155\141\x78\x3a\62\x35\x35"], "\x65\155\141\x69\x6c" => ["\x72\145\161\165\x69\162\145\x64", "\x73\164\x72\151\x6e\x67", "\145\x6d\x61\151\x6c", "\x6d\x61\170\x3a\62\x35\65", "\165\x6e\x69\x71\165\145\x3a\x75\x73\145\162\163\x2c\145\x6d\141\151\x6c"], "\x6e\x69\153" => "\156\x75\154\x6c\141\x62\154\x65\x7c\163\164\162\x69\156\147\174\x6d\141\170\72\x32\60", "\160\150\157\x6e\145" => "\x72\145\161\x75\151\162\145\144\174\163\x74\x72\x69\156\x67\174\x6d\x61\170\x3a\61\x35", "\142\151\162\164\150\144\141\x79" => "\162\x65\161\x75\151\x72\145\144\x7c\x64\x61\x74\145", "\147\x65\156\144\145\x72" => "\x72\x65\x71\x75\x69\x72\145\x64\x7c\163\x74\162\151\x6e\147\174\151\x6e\x3a\x4c\x2c\x50", "\x70\141\x73\x73\167\157\162\x64" => ["\x72\x65\x71\165\151\x72\x65\144", "\x73\164\x72\x69\x6e\147", "\155\x69\x6e\x3a\70"]]); goto ydyfI; hvtRg: $logs->write("\106\141\151\x6c\x65\144", $result["\155\x65\x73\x73\141\x67\145"]); goto D4xU9; chqlC: DB::beginTransaction(); goto vOdzR; QIsSn: tC7Z_: goto bjiwP; e1ok6: DB::commit(); goto SqVUP; ZGeYF: if (!($q < count($queries))) { goto j827K; } goto tgDcF; hU8C6: Aw7wh: goto lp7Sc; fbldT: $result["\155\145\163\x73\x61\x67\x65"] = "\x44\x61\x74\x61\40\x62\x65\x72\x68\141\x73\151\x6c\x20\144\151\142\165\x61\164\x2e"; goto UIv5b; c_2Pz: j827K: goto tNn7R; DtBut: if (!$check) { goto OSMcw; } goto e1ok6; l5OoN: $check = false; goto PYuvD; mO2Fr: $H_highestRow = $Sheetheader->getHighestRow(); goto CK4v9; vt6n0: $messages .= $errors; goto TPq9s; b5y2z: $q++; goto pnzMq; pcGyZ: if (strtolower($H_worksheetTitle_A[0]) == "\x6d\145\155\142\x65\x72") { goto xl7dU; } goto VJA8P; ssSZK: $queries = DB::getQueryLog(); goto C1hy5; UIv5b: goto HApUC; goto h4oG2; Elk99: $messages = "\123\x61\154\141\150\x20\x54\145\x6d\x70\x6c\x61\164\145\41"; goto jBD9q; ILpq_: DB::rollBack(); goto hvtRg; C1hy5: $q = 0; goto eytyl; UkgK3: HApUC: goto ssSZK; L6kls: goto kHeBr; goto iVhlY; Oo8IC: goto tC7Z_; goto hU8C6; rIvL5: JcjGj: goto HjkrJ; YoT2Q: $H_worksheetTitle = $Sheetheader->getTitle(); goto mO2Fr; SqVUP: $logs->write("\111\116\x46\x4f", "\123\165\x63\x63\x65\163\163\146\x75\x6c\154\x79\40\143\x72\145\x61\x74\x65\x64"); goto a5kiu; VJA8P: $check = false; goto Elk99; lp7Sc: kHeBr: goto DtBut; pnzMq: goto IpG4F; goto c_2Pz; tNn7R: } catch (Throwable $th) { $logs->write("\x45\122\x52\x4f\122", $th->getMessage()); $result["\x6d\x65\x73\x73\141\147\145"] = "\104\141\164\x61\x20\147\x61\147\141\x6c\40\x64\151\x62\165\x61\x74\56\x3c\x62\x72\76" . $th->getMessage(); } goto W7yiv; gtWbX: $result["\155\x65\163\163\141\147\145"] = ''; goto V35at; JaMEL: goto XCS40; goto x11Ir; V35at: $check = true; goto NMhkE; NHUYA: if ($request->has("\144\x6f\x77\156\154\157\x61\144") && $request->download == "\x74\x70\154") { goto jo0Z9; } goto tCCOi; W7yiv: $logs->write(__FUNCTION__, "\x53\124\117\120\xd\xa"); goto h7nEo; h7nEo: return response()->json($result["\x6d\x65\x73\163\x61\147\x65"], $result["\163\164\x61\x74\x75\163"]); goto JaMEL; OXDhC: $logs->write(__FUNCTION__, "\104\157\x77\x6e\x6c\x6f\x61\x64\x20\124\160\154"); goto Lt_3Y; x11Ir: jo0Z9: goto OXDhC; oddCU: XCS40: goto tuxME; Oq_a2: $logs->write(__FUNCTION__, "\x53\124\x41\x52\x54"); goto NHUYA; NMhkE: $messages = ''; goto EVtFh; tCCOi: $result["\x73\164\141\164\165\163"] = 200; goto gtWbX; tuxME: } public function show(string $id) : JsonResponse { return response()->json($id, 200); } public function update(UpdateMemberMasterRequest $request, string $id) : JsonResponse { goto F0e90; Qh5ed: $result["\x6d\x65\163\163\x61\x67\145"] = ''; goto CQriP; tAYCy: $logs = new Logs(Arr::last(explode("\134", get_class())) . "\x4c\157\x67"); goto pH7tI; pH7tI: $logs->write(__FUNCTION__, "\x53\x54\101\122\x54"); goto TAtW5; CQriP: try { goto S0B1L; OSkml: $queries = DB::getQueryLog(); goto ymycq; ymycq: $q = 0; goto jWHvc; Ma0aD: $q++; goto e1LnA; nrBmt: $result["\x73\164\141\x74\165\163"] = 201; goto XZbA6; Qi9mN: $sql = Str::replaceArray("\x3f", $queries[$q]["\142\x69\156\x64\151\x6e\147\163"], str_replace("\x3f", "\47\77\47", $queries[$q]["\161\x75\x65\x72\x79"])); goto aEPt_; TG5cI: GL51T: goto EZq7_; XZbA6: $result["\155\145\x73\163\x61\147\x65"] = "\x44\141\x74\x61\40\x62\145\x72\150\141\x73\151\x6c\40\144\151\x70\145\x72\142\141\x72\x75\x69\56"; goto MxnLT; Fst2P: y30qC: goto Fwfo2; HcZLI: if (!$request->hasFile("\x66\151\x6c\145")) { goto GL51T; } goto gKH6S; Tcuvt: if (!($q < count($queries))) { goto y30qC; } goto Qi9mN; EZq7_: $updated = $this->member_service->update((object) $validated, $id); goto memFB; e1LnA: goto YJpel; goto Fst2P; ANByW: $logs->write("\111\x4e\106\117", "\x53\165\143\x63\x65\163\163\146\x75\x6c\154\171\40\x75\x70\144\x61\164\x65\144"); goto nrBmt; Zdnpr: $logs->write("\x53\121\114", $sql); goto PvLQJ; aEPt_: $logs->write("\x42\x49\116\x44\x49\x4e\107", "\133" . implode("\x2c\40", $queries[$q]["\x62\151\156\144\151\156\147\x73"]) . "\x5d"); goto Zdnpr; MxnLT: bycsG: goto OSkml; gKH6S: try { goto QkjGl; EJ7lX: $request->file("\146\x69\154\x65")->storeAs("\x2f\160\x75\x62\x6c\151\143\57\151\155\x61\147\x65\163\x2f\x4d\x65\155\x62\x65\162", $Member_name); goto G6j4E; QkjGl: $Member_file = $request->file("\x66\x69\154\145")->getClientOriginalName(); goto Vb95Z; Vb95Z: $extension = $request->file("\146\151\x6c\145")->getClientOriginalExtension(); goto QBoE4; QBoE4: $Member_name = explode("\x2e", str_replace("\x20", '', $Member_file))[0] . "\x2d" . now("\x41\163\x69\x61\57\112\141\153\x61\x72\164\x61")->format("\x59\155\x64\110\151\x73") . "\x2d" . rand(100000, 999999) . "\56" . $extension; goto EJ7lX; G6j4E: $validated["\146\151\x6c\x65"] = $Member_name; goto x_Tvu; x_Tvu: } catch (Throwable $th) { $logs->write("\105\x52\122\x4f\122", $th->getMessage()); } goto TG5cI; PvLQJ: AgV71: goto Ma0aD; jWHvc: YJpel: goto Tcuvt; S0B1L: DB::enableQueryLog(); goto HcZLI; memFB: if (!$updated) { goto bycsG; } goto ANByW; Fwfo2: } catch (Throwable $th) { $logs->write("\x45\x52\122\x4f\x52", $th->getMessage()); $result["\155\145\163\x73\x61\147\145"] = "\104\x61\164\x61\x20\x67\x61\x67\141\x6c\40\144\151\160\145\x72\x62\141\x72\165\151\56\74\142\162\76" . $th->getMessage(); } goto VorYt; F0e90: $validated = $request->validated(); goto tAYCy; TAtW5: $result["\x73\x74\141\164\x75\x73"] = 200; goto Qh5ed; VorYt: return response()->json($result["\x6d\145\163\163\x61\x67\x65"], $result["\x73\x74\141\x74\165\163"]); goto RiOg0; RiOg0: } public function destroy(string $id) : JsonResponse { goto bC7WB; HKBqz: $logs->write(__FUNCTION__, "\x53\124\x4f\x50\xd\xa"); goto qCvCx; YRvi6: $result["\x6d\x65\x73\x73\141\147\x65"] = ''; goto zkXrv; qCvCx: return response()->json($result["\x6d\x65\x73\x73\141\147\145"], $result["\x73\x74\141\164\x75\x73"]); goto o4Ci3; bC7WB: $logs = new Logs(Arr::last(explode("\x5c", get_class())) . "\x4c\x6f\x67"); goto ArUBq; zkXrv: try { goto WDLdd; d60_2: vNVkg: goto bfU7N; bfU7N: if (!$deleted) { goto M0ICw; } goto yh_Oy; Y1gMB: Y73vu: goto i4tEW; e0WIX: if (!($dibaca > 0)) { goto a0EUn; } goto hcT6i; WDLdd: DB::enableQueryLog(); goto OIDVj; hcT6i: $result["\155\x65\163\163\x61\147\x65"] = "\x4d\x65\x6d\142\x65\162\40\x74\151\144\141\x6b\x20\142\x69\163\x61\40\x64\151\x68\141\160\x75\x73\54\40\153\x61\x72\145\156\x61\40\163\x75\144\x61\x68\40\x70\x65\x72\156\x61\150\x20\142\141\143\x61\x20\142\x75\x6b\165"; goto Ydmxi; XC5uO: $deleted = $this->member_service->delete($id); goto ej5SP; lNI_v: M0ICw: goto mv5zv; UGHDE: Tgecu: goto SwJiC; gNLki: $logs->write("\123\x51\114", $sql); goto UGHDE; ej5SP: $queries = DB::getQueryLog(); goto OT9t0; t2rsp: goto Y73vu; goto d60_2; Ydmxi: return response()->json($result["\155\x65\x73\x73\141\147\x65"], $result["\163\164\x61\x74\x75\163"]); goto Y3353; HzUsB: $logs->write("\102\x49\x4e\104\111\116\x47", "\133" . implode("\54\x20", $queries[$q]["\x62\151\156\x64\x69\x6e\147\163"]) . "\x5d"); goto gNLki; OT9t0: $q = 0; goto Y1gMB; Y3353: a0EUn: goto XC5uO; i4tEW: if (!($q < count($queries))) { goto vNVkg; } goto QHr46; SwJiC: $q++; goto t2rsp; a8rqN: $dibaca = $check[0]->total ?? 0; goto e0WIX; OIDVj: $check = $this->member_service->check($id); goto a8rqN; yh_Oy: $result["\155\145\163\x73\141\x67\145"] = "\104\x61\x74\141\40\x62\145\162\x68\x61\163\151\x6c\x20\144\x69\x68\x61\x70\165\163"; goto lNI_v; QHr46: $sql = Str::replaceArray("\x3f", $queries[$q]["\x62\151\x6e\144\151\x6e\x67\x73"], str_replace("\77", "\x27\x3f\47", $queries[$q]["\x71\x75\145\162\x79"])); goto HzUsB; mv5zv: } catch (Throwable $th) { $logs->write("\x45\122\x52\x4f\122", $th->getMessage()); $result["\155\145\x73\163\141\147\x65"] = "\x44\x61\x74\x61\40\147\x61\x67\141\154\x20\x64\x69\150\x61\160\x75\x73\x2e\74\142\x72\x3e" . $th->getMessage(); } goto HKBqz; WoGu1: $result["\163\x74\141\x74\x75\163"] = 200; goto YRvi6; ArUBq: $logs->write(__FUNCTION__, "\x53\x54\x41\122\124"); goto WoGu1; o4Ci3: } }
+
+namespace App\Http\Controllers\Core\Master;
+
+use App\Logs;
+use Exception;
+use Throwable;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
+use App\Services\Master\MemberMasterService;
+use App\Exports\Master\MemberMasterTemplateExport;
+
+class MemberMasterController extends Controller
+{
+    private MemberMasterService $member_service;
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->member_service = new MemberMasterService();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $results = [];
+        try {
+            DB::enableQueryLog();
+
+            $results = $this->member_service->get();
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return DataTables::of($results)
+            ->escapeColumns()
+            ->editColumn('photo', function ($value) {
+                $photo = isset($value->photo) ? public_path('/storage/images/profile/' . $value->photo) : null;
+                $photoUrl = $photo && file_exists($photo) ? '/storage/images/profile/' . $value->photo : '/storage/images/profile/default.jpg';
+                return $photoUrl;
+            })
+            ->addIndexColumn()
+            ->toJson();
+    }
+
+    /**
+        * Store a newly created resource in storage.
+        *
+        * @param  \Illuminate\Http\Request  $request
+        * @return \Illuminate\Http\Response
+    */
+    public function store(Request $request)
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+        if($request->has('download') && $request->download == 'tpl') {
+            $logs->write(__FUNCTION__, 'Download Tpl');
+            return Excel::download(new MemberMasterTemplateExport(), 'Master_Member_Template.xlsx');
+         }else{
+			$result['status'] = 200;
+        	$result['message'] = '';
+			$check = true;
+			$messages = '';
+
+            try {
+				DB::beginTransaction();
+                DB::enableQueryLog();
+
+				$spreadsheet         = IOFactory::load($request->file('file'));
+				$Sheetheader         = $spreadsheet->getSheet(0);
+				$H_worksheetTitle    = $Sheetheader->getTitle();
+				$H_highestRow        = $Sheetheader->getHighestRow();
+				$H_worksheetTitle_A  = explode(" ", $H_worksheetTitle);
+				if(strtolower($H_worksheetTitle_A[0])=="member"){
+					for ($row = 2; $row <= $H_highestRow; ++ $row) {
+						$name		= trim($Sheetheader->getCellByColumnAndRow(1, $row)->getFormattedValue());
+						$email		= trim($Sheetheader->getCellByColumnAndRow(2, $row)->getFormattedValue());
+						$phone		= trim($Sheetheader->getCellByColumnAndRow(3, $row)->getFormattedValue());
+						$gender		= trim($Sheetheader->getCellByColumnAndRow(4, $row)->getFormattedValue());
+						$birthday	= trim($Sheetheader->getCellByColumnAndRow(5, $row)->getFormattedValue());
+						$nik		= trim($Sheetheader->getCellByColumnAndRow(6, $row)->getFormattedValue());
+						$password	= trim($Sheetheader->getCellByColumnAndRow(7, $row)->getFormattedValue());
+
+						$data = [
+							'name'		=> $name,
+							'email'		=> $email,
+							'phone'		=> $phone,
+							'gender'	=> $gender,
+							'birthday'	=> $birthday,
+							'nik'		=> $nik,
+							'password'	=> $password
+						];
+					
+						$validator = Validator::make($data, [
+							'name' => ['required', 'string', 'max:255'],
+							'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+							'nik' => 'nullable|string|max:20',
+							'phone' => 'required|string|max:15',
+							'birthday' => 'required|date',
+							'gender' => 'required|string|in:L,P',
+							'password' => ['required', 'string', 'min:8'],
+						]);
+
+						if ($validator->fails()) {
+							$check		= false;
+							$errors = '';
+							foreach ($validator->errors()->all() as $error) {
+								$errors .= "Errors in row ".$row.": ".$error . "<br>";
+							}
+							$messages	.= $errors;
+						}
+
+						if($check){
+							try {
+								$created = $this->member_service->store((object)$data);
+								if (!$created) {
+									$check		= false;
+									$messages	= "Data gagal dibuat.";
+								}
+							}catch (Throwable $e) {
+								$check		= false;
+								$messages	= "Data gagal dibuat.";
+								$logs->write("ERROR", $e->getMessage());
+							}
+						}
+
+					}
+				}else{
+					$check		= false;
+					$messages	= "Salah Template!";
+					$this->logs->write("ERROR", "Wrong Template!");
+				}
+
+				if(!$check){
+					DB::rollBack();
+					$logs->write("Failed", $result['message']);
+					$result['message']	= $messages;
+				}else {
+					DB::commit();
+					$logs->write("INFO", "Successfully created");
+					$result['status']	= 201;
+					$result['message']	= "Data berhasil dibuat.";
+				}
+
+                $queries = DB::getQueryLog();
+				for($q = 0; $q < count($queries); $q++) {
+					$sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+					$logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+					$logs->write('SQL', $sql);
+				}
+            } catch (Throwable $th) {
+                $logs->write("ERROR", $th->getMessage());
+
+                $result['message'] = "Data gagal dibuat.<br>" . $th->getMessage();
+            }
+            $logs->write(__FUNCTION__, "STOP\r\n");
+
+            return response()->json($result['message'], $result['status']);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function show(string $id): JsonResponse
+    {
+        return response()->json($id, 200);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateMemberMasterRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(UpdateMemberMasterRequest $request, string $id): JsonResponse
+    {
+        $validated = $request->validated();
+
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            if ($request->hasFile('file')) {
+                try {
+                    $Member_file = $request->file('file')->getClientOriginalName();
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    $Member_name = explode('.', str_replace(' ', '', $Member_file))[0] . '-' . now('Asia/Jakarta')->format('YmdHis') . '-' . rand(100000, 999999) . '.' . $extension;
+                    $request->file('file')->storeAs('/public/images/Member', $Member_name);
+
+                    $validated['file'] = $Member_name;
+                } catch (Throwable $th) {
+                    $logs->write("ERROR", $th->getMessage());
+                }
+            }
+
+            $updated = $this->member_service->update((object)$validated, $id);
+            if ($updated) {
+                $logs->write("INFO", "Successfully updated");
+
+                $result['status'] = 201;
+                $result['message'] = "Data berhasil diperbarui.";
+            }
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = "Data gagal diperbarui.<br>" . $th->getMessage();
+        }
+
+        return response()->json($result['message'], $result['status']);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
+    public function destroy(string $id): JsonResponse
+    {
+        $logs = new Logs(Arr::last(explode("\\", get_class())) . 'Log');
+        $logs->write(__FUNCTION__, 'START');
+
+        $result['status'] = 200;
+        $result['message'] = '';
+        try {
+            DB::enableQueryLog();
+
+            $check      = $this->member_service->check($id);
+            $dibaca     = $check[0]->total ?? 0;
+
+            if($dibaca > 0){
+                $result['message'] = 'Member tidak bisa dihapus, karena sudah pernah baca buku';
+
+                return response()->json($result['message'], $result['status']);
+            }
+
+            $deleted    = $this->member_service->delete($id);
+
+            $queries = DB::getQueryLog();
+            for($q = 0; $q < count($queries); $q++) {
+                $sql = Str::replaceArray('?', $queries[$q]['bindings'], str_replace('?', "'?'", $queries[$q]['query']));
+                $logs->write('BINDING', '[' . implode(', ', $queries[$q]['bindings']) . ']');
+                $logs->write('SQL', $sql);
+            }
+
+            if ($deleted) {
+                $result['message'] = 'Data berhasil dihapus';
+            }
+        } catch (Throwable $th) {
+            $logs->write("ERROR", $th->getMessage());
+
+            $result['message'] = 'Data gagal dihapus.<br>' . $th->getMessage();
+        }
+        $logs->write(__FUNCTION__, "STOP\r\n");
+
+        return response()->json($result['message'], $result['status']);
+    }
+}

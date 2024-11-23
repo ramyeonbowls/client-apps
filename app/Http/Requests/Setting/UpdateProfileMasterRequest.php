@@ -1,8 +1,81 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Support\Facades\Validator; use Illuminate\Validation\Rule; class UpdateProfileMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\x61\160\x70\x6c\x69\x63\141\x74\151\x6f\x6e\x5f\156\x61\x6d\x65" => "\x72\x65\161\x75\x69\x72\145\x64\x7c\x73\x74\x72\x69\156\147\x7c\155\141\170\x3a\61\65\60", "\141\x64\144\162\x65\163\x73" => "\162\x65\x71\165\151\x72\x65\144\x7c\163\x74\162\x69\x6e\147\x7c\x6d\x61\170\x3a\x32\x30\x30", "\160\x72\157\x76\x69\156\163\x69\137\151\144" => "\162\x65\161\165\x69\162\145\144\x7c\163\164\162\x69\x6e\x67\x7c\x6d\141\x78\72\x32\65", "\x6b\x61\x62\165\160\141\164\145\156\137\x69\144" => "\162\x65\161\x75\x69\162\145\x64\174\163\164\x72\151\x6e\x67\x7c\155\x61\x78\x3a\62\65", "\x6b\x65\143\141\x6d\141\x74\x61\156\137\151\144" => "\162\x65\161\165\x69\162\x65\x64\x7c\x73\164\x72\151\156\x67\x7c\x6d\x61\x78\72\62\x35", "\x6b\x65\x6c\x75\x72\x61\150\x61\x6e\x5f\151\x64" => "\x72\145\x71\x75\151\x72\x65\x64\x7c\x73\x74\x72\151\x6e\x67\x7c\155\x61\x78\72\x32\65", "\156\160\x77\x70" => "\x73\x74\x72\151\156\147\174\x6d\x61\170\72\65\60", "\160\x65\x72\x73\137\162\145\163\160\x6f\156\163\151\x62\x6c\145" => "\162\x65\x71\x75\151\162\145\144\174\x73\164\162\151\156\x67\x7c\x6d\x61\170\72\x35\60", "\160\x6f\163\x5f\160\145\162\x73\137\162\x65\x73\160\x6f\x6e\163\151\x62\x6c\x65" => "\x72\145\x71\165\151\x72\x65\144\174\x73\164\x72\151\156\147\174\x6d\141\x78\x3a\65\x30", "\155\157\x75\137\163\151\147\156\x5f\x6e\141\155\x65" => "\x72\145\x71\165\151\x72\x65\x64\174\x73\x74\x72\x69\x6e\147\174\155\141\x78\72\x35\x30", "\160\x6f\x73\x5f\x73\151\147\156\137\156\x61\x6d\x65" => "\162\145\161\165\151\162\x65\x64\x7c\163\x74\162\x69\156\x67\174\x6d\141\170\72\x35\x30", "\141\x64\155\151\x6e\x69\x73\164\162\141\x74\x6f\x72\137\156\141\x6d\145" => "\162\145\161\x75\151\162\145\x64\174\163\x74\162\151\156\147\174\155\x61\170\72\x35\x30", "\141\x64\155\151\156\x69\x73\164\x72\141\x74\157\162\x5f\160\150\x6f\156\145" => "\x72\x65\x71\165\151\x72\x65\144\174\163\x74\162\x69\156\x67\x7c\x6d\x61\170\72\62\x30", "\165\160\x64\x61\x74\x65\144\x5f\141\x74" => "\156\165\154\154\x61\x62\154\x65", "\143\157\x75\156\164\x72\171\x5f\151\x64" => "\x73\x74\x72\151\156\147\174\x6d\x61\170\x3a\x32\x35"]; } public function attributes() : array { return ["\141\x70\160\154\x69\x63\141\164\151\157\x6e\137\156\x61\x6d\145" => "\x4e\141\155\x61\x20\101\160\154\x69\x6b\141\163\151", "\x61\144\144\162\145\x73\x73" => "\x41\154\x61\x6d\141\164", "\160\x72\x6f\166\151\x6e\x73\151\137\x69\x64" => "\120\162\157\166\x69\x6e\163\x69", "\x6b\141\x62\165\160\x61\164\145\156\137\x69\144" => "\113\x61\x62\x75\160\x61\x74\145\x6e", "\x6b\145\143\x61\155\141\x74\141\x6e\x5f\151\144" => "\x4b\145\143\141\155\141\x74\141\x6e", "\x6b\x65\154\x75\162\141\x68\141\x6e\137\x69\144" => "\113\x65\x6c\x75\x72\141\150\x61\x6e", "\156\160\167\x70" => "\116\x50\x57\x50", "\160\145\162\163\x5f\162\145\163\x70\157\156\x73\x69\142\x6c\145" => "\116\x61\155\x61\x20\x50\x65\156\141\156\x67\x67\x75\x6e\x67\40\112\141\x77\x61\x62", "\x70\157\163\137\160\145\x72\x73\137\162\145\163\160\x6f\156\163\151\142\154\145" => "\112\x61\142\141\x74\141\156\x20\120\145\x6e\x61\x6e\x67\x67\x75\x6e\147\x20\112\x61\x77\141\142", "\155\157\165\x5f\x73\151\x67\x6e\137\156\x61\x6d\x65" => "\x4e\x61\155\x61\40\120\145\156\x61\156\144\x61\x74\141\x6e\x67\141\x6e\40\x4d\117\125", "\x70\157\163\x5f\163\151\x67\156\x5f\156\x61\155\x65" => "\x4a\x61\x62\141\x74\x61\156\40\x50\145\x6e\x61\x6e\x64\141\x74\141\156\147\x61\156\x20\115\117\x55", "\x61\144\155\151\x6e\151\163\x74\x72\x61\164\157\x72\137\x6e\141\155\145" => "\x4e\141\155\141\x20\x50\145\x6e\x67\x65\154\157\x6c\141\40\x28\101\x64\155\151\156\51", "\x61\144\x6d\151\x6e\151\x73\x74\x72\x61\x74\157\162\137\x70\150\157\156\145" => "\x4e\x6f\155\x6f\x72\40\x48\120\x20\x50\145\156\147\x65\154\x6f\154\141\x20\50\101\144\x6d\x69\x6e\51", "\x63\157\x75\x6e\164\x72\171\137\151\x64" => "\x4e\145\147\141\x72\x61"]; } public function messages() : array { return ["\146\151\154\145\x2e\144\151\x6d\x65\156\163\151\x6f\156\163" => "\124\150\x65\40\72\141\164\164\162\x69\142\x75\164\145\40\x64\151\x6d\x65\x6e\163\x69\157\156\x73\40\143\x61\156\x74\40\x62\145\40\154\x61\162\147\145\162\x20\x74\150\141\x6e\40\61\x35\x33\60\40\x78\x20\65\61\60\x20\160\x69\170\145\154\163\56"]; } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+class UpdateProfileMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'application_name' => 'required|string|max:150',
+            'address' => 'required|string|max:200',
+            'provinsi_id' => 'required|string|max:25',
+            'kabupaten_id' => 'required|string|max:25',
+            'kecamatan_id' => 'required|string|max:25',
+            'kelurahan_id' => 'required|string|max:25',
+            'npwp' => 'string|max:50',
+            'pers_responsible' => 'required|string|max:50',
+            'pos_pers_responsible' => 'required|string|max:50',
+            'mou_sign_name' => 'required|string|max:50',
+            'pos_sign_name' => 'required|string|max:50',
+            'administrator_name' => 'required|string|max:50',
+            'administrator_phone' => 'required|string|max:20',
+            'updated_at' => 'nullable',
+            'country_id' => 'string|max:25'
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'application_name' => 'Nama Aplikasi',
+            'address' => 'Alamat',
+            'provinsi_id' => 'Provinsi',
+            'kabupaten_id' => 'Kabupaten',
+            'kecamatan_id' => 'Kecamatan',
+            'kelurahan_id' => 'Kelurahan',
+            'npwp' => 'NPWP',
+            'pers_responsible' => 'Nama Penanggung Jawab',
+            'pos_pers_responsible' => 'Jabatan Penanggung Jawab',
+            'mou_sign_name' => 'Nama Penandatangan MOU',
+            'pos_sign_name' => 'Jabatan Penandatangan MOU',
+            'administrator_name' => 'Nama Pengelola (Admin)',
+            'administrator_phone' => 'Nomor HP Pengelola (Admin)',
+            'country_id' => 'Negara'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'file.dimensions' => 'The :attribute dimensions cant be larger than 1530 x 510 pixels.',
+        ];
+    }
+}

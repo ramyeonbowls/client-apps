@@ -1,8 +1,80 @@
 <?php
-/*   __________________________________________________
-    |  Obfuscated by Tarmun - Php Obfuscator  2.0.14  |
-    |              on 2024-11-18 10:11:20             |
-    |                                                 |
-    |_________________________________________________|
-*/
- namespace App\Http\Requests\Setting; use Illuminate\Foundation\Http\FormRequest; use Illuminate\Validation\Rule; class UpdateTajukUtamaMasterRequest extends FormRequest { public function authorize() : bool { return true; } public function rules() : array { return ["\151\144" => "\x72\145\161\x75\151\162\145\144", "\155\141\x78\72\x35\x30", Rule::exists("\x74\x66\x69\164\165\162")->where(function ($query) { return $query->where("\x63\141\164\x65\147\x6f\x72\171", $this->category); }), "\164\151\x74\154\145" => "\x72\x65\161\x75\x69\x72\x65\144\174\155\141\170\x3a\x32\x35\65", "\x61\x75\x74\150\157\162" => "\155\x61\170\x3a\x35\60", "\x64\145\163\143\162\151\x70\164\151\x6f\x6e" => "\x72\145\161\x75\151\162\x65\x64", "\x66\x6c\141\147\x5f\141\153\x74\x69\146" => "\162\x65\161\165\x69\x72\145\144\174\x6d\141\170\x3a\65", "\x66\x69\x6c\145" => ["\x72\145\x71\165\151\x72\145\x64", "\x6d\x69\x6d\x65\163\x3a\152\160\145\147\x2c\160\156\x67\54\x6a\160\x67", "\155\x61\x78\72\61\x35\60\60", Rule::dimensions()->maxWidth(700)->maxHeight(350)], "\143\x75\162\x72\145\x6e\x74\x5f\146\x69\x6c\145" => "\156\165\154\x6c\x61\142\x6c\145"]; } public function attributes() : array { return ["\151\144" => "\x49\x44\40\124\x61\152\x75\x6b\40\x55\164\141\x6d\141", "\x74\151\x74\x6c\145" => "\x4a\x75\x64\x75\154\x20\x54\x61\x6a\x75\153\x20\x55\x74\x61\155\x61", "\146\154\x61\147\x5f\141\x6b\x74\151\146" => "\x41\153\164\151\x66\40\x54\x61\x6a\x75\153\40\x55\x74\141\x6d\141", "\144\145\163\143\x72\x69\x70\x74\x69\x6f\156" => "\113\x6f\156\x74\x65\156\x20\x54\x61\x6a\x75\153\40\125\x74\x61\155\x61", "\146\151\x6c\145" => "\x46\151\154\x65\x20\x54\141\152\165\153\x20\125\164\x61\x6d\x61"]; } public function messages() : array { goto TRhd2; ZS7rl: $dimensionMessage = "\x54\x68\x65\x20\146\151\154\145\40\144\151\x6d\x65\x6e\x73\x69\157\x6e\163\x20\143\x61\156\x27\164\40\142\145\40\x6c\141\162\x67\145\162\40\164\x68\x61\156\x20\x37\60\x30\40\x78\40\63\x35\60\40\x70\151\170\x65\154\x73\x2e"; goto IcL0M; IcL0M: return ["\146\151\154\145\56\162\145\x71\165\151\x72\x65\x64" => "\124\150\x65\40\146\151\154\x65\x20\x69\163\40\x72\145\x71\165\151\162\x65\144\x2e", "\146\151\x6c\145\56\155\151\x6d\145\x73" => "\x54\x68\x65\x20\x66\x69\x6c\145\40\x6d\x75\x73\164\x20\142\x65\x20\x61\40\166\x61\x6c\151\144\40\x69\155\x61\147\145\40\164\171\160\145\x20\50\x6a\x70\145\x67\x2c\40\x70\156\147\x2c\x20\x6a\x70\x67\x29\x2e", "\146\151\x6c\145\56\x6d\141\170" => "\124\150\x65\40\146\x69\154\145\x20\163\151\x7a\x65\40\143\141\x6e\x6e\x6f\x74\x20\x62\145\40\154\141\x72\x67\x65\162\x20\164\x68\141\x6e\40\x31\x35\x30\x30\x20\113\102\x2e", "\x66\151\154\145\56\144\x69\155\145\x6e\163\151\157\x6e\163" => $dimensionMessage]; goto a5rEQ; TRhd2: $dimensionMessage = "\124\x68\145\40\x66\151\154\145\40\144\151\x6d\x65\156\163\151\157\156\163\x20\141\x72\145\40\x69\156\166\141\x6c\151\x64\x2e"; goto ZS7rl; a5rEQ: } }
+
+namespace App\Http\Requests\Setting;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UpdateTajukUtamaMasterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required',
+                'max:50',
+                Rule::exists('tfitur')->where(function ($query) {
+                    return $query->where('category', $this->category);
+                }),
+            'title' => 'required|max:255',
+            'author' => 'max:50',
+            'description' => 'required',
+            'flag_aktif' => 'required|max:5',
+            'file' => [
+                'required',
+                'mimes:jpeg,png,jpg',
+                'max:1500',
+                Rule::dimensions()->maxWidth(700)->maxHeight(350),
+            ],
+            'current_file' => 'nullable',
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'id' => 'ID Tajuk Utama',
+            'title' => 'Judul Tajuk Utama',
+            'flag_aktif' => 'Aktif Tajuk Utama',
+            'description' => 'Konten Tajuk Utama',
+            'file' => 'File Tajuk Utama',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        $dimensionMessage = 'The file dimensions are invalid.';
+        $dimensionMessage = 'The file dimensions can\'t be larger than 700 x 350 pixels.';
+
+        return [
+            'file.required' => 'The file is required.',
+            'file.mimes' => 'The file must be a valid image type (jpeg, png, jpg).',
+            'file.max' => 'The file size cannot be larger than 1500 KB.',
+            'file.dimensions' => $dimensionMessage,
+        ];
+    }
+}
